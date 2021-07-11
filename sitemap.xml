@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kyleap.github.io/2021-07-11-2021-07-11-line-flex-message-animation/</loc>
+    
+    <lastmod>2021-07-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kyleap.github.io/2021-07-08-2021-07-08-line-rich-menu-switch/</loc>
     
     <lastmod>2021-07-08</lastmod>
@@ -270,7 +277,7 @@
 
   <url>
     <loc>https://kyleap.github.io/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -278,35 +285,35 @@
   
   <url>
     <loc>https://kyleap.github.io/tags/Chatbot/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/tags/%E5%95%83%E6%9B%B8/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/tags/%E9%81%A0%E7%AB%AF%E5%B7%A5%E4%BD%9C/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/tags/Azure/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/tags/Tools/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -315,28 +322,28 @@
   
   <url>
     <loc>https://kyleap.github.io/categories/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%BB%B4%E5%92%95/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</loc>
-    <lastmod>2021-07-09</lastmod>
+    <lastmod>2021-07-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
