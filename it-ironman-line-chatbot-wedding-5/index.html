@@ -24,7 +24,9 @@ public async Task ReplyStickerMessageAsync(string replyToken, string packageId, 
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 </noscript>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="回傳不文謅謅的 Line 貼圖 (5)">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
+<meta property="og:title" content="回傳不文謅謅的 Line 貼圖 (5)">
 <meta property="og:description" content="我想 Line 豐富的貼圖，應該是很多人喜歡用它來做 Chatbot 的一個原因吧 接續上一篇，我們試著在歡迎詞後，傳送一個禮貌又不尷尬的貼圖
 在 LineReplyMessageUtility.cs 擴充回傳貼圖 我們接續前一篇 LineReplyMessageUtility 這個類別再實作一個回覆貼圖的method
 public async Task ReplyStickerMessageAsync(string replyToken, string packageId, string stickerId) { using(var httpClient = new HttpClient()) { using(var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $ &#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $ &#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new StickerMessage() { PackageId = packageId, StickerId = stickerId }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting.">

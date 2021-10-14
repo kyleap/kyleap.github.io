@@ -30,7 +30,9 @@ Step 4 匯入資料集 (本次先跳過)
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 </noscript>
-<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
+<meta property="og:title" content="來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)">
 <meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day16)
 QnA Maker 是啥 QnA Maker 是微軟提供一個雲端的自然語言處理 (NLP) 處理服務，可輕鬆透過網站後台建立自己的知識庫，並能從使用者所輸入的語句，理解他的意圖，提供可能對應的知識庫答案。QnA Maker提供了免費的方案，但限制就是只能有3份知識庫、每秒只能調用Api 3次，每月50,000筆Request，對於一般使用或技術評估來講很夠用了。要在 Line 串接大概分為以下步驟：
  在Azure註冊 QnA Maker 新增一個 knowledge base 增加題目與回答 完成訓練 & 發佈 取得 Endpoint、EndpointKey，來讓程式串接  建立 QnA Maker 照著 https://www.qnamaker.ai/Create Step By Step 步驟，因為QnA Maker是Azure的服務，故您可以需要Azure的訂閱，由此註冊試用
