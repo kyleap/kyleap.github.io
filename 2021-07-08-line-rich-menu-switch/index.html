@@ -1,0 +1,244 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Line RichMenu 設定與切換，以 NET 5 為例 | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
+你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
+但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
+ 新增一個選單 上傳該選單的圖檔   我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
+ 方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
+那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/2021-07-08-line-rich-menu-switch/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Line RichMenu 設定與切換，以 NET 5 為例">
+<meta property="og:description" content="Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
+你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
+但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
+ 新增一個選單 上傳該選單的圖檔   我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
+ 方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
+那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/2021-07-08-line-rich-menu-switch/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-07-08T15:06:17+00:00">
+<meta property="article:modified_time" content="2021-07-08T15:06:17+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Line RichMenu 設定與切換，以 NET 5 為例">
+<meta name=twitter:description content="Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
+你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
+但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
+ 新增一個選單 上傳該選單的圖檔   我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
+ 方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
+那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Line RichMenu 設定與切換，以 NET 5 為例","item":"https://kyleap.github.io/2021-07-08-line-rich-menu-switch/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Line RichMenu 設定與切換，以 NET 5 為例","name":"Line RichMenu 設定與切換，以 NET 5 為例","description":"Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定\n你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作\n但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟\n 新增一個選單 上傳該選單的圖檔   我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12\n 方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID\n那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面","keywords":["Chatbot"],"articleBody":"Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定\n你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作\n但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟\n 新增一個選單 上傳該選單的圖檔   我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12\n 方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID\n那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面\nvar sampleMenu = new RichmenuDetail(); sampleMenu.size = new CreateSize(1200, 810); sampleMenu.selected = true; // 是否為預設選單 sampleMenu.name = \"sampleMenu\"; // 選單名稱 sampleMenu.chatBarText = \"More\"; // 選單文字 sampleMenu.areas = new List() // 點擊區域要執行的Action { new CreateArea(boundx:0,boundy:0,width:1200,height:810, _action: new MessageAction(\"Hello Rich Menu!\")) }; var postJson = JsonConvert.SerializeObject(sampleMenu, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } }); 或者是這個步驟可以用 Bot Designer 工具，可以直接用匡列的方式設定好，並直接產生JSON\n接著透過 postman collections Upload Rich Menu Images 你可以於 URI 指定剛剛的 Rich Menu ID，及上傳圖片來完成綁定\n方法2: 透過 NetCoreLineBotSDK 上傳 在 SDK 裡面，你可以直接用下列語法完成RichMenu的上傳與圖片綁定\nvar sampleMenu = new RichmenuDetail(); sampleMenu.size = new CreateSize(1200, 810); sampleMenu.selected = true; // 是否為預設選單 sampleMenu.name = \"sampleMenu\"; // 選單名稱 sampleMenu.chatBarText = \"More\"; // 選單文字 sampleMenu.areas = new List() // 點擊區域要執行的Action { new CreateArea(boundx:0,boundy:0,width:1200,height:810, _action: new MessageAction(\"Hello Rich Menu!\")) }; await CreateRichMenuWithImageAsync(sampleMenu,\"https://via.placeholder.com/1200x810/E71989.png/fff\"); 或者是直接丟Bot Designer產出的JSON\nawait CreateRichMenuByJsonWithImageAsync(json, \"https://via.placeholder.com/1200x810/E71989.png/fff\", alias: \"richmenu-a\"); Rich Menu 的切換 Line 在 6/21 的時候推出了 Swtich Rich Mnues 的功能，以前要達到這種需求，都要用 Link Rich Menu To User 這類的 Api 才能達成，在這次改版，新增一個Action 類型叫做 Rich menu switch action，但目前這個 Action 只能支援在Rich Menu觸發，所以透過 Message Types/Flex 裡面去指定這個 Action 是會出錯的，簡單來講就是，切換選單的動作只能在選單來觸發，那怎麼切換呢? 首先要先設定別名:\n方法1: 透過 Postman 設定 RichMenu Alias 透過 Create rich menu alias 這個 Api 指定RichMenuId的別名\n用 Get list of rich menu alias 驗證當前所有已設定的 alias\n當然，別名設定錯了，還是可以用 Update rich menu alias 來更新\n接著只要在建立 RichMenu 的時候，Action 指定為別名就會切換了，以下面為例，我建立了三個RichMenu點擊區域，別名分別是 a/b/c，點擊後就可以切換至相對應的選單，而點擊後也會觸發postback事件，可在這個欄位塞一些資料，做事件的處理，範例的的 JSON 如下\n{\"name\":\"sampleMenu-c\",\"size\":{\"width\":1200,\"height\":810},\"chatBarText\":\"More\",\"selected\":true,\"areas\":[{\"bounds\":{\"x\":0,\"y\":0,\"width\":400,\"height\":810},\"action\":{\"type\":\"richmenuswitch\",\"richMenuAliasId\":\"richmenu-a\",\"data\":\"richmenu-a-postback\"}},{\"bounds\":{\"x\":400,\"y\":0,\"width\":400,\"height\":810},\"action\":{\"type\":\"richmenuswitch\",\"richMenuAliasId\":\"richmenu-b\",\"data\":\"richmenu-b-postback\"}},{\"bounds\":{\"x\":800,\"y\":0,\"width\":400,\"height\":810},\"action\":{\"type\":\"richmenuswitch\",\"richMenuAliasId\":\"richmenu-c\",\"data\":\"richmenu-c-postback\"}}]} 差別在於點擊的區域可以指定 RichMenuSwitch Action\n{ \"type\":\"richmenuswitch\", \"richMenuAliasId\":\"richmenu-a\", \"data\":\"richmenu-a-postback\" }  2021.07.08 測試 Bot Designer 工具還不能選到 RichMenuSwitch Action，也許之後會支援\n 方法2: 透過 NetCoreLineBotSDK 設定 RichMenu Alias 因應本次改版，在我開源的 SDK 也擴充以下選擇性參數了，你可以在建立 RichMenu 的時候直接給他別名，即可完成 RichMenu 新增.圖片.別名的設定\nvar sampleMenu = new RichmenuDetail(); sampleMenu.size = new CreateSize(1200, 810); sampleMenu.selected = true; sampleMenu.name = \"sampleMenu-c\"; sampleMenu.chatBarText = \"More\"; sampleMenu.areas = new List() { new CreateArea(boundx:0,boundy:0,width:400,height:810, _action: new RichMenuSwitchAction(\"richmenu-a\", \"richmenu-a-postback\")), new CreateArea(boundx:400,boundy:0,width:400,height:810, _action: new RichMenuSwitchAction(\"richmenu-b\", \"richmenu-b-postback\")), new CreateArea(boundx:800,boundy:0,width:400,height:810, _action: new RichMenuSwitchAction(\"richmenu-c\", \"richmenu-c-postback\")), }; await CreateRichMenuWithImageAsync(sampleMenu,\"https://via.placeholder.com/1200x810/E71989.png/fff\", alias: \"richmenu-a\"); 或者是直接丟RichMenu的Json\nawait CreateRichMenuByJsonWithImageAsync(json, \"https://via.placeholder.com/1200x810/E71989.png/fff\", alias: \"richmenu-a\"); Demo 整體的切換速度還蠻順暢的!\n NetCoreLineBotSDK 是我開源的函式庫，目前正在努力茁壯中，如果有任何疑問都可以在 Github 討論\n github: https://github.com/kyleap/NetCoreLineBotSDK nuget: https://www.nuget.org/packages/NetCoreLineBotSDK/  參考連結  https://developers.line.biz/en/reference/messaging-api/#rich-menu https://developers.line.biz/en/reference/messaging-api/#richmenu-switch-action  ","wordCount":"372","inLanguage":"en","datePublished":"2021-07-08T15:06:17Z","dateModified":"2021-07-08T15:06:17Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/2021-07-08-line-rich-menu-switch/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+Line RichMenu 設定與切換，以 NET 5 為例
+</h1>
+<div class=post-meta>2021-07-08&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><h2 id=rich-menu-圖文選單是什麼>Rich Menu 圖文選單是什麼?<a hidden class=anchor aria-hidden=true href=#rich-menu-圖文選單是什麼>#</a></h2>
+<p>寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124879742-1e6cca00-e000-11eb-874f-440cc841e027.png alt=image>
+</p>
+<p>你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124879985-60960b80-e000-11eb-8250-e53d48750424.png alt=image>
+</p>
+<p>但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 <a href=https://developers.line.biz/en/reference/messaging-api/#action-objects>Actions</a>，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟</p>
+<ul>
+<li><input disabled type=checkbox> 新增一個選單</li>
+<li><input disabled type=checkbox> 上傳該選單的圖檔</li>
+</ul>
+<blockquote>
+<p>我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用：
+<a href=https://www.getpostman.com/collections/f090d101b7e08e411f12>https://www.getpostman.com/collections/f090d101b7e08e411f12</a></p>
+</blockquote>
+<h3 id=方法1-透過-postman-來上傳-rich-menu>方法1: 透過 Postman 來上傳 Rich Menu<a hidden class=anchor aria-hidden=true href=#方法1-透過-postman-來上傳-rich-menu>#</a></h3>
+<p>在上面的 postman collections，你可以使用 <code>Create Rich Menu</code> 來新增，成功的話會回傳 RichMenuID</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124884633-0b102d80-e005-11eb-8dce-30f907f306d1.png alt=image>
+</p>
+<p>那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 <a href=https://github.com/kyleap/NetCoreLineBotSDK>NetCoreLineBotSDK</a> 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面</p>
+<pre tabindex=0><code>var sampleMenu = new RichmenuDetail();
+sampleMenu.size = new CreateSize(1200, 810);
+sampleMenu.selected = true; // 是否為預設選單
+sampleMenu.name = &quot;sampleMenu&quot;; // 選單名稱
+sampleMenu.chatBarText = &quot;More&quot;; // 選單文字
+sampleMenu.areas = new List&lt;CreateArea&gt;() // 點擊區域要執行的Action
+{
+    new CreateArea(boundx:0,boundy:0,width:1200,height:810, _action: new MessageAction(&quot;Hello Rich Menu!&quot;))
+};
+
+var postJson = JsonConvert.SerializeObject(sampleMenu, new JsonSerializerSettings
+{
+    NullValueHandling = NullValueHandling.Ignore,
+    ContractResolver = new DefaultContractResolver
+    {
+        NamingStrategy = new CamelCaseNamingStrategy()
+    }
+});
+</code></pre><p>或者是這個步驟可以用 <a href=https://developers.line.biz/en/services/bot-designer/>Bot Designer</a> 工具，可以直接用匡列的方式設定好，並直接產生JSON</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124886118-86beaa00-e006-11eb-8ced-8c49fe8fa845.png alt=image>
+</p>
+<p>接著透過 postman collections <code>Upload Rich Menu Images</code> 你可以於 URI 指定剛剛的 Rich Menu ID，及上傳圖片來完成綁定</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124885541-f4b6a180-e005-11eb-9d18-8e9b9125f12c.png alt=image>
+</p>
+<h3 id=方法2-透過-netcorelinebotsdk-上傳>方法2: 透過 NetCoreLineBotSDK 上傳<a hidden class=anchor aria-hidden=true href=#方法2-透過-netcorelinebotsdk-上傳>#</a></h3>
+<p>在 SDK 裡面，你可以直接用下列語法完成RichMenu的上傳與圖片綁定</p>
+<pre tabindex=0><code>var sampleMenu = new RichmenuDetail();
+sampleMenu.size = new CreateSize(1200, 810);
+sampleMenu.selected = true; // 是否為預設選單
+sampleMenu.name = &quot;sampleMenu&quot;; // 選單名稱
+sampleMenu.chatBarText = &quot;More&quot;; // 選單文字
+sampleMenu.areas = new List&lt;CreateArea&gt;() // 點擊區域要執行的Action
+{
+    new CreateArea(boundx:0,boundy:0,width:1200,height:810, _action: new MessageAction(&quot;Hello Rich Menu!&quot;))
+};
+await CreateRichMenuWithImageAsync(sampleMenu,&quot;https://via.placeholder.com/1200x810/E71989.png/fff&quot;);
+</code></pre><p>或者是直接丟Bot Designer產出的JSON</p>
+<pre tabindex=0><code>await CreateRichMenuByJsonWithImageAsync(json, &quot;https://via.placeholder.com/1200x810/E71989.png/fff&quot;, alias: &quot;richmenu-a&quot;);
+</code></pre><h2 id=rich-menu-的切換>Rich Menu 的切換<a hidden class=anchor aria-hidden=true href=#rich-menu-的切換>#</a></h2>
+<p>Line 在 <a href=https://developers.line.biz/en/news/2021/06/21/switch-between-multiple-rich-menus/>6/21</a> 的時候推出了 Swtich Rich Mnues 的功能，以前要達到這種需求，都要用 <a href=https://developers.line.biz/en/reference/messaging-api/#link-rich-menu-to-user>Link Rich Menu To User</a> 這類的 Api 才能達成，在這次改版，新增一個Action 類型叫做 <a href=https://developers.line.biz/en/reference/messaging-api/#richmenu-switch-action>Rich menu switch action</a>，但目前這個 Action 只能支援在Rich Menu觸發，所以透過 Message Types/Flex 裡面去指定這個 Action 是會出錯的，簡單來講就是，切換選單的動作只能在選單來觸發，那怎麼切換呢? 首先要先設定別名:</p>
+<h3 id=方法1-透過-postman-設定-richmenu-alias>方法1: 透過 Postman 設定 RichMenu Alias<a hidden class=anchor aria-hidden=true href=#方法1-透過-postman-設定-richmenu-alias>#</a></h3>
+<p>透過 <code>Create rich menu alias</code> 這個 Api 指定RichMenuId的別名</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124889646-deaae000-e009-11eb-8fdb-bedb2d66ce83.png alt=image>
+</p>
+<p>用 <code>Get list of rich menu alias</code> 驗證當前所有已設定的 alias</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124889900-1ade4080-e00a-11eb-8613-593272c6de66.png alt=image>
+</p>
+<p>當然，別名設定錯了，還是可以用 <code>Update rich menu alias</code> 來更新</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/124890051-3a756900-e00a-11eb-8dcf-acb811b589e6.png alt=image>
+</p>
+<p>接著只要在建立 RichMenu 的時候，Action 指定為別名就會切換了，以下面為例，我建立了三個RichMenu點擊區域，別名分別是 a/b/c，點擊後就可以切換至相對應的選單，而點擊後也會觸發postback事件，可在這個欄位塞一些資料，做事件的處理，範例的的 JSON 如下</p>
+<pre tabindex=0><code>{&quot;name&quot;:&quot;sampleMenu-c&quot;,&quot;size&quot;:{&quot;width&quot;:1200,&quot;height&quot;:810},&quot;chatBarText&quot;:&quot;More&quot;,&quot;selected&quot;:true,&quot;areas&quot;:[{&quot;bounds&quot;:{&quot;x&quot;:0,&quot;y&quot;:0,&quot;width&quot;:400,&quot;height&quot;:810},&quot;action&quot;:{&quot;type&quot;:&quot;richmenuswitch&quot;,&quot;richMenuAliasId&quot;:&quot;richmenu-a&quot;,&quot;data&quot;:&quot;richmenu-a-postback&quot;}},{&quot;bounds&quot;:{&quot;x&quot;:400,&quot;y&quot;:0,&quot;width&quot;:400,&quot;height&quot;:810},&quot;action&quot;:{&quot;type&quot;:&quot;richmenuswitch&quot;,&quot;richMenuAliasId&quot;:&quot;richmenu-b&quot;,&quot;data&quot;:&quot;richmenu-b-postback&quot;}},{&quot;bounds&quot;:{&quot;x&quot;:800,&quot;y&quot;:0,&quot;width&quot;:400,&quot;height&quot;:810},&quot;action&quot;:{&quot;type&quot;:&quot;richmenuswitch&quot;,&quot;richMenuAliasId&quot;:&quot;richmenu-c&quot;,&quot;data&quot;:&quot;richmenu-c-postback&quot;}}]}
+</code></pre><p>差別在於點擊的區域可以指定 RichMenuSwitch Action</p>
+<pre tabindex=0><code>{
+   &quot;type&quot;:&quot;richmenuswitch&quot;,
+   &quot;richMenuAliasId&quot;:&quot;richmenu-a&quot;,
+   &quot;data&quot;:&quot;richmenu-a-postback&quot;
+}
+</code></pre><blockquote>
+<p>2021.07.08 測試 Bot Designer 工具還不能選到 RichMenuSwitch Action，也許之後會支援</p>
+</blockquote>
+<h3 id=方法2-透過-netcorelinebotsdk-設定-richmenu-alias>方法2: 透過 NetCoreLineBotSDK 設定 RichMenu Alias<a hidden class=anchor aria-hidden=true href=#方法2-透過-netcorelinebotsdk-設定-richmenu-alias>#</a></h3>
+<p>因應本次改版，在我開源的 SDK 也擴充以下選擇性參數了，你可以在建立 RichMenu 的時候直接給他別名，即可完成 RichMenu 新增.圖片.別名的設定</p>
+<pre tabindex=0><code>var sampleMenu = new RichmenuDetail();
+sampleMenu.size = new CreateSize(1200, 810);
+sampleMenu.selected = true;
+sampleMenu.name = &quot;sampleMenu-c&quot;;
+sampleMenu.chatBarText = &quot;More&quot;;
+sampleMenu.areas = new List&lt;CreateArea&gt;()
+{
+    new CreateArea(boundx:0,boundy:0,width:400,height:810, _action: new RichMenuSwitchAction(&quot;richmenu-a&quot;, &quot;richmenu-a-postback&quot;)),
+    new CreateArea(boundx:400,boundy:0,width:400,height:810, _action: new RichMenuSwitchAction(&quot;richmenu-b&quot;, &quot;richmenu-b-postback&quot;)),
+    new CreateArea(boundx:800,boundy:0,width:400,height:810, _action: new RichMenuSwitchAction(&quot;richmenu-c&quot;, &quot;richmenu-c-postback&quot;)),
+};
+await CreateRichMenuWithImageAsync(sampleMenu,&quot;https://via.placeholder.com/1200x810/E71989.png/fff&quot;, alias: &quot;richmenu-a&quot;);
+</code></pre><p>或者是直接丟RichMenu的Json</p>
+<pre tabindex=0><code>await CreateRichMenuByJsonWithImageAsync(json, &quot;https://via.placeholder.com/1200x810/E71989.png/fff&quot;, alias: &quot;richmenu-a&quot;);
+</code></pre><h2 id=demo>Demo<a hidden class=anchor aria-hidden=true href=#demo>#</a></h2>
+<p>整體的切換速度還蠻順暢的!</p>
+<p><img loading=lazy src=../../images/ce55e226-864b-43a4-8ab6-585f35ab7090.gif alt>
+</p>
+<hr>
+<p>NetCoreLineBotSDK 是我開源的函式庫，目前正在努力茁壯中，如果有任何疑問都可以在 Github 討論</p>
+<ul>
+<li>github: <a href=https://github.com/kyleap/NetCoreLineBotSDK>https://github.com/kyleap/NetCoreLineBotSDK</a></li>
+<li>nuget: <a href=https://www.nuget.org/packages/NetCoreLineBotSDK/>https://www.nuget.org/packages/NetCoreLineBotSDK/</a></li>
+</ul>
+<h2 id=參考連結>參考連結<a hidden class=anchor aria-hidden=true href=#參考連結>#</a></h2>
+<ul>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#rich-menu>https://developers.line.biz/en/reference/messaging-api/#rich-menu</a></li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#richmenu-switch-action>https://developers.line.biz/en/reference/messaging-api/#richmenu-switch-action</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/2021-07-11-line-flex-message-animation/>
+<span class=title>« Prev Page</span>
+<br>
+<span>Line Flex Message 傳送動畫訊息，讓訊息更生動</span>
+</a>
+<a class=next href=https://kyleap.github.io/tools-beeftext/>
+<span class=title>Next Page »</span>
+<br>
+<span>用 BeefText 來減少常輸入的文字，增加工作效率</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Azure on Kyle Studio</title>
+    <link>https://kyleap.github.io/tags/azure/</link>
+    <description>Recent content in Azure on Kyle Studio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 03 Jun 2021 23:42:10 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/azure/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>利用 AzCopy 來將 Azure Blob Container 所有檔案移轉至另一個 Blob Container</title>
+      <link>https://kyleap.github.io/azure-copy-to-blob-container/</link>
+      <pubDate>Thu, 03 Jun 2021 23:42:10 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-copy-to-blob-container/</guid>
+      <description>之前也一個需求是需要將一個Blob移轉至另一個另一個訂閱，但不太可能一個一個搬或重新上傳，透過 AzCopy 就可以一鍵完成這件事，且搬移的效能也蠻快的
+AzureCopy 可以在這邊下載 https://docs.microsoft.com/zh-tw/azure/storage/common/storage-use-azcopy-v10
+azcopy copy &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt; --recursive --overwrite false  source: https://.blob.core.windows.net/ destination: 可以在 Azure Portal 取得，需要產生一個可以存取的 Access Signature recursive: 是否要遞迴去抓更多資料夾底下的檔案，有時候檔案階層會是 files/aaa/file.txt overwrite: false 表示檔案已存在就忽略  在Azure Portal 取得 Access Signature
+&amp;ndash; References https://docs.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy?toc=/azure/storage/blobs/toc.json</description>
+    </item>
+    
+  </channel>
+</rss>

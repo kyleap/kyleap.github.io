@@ -1,0 +1,252 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>設計師魂發作，改造電子喜帖 (11) | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day11)
+如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿
+設計魂發作 這些效果，主要都是用 JSON 字串組出來的，官網也很貼心的提供 Simulator 來讓你用GUI的方式來設定自己客製的 Flex Message，之前電子喜帖是用圖片的方式，我們來改成 Flex Message 吧。
+我在 Simulator 拉的訊息圖片如下 (其實蠻好上手的)
+加入行事曆希望引導到 Google Map
+透過 UriAction 即可解決
+https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&dates=20201208T100000Z/20201208T140000Z&details&location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF
+點選右上角 View as JSON 就能取得完整的 JSON 字串
+回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync
+ public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $&#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="設計師魂發作，改造電子喜帖 (11)">
+<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day11)
+如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿
+設計魂發作 這些效果，主要都是用 JSON 字串組出來的，官網也很貼心的提供 Simulator 來讓你用GUI的方式來設定自己客製的 Flex Message，之前電子喜帖是用圖片的方式，我們來改成 Flex Message 吧。
+我在 Simulator 拉的訊息圖片如下 (其實蠻好上手的)
+加入行事曆希望引導到 Google Map
+透過 UriAction 即可解決
+https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&dates=20201208T100000Z/20201208T140000Z&details&location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF
+點選右上角 View as JSON 就能取得完整的 JSON 字串
+回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync
+ public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $&#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-09-25T09:28:57+00:00">
+<meta property="article:modified_time" content="2020-09-25T09:28:57+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="設計師魂發作，改造電子喜帖 (11)">
+<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day11)
+如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿
+設計魂發作 這些效果，主要都是用 JSON 字串組出來的，官網也很貼心的提供 Simulator 來讓你用GUI的方式來設定自己客製的 Flex Message，之前電子喜帖是用圖片的方式，我們來改成 Flex Message 吧。
+我在 Simulator 拉的訊息圖片如下 (其實蠻好上手的)
+加入行事曆希望引導到 Google Map
+透過 UriAction 即可解決
+https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&dates=20201208T100000Z/20201208T140000Z&details&location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF
+點選右上角 View as JSON 就能取得完整的 JSON 字串
+回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync
+ public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $&#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"設計師魂發作，改造電子喜帖 (11)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"設計師魂發作，改造電子喜帖 (11)","name":"設計師魂發作，改造電子喜帖 (11)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day11)\n如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿\n設計魂發作 這些效果，主要都是用 JSON 字串組出來的，官網也很貼心的提供 Simulator 來讓你用GUI的方式來設定自己客製的 Flex Message，之前電子喜帖是用圖片的方式，我們來改成 Flex Message 吧。\n我在 Simulator 拉的訊息圖片如下 (其實蠻好上手的)\n加入行事曆希望引導到 Google Map\n透過 UriAction 即可解決\nhttps://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding\u0026amp;dates=20201208T100000Z/20201208T140000Z\u0026amp;details\u0026amp;location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF\n點選右上角 View as JSON 就能取得完整的 JSON 字串\n回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync\n public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\u0026quot;POST\u0026quot;), $\u0026quot;{lineMessageApiBaseUrl}\u0026quot;)) { request.Headers.TryAddWithoutValidation(\u0026quot;Authorization\u0026quot;, $\u0026quot;Bearer {accessToken}\u0026quot;); LineMessageReq req = new LineMessageReq(); req.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day11)\n如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿\n設計魂發作 這些效果，主要都是用 JSON 字串組出來的，官網也很貼心的提供 Simulator 來讓你用GUI的方式來設定自己客製的 Flex Message，之前電子喜帖是用圖片的方式，我們來改成 Flex Message 吧。\n我在 Simulator 拉的訊息圖片如下 (其實蠻好上手的)\n加入行事曆希望引導到 Google Map\n透過 UriAction 即可解決\nhttps://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding\u0026dates=20201208T100000Z/20201208T140000Z\u0026details\u0026location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF\n點選右上角 View as JSON 就能取得完整的 JSON 字串\n回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync\n public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"POST\"), $\"{lineMessageApiBaseUrl}\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", $\"Bearer {accessToken}\"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new FlexMessage() { Contents = JsonConvert.DeserializeObject(jsonString) }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting.Indented }).Replace(\"\\\"\",@\"\"\"\"); request.Content = new StringContent(postJson); request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(\"application/json\"); var response = await httpClient.SendAsync(request); var result = await response.Content.ReadAsStringAsync(); } } } FlexMessage 繼承 IMessage\n public class FlexMessage : IMessage { public LineMessageType Type = LineMessageType.flex; public string AltText = \"Flex Message\"; public dynamic Contents { get; set; } } OnMessageAsync\n實作 WeddingInvitation.cs\n複製的 JSON 字串記得將雙引號取代成兩個雙引號\nawait lineMessageUtility.ReplyMessageByJsonAsync(replyToken, jsonString); 像 FlexMessage 這種複雜的 JSON 我建議就不要用啥C# 型別來組了，只會讓程式碼更噁心而已，如果要動態修改裡面的內容，其實也只是要改字串而已，譬如：\nvar name = \"kyle\"; var jsonContent = $\"hello world, {name}\"; 實作效果\n懶人包，本次學到了什麼?  用 Flex Message Simulator 來拉花式訊息，取得 JSON https://developers.line.biz/en/docs/messaging-api/message-types/#template-messages 如何將 Flex Message 的 JSON 做發送 https://developers.line.biz/en/reference/messaging-api/#flex-message 加入 Google 行事曆的小技巧  ","wordCount":"201","inLanguage":"en","datePublished":"2020-09-25T09:28:57Z","dateModified":"2020-09-25T09:28:57Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+設計師魂發作，改造電子喜帖 (11)
+</h1>
+<div class=post-meta>2020-09-25&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day11)</p>
+<p>如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*QhGsn1OnM99yZWNjcp1qBQ.png alt>
+</p>
+<h3 id=設計魂發作>設計魂發作<a hidden class=anchor aria-hidden=true href=#設計魂發作>#</a></h3>
+<p>這些效果，主要都是用 JSON 字串組出來的，官網也很貼心的提供 <a href=https://developers.line.biz/flex-simulator/>Simulator</a> 來讓你用GUI的方式來設定自己客製的 Flex Message，之前電子喜帖是用圖片的方式，我們來改成 Flex Message 吧。</p>
+<p>我在 Simulator 拉的訊息圖片如下 (其實蠻好上手的)</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2158/1*Kpf4Sjv-Mk2f0oVjGv8ZoA.png alt>
+</p>
+<p>加入行事曆希望引導到 Google Map</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2688/1*2Tm8kZ5DTH7EMwLuTwJ8gA.png alt>
+</p>
+<p>透過 UriAction 即可解決</p>
+<p><a href="https://calendar.google.com/calendar/gp#~calendar:view=e&bm=1&text=KyleWedding&dates=20201208T100000Z/20201208T140000Z&details=&location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF">https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&dates=20201208T100000Z/20201208T140000Z&details&location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF</a></p>
+<p>點選右上角 View as JSON 就能取得完整的 JSON 字串</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*6wJsCFO71-HEtSalrf_afw.png alt>
+</p>
+<p>回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync</p>
+<pre tabindex=0><code>    public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString)
+
+    {
+
+    using (var httpClient = new HttpClient())
+
+    {
+
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;POST&quot;), $&quot;{lineMessageApiBaseUrl}&quot;))
+
+    {
+
+    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
+
+    LineMessageReq req = new LineMessageReq();
+
+    req.ReplyToken = replyToken;
+
+    req.Messages.Add(new FlexMessage()
+
+    {
+
+    Contents = JsonConvert.DeserializeObject(jsonString)
+
+    });
+
+    var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings
+
+    {
+
+    NullValueHandling = NullValueHandling.Ignore,
+
+    ContractResolver = new DefaultContractResolver
+
+    {
+
+    NamingStrategy = new CamelCaseNamingStrategy()
+
+    },
+
+    Formatting = Formatting.Indented
+
+    }).Replace(&quot;\&quot;&quot;,@&quot;&quot;&quot;&quot;);
+
+    request.Content = new StringContent(postJson);
+
+    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(&quot;application/json&quot;);
+
+    var response = await httpClient.SendAsync(request);
+
+    var result = await response.Content.ReadAsStringAsync();
+
+    }
+
+    }
+
+    }
+</code></pre><p>FlexMessage 繼承 IMessage</p>
+<pre tabindex=0><code>    public class FlexMessage : IMessage
+
+    {
+
+    public LineMessageType Type =&gt; LineMessageType.flex;
+
+    public string AltText =&gt; &quot;Flex Message&quot;;
+
+    public dynamic Contents { get; set; }
+
+    }
+</code></pre><p>OnMessageAsync</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*OW1lCsX_w7Ap8tKCMPubDQ.png alt>
+</p>
+<p>實作 WeddingInvitation.cs</p>
+<p>複製的 JSON 字串記得將雙引號取代成兩個雙引號</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*EJVStavenDDp6hLrIbEM0Q.png alt>
+</p>
+<pre tabindex=0><code>await lineMessageUtility.ReplyMessageByJsonAsync(replyToken, jsonString);
+</code></pre><p>像 FlexMessage 這種複雜的 JSON 我建議就不要用啥C# 型別來組了，只會讓程式碼更噁心而已，如果要動態修改裡面的內容，其實也只是要改字串而已，譬如：</p>
+<pre tabindex=0><code>var name = &quot;kyle&quot;;
+var jsonContent = $&quot;hello world, {name}&quot;;
+</code></pre><p>實作效果</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*xoYEDcXv1zQEESgnxO-McA.gif alt>
+</p>
+<h3 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h3>
+<ul>
+<li>用 Flex Message Simulator 來拉花式訊息，取得 JSON
+<a href=https://developers.line.biz/flex-simulator/>https://developers.line.biz/en/docs/messaging-api/message-types/#template-messages</a></li>
+<li>如何將 Flex Message 的 JSON 做發送
+<a href=https://developers.line.biz/en/reference/messaging-api/#flex-message>https://developers.line.biz/en/reference/messaging-api/#flex-message</a></li>
+<li>加入 Google 行事曆的小技巧</li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-12/>
+<span class=title>« Prev Page</span>
+<br>
+<span>Hold on Hold on 重構一下！ (12)</span>
+</a>
+<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/>
+<span class=title>Next Page »</span>
+<br>
+<span>婚禮現場交通資訊一覽表 (10)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

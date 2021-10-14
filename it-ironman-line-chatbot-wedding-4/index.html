@@ -1,0 +1,326 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>回覆第一個Line的訊息-歡迎詞 (4) | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day4)
+本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！
+我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！
+取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId
+查看文件後，可以透過 access token 和 userId 來取得用戶資訊
+建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample
+ curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H 'Authorization: Bearer {channel access token}'  有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了
+ 轉換後如下：
+using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;GET&#34;), &#34;[https://api.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="回覆第一個Line的訊息-歡迎詞 (4)">
+<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day4)
+本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！
+我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！
+取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId
+查看文件後，可以透過 access token 和 userId 來取得用戶資訊
+建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample
+ curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H 'Authorization: Bearer {channel access token}'  有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了
+ 轉換後如下：
+using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;GET&#34;), &#34;[https://api.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-09-18T07:50:36+00:00">
+<meta property="article:modified_time" content="2020-09-18T07:50:36+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="回覆第一個Line的訊息-歡迎詞 (4)">
+<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day4)
+本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！
+我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！
+取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId
+查看文件後，可以透過 access token 和 userId 來取得用戶資訊
+建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample
+ curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H 'Authorization: Bearer {channel access token}'  有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了
+ 轉換後如下：
+using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;GET&#34;), &#34;[https://api.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"回覆第一個Line的訊息-歡迎詞 (4)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"回覆第一個Line的訊息-歡迎詞 (4)","name":"回覆第一個Line的訊息-歡迎詞 (4)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day4)\n本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！\n我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！\n取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId\n查看文件後，可以透過 access token 和 userId 來取得用戶資訊\n建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample\n curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \\ -H 'Authorization: Bearer {channel access token}'  有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了\n 轉換後如下：\nusing (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\u0026quot;GET\u0026quot;), \u0026quot;[https://api.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day4)\n本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！\n我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！\n取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId\n查看文件後，可以透過 access token 和 userId 來取得用戶資訊\n建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample\n curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \\ -H 'Authorization: Bearer {channel access token}'  有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了\n 轉換後如下：\nusing (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"GET\"), \"[https://api.line.me/v2/bot/profile/{userId](https://api.line.me/v2/bot/profile/{userId)}\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", \"Bearer {channel access token}\"); var response = await httpClient.SendAsync(request); } } access token 在幾天前的文章，我們已經定義在 appsetting.json 了，在建構的時候我們注入進來\n新增一個 GetUserProfile function，實作如下\npublic async Task GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"GET\"), $\"{lineMessageApiBaseUrl}/{userId}\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", $\"Bearer {accessToken}\"); var response = await httpClient.SendAsync(request); if(response.StatusCode != HttpStatusCode.OK) { // 這邊未來應該要 log 起來 throw new Exception(\"get_profile_error\"); } var result = await response.Content.ReadAsStringAsync(); return JsonConvert.DeserializeObject(result); } } } UserProfile.cs 定義如下\npublic class UserProfile { public string userId { get; set; } public string displayName { get; set; } public string pictureUrl { get; set; } public string statusMessage { get; set; } } JSON.NET 轉換\n在 .NET Core 3.1 其實有內建 System.Text.Json 來做JSON的序列化跟反序列化處理，但個人還是習慣用 JSON.NET\nJsonConvert.DeserializeObject(result) 您可在專案以下打開 Nuget 套件管理\n安裝 JSON.NET 回來\n在 OnFollow 事件取得使用者資訊\n建立一個 LineReplyMessageUtility.cs 來回覆訊息 我們建立一個 Class 來實作回覆使用者相關程式，以下是官方文件回覆使用者範例的Sample\ncurl -v -X POST https://api.line.me/v2/bot/message/reply \\ -H 'Content-Type: application/json' \\ -H 'Authorization: Bearer {channel access token}' \\ -d '{ \"replyToken\":\"nHuyWiB7yP5Zw52FIkcQobQuGDXCTA\", \"messages\":[ { \"type\":\"text\", \"text\":\"Hello, user\" }, { \"type\":\"text\", \"text\":\"May I help you?\" } ] }' 用 https://curl.olsh.me/ 轉成 C#\nusing (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"POST\"), \"https://api.line.me/v2/bot/message/reply\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", \"Bearer {channel access token}\"); request.Content = new StringContent(\"{\\n \\\"replyToken\\\":\\\"nHuyWiB7yP5Zw52FIkcQobQuGDXCTA\\\",\\n \\\"messages\\\":[\\n {\\n \\\"type\\\":\\\"text\\\",\\n \\\"text\\\":\\\"Hello, user\\\"\\n },\\n {\\n \\\"type\\\":\\\"text\\\",\\n \\\"text\\\":\\\"May I help you?\\\"\\n }\\n ]\\n}\"); request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(\"application/json\"); var response = await httpClient.SendAsync(request); } } 做點調整：將 StringContent 變成class，並用 JSON.NET序列化，完整實作如下：\nprivate readonly string accessToken; private static string lineMessageApiBaseUrl = \"[https://api.line.me/v2/bot/message/reply](https://api.line.me/v2/bot/message/reply)\"; public LineReplyMessageUtility(IOptions lineSetting) { accessToken = lineSetting.Value.ChannelAccessToken; } public async Task ReplyMessageAsync(string replyToken, params string[] messages) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"POST\"), $\"{lineMessageApiBaseUrl}\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", $\"Bearer {accessToken}\"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; foreach (var message in messages) { req.Messages.Add(new TextMessage() { Text = message }); } var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() //轉小寫 }, Formatting = Formatting.Indented }); request.Content = new StringContent(postJson); request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(\"application/json\"); var response = await httpClient.SendAsync(request); } } } LineMessageReq 這邊定義一個 IMessage 的介面，之後不同的訊息類型，將會以此來繼承\n public class LineMessageReq { public string ReplyToken { get; set; } public List Messages { get; set; } = new List(); } TextMessage Class\npublic class TextMessage : IMessage { public string Text { get; set; } public LineMessageType Type = LineMessageType.text; } 於 OnFollowAsync 加入 Reply\nprotected virtual async Task OnFollowAsync(Event ev) { // 取得使用者的資訊 var user = await lineProfileUtility.GetUserProfile(ev.source.userId); // 回傳歡迎詞 await lineMessageUtility.ReplyMessageAsync(ev.replyToken, $@\"Hi {user.displayName}, 感謝您加入婚禮小助理！\") } 如何測試加入好友事件呢? 其實只要封鎖再解除封鎖就好了\n實作效果\n懶人包，本次學到了什麼?  如何取得 Line 使用者資訊 https://developers.line.biz/en/docs/social-api/getting-user-profiles/ 如何回覆 Line 使用者訊息 https://developers.line.biz/en/reference/messaging-api/#send-reply-message 如何把 curl 轉成 C# HttpClient https://curl.olsh.me/ C# 的 介面 interface (C# Reference) JSON.NET https://www.newtonsoft.com/json  ","wordCount":"500","inLanguage":"en","datePublished":"2020-09-18T07:50:36Z","dateModified":"2020-09-18T07:50:36Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+回覆第一個Line的訊息-歡迎詞 (4)
+</h1>
+<div class=post-meta>2020-09-18&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day4)</p>
+<p>本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！</p>
+<p>我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！</p>
+<h1 id=取得使用者的資訊>取得使用者的資訊<a hidden class=anchor aria-hidden=true href=#取得使用者的資訊>#</a></h1>
+<p>記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*w6FZU74ch1i6jMwc8Cz5Xw.png alt>
+</p>
+<p>查看<a href=https://developers.line.biz/zh-hant/reference/messaging-api/#manage-audience-group>文件</a>後，可以透過 access token 和 userId 來取得用戶資訊</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2402/1*sYiPOI9tGHUaVnJxNKpxXg.png alt>
+</p>
+<h1 id=建立一個-lineprofileutilitycs-取得使用者資訊>建立一個 LineProfileUtility.cs 取得使用者資訊<a hidden class=anchor aria-hidden=true href=#建立一個-lineprofileutilitycs-取得使用者資訊>#</a></h1>
+<p>我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample</p>
+<pre tabindex=0><code>    curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \
+    -H 'Authorization: Bearer {channel access token}'
+</code></pre><blockquote>
+<p>有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 <a href=https://curl.olsh.me/>https://curl.olsh.me/</a> 即可轉換完成，再做一些微調就好了</p>
+</blockquote>
+<p>轉換後如下：</p>
+<pre tabindex=0><code>using (var httpClient = new HttpClient())
+{
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;GET&quot;), &quot;[https://api.line.me/v2/bot/profile/{userId](https://api.line.me/v2/bot/profile/{userId)}&quot;))
+    {
+        request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, &quot;Bearer {channel access token}&quot;);
+
+var response = await httpClient.SendAsync(request);
+    }
+}
+</code></pre><p>access token 在幾天前的文章，我們已經定義在 appsetting.json 了，在建構的時候我們注入進來</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*tahw2kEdt2KMIg1sfwCWjQ.png alt>
+</p>
+<p>新增一個 GetUserProfile function，實作如下</p>
+<pre tabindex=0><code>public async Task&lt;UserProfile&gt; GetUserProfile(string userId)
+{
+    using (var httpClient = new HttpClient())
+    {
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;GET&quot;), $&quot;{lineMessageApiBaseUrl}/{userId}&quot;))
+    {
+    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
+    var response = await httpClient.SendAsync(request);
+    if(response.StatusCode != HttpStatusCode.OK)
+    {
+    // 這邊未來應該要 log 起來
+    throw new Exception(&quot;get_profile_error&quot;);
+    }
+    var result = await response.Content.ReadAsStringAsync();
+    return JsonConvert.DeserializeObject&lt;UserProfile&gt;(result);
+    }
+    }
+}
+</code></pre><p>UserProfile.cs 定義如下</p>
+<pre tabindex=0><code>public class UserProfile
+{
+    public string userId { get; set; }
+    public string displayName { get; set; }
+    public string pictureUrl { get; set; }
+    public string statusMessage { get; set; }
+}
+</code></pre><p>JSON.NET 轉換</p>
+<p>在 .NET Core 3.1 其實有內建 System.Text.Json 來做JSON的序列化跟反序列化處理，但個人還是習慣用 JSON.NET</p>
+<pre tabindex=0><code>JsonConvert.DeserializeObject&lt;UserProfile&gt;(result)
+</code></pre><p>您可在專案以下打開 Nuget 套件管理</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*wDMWoCb0qHI7rU79Me8QVA.png alt>
+</p>
+<p>安裝 JSON.NET 回來</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*5WRmb7a-ux4GPxdwj3nU6Q.png alt>
+</p>
+<p>在 OnFollow 事件取得使用者資訊</p>
+<h1 id=建立一個-linereplymessageutilitycs-來回覆訊息>建立一個 LineReplyMessageUtility.cs 來回覆訊息<a hidden class=anchor aria-hidden=true href=#建立一個-linereplymessageutilitycs-來回覆訊息>#</a></h1>
+<p>我們建立一個 Class 來實作回覆使用者相關程式，以下是官方文件回覆使用者範例的Sample</p>
+<pre tabindex=0><code>curl -v -X POST https://api.line.me/v2/bot/message/reply \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer {channel access token}' \
+-d '{
+    &quot;replyToken&quot;:&quot;nHuyWiB7yP5Zw52FIkcQobQuGDXCTA&quot;,
+    &quot;messages&quot;:[
+        {
+            &quot;type&quot;:&quot;text&quot;,
+            &quot;text&quot;:&quot;Hello, user&quot;
+        },
+        {
+            &quot;type&quot;:&quot;text&quot;,
+            &quot;text&quot;:&quot;May I help you?&quot;
+        }
+    ]
+}'
+</code></pre><p>用 <a href=https://curl.olsh.me/>https://curl.olsh.me/</a> 轉成 C#</p>
+<pre tabindex=0><code>using (var httpClient = new HttpClient())
+{
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;POST&quot;), &quot;https://api.line.me/v2/bot/message/reply&quot;))
+    {
+        request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, &quot;Bearer {channel access token}&quot;); 
+
+        request.Content = new StringContent(&quot;{\n    \&quot;replyToken\&quot;:\&quot;nHuyWiB7yP5Zw52FIkcQobQuGDXCTA\&quot;,\n    \&quot;messages\&quot;:[\n        {\n            \&quot;type\&quot;:\&quot;text\&quot;,\n            \&quot;text\&quot;:\&quot;Hello, user\&quot;\n        },\n        {\n            \&quot;type\&quot;:\&quot;text\&quot;,\n            \&quot;text\&quot;:\&quot;May I help you?\&quot;\n        }\n    ]\n}&quot;);
+        request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(&quot;application/json&quot;); 
+
+        var response = await httpClient.SendAsync(request);
+    }
+}
+</code></pre><p>做點調整：將 StringContent 變成class，並用 JSON.NET序列化，完整實作如下：</p>
+<pre tabindex=0><code>private readonly string accessToken;
+private static string lineMessageApiBaseUrl = &quot;[https://api.line.me/v2/bot/message/reply](https://api.line.me/v2/bot/message/reply)&quot;;
+
+public LineReplyMessageUtility(IOptions&lt;LineSetting&gt; lineSetting)
+{
+    accessToken = lineSetting.Value.ChannelAccessToken;
+}
+
+public async Task ReplyMessageAsync(string replyToken, params string[] messages)
+{
+    using (var httpClient = new HttpClient())
+    {
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;POST&quot;), $&quot;{lineMessageApiBaseUrl}&quot;))
+    {
+    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
+
+LineMessageReq req = new LineMessageReq();
+    req.ReplyToken = replyToken;
+
+foreach (var message in messages)
+    {
+    req.Messages.Add(new TextMessage()
+    {
+        Text = message
+    });
+    }
+
+var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings
+    {
+    ContractResolver = new DefaultContractResolver
+    {
+        NamingStrategy = new CamelCaseNamingStrategy() //轉小寫
+    },
+    Formatting = Formatting.Indented
+    });
+
+request.Content = new StringContent(postJson);
+    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(&quot;application/json&quot;);
+    var response = await httpClient.SendAsync(request);
+    }
+    }
+}
+</code></pre><p>LineMessageReq
+這邊定義一個 IMessage 的介面，之後不同的訊息類型，將會以此來繼承</p>
+<pre tabindex=0><code>    public class LineMessageReq
+
+    {
+
+    public string ReplyToken { get; set; }
+
+    public List&lt;IMessage&gt; Messages { get; set; } = new List&lt;IMessage&gt;();
+
+    }
+</code></pre><p>TextMessage Class</p>
+<pre tabindex=0><code>public class TextMessage : IMessage
+{
+
+    public string Text { get; set; }
+
+    public LineMessageType Type =&gt; LineMessageType.text;
+
+}
+</code></pre><p>於 OnFollowAsync 加入 Reply</p>
+<pre tabindex=0><code>protected virtual async Task OnFollowAsync(Event ev)
+{
+    // 取得使用者的資訊
+    var user = await lineProfileUtility.GetUserProfile(ev.source.userId);
+    // 回傳歡迎詞
+    await lineMessageUtility.ReplyMessageAsync(ev.replyToken, $@&quot;Hi {user.displayName}, 感謝您加入婚禮小助理！&quot;)
+}
+</code></pre><p>如何測試加入好友事件呢? 其實只要封鎖再解除封鎖就好了</p>
+<p><em>實作效果</em></p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*CofbOgYOQkqRCOyZvZGDaA.gif alt=實作效果>
+</p>
+<h1 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h1>
+<ul>
+<li>如何取得 Line 使用者資訊
+<a href=https://developers.line.biz/en/docs/social-api/getting-user-profiles/>https://developers.line.biz/en/docs/social-api/getting-user-profiles/</a></li>
+<li>如何回覆 Line 使用者訊息
+<a href=https://developers.line.biz/en/reference/messaging-api/#send-reply-message>https://developers.line.biz/en/reference/messaging-api/#send-reply-message</a></li>
+<li>如何把 curl 轉成 C# HttpClient
+<a href=https://curl.olsh.me/>https://curl.olsh.me/</a></li>
+<li>C# 的 介面
+<a href=https://docs.microsoft.com/zh-tw/dotnet/csharp/language-reference/keywords/interface>interface (C# Reference)</a></li>
+<li>JSON.NET
+<a href=https://www.newtonsoft.com/json>https://www.newtonsoft.com/json</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/>
+<span class=title>« Prev Page</span>
+<br>
+<span>回傳不文謅謅的 Line 貼圖 (5)</span>
+</a>
+<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/>
+<span class=title>Next Page »</span>
+<br>
+<span>用.NET Core 接收Line的訊息事件 (3)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

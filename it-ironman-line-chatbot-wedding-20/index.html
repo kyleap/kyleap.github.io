@@ -1,0 +1,239 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>主動推播Line訊息給某個使用者(Push Message) (20) | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
+在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
+ 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)  新增一個 .NET Core Console專案來發送
+官方的 Shell 範例
+一樣丟到 Curl To C# 做轉換，並做格式修改
+當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
+ static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), &#34;https://api.line.me/v2/bot/message/multicast&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer <Your Access Token>&#34;); PushMessage req = new PushMessage(); req.to = new List<string>() { &#34;<User Id>&#34; }; req.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="主動推播Line訊息給某個使用者(Push Message) (20)">
+<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
+在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
+ 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)  新增一個 .NET Core Console專案來發送
+官方的 Shell 範例
+一樣丟到 Curl To C# 做轉換，並做格式修改
+當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
+ static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), &#34;https://api.line.me/v2/bot/message/multicast&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer <Your Access Token>&#34;); PushMessage req = new PushMessage(); req.to = new List<string>() { &#34;<User Id>&#34; }; req.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-10-04T00:52:53+00:00">
+<meta property="article:modified_time" content="2020-10-04T00:52:53+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="主動推播Line訊息給某個使用者(Push Message) (20)">
+<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
+在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
+ 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)  新增一個 .NET Core Console專案來發送
+官方的 Shell 範例
+一樣丟到 Curl To C# 做轉換，並做格式修改
+當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
+ static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), &#34;https://api.line.me/v2/bot/message/multicast&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer <Your Access Token>&#34;); PushMessage req = new PushMessage(); req.to = new List<string>() { &#34;<User Id>&#34; }; req.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"主動推播Line訊息給某個使用者(Push Message) (20)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"主動推播Line訊息給某個使用者(Push Message) (20)","name":"主動推播Line訊息給某個使用者(Push Message) (20)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day20)\n在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息\n 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)  新增一個 .NET Core Console專案來發送\n官方的 Shell 範例\n一樣丟到 Curl To C# 做轉換，並做格式修改\n當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學\n static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\u0026quot;POST\u0026quot;), \u0026quot;https://api.line.me/v2/bot/message/multicast\u0026quot;)) { request.Headers.TryAddWithoutValidation(\u0026quot;Authorization\u0026quot;, $\u0026quot;Bearer \u0026lt;Your Access Token\u0026gt;\u0026quot;); PushMessage req = new PushMessage(); req.to = new List\u0026lt;string\u0026gt;() { \u0026quot;\u0026lt;User Id\u0026gt;\u0026quot; }; req.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day20)\n在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息\n 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)  新增一個 .NET Core Console專案來發送\n官方的 Shell 範例\n一樣丟到 Curl To C# 做轉換，並做格式修改\n當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學\n static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"POST\"), \"https://api.line.me/v2/bot/message/multicast\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", $\"Bearer \"); PushMessage req = new PushMessage(); req.to = new List() { \"\" }; req.messages = new List() { new Message(){ type = \"text\", text = \"Hi, 提醒您 12/08 就是我們的人生大事啦，如果不能前往請記得提前告知！\" } }; var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } }); request.Content = new StringContent(postJson); request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(\"application/json\"); var response = await httpClient.SendAsync(request); var result = await response.Content.ReadAsStringAsync(); } } } PushMessage.cs\n public class PushMessage { public List to { get; set; } public List messages { get; set; } = new List(); } public class Message { public string type { get; set; } public string text { get; set; } } 實際成果 要注意的是，Push Message 依據不同的方案是要收費的，詳細可以看這篇的Line@ 收費計算機 LINE 2.0 收費計算機：收費試算、推薦方案一按即知\n懶人包，本次學到了什麼?  如何透過C#發送主動推播的Line訊息 https://developers.line.biz/en/reference/messaging-api/#send-push-message  ","wordCount":"183","inLanguage":"en","datePublished":"2020-10-04T00:52:53Z","dateModified":"2020-10-04T00:52:53Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+主動推播Line訊息給某個使用者(Push Message) (20)
+</h1>
+<div class=post-meta>2020-10-04&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day20)</p>
+<p>在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息</p>
+<ul>
+<li><input disabled type=checkbox> 準備 Line Chatbot 的 Access Tokne</li>
+<li><input disabled type=checkbox> 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)</li>
+</ul>
+<p>新增一個 .NET Core Console專案來發送</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2024/1*ibUyu_6gNKBYEn0XoIi5LQ.png alt>
+</p>
+<p>官方的 Shell 範例</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*eSGP_gXrWeCNbJR7M5zCHg.png alt>
+</p>
+<p>一樣丟到 <a href=https://curl.olsh.me/>Curl To C#</a> 做轉換，並做格式修改</p>
+<p>當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學</p>
+<pre tabindex=0><code>    static async System.Threading.Tasks.Task Main(string[] args)
+
+    {
+
+    using (var httpClient = new HttpClient())
+
+    {
+
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;POST&quot;), &quot;https://api.line.me/v2/bot/message/multicast&quot;))
+
+    {
+
+    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, $&quot;Bearer &lt;Your Access Token&gt;&quot;);
+
+    PushMessage req = new PushMessage();
+
+    req.to = new List&lt;string&gt;()
+
+    {
+
+    &quot;&lt;User Id&gt;&quot;
+
+    };
+
+    req.messages = new List&lt;Message&gt;()
+
+    {
+
+    new Message(){ type = &quot;text&quot;, text = &quot;Hi, 提醒您 12/08 就是我們的人生大事啦，如果不能前往請記得提前告知！&quot; }
+
+    };
+
+    var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings
+
+    {
+
+    NullValueHandling = NullValueHandling.Ignore,
+
+    ContractResolver = new DefaultContractResolver
+
+    {
+
+    NamingStrategy = new CamelCaseNamingStrategy()
+
+    }
+
+    });
+
+    request.Content = new StringContent(postJson);
+
+    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(&quot;application/json&quot;);
+
+    var response = await httpClient.SendAsync(request);
+
+    var result = await response.Content.ReadAsStringAsync();
+
+    }
+
+    }
+
+    }
+</code></pre><p>PushMessage.cs</p>
+<pre tabindex=0><code>    public class PushMessage
+
+    {
+
+    public List&lt;string&gt; to { get; set; }
+
+    public List&lt;Message&gt; messages { get; set; } = new List&lt;Message&gt;();
+
+    }
+
+    public class Message
+
+    {
+
+    public string type { get; set; }
+
+    public string text { get; set; }
+
+    }
+</code></pre><h3 id=實際成果>實際成果<a hidden class=anchor aria-hidden=true href=#實際成果>#</a></h3>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*OW1qosAyJDFqkXgjCQQ0VQ.png alt>
+</p>
+<p>要注意的是，Push Message 依據不同的方案是要收費的，詳細可以看這篇的Line@ 收費計算機
+<a href=https://blog.omnichat.ai/2020/01/line-2-0-official-account-pricing/><strong>LINE 2.0 收費計算機：收費試算、推薦方案一按即知</strong></a></p>
+<h3 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h3>
+<ul>
+<li>如何透過C#發送主動推播的Line訊息
+<a href=https://developers.line.biz/en/reference/messaging-api/#send-push-message>https://developers.line.biz/en/reference/messaging-api/#send-push-message</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/>
+<span class=title>« Prev Page</span>
+<br>
+<span>當有人報名的時候接收通知 (Line Notify) (21)</span>
+</a>
+<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/>
+<span class=title>Next Page »</span>
+<br>
+<span>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

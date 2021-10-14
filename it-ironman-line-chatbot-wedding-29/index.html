@@ -1,0 +1,269 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>製作婚禮現場即時留言版- Azure SignalR Service II (29) | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day29)
+在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：
+新增一個 MessageBoard class 來處理留言板發送，這部分可以看這篇
+而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊
+ public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(&#34;http://localhost:12733/message&#34;); await hubClient.SendHubMessage(&#34;SendMessage&#34;, profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, &#34;謝謝您，我們已收到留言&#34;); } GetUserProfile
+ public async Task<UserProfile> GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;GET&#34;), $&#34;{lineMessageApiBaseUrl}/{userId}&#34;)) { request.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="製作婚禮現場即時留言版- Azure SignalR Service II (29)">
+<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day29)
+在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：
+新增一個 MessageBoard class 來處理留言板發送，這部分可以看這篇
+而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊
+ public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(&#34;http://localhost:12733/message&#34;); await hubClient.SendHubMessage(&#34;SendMessage&#34;, profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, &#34;謝謝您，我們已收到留言&#34;); } GetUserProfile
+ public async Task<UserProfile> GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;GET&#34;), $&#34;{lineMessageApiBaseUrl}/{userId}&#34;)) { request.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-10-13T12:23:59+00:00">
+<meta property="article:modified_time" content="2020-10-13T12:23:59+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="製作婚禮現場即時留言版- Azure SignalR Service II (29)">
+<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day29)
+在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：
+新增一個 MessageBoard class 來處理留言板發送，這部分可以看這篇
+而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊
+ public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(&#34;http://localhost:12733/message&#34;); await hubClient.SendHubMessage(&#34;SendMessage&#34;, profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, &#34;謝謝您，我們已收到留言&#34;); } GetUserProfile
+ public async Task<UserProfile> GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;GET&#34;), $&#34;{lineMessageApiBaseUrl}/{userId}&#34;)) { request.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"製作婚禮現場即時留言版- Azure SignalR Service II (29)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"製作婚禮現場即時留言版- Azure SignalR Service II (29)","name":"製作婚禮現場即時留言版- Azure SignalR Service II (29)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day29)\n在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：\n新增一個 MessageBoard class 來處理留言板發送，這部分可以看這篇\n而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊\n public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(\u0026quot;http://localhost:12733/message\u0026quot;); await hubClient.SendHubMessage(\u0026quot;SendMessage\u0026quot;, profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, \u0026quot;謝謝您，我們已收到留言\u0026quot;); } GetUserProfile\n public async Task\u0026lt;UserProfile\u0026gt; GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\u0026quot;GET\u0026quot;), $\u0026quot;{lineMessageApiBaseUrl}/{userId}\u0026quot;)) { request.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day29)\n在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：\n新增一個 MessageBoard class 來處理留言板發送，這部分可以看這篇\n而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊\n public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(\"http://localhost:12733/message\"); await hubClient.SendHubMessage(\"SendMessage\", profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, \"謝謝您，我們已收到留言\"); } GetUserProfile\n public async Task GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"GET\"), $\"{lineMessageApiBaseUrl}/{userId}\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", $\"Bearer {accessToken}\"); var response = await httpClient.SendAsync(request); if(response.StatusCode != HttpStatusCode.OK) { // 這邊未來應該要 log 起來 throw new Exception(\"get_profile_error\"); } var result = await response.Content.ReadAsStringAsync(); return JsonConvert.DeserializeObject(result); } } } HTML 部分\n這邊是用JavaScript去塞DOM，如果用主流框架Angular/Vue/React寫起來應該更簡潔~\n document.addEventListener('DOMContentLoaded', function () { // 建立連線 var connection = new signalR.HubConnectionBuilder() .withUrl('/message') //因為是同個網域，要視情況換成完成Server Hub的URL .build(); // 開始連線 connection.start() .then(function () { console.log('連線成功...'); }) .catch(function (error) { console.error(error.message); }); bindConnectionMessage(connection); // 呈現資料到Html function createMessageEntry(imgUrl, encodedName, encodedMsg) { var entry = document.createElement('li'); var html = ''; html += '' + encodedName+''; html += '' + encodedMsg+'\n'; entry.innerHTML = html; console.log(html); return entry; } // 監聽接收訊息事件 function bindConnectionMessage(connection) { connection.on('CallBackMessage', function (imgUrl, displayName, message) { if (!message) return; var encodedName = displayName; var encodedMsg = message.replace(/\u0026/g, \"\u0026\").replace(//g, \"\"); var messageEntry = createMessageEntry(imgUrl, encodedName, encodedMsg); var messageBox = document.getElementById('messages'); messageBox.appendChild(messageEntry); messageBox.scrollTop = messageBox.scrollHeight; }); } }); 這樣就能完成即時用Line傳送的留言板了，但這個只是Demo，真正的話還是要審核一下訊息，不然把怪怪的訊息發送到大螢幕就不好啦。Azure SignalR Service 已經大大降低做即時通訊的開發門檻，透過這種服務就能去發想更多的應用！\n懶人包，本次學到了什麼?  在 C# Clinet 端發送訊息至 SignalR Hub https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/  ","wordCount":"228","inLanguage":"en","datePublished":"2020-10-13T12:23:59Z","dateModified":"2020-10-13T12:23:59Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+製作婚禮現場即時留言版- Azure SignalR Service II (29)
+</h1>
+<div class=post-meta>2020-10-13&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day29)</p>
+<p>在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2752/1*qYRvR9BW8Ctim5eK8HfI2A.gif alt>
+</p>
+<p>新增一個 MessageBoard class 來處理留言板發送，這部分可以看<a href=https://medium.com/@kyleap/hold-on-hold-on-%E9%87%8D%E6%A7%8B%E4%B8%80%E4%B8%8B-500f130b3622>這篇</a></p>
+<p>而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊</p>
+<pre tabindex=0><code>    public async Task ReplyAsync(string replyToken)
+
+    {
+
+    var profile = await lineProfileUtility.GetUserProfile(userId);
+
+    var hubClient = new ClientSignalR();
+
+    await hubClient.Initialize(&quot;http://localhost:12733/message&quot;);
+
+    await hubClient.SendHubMessage(&quot;SendMessage&quot;, profile.pictureUrl, profile.displayName, message);
+
+    await lineMessageUtility.ReplyMessageAsync(replyToken, &quot;謝謝您，我們已收到留言&quot;);
+
+    }
+</code></pre><p>GetUserProfile</p>
+<pre tabindex=0><code>    public async Task&lt;UserProfile&gt; GetUserProfile(string userId)
+
+    {
+
+    using (var httpClient = new HttpClient())
+
+    {
+
+    using (var request = new HttpRequestMessage(new HttpMethod(&quot;GET&quot;), $&quot;{lineMessageApiBaseUrl}/{userId}&quot;))
+
+    {
+
+    request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
+
+    var response = await httpClient.SendAsync(request);
+
+    if(response.StatusCode != HttpStatusCode.OK)
+
+    {
+
+    // 這邊未來應該要 log 起來
+
+    throw new Exception(&quot;get_profile_error&quot;);
+
+    }
+
+    var result = await response.Content.ReadAsStringAsync();
+
+    return JsonConvert.DeserializeObject&lt;UserProfile&gt;(result);
+
+    }
+
+    }
+
+    }
+</code></pre><p>HTML 部分</p>
+<p>這邊是用JavaScript去塞DOM，如果用主流框架Angular/Vue/React寫起來應該更簡潔~</p>
+<pre tabindex=0><code>    document.addEventListener('DOMContentLoaded', function () {
+
+    // 建立連線
+
+    var connection = new signalR.HubConnectionBuilder()
+
+    .withUrl('/message') //因為是同個網域，要視情況換成完成Server Hub的URL
+
+    .build();
+
+    // 開始連線
+
+    connection.start()
+
+    .then(function () {
+
+    console.log('連線成功...');
+
+    })
+
+    .catch(function (error) {
+
+    console.error(error.message);
+
+    });
+
+    bindConnectionMessage(connection);
+
+    // 呈現資料到Html
+
+    function createMessageEntry(imgUrl, encodedName, encodedMsg) {
+
+    var entry = document.createElement('li');
+
+    var html = '&lt;a href=&quot;#&quot;&gt;&lt;div&gt;&lt;div id=&quot;divcss5&quot;&gt;&lt;img src=&quot;' + imgUrl +'&quot; /&gt;';
+
+    html += '&lt;span class=&quot;displayName&quot;&gt;' + encodedName+'&lt;/span&gt;';
+
+    html += '&lt;/div&gt;&lt;/div&gt;&lt;p&gt;' + encodedMsg+'&lt;/p&gt;&lt;/a&gt;';
+
+    entry.innerHTML = html;
+
+    console.log(html);
+
+    return entry;
+
+    }
+
+    // 監聽接收訊息事件
+
+    function bindConnectionMessage(connection) {
+
+    connection.on('CallBackMessage', function (imgUrl, displayName, message) {
+
+    if (!message) return;
+
+    var encodedName = displayName;
+
+    var encodedMsg = message.replace(/&amp;/g, &quot;&amp;&quot;).replace(/&lt;/g, &quot;&lt;&quot;).replace(/&gt;/g, &quot;&gt;&quot;);
+
+    var messageEntry = createMessageEntry(imgUrl, encodedName, encodedMsg);
+
+    var messageBox = document.getElementById('messages');
+
+    messageBox.appendChild(messageEntry);
+
+    messageBox.scrollTop = messageBox.scrollHeight;
+
+    });
+
+    }
+
+    });
+</code></pre><p>這樣就能完成即時用Line傳送的留言板了，但這個只是Demo，真正的話還是要審核一下訊息，不然把怪怪的訊息發送到大螢幕就不好啦。Azure SignalR Service 已經大大降低做即時通訊的開發門檻，透過這種服務就能去發想更多的應用！</p>
+<h2 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h2>
+<ul>
+<li>在 C# Clinet 端發送訊息至 SignalR Hub
+<a href=https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/>https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/>
+<span class=title>« Prev Page</span>
+<br>
+<span>鐵人賽完賽整理&開源 (30)</span>
+</a>
+<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/>
+<span class=title>Next Page »</span>
+<br>
+<span>製作婚禮現場即時留言版- Azure SignalR Service I (28)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

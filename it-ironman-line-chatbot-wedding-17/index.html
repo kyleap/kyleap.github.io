@@ -1,0 +1,191 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>Line Liff App v2 - 用 Vue.js 來實作 (17) | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
+LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現
+建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面
+本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址
+ngrok http <your local vue.js port>-host-header=”localhost:<your local vue.js port>&#34; 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
+在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
+把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Line Liff App v2 - 用 Vue.js 來實作 (17)">
+<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
+LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現
+建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面
+本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址
+ngrok http <your local vue.js port>-host-header=”localhost:<your local vue.js port>&#34; 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
+在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
+把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-10-01T10:06:50+00:00">
+<meta property="article:modified_time" content="2020-10-01T10:06:50+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Line Liff App v2 - 用 Vue.js 來實作 (17)">
+<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
+LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現
+建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面
+本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址
+ngrok http <your local vue.js port>-host-header=”localhost:<your local vue.js port>&#34; 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
+在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
+把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Line Liff App v2 - 用 Vue.js 來實作 (17)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Line Liff App v2 - 用 Vue.js 來實作 (17)","name":"Line Liff App v2 - 用 Vue.js 來實作 (17)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day17)\nLIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現\n建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面\n本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址\nngrok http \u0026lt;your local vue.js port\u0026gt;-host-header=”localhost:\u0026lt;your local vue.js port\u0026gt;\u0026quot; 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login\n在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址\n把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day17)\nLIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現\n建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面\n本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址\nngrok http -host-header=”localhost:\" 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login\n在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址\n把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：\n那如何在 Liff App 抓到目前使用者的資訊呢? 我們可以載入 Liff App 的 SDK\nindex.html\n App.vue\ndata: 定義App.vue 的 model beforeCreate: init liff app (這邊要傳入上面建立的 liff app id) methods: init 成功後，取得使用者資訊\n我們把這兩個參數，把子元件 HelloLiffApp.vuew 傳\nHelloLiffApp.vue\n這個 component 接收兩個參數：msg 和 profile，並秀在 html 上，透過liff.getVersion() 可以取得目前 SDK 的版本\n 更多 liff 的 function 可以看這篇 ！  結果呈現\n本篇先寫到這，後續我們要來實作婚禮的報名表單！\n懶人包，本次學到了什麼?  如何建立一個 Liff App https://developers.line.biz/en/docs/liff/registering-liff-apps/ 如何使用 Line Liff App SDK v2 https://developers.line.biz/en/docs/liff/developing-liff-apps/#specify-cdn-path 如何取得在Line Liff App 取得使用者資訊 https://developers.line.biz/en/docs/liff/developing-liff-apps/#getting-user-profile  ","wordCount":"139","inLanguage":"en","datePublished":"2020-10-01T10:06:50Z","dateModified":"2020-10-01T10:06:50Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+Line Liff App v2 - 用 Vue.js 來實作 (17)
+</h1>
+<div class=post-meta>2020-10-01&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day17)</p>
+<p>LIFF 全名是 <strong>LINE Front-end Framework</strong>，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/0*6hOHOnDTGeu1dmdF.png alt>
+</p>
+<h3 id=建立-vue-專案>建立 vue 專案<a hidden class=anchor aria-hidden=true href=#建立-vue-專案>#</a></h3>
+<pre tabindex=0><code>npm install -g @vue/cli
+vue create hello-line-liff-app
+cd hello-line-liff-app
+npm run serve
+</code></pre><p>這樣應該就能看到以下畫面</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2210/1*OBNeqVWAE70BP1uBk4I0NA.png alt>
+</p>
+<p>本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址</p>
+<pre tabindex=0><code>ngrok http &lt;your local vue.js port&gt;-host-header=”localhost:&lt;your local vue.js port&gt;&quot;
+</code></pre><p>要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/3040/1*cP1xK7te8IskCh1jmOSWVA.png alt>
+</p>
+<p>在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/4822/1*qDiMerRDC22x2Ef4Rll-WA.png alt>
+</p>
+<p>把 <a href=https://liff.line.me>https://liff.line.me</a> 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2158/1*z3ECCIEOitVPbzsj1nXwQA.jpeg alt>
+</p>
+<p>那如何在 Liff App 抓到目前使用者的資訊呢? 我們可以載入 Liff App 的 SDK</p>
+<p>index.html</p>
+<pre tabindex=0><code>&lt;script *charset*=&quot;utf-8&quot; *src*=&quot;https://static.line-scdn.net/liff/edge/2/sdk.js&quot;&gt;&lt;/script&gt;
+</code></pre><p><img loading=lazy src=https://cdn-images-1.medium.com/max/3072/1*7kSUgN7XbKTCj2PGmhMqxw.png alt>
+</p>
+<p>App.vue</p>
+<p>data: 定義App.vue 的 model
+beforeCreate: init liff app (這邊要傳入上面建立的 liff app id)
+methods: init 成功後，取得使用者資訊</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/3216/1*WhLp7Xa7CGjsr_bjdU8xiQ.png alt>
+</p>
+<p>我們把這兩個參數，把子元件 HelloLiffApp.vuew 傳</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*qwKOBmpBSiV3014vaiarSg.png alt>
+</p>
+<p>HelloLiffApp.vue</p>
+<p>這個 component 接收兩個參數：msg 和 profile，並秀在 html 上，透過liff.getVersion() 可以取得目前 SDK 的版本</p>
+<blockquote>
+<h1 id=更多-liff-的-function-可以看這篇httpsdeveloperslinebizendocsliffdeveloping-liff-appsdeveloping-a-liff-app->更多 liff 的 function 可以<a href=https://developers.line.biz/en/docs/liff/developing-liff-apps/#developing-a-liff-app>看這篇</a> ！<a hidden class=anchor aria-hidden=true href=#更多-liff-的-function-可以看這篇httpsdeveloperslinebizendocsliffdeveloping-liff-appsdeveloping-a-liff-app->#</a></h1>
+</blockquote>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2472/1*OfV8p0tEmXqDF1NB3yCJQQ.png alt>
+</p>
+<p>結果呈現</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2158/1*z3ECCIEOitVPbzsj1nXwQA.jpeg alt>
+</p>
+<p>本篇先寫到這，後續我們要來實作婚禮的報名表單！</p>
+<h3 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h3>
+<ul>
+<li>如何建立一個 Liff App
+<a href=https://developers.line.biz/en/docs/liff/registering-liff-apps/>https://developers.line.biz/en/docs/liff/registering-liff-apps/</a></li>
+<li>如何使用 Line Liff App SDK v2
+<a href=https://developers.line.biz/en/docs/liff/developing-liff-apps/#specify-cdn-path>https://developers.line.biz/en/docs/liff/developing-liff-apps/#specify-cdn-path</a></li>
+<li>如何取得在Line Liff App 取得使用者資訊
+<a href=https://developers.line.biz/en/docs/liff/developing-liff-apps/#getting-user-profile>https://developers.line.biz/en/docs/liff/developing-liff-apps/#getting-user-profile</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/>
+<span class=title>« Prev Page</span>
+<br>
+<span>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)</span>
+</a>
+<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/>
+<span class=title>Next Page »</span>
+<br>
+<span>來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>來做一些婚紗輪播 (9) | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day9)
+這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果
+Template message 在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作
+ Buttons Confirm Carousel Image carousel  Template Message 發送的結構如下
+本次要用 ImageCarousel 來實作
+擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充
+ public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $&#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="來做一些婚紗輪播 (9)">
+<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day9)
+這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果
+Template message 在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作
+ Buttons Confirm Carousel Image carousel  Template Message 發送的結構如下
+本次要用 ImageCarousel 來實作
+擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充
+ public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $&#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2020-09-23T08:12:33+00:00">
+<meta property="article:modified_time" content="2020-09-23T08:12:33+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="來做一些婚紗輪播 (9)">
+<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day9)
+這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果
+Template message 在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作
+ Buttons Confirm Carousel Image carousel  Template Message 發送的結構如下
+本次要用 ImageCarousel 來實作
+擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充
+ public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&#34;POST&#34;), $&#34;{lineMessageApiBaseUrl}&#34;)) { request.Headers.TryAddWithoutValidation(&#34;Authorization&#34;, $&#34;Bearer {accessToken}&#34;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"來做一些婚紗輪播 (9)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"來做一些婚紗輪播 (9)","name":"來做一些婚紗輪播 (9)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day9)\n這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果\nTemplate message 在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作\n Buttons Confirm Carousel Image carousel  Template Message 發送的結構如下\n本次要用 ImageCarousel 來實作\n擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充\n public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\u0026quot;POST\u0026quot;), $\u0026quot;{lineMessageApiBaseUrl}\u0026quot;)) { request.Headers.TryAddWithoutValidation(\u0026quot;Authorization\u0026quot;, $\u0026quot;Bearer {accessToken}\u0026quot;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day9)\n這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果\nTemplate message 在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作\n Buttons Confirm Carousel Image carousel  Template Message 發送的結構如下\n本次要用 ImageCarousel 來實作\n擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充\n public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(\"POST\"), $\"{lineMessageApiBaseUrl}\")) { request.Headers.TryAddWithoutValidation(\"Authorization\", $\"Bearer {accessToken}\"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting.Indented }); request.Content = new StringContent(postJson); request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(\"application/json\"); var response = await httpClient.SendAsync(request); var result = await response.Content.ReadAsStringAsync(); } } } TemplateMessageBase.cs 定義一個 ITemplate 來用來接受上面四種訊息的格式，要特別注意 TemplateMessage 尚未支援桌面版的 Line，故可以加一些提示文字\n public class TemplateMessageBase : IMessage { public LineMessageType Type = LineMessageType.template; public string AltText = \"此訊息不支援桌面版的Line\"; public ITemplate Template { get; set; } } 定義 ImageCarouselTemplate 來實作 ITemplate\n一樣看文件將 JSON 轉成 Class\n public class ImageCarouselTemplate : ITemplate { public string Type = \"image_carousel\"; public List Columns { get; set; } } ColumnAction.cs\n public class ColumnAction { public string ImageUrl { get; set; } public IAction Action { get; set; } } IAction 是什麼呢? 又是一個介面 看到我們又定義一個介面，代表又是包含多種實作了，在文章一開始有提到，做 chatbot 引導很重要，在 Line 裡面可以設計一些按鈕，來做一些操作，目前類型共提供 7 種，但本系列文就不一一寫文章介紹 Action 了，相信大家也很會看文件轉 C# 了，遇到功能需要時再來實作\n Postback action：觸發回傳Api事件，這也會是特別的一個 WebHook 事件，同時可以帶一些參數，蠻實用的，我們後幾篇文章再來詳細介紹這個 Message action：引導使用者輸入設定的文字 URI action：網址類型，點擊了會在 Line 開啟所設定的 URL，甚至類型是 tel:{photo number} 也行，會直接引導撥打電話，line:// 開頭會引導開啟 Line 的 Liff App (我們之後文章就會實作到啦~) Datetime picker action：日期選擇器，讓使用者直接選一個日期與時間 Camera action：開啟相機 Camera roll action：開啟相簿 Location action：偵測目前使用者的位置，並讓他們設定實際位置並回傳  以本章需求為例，我們希望可以點擊婚紗的圖片原始檔，我們繼承 IAction 實作一個 UriAction\n public class UriAction : IAction { /// 網址 /// 顯示文字 public UriAction(string uri, string label) { Uri = uri; Label = label; } public string Uri { get; set; } public ActionType Type = ActionType.uri; public string Label { get; set; } } 實作婚紗輪播 Intent\n public class PhotoCarousel : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public PhotoCarousel(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var imageCarouselTemplate = new ImageCarouselTemplate(); var columns = new List(); var photos = new List() { \"https://imgur.com/ZChLjeG.jpg\", \"https://imgur.com/uElHkw8.jpg\", \"https://imgur.com/fbQ5gu4.jpg\", \"https://imgur.com/9Gwzi36.jpg\", \"https://imgur.com/Y7uBXxb.jpg\", \"https://imgur.com/XaCigCi.jpg\", \"https://imgur.com/dDcoMPI.jpg\", \"https://imgur.com/vn6ZK6f.jpg\" }; // 隨機取得三筆 var selected = photos.OrderBy(x = new Random().Next()).Take(3); foreach (var photo in selected) { columns.Add(new ColumnAction() { ImageUrl = photo, Action = new UriAction(photo, \"Learn more\") }); } imageCarouselTemplate.Columns = columns; await lineMessageUtility.ReplyTemplateMessageAsync(replyToken, imageCarouselTemplate); } } LineBotApp.cs\n有啥限制嗎?  ImageCarouselTemplate 在傳送的時候最多只能傳10張照片 URL 最大 1000 字元 一定要是 HTTPS 且加密規範 TLS 1.2 以上 檔案大小上限 200 MB 圖片需為 JPEG or PNG  懶人包，本次學到了什麼?  理解 Line 的 Template message 4 種類型 https://developers.line.biz/en/docs/messaging-api/message-types/#template-messages 如何用 ImageCarouselTemplate 來發送多張輪播圖片 https://developers.line.biz/en/reference/messaging-api/#carousel 學到了 Line 有 7 種 Action 類型，來引導使用者點擊，更快速完成目標 https://developers.line.biz/en/reference/messaging-api/#action-objects 如何使用 Linq 取得陣列的隨機項目之小技巧 https://stackoverflow.com/questions/4615410/random-element-of-listt-from-linq-sql  ","wordCount":"427","inLanguage":"en","datePublished":"2020-09-23T08:12:33Z","dateModified":"2020-09-23T08:12:33Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+來做一些婚紗輪播 (9)
+</h1>
+<div class=post-meta>2020-09-23&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day9)</p>
+<p>這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*uwOv6IUyUixoOoVCZlZtpw.gif alt>
+</p>
+<h3 id=template-message>Template message<a hidden class=anchor aria-hidden=true href=#template-message>#</a></h3>
+<p>在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作</p>
+<ul>
+<li><a href=https://developers.line.biz/en/docs/messaging-api/message-types/#buttons-template>Buttons</a></li>
+<li><a href=https://developers.line.biz/en/docs/messaging-api/message-types/#confirm-template>Confirm</a></li>
+<li><a href=https://developers.line.biz/en/docs/messaging-api/message-types/#carousel-template>Carousel</a></li>
+<li><a href=https://developers.line.biz/en/docs/messaging-api/message-types/#image-carousel-template>Image carousel</a></li>
+</ul>
+<p>Template Message 發送的結構如下</p>
+<p>本次要用 <a href=https://developers.line.biz/en/docs/messaging-api/message-types/#image-carousel-template>ImageCarousel </a>來實作</p>
+<h3 id=擴充-linereplymessageutilitycs>擴充 LineReplyMessageUtility.cs<a hidden class=anchor aria-hidden=true href=#擴充-linereplymessageutilitycs>#</a></h3>
+<p>我們在發送的 class 的擴充</p>
+<pre tabindex=0><code>    public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template)
+    {
+     using (var httpClient = new HttpClient())
+     {
+      using (var request = new HttpRequestMessage(new HttpMethod(&quot;POST&quot;), $&quot;{lineMessageApiBaseUrl}&quot;))
+      {
+       request.Headers.TryAddWithoutValidation(&quot;Authorization&quot;, $&quot;Bearer {accessToken}&quot;);
+
+    LineMessageReq req = new LineMessageReq();
+       req.ReplyToken = replyToken;
+
+    req.Messages.Add(new TemplateMessageBase()
+       {
+        Template = template
+       });
+
+    var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings
+       {
+        NullValueHandling = NullValueHandling.Ignore,
+        ContractResolver = new DefaultContractResolver
+        {
+         NamingStrategy = new CamelCaseNamingStrategy()
+        },
+        Formatting = Formatting.Indented
+       });
+
+    request.Content = new StringContent(postJson);
+       request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(&quot;application/json&quot;);
+       var response = await httpClient.SendAsync(request);
+       var result = await response.Content.ReadAsStringAsync();
+      }
+     }
+    }
+</code></pre><p>TemplateMessageBase.cs
+定義一個 ITemplate 來用來接受上面四種訊息的格式，要特別注意 TemplateMessage 尚未支援桌面版的 Line，故可以加一些提示文字</p>
+<pre tabindex=0><code>    public class TemplateMessageBase : IMessage
+
+    {
+
+    public LineMessageType Type =&gt; LineMessageType.template;
+
+    public string AltText =&gt; &quot;此訊息不支援桌面版的Line&quot;;
+
+    public ITemplate Template { get; set; }
+
+    }
+</code></pre><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*KenzCtKanfUmdKuk6-ckKw.png alt>
+</p>
+<p>定義 ImageCarouselTemplate 來實作 ITemplate</p>
+<p>一樣看文件將 JSON 轉成 Class</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*LKU3JQNc-5ZAJPYoaPvhBA.png alt>
+</p>
+<pre tabindex=0><code>    public class ImageCarouselTemplate : ITemplate
+
+    {
+
+    public string Type =&gt; &quot;image_carousel&quot;;
+
+    public List&lt;ColumnAction&gt; Columns { get; set; }
+
+    }
+</code></pre><p>ColumnAction.cs</p>
+<pre tabindex=0><code>    public class ColumnAction
+
+    {
+
+    public string ImageUrl { get; set; }
+
+    public IAction Action { get; set; }
+
+    }
+</code></pre><h3 id=iaction-是什麼呢-又是一個介面>IAction 是什麼呢? 又是一個介面<a hidden class=anchor aria-hidden=true href=#iaction-是什麼呢-又是一個介面>#</a></h3>
+<p>看到我們又定義一個介面，代表又是包含多種實作了，在文章一開始有提到，做 chatbot 引導很重要，在 Line 裡面可以設計一些按鈕，來做一些操作，目前類型共提供 7 種，但本系列文就不一一寫文章介紹 Action 了，相信大家也很會看文件轉 C# 了，遇到功能需要時再來實作</p>
+<ul>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#postback-action>Postback action</a>：觸發回傳Api事件，這也會是特別的一個 WebHook 事件，同時可以帶一些參數，蠻實用的，我們後幾篇文章再來詳細介紹這個</li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#message-action>Message action</a>：引導使用者輸入設定的文字</li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#uri-action>URI action</a>：網址類型，點擊了會在 Line 開啟所設定的 URL，甚至類型是 tel:{photo number} 也行，會直接引導撥打電話，line:// 開頭會引導開啟 Line 的 Liff App (我們之後文章就會實作到啦~)</li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#datetime-picker-action>Datetime picker action</a>：日期選擇器，讓使用者直接選一個日期與時間</li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#camera-action>Camera action</a>：開啟相機</li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#camera-roll-action>Camera roll action</a>：開啟相簿</li>
+<li><a href=https://developers.line.biz/en/reference/messaging-api/#location-action>Location action</a>：偵測目前使用者的位置，並讓他們設定實際位置並回傳</li>
+</ul>
+<p>以本章需求為例，我們希望可以點擊婚紗的圖片原始檔，我們繼承 IAction 實作一個 UriAction</p>
+<pre tabindex=0><code>    public class UriAction : IAction
+
+    {
+
+    /// &lt;param name=&quot;uri&quot;&gt;網址&lt;/param&gt;
+
+    /// &lt;param name=&quot;label&quot;&gt;顯示文字&lt;/param&gt;
+
+    public UriAction(string uri, string label)
+
+    {
+
+    Uri = uri;
+
+    Label = label;
+
+    }
+
+    public string Uri { get; set; }
+
+    public ActionType Type =&gt; ActionType.uri;
+
+    public string Label { get; set; }
+
+    }
+
+</code></pre><p>實作婚紗輪播 Intent</p>
+<pre tabindex=0><code>    public class PhotoCarousel : IReplyIntent
+
+    {
+
+    private readonly LineReplyMessageUtility lineMessageUtility;
+
+    private readonly LineProfileUtility lineProfileUtility;
+
+    public PhotoCarousel(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility)
+
+    {
+
+    lineMessageUtility = _lineMessageUtility;
+
+    lineProfileUtility = _lineProfileUtility;
+
+    }
+
+    public async Task ReplyAsync(string replyToken)
+
+    {
+
+    var imageCarouselTemplate = new ImageCarouselTemplate();
+
+    var columns = new List&lt;ColumnAction&gt;();
+
+    var photos = new List&lt;string&gt;()
+
+    {
+
+    &quot;https://imgur.com/ZChLjeG.jpg&quot;,
+
+    &quot;https://imgur.com/uElHkw8.jpg&quot;,
+
+    &quot;https://imgur.com/fbQ5gu4.jpg&quot;,
+
+    &quot;https://imgur.com/9Gwzi36.jpg&quot;,
+
+    &quot;https://imgur.com/Y7uBXxb.jpg&quot;,
+
+    &quot;https://imgur.com/XaCigCi.jpg&quot;,
+
+    &quot;https://imgur.com/dDcoMPI.jpg&quot;,
+
+    &quot;https://imgur.com/vn6ZK6f.jpg&quot;
+
+    };
+
+    // 隨機取得三筆
+
+    var selected = photos.OrderBy(x =&gt; new Random().Next()).Take(3);
+
+    foreach (var photo in selected)
+
+    {
+
+    columns.Add(new ColumnAction()
+
+    {
+
+    ImageUrl = photo,
+
+    Action = new UriAction(photo, &quot;Learn more&quot;)
+
+    });
+
+    }
+
+    imageCarouselTemplate.Columns = columns;
+
+    await lineMessageUtility.ReplyTemplateMessageAsync(replyToken, imageCarouselTemplate);
+
+    }
+
+    }
+</code></pre><p>LineBotApp.cs</p>
+<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*tQ-9hcVCH1CxrCi2EmUgOQ.png alt>
+</p>
+<h3 id=有啥限制嗎>有啥限制嗎?<a hidden class=anchor aria-hidden=true href=#有啥限制嗎>#</a></h3>
+<ul>
+<li>ImageCarouselTemplate 在傳送的時候最多只能傳10張照片</li>
+<li>URL 最大 1000 字元</li>
+<li>一定要是 HTTPS 且加密規範 TLS 1.2 以上</li>
+<li>檔案大小上限 200 MB</li>
+<li>圖片需為 JPEG or PNG</li>
+</ul>
+<h3 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h3>
+<ul>
+<li>理解 Line 的 Template message 4 種類型
+<a href=https://developers.line.biz/en/docs/messaging-api/message-types/#template-messages>https://developers.line.biz/en/docs/messaging-api/message-types/#template-messages</a></li>
+<li>如何用 ImageCarouselTemplate 來發送多張輪播圖片
+<a href=https://developers.line.biz/en/reference/messaging-api/#carousel>https://developers.line.biz/en/reference/messaging-api/#carousel</a></li>
+<li>學到了 Line 有 7 種 Action 類型，來引導使用者點擊，更快速完成目標
+<a href=https://developers.line.biz/en/reference/messaging-api/#action-objects>https://developers.line.biz/en/reference/messaging-api/#action-objects</a></li>
+<li>如何使用 Linq 取得陣列的隨機項目之小技巧
+<a href=https://stackoverflow.com/questions/4615410/random-element-of-listt-from-linq-sql>https://stackoverflow.com/questions/4615410/random-element-of-listt-from-linq-sql</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/>
+<span class=title>« Prev Page</span>
+<br>
+<span>婚禮現場交通資訊一覽表 (10)</span>
+</a>
+<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/>
+<span class=title>Next Page »</span>
+<br>
+<span>一鍵導航婚宴地點辦在哪 (8)</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

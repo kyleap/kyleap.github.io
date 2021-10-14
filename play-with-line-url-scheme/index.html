@@ -1,0 +1,190 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>不用寫程式，Line URL Scheme 應用整理 | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
+開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
+開啟定位 https://line.me/R/nv/location/	(打開地圖)
+分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&postId={postId} (移至貼文)
+Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
+個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet	(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/play-with-line-url-scheme/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="不用寫程式，Line URL Scheme 應用整理">
+<meta property="og:description" content="寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
+開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
+開啟定位 https://line.me/R/nv/location/	(打開地圖)
+分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&postId={postId} (移至貼文)
+Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
+個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet	(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/play-with-line-url-scheme/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-05-23T22:16:16+00:00">
+<meta property="article:modified_time" content="2021-05-23T22:16:16+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="不用寫程式，Line URL Scheme 應用整理">
+<meta name=twitter:description content="寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
+開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
+開啟定位 https://line.me/R/nv/location/	(打開地圖)
+分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&postId={postId} (移至貼文)
+Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
+個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet	(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"不用寫程式，Line URL Scheme 應用整理","item":"https://kyleap.github.io/play-with-line-url-scheme/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"不用寫程式，Line URL Scheme 應用整理","name":"不用寫程式，Line URL Scheme 應用整理","description":"寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄\n開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張\n開啟定位 https://line.me/R/nv/location/\t(打開地圖)\n分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs\u0026amp;postId={postId} (移至貼文)\nChatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)\n個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet\t(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line.","keywords":["Chatbot"],"articleBody":"寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄\n開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張\n開啟定位 https://line.me/R/nv/location/\t(打開地圖)\n分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs\u0026postId={postId} (移至貼文)\nChatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)\n個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet\t(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line.me/R/nv/settings/themeSettingsMenu 無效連結 https://line.me/R/nv/settings/theme (主題設定) https://line.me/R/nv/themeSettings\t(主題一覽) https://line.me/R/nv/notificationServiceDetail (連動中的應用程式) https://line.me/R/nv/settings/chatSettings\t(聊天設定) https://line.me/R/nv/suggestSettings (顯示建議貼圖) https://line.me/R/nv/settings/callSettings (通話設定) https://line.me/R/nv/settings/addressBookSync (好友設定) https://line.me/R/nv/settings/timelineSettings (貼文串設定)\n打開貼圖小舖 https://line.me/R/shop/sticker/detail/{package_id} (打開貼圖小舖連結) https://line.me/R/shop/category/{category_id} (官方貼圖連結) https://line.me/R/shop/sticker/author/{author_id} 上面三個的ID可以從 https://store.line.me/ 的 URL 取得 ID\nhttps://line.me/R/nv/stickerShop (貼圖小舖) https://line.me/R/shop/sticker/hot (熱門貼圖) https://line.me/R/shop/sticker/new (最新貼圖) https://line.me/R/shop/sticker/event (貼圖活動) https://line.me/R/shop/sticker/category (貼圖分類)\n打開主題 https://line.me/R/shop/theme/detail?id={product_id}\nLine Out https://line.me/R/calls (通話紀錄) https://line.me/R/call//(Line Out, 台灣未支援) https://line.me/R/call/dialpad\t(Line Out, 台灣未支援) https://line.me/R/call/settings\t(Line Out, 台灣未支援) https://line.me/R/call/contacts (Line Out, 台灣未支援) https://line.me/R/call/redeem (Line Out, 台灣未支援)\n","wordCount":"135","inLanguage":"en","datePublished":"2021-05-23T22:16:16Z","dateModified":"2021-05-23T22:16:16Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/play-with-line-url-scheme/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+不用寫程式，Line URL Scheme 應用整理
+</h1>
+<div class=post-meta>2021-05-23&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><p>寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄</p>
+<h2 id=開啟相機或相片>開啟相機或相片<a hidden class=anchor aria-hidden=true href=#開啟相機或相片>#</a></h2>
+<p><a href=https://line.me/R/nv/camera>https://line.me/R/nv/camera</a> (打開相機)
+<a href=https://line.me/R/nv/cameraRoll/single>https://line.me/R/nv/cameraRoll/single</a> (打開相簿，傳送一張)
+<a href=https://line.me/R/nv/cameraRoll/multi>https://line.me/R/nv/cameraRoll/multi</a> (打開相簿，傳送多張</p>
+<h1 id=開啟定位>開啟定位<a hidden class=anchor aria-hidden=true href=#開啟定位>#</a></h1>
+<p><a href=https://line.me/R/nv/location/>https://line.me/R/nv/location/</a> (打開地圖)</p>
+<h1 id=分享官方帳號>分享官方帳號<a hidden class=anchor aria-hidden=true href=#分享官方帳號>#</a></h1>
+<p><a href=https://line.me/R/ti/p/>https://line.me/R/ti/p/</a> (直接跳至此Bot的對話視窗)
+<a href=https://line.me/R/nv/recommendOA/>https://line.me/R/nv/recommendOA/</a> (傳送此Bot給好友)
+<a href="https://line.me/R/home/public/main?id=">https://line.me/R/home/public/main?id=</a> (Bot主頁)
+<a href="https://line.me/R/home/public/profile?id=">https://line.me/R/home/public/profile?id=</a> (Bot個人檔案頁)
+<a href="https://line.me/R/home/public/post?id=">https://line.me/R/home/public/post?id=</a>svgvs&postId={postId} (移至貼文)</p>
+<h1 id=chatbox>Chatbox<a hidden class=anchor aria-hidden=true href=#chatbox>#</a></h1>
+<p><a href="https://line.me/R/share?text=Hello">https://line.me/R/share?text=Hello</a> (分享給好友訊息)
+<a href=https://line.me/R/oaMessage/@102svgvs/?Hello>https://line.me/R/oaMessage/@102svgvs/?Hello</a>學院 (跳至Bot對話視窗，並帶入文字到Chatbox)</p>
+<h1 id=個人資訊相關>個人資訊相關<a hidden class=anchor aria-hidden=true href=#個人資訊相關>#</a></h1>
+<p><a href=https://line.me/R/nv/profile>https://line.me/R/nv/profile</a> (個人檔案頁)
+<a href=https://line.me/R/nv/profileSetId>https://line.me/R/nv/profileSetId</a> (移置個人ID設定頁)
+<a href=https://line.me/R/nv/chat>https://line.me/R/nv/chat</a> (移置對話列表)
+<a href=https://line.me/R/nv/timeline>https://line.me/R/nv/timeline</a> (移至動態列表)
+<a href=https://line.me/R/nv/wallet>https://line.me/R/nv/wallet</a> (移至錢包)
+<a href=https://line.me/R/nv/addFriends>https://line.me/R/nv/addFriends</a> (加入好友頁)
+<a href=https://line.me/R/nv/officialAccounts>https://line.me/R/nv/officialAccounts</a> (探索官方帳號)
+<a href=https://line.me/R/nv/settings>https://line.me/R/nv/settings</a> (設定頁)
+<a href=https://line.me/R/nv/settings/account>https://line.me/R/nv/settings/account</a> (個人帳號設定頁)
+<a href=https://line.me/R/nv/connectedApps>https://line.me/R/nv/connectedApps</a> (管理已連結的ChatBot)
+<a href=https://line.me/R/nv/connectedDevices>https://line.me/R/nv/connectedDevices</a> (管理已連結的設備)
+<a href=https://line.me/R/nv/settings/privacy>https://line.me/R/nv/settings/privacy</a> (隱私設定)
+<a href=https://line.me/R/nv/things/deviceLink>https://line.me/R/nv/things/deviceLink</a> (管理Line Thing已連結裝置)
+<a href=https://line.me/R/nv/settings/sticker>https://line.me/R/nv/settings/sticker</a> (貼圖設定)
+<a href=https://line.me/R/nv/stickerShop/mySticker>https://line.me/R/nv/stickerShop/mySticker</a> (我的貼圖)
+<a href=https://line.me/R/nv/settings/themeSettingsMenu>https://line.me/R/nv/settings/themeSettingsMenu</a> <em>無效連結</em> <a href=https://line.me/R/nv/settings/theme>https://line.me/R/nv/settings/theme</a> (主題設定)
+<a href=https://line.me/R/nv/themeSettings>https://line.me/R/nv/themeSettings</a> (主題一覽)
+<a href=https://line.me/R/nv/notificationServiceDetail>https://line.me/R/nv/notificationServiceDetail</a> (連動中的應用程式)
+<a href=https://line.me/R/nv/settings/chatSettings>https://line.me/R/nv/settings/chatSettings</a> (聊天設定)
+<a href=https://line.me/R/nv/suggestSettings>https://line.me/R/nv/suggestSettings</a> (顯示建議貼圖)
+<a href=https://line.me/R/nv/settings/callSettings>https://line.me/R/nv/settings/callSettings</a> (通話設定)
+<a href=https://line.me/R/nv/settings/addressBookSync>https://line.me/R/nv/settings/addressBookSync</a> (好友設定)
+<a href=https://line.me/R/nv/settings/timelineSettings>https://line.me/R/nv/settings/timelineSettings</a> (貼文串設定)</p>
+<h1 id=打開貼圖小舖>打開貼圖小舖<a hidden class=anchor aria-hidden=true href=#打開貼圖小舖>#</a></h1>
+<p><a href=https://line.me/R/shop/sticker/detail/%7Bpackage_id%7D>https://line.me/R/shop/sticker/detail/{package_id}</a> (打開貼圖小舖連結)
+<a href=https://line.me/R/shop/category/%7Bcategory_id%7D>https://line.me/R/shop/category/{category_id}</a> (官方貼圖連結)
+<a href=https://line.me/R/shop/sticker/author/%7Bauthor_id%7D>https://line.me/R/shop/sticker/author/{author_id}</a>
+上面三個的ID可以從 <a href=https://store.line.me/>https://store.line.me/</a> 的 URL 取得 ID</p>
+<p><a href=https://line.me/R/nv/stickerShop>https://line.me/R/nv/stickerShop</a> (貼圖小舖)
+<a href=https://line.me/R/shop/sticker/hot>https://line.me/R/shop/sticker/hot</a> (熱門貼圖)
+<a href=https://line.me/R/shop/sticker/new>https://line.me/R/shop/sticker/new</a> (最新貼圖)
+<a href=https://line.me/R/shop/sticker/event>https://line.me/R/shop/sticker/event</a> (貼圖活動)
+<a href=https://line.me/R/shop/sticker/category>https://line.me/R/shop/sticker/category</a> (貼圖分類)</p>
+<h1 id=打開主題>打開主題<a hidden class=anchor aria-hidden=true href=#打開主題>#</a></h1>
+<p><a href="https://line.me/R/shop/theme/detail?id=%7Bproduct_id%7D">https://line.me/R/shop/theme/detail?id={product_id}</a></p>
+<h1 id=line-out>Line Out<a hidden class=anchor aria-hidden=true href=#line-out>#</a></h1>
+<p><a href=https://line.me/R/calls>https://line.me/R/calls</a> (通話紀錄)
+<a href=https://line.me/R/call/>https://line.me/R/call/</a>&lt;國碼>/&lt;號碼>(Line Out, 台灣未支援)
+<a href=https://line.me/R/call/dialpad>https://line.me/R/call/dialpad</a> (Line Out, 台灣未支援)
+<a href=https://line.me/R/call/settings>https://line.me/R/call/settings</a> (Line Out, 台灣未支援)
+<a href=https://line.me/R/call/contacts>https://line.me/R/call/contacts</a> (Line Out, 台灣未支援)
+<a href=https://line.me/R/call/redeem>https://line.me/R/call/redeem</a> (Line Out, 台灣未支援)</p>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/azure-copy-to-blob-container/>
+<span class=title>« Prev Page</span>
+<br>
+<span>利用 AzCopy 來將 Azure Blob Container 所有檔案移轉至另一個 Blob Container</span>
+</a>
+<a class=next href=https://kyleap.github.io/chatbot-zero-to-one/>
+<span class=title>Next Page »</span>
+<br>
+<span>(啃書) Chatbot從0到1</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

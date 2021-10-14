@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tools on Kyle Studio</title>
+    <link>https://kyleap.github.io/tags/tools/</link>
+    <description>Recent content in Tools on Kyle Studio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 25 Jun 2021 20:34:35 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 BeefText 來減少常輸入的文字，增加工作效率</title>
+      <link>https://kyleap.github.io/tools-beeftext/</link>
+      <pubDate>Fri, 25 Jun 2021 20:34:35 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/tools-beeftext/</guid>
+      <description>前言 在非洲一分鐘就有60秒過去，所以在工作上只要節省5秒鐘，一年下來就是省下1825秒阿，比爾蓋茲說過懶惰的人歡迎到微軟，主要是能找到那種工作上會不斷優化自己工作的員工，所以要時時刻刻思考，如果你工作上有太多的重複的事項/太多固定的流程，下一步就要思考自動化。
+今天要介紹的是免費工具 beefText ，工作上可能會有一些長打的程式片段，譬如撰寫SQL查詢一些問題時，但這些片段也許可以用編輯器存起來，但WFH可能也會有一些常見要回的話，或者是一些email範本(面試感謝信…等等)，每次都要重新輸入人生就浪費了幾秒鐘了阿!!
+功能介紹 你可建立多個Group來做分類，Group底下可以建 Combo，譬如 e_ii (email_interview_invite) 就能觸發 Email 的邀請範本，寫 Email 時候再去微調就好了
+預設只要輸入偵測到關鍵字就會觸發取代你建立好的 Template，但也可調整空白鍵才去偵測
+指令越來越多時候，也可以用 picker 功能，我習慣適用 windows+alt+p
+如果換電腦的話，可以將設定檔從以下路徑備份出來，List會是一個JSON檔
+BeefText下載
+https://beeftext.org/</description>
+    </item>
+    
+  </channel>
+</rss>

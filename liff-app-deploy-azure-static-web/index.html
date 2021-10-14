@@ -1,0 +1,181 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>將 Line Liff App 發佈到免費的 Azure Static Web App | Kyle Studio</title>
+<meta name=keywords content="Chatbot">
+<meta name=description content="Azure Static Web App 是什麼? 在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此連結，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定
+Azure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度
+發佈 LINE Liff App 到 Azure Static Web App LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 https://github.">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/liff-app-deploy-azure-static-web/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<meta name=generator content="Hugo 0.88.1">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="將 Line Liff App 發佈到免費的 Azure Static Web App">
+<meta property="og:description" content="Azure Static Web App 是什麼? 在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此連結，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定
+Azure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度
+發佈 LINE Liff App 到 Azure Static Web App LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 https://github.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/liff-app-deploy-azure-static-web/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-08-17T23:07:24+00:00">
+<meta property="article:modified_time" content="2021-08-17T23:07:24+00:00"><meta property="og:site_name" content="Kyle Studio">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="將 Line Liff App 發佈到免費的 Azure Static Web App">
+<meta name=twitter:description content="Azure Static Web App 是什麼? 在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此連結，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定
+Azure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度
+發佈 LINE Liff App 到 Azure Static Web App LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 https://github.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"將 Line Liff App 發佈到免費的 Azure Static Web App","item":"https://kyleap.github.io/liff-app-deploy-azure-static-web/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"將 Line Liff App 發佈到免費的 Azure Static Web App","name":"將 Line Liff App 發佈到免費的 Azure Static Web App","description":"Azure Static Web App 是什麼? 在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此連結，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定\nAzure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度\n發佈 LINE Liff App 到 Azure Static Web App LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 https://github.","keywords":["Chatbot"],"articleBody":"Azure Static Web App 是什麼? 在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此連結，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定\nAzure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度\n發佈 LINE Liff App 到 Azure Static Web App LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 https://github.com/line/line-liff-v2-starter\nFork Liff Starter Repo 於 Azure 建立 Azure Static Web App 登入 Github 完成驗證 選擇 Repo 與 Branch 選擇 Frameworks  選擇不同的Framework 會影響 Github Action 設定的 build command，此例為單純的 JavaScript，故選擇Custom，Root 設定為 /public\n 建立後 Github Action 會同步完成 CI 設定並開始發佈 瀏覽完成後的部署  出現此畫面代表正常，因為我們還未指定 LIFF ID\n 建立 Liff App 到 https://developers.line.biz/ 後台，於 Provider 底下建立一個 Line Login 服務 (記得 Bot 跟 Line Login 要在同一個 Provider 底下) 將 LIFF ID 複製起來，LIFF URL 就是待會我們要觸發的網址 修改程式並 Commit\nLIFF Starter 這個 Repo 我們要改兩個地方，一個是將 userNodeJS 改為 false (因為我們是跑 static 站台)，defaultLiffId 改為剛剛複製的 LIFF ID\nCommit 後可以看到 CI 也同時觸發\n瀏覽結果\n小結 用 Azure Static Web App 我覺得有三大好處 📌 免費的 Hosting, SSL 📌 從Repo出發自動建立好 Github Action CI/CD，專注在寫code就好 📌 方便整合 Azure Serverless (Azure Function) 服務也能開發後端 Api (每月有 100 萬 Request 免費)\n參考連結  Azure Static Web https://azure.microsoft.com/zh-tw/services/app-service/static/ Line LIFF Starter https://github.com/line/line-liff-v2-starter  ","wordCount":"219","inLanguage":"en","datePublished":"2021-08-17T23:07:24Z","dateModified":"2021-08-17T23:07:24Z","author":{"@type":"Person","name":"Kyle"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/liff-app-deploy-azure-static-web/"},"publisher":{"@type":"Organization","name":"Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="Kyle Studio (Alt + H)">Kyle Studio</a>
+<span class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</span>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+將 Line Liff App 發佈到免費的 Azure Static Web App
+</h1>
+<div class=post-meta>2021-08-17&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><h2 id=azure-static-web-app-是什麼>Azure Static Web App 是什麼?<a hidden class=anchor aria-hidden=true href=#azure-static-web-app-是什麼>#</a></h2>
+<p>在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此<a href=https://docs.microsoft.com/zh-tw/azure/static-web-apps/front-end-frameworks>連結</a>，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/129825106-50356867-cd5e-4e65-bbab-8dc2be617f0e.png alt>
+</p>
+<h2 id=azure-static-web-app-的價格>Azure Static Web App 的價格<a hidden class=anchor aria-hidden=true href=#azure-static-web-app-的價格>#</a></h2>
+<p>在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/129825431-b8e44c90-e413-49e5-a8a0-3c98924920b8.png alt>
+</p>
+<h2 id=發佈-line-liff-app-到-azure-static-web-app>發佈 LINE Liff App 到 Azure Static Web App<a hidden class=anchor aria-hidden=true href=#發佈-line-liff-app-到-azure-static-web-app>#</a></h2>
+<p>LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 <a href=https://github.com/line/line-liff-v2-starter>https://github.com/line/line-liff-v2-starter</a></p>
+<p>Fork Liff Starter Repo
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129825699-d7d1b8ea-0042-455a-b0ba-81729d57511c.png alt>
+</p>
+<p>於 Azure 建立 Azure Static Web App
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129826003-e9ff67f2-6ea9-4992-9755-8ed2f591c6c3.png alt>
+</p>
+<p>登入 Github 完成驗證
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129828393-0c5faaa6-4fdd-4d44-a5c2-24f81bdcab29.png alt>
+</p>
+<p>選擇 Repo 與 Branch
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129826233-fab0e547-1ece-4efa-a5b8-d295e8119f73.png alt>
+</p>
+<p>選擇 Frameworks
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129826415-4ffc5e8e-5120-4754-b008-0fbd36026dba.png alt>
+</p>
+<blockquote>
+<p>選擇不同的Framework 會影響 Github Action 設定的 build command，此例為單純的 JavaScript，故選擇Custom，Root 設定為 <code>/public</code></p>
+</blockquote>
+<p>建立後 Github Action 會同步完成 CI 設定並開始發佈
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129826743-2f058040-63f0-4913-8fcd-fdbfe3338aa0.png alt>
+</p>
+<p>瀏覽完成後的部署
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129826904-4d3cf430-bc6b-4c99-980a-187d25616c65.png alt>
+</p>
+<blockquote>
+<p>出現此畫面代表正常，因為我們還未指定 LIFF ID</p>
+</blockquote>
+<p>建立 Liff App
+到 <a href=https://developers.line.biz/>https://developers.line.biz/</a> 後台，於 Provider 底下建立一個 Line Login 服務 (記得 Bot 跟 Line Login 要在同一個 Provider 底下)
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129827134-a31bcccc-119a-4c79-abae-3caf0ff9765c.png alt>
+</p>
+<p>將 LIFF ID 複製起來，LIFF URL 就是待會我們要觸發的網址
+<img loading=lazy src=https://user-images.githubusercontent.com/8849818/129828496-9837e009-c6b0-4ba4-86cd-fcd3da1e140a.png alt>
+</p>
+<p>修改程式並 Commit</p>
+<p>LIFF Starter 這個 Repo 我們要改兩個地方，一個是將 <code>userNodeJS</code> 改為 <code>false</code> (因為我們是跑 static 站台)，<code>defaultLiffId</code> 改為剛剛複製的 LIFF ID</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/129827550-31244743-8404-4926-bb4d-7bf91b6140cd.png alt>
+</p>
+<p>Commit 後可以看到 CI 也同時觸發</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/129827742-d9a2c213-56ec-4c18-9c4e-80c16cf1e444.png alt>
+</p>
+<p>瀏覽結果</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/129828044-bdde3f16-08cc-4b3e-ac88-0db255f8205c.png alt>
+</p>
+<h2 id=小結>小結<a hidden class=anchor aria-hidden=true href=#小結>#</a></h2>
+<p>用 Azure Static Web App 我覺得有三大好處
+📌 免費的 Hosting, SSL
+📌 從Repo出發自動建立好 Github Action CI/CD，專注在寫code就好
+📌 方便整合 Azure Serverless (Azure Function) 服務也能開發後端 Api (每月有 100 萬 Request 免費)</p>
+<h2 id=參考連結>參考連結<a hidden class=anchor aria-hidden=true href=#參考連結>#</a></h2>
+<ul>
+<li>Azure Static Web <a href=https://azure.microsoft.com/zh-tw/services/app-service/static/>https://azure.microsoft.com/zh-tw/services/app-service/static/</a></li>
+<li>Line LIFF Starter <a href=https://github.com/line/line-liff-v2-starter>https://github.com/line/line-liff-v2-starter</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
+</ul>
+<nav class=paginav>
+<a class=next href=https://kyleap.github.io/line-message-api-postman-collections/>
+<span class=title>Next Page »</span>
+<br>
+<span>Line Message Api Postman Collections</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>
