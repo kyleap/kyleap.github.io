@@ -87,7 +87,7 @@
 或者可以使用CLI : dotnet pack
 編輯套件的資訊...</p>
 </section>
-<footer class=entry-footer>2020-10-14&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-30&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 鐵人賽完賽整理&開源 (30)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -103,7 +103,7 @@
 public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize("http://localhost:12733/message"); await hubClient.SendHubMessage("SendMessage", profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, "謝謝您，我們已收到留言"); } GetUserProfile
 public async Task&lt;UserProfile> GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), $"{lineMessageApiBaseUrl}/{userId}")) { request....</p>
 </section>
-<footer class=entry-footer>2020-10-13&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-29&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service II (29)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -123,7 +123,7 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
 在 Web Api 專案案右鍵，建立管理使用者密碼，
 建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上...</p>
 </section>
-<footer class=entry-footer>2020-10-12&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-28&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service I (28)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -142,7 +142,7 @@ public async Task&lt;Stream> GetContentBytesAsync(string messageId) { using (var
 可以透過 Nuget 安裝 Imgur.API
 public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient("&lt;Your Imgur ClientId>"); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint....</p>
 </section>
-<footer class=entry-footer>2020-10-11&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-27&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -158,7 +158,7 @@ Checkout 流程 官方API文件可以從這裡看到
 Request Body 的 C# Class
 public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&lt;Package> packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&lt;Product> products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } } 整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得...</p>
 </section>
-<footer class=entry-footer>2020-10-10&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-26&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 婚禮禮金用Line Pay II (26)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/></a>
 </article>
 <footer class=page-footer>

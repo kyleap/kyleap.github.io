@@ -71,19 +71,6 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
-<h2>回傳不文謅謅的 Line 貼圖 (5)
-</h2>
-</header>
-<section class=entry-content>
-<p>我想 Line 豐富的貼圖，應該是很多人喜歡用它來做 Chatbot 的一個原因吧 接續上一篇，我們試著在歡迎詞後，傳送一個禮貌又不尷尬的貼圖
-在 LineReplyMessageUtility.cs 擴充回傳貼圖 我們接續前一篇 LineReplyMessageUtility 這個類別再實作一個回覆貼圖的method
-public async Task ReplyStickerMessageAsync(string replyToken, string packageId, string stickerId) { using(var httpClient = new HttpClient()) { using(var request = new HttpRequestMessage(new HttpMethod("POST"), $ "{lineMessageApiBaseUrl}")) { request.Headers.TryAddWithoutValidation("Authorization", $ "Bearer {accessToken}"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new StickerMessage() { PackageId = packageId, StickerId = stickerId }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting....</p>
-</section>
-<footer class=entry-footer>2020-09-19&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 回傳不文謅謅的 Line 貼圖 (5)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
 <h2>回覆第一個Line的訊息-歡迎詞 (4)
 </h2>
 </header>
@@ -98,7 +85,7 @@ curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H 'Authorization: 
 轉換後如下：
 using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), "[https://api....</p>
 </section>
-<footer class=entry-footer>2020-09-18&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-04&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 回覆第一個Line的訊息-歡迎詞 (4)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/></a>
 </article>
 <article class=post-entry>
@@ -116,7 +103,7 @@ replyToken : 用來回覆該使用者的Token type：使用者傳送訊息的類
 結果會長這樣，通常我不會在一個 .cs 放多個類別，但為了文章好呈現故直接貼上來，拆一拆檔案的工也還好
 做點加工，把 Event 的 Type 一些文件改成 C# 的 Enum，讓開發更順暢，新增一個 WebhookEventType....</p>
 </section>
-<footer class=entry-footer>2020-09-17&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-03&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用.NET Core 接收Line的訊息事件 (3)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/></a>
 </article>
 <article class=post-entry>
@@ -133,7 +120,7 @@ https://developers.line.biz/en/
 透過 ngrok 讓 Line Server 跟 Local Web API 做連結
 安裝 node....</p>
 </section>
-<footer class=entry-footer>2020-09-16&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-02&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用.NET Core接收第一個Line訊息 (2)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/></a>
 </article>
 <article class=post-entry>
@@ -148,8 +135,32 @@ https://developers.line.biz/en/
 所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
 也發現在 Line 官方都沒有 ....</p>
 </section>
-<footer class=entry-footer>2020-09-15&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-01&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用.NET Core與Line Bot製作婚禮機器人 (1)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-1/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>精實執行精實創業指南 - 從初始計畫演化為有效計畫
+</h2>
+</header>
+<section class=entry-content>
+<p>新創事業為何如此艱難? 經濟部中小企業處提供數據：創業一年內就倒閉的機率高達90%，而存活下來的10%中，又有90%會在五年內倒閉。為何做產品那麼難? 有沒有一個框架能遵循，降低風險，精實創業是一個可以參考的方法論
+精實計畫淬鍊成三個步驟 文件化你的初始計畫 識別風險 有系統的試驗計劃 新創會失敗在於跟顧客脫鉤，落於太自我的創新上，直接「走出辦公室」跟顧客面對面吧
+精實畫布收斂想法 先寫下願景，譬如阿里巴巴「讓天下沒有難做的生意」、馬斯克「讓人人都可上月球」，沒有願景則無法往下細拆策略目標 精實畫布是一個迅速、簡明、具可攜性的方式，用來產出「商業模式」
+圖片來源：https://ryanisagoodguy.blogspot.com/2016/03/lean-canvas.html
+Step 1~2 — 問題與顧客區隔 列出三項痛點，並目前這些痛點有何既有替代方案，識別哪些人會接觸到此服務，並試著專注於可能的早期採用者，主流顧客在早期產品通常無法滿足
+Step 3 — 獨特價值主張 「銷售」是一種對話，不管什麼身分.職位其實都是在做銷售 e.g 面試過程其實就是在銷售給面試官；而面試官其實在銷售給優秀人才。擬定好故事，從問題出發，擬定好如何在30秒內闡述獨特主張
+Step 4 — 解決方案 針對問題，「草擬」解決方案，為何是草擬？因為會隨著市場變化或經實驗及訪談，會重新排序優先順序，甚至會被新問題取代
+Step 5 — 通路 無法建立接觸「足夠」顧客的途徑，是初期創業失敗的原因，個人認為2C早期應至少接觸上百位顧客，2B需找出2~3個指標客戶。
+免費的最貴，本書作者 Eric Ries 以他這本書為例實踐精實創業，他一天花5塊錢美金，以每次點擊 5 分錢的成本吸引 100 次點擊
+通道要Pull (SEO.Blog…) or Push (活動.電話行銷…)，作為學習，直接銷售最有效；作為營利，直接銷售超過你的薪資整體薪酬才有意義
+避免太早建立策略型夥伴，同理銷售人員只能執行你的計劃，非建立計畫。故初期一定得親自販售你的產品 病毒式行銷前提是產品「值得」這樣做
+Step 6~7 — 收益來源 & 成本結構 思考定價策略：成本導向、競爭導向、需求導向、差異訂價法、特殊的訂價法(SaaS產品定價)…
+成本如何擬定：
+訪談30–50顧客將耗費多少成本 開發MVP將耗費多少成本 (e.g 員工薪資 x 1.6 ~2.0倍) 固定成本(薪資…等).變動成本(雲端費用…等) Step 8 — 關鍵指標 顧客獲取 顧客啟用 顧客續約 收益 轉介 延伸閱讀：從 AARRR 模型幫助對焦商業目標與設計策略...</p>
+</section>
+<footer class=entry-footer>2020-10-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 精實執行精實創業指南 - 從初始計畫演化為有效計畫" href=https://kyleap.github.io/2020-10-21-kyle-bite-book-lean-startup/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

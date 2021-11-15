@@ -142,31 +142,9 @@ Chatbot 的機會與未來 近年來 Chatbot 技術興起，使用者下載App�
     </item>
     
     <item>
-      <title>精實執行精實創業指南 - 從初始計畫演化為有效計畫</title>
-      <link>https://kyleap.github.io/2020-10-21-kyle-bite-book-lean-startup/</link>
-      <pubDate>Wed, 21 Oct 2020 20:27:12 +0000</pubDate>
-      
-      <guid>https://kyleap.github.io/2020-10-21-kyle-bite-book-lean-startup/</guid>
-      <description>新創事業為何如此艱難? 經濟部中小企業處提供數據：創業一年內就倒閉的機率高達90%，而存活下來的10%中，又有90%會在五年內倒閉。為何做產品那麼難? 有沒有一個框架能遵循，降低風險，精實創業是一個可以參考的方法論
-精實計畫淬鍊成三個步驟  文件化你的初始計畫 識別風險 有系統的試驗計劃   新創會失敗在於跟顧客脫鉤，落於太自我的創新上，直接「走出辦公室」跟顧客面對面吧
- 精實畫布收斂想法 先寫下願景，譬如阿里巴巴「讓天下沒有難做的生意」、馬斯克「讓人人都可上月球」，沒有願景則無法往下細拆策略目標 精實畫布是一個迅速、簡明、具可攜性的方式，用來產出「商業模式」
-圖片來源：https://ryanisagoodguy.blogspot.com/2016/03/lean-canvas.html
-Step 1~2 — 問題與顧客區隔 列出三項痛點，並目前這些痛點有何既有替代方案，識別哪些人會接觸到此服務，並試著專注於可能的早期採用者，主流顧客在早期產品通常無法滿足
-Step 3 — 獨特價值主張 「銷售」是一種對話，不管什麼身分.職位其實都是在做銷售 e.g 面試過程其實就是在銷售給面試官；而面試官其實在銷售給優秀人才。擬定好故事，從問題出發，擬定好如何在30秒內闡述獨特主張
-Step 4 — 解決方案 針對問題，「草擬」解決方案，為何是草擬？因為會隨著市場變化或經實驗及訪談，會重新排序優先順序，甚至會被新問題取代
-Step 5 — 通路 無法建立接觸「足夠」顧客的途徑，是初期創業失敗的原因，個人認為2C早期應至少接觸上百位顧客，2B需找出2~3個指標客戶。
-免費的最貴，本書作者 Eric Ries 以他這本書為例實踐精實創業，他一天花5塊錢美金，以每次點擊 5 分錢的成本吸引 100 次點擊
-通道要Pull (SEO.Blog…) or Push (活動.電話行銷…)，作為學習，直接銷售最有效；作為營利，直接銷售超過你的薪資整體薪酬才有意義
-避免太早建立策略型夥伴，同理銷售人員只能執行你的計劃，非建立計畫。故初期一定得親自販售你的產品 病毒式行銷前提是產品「值得」這樣做
-Step 6~7 — 收益來源 &amp;amp; 成本結構 思考定價策略：成本導向、競爭導向、需求導向、差異訂價法、特殊的訂價法(SaaS產品定價)…
-成本如何擬定：
- 訪談30–50顧客將耗費多少成本 開發MVP將耗費多少成本 (e.g 員工薪資 x 1.6 ~2.0倍) 固定成本(薪資…等).變動成本(雲端費用…等)  Step 8 — 關鍵指標  顧客獲取 顧客啟用 顧客續約 收益 轉介  延伸閱讀：從 AARRR 模型幫助對焦商業目標與設計策略</description>
-    </item>
-    
-    <item>
       <title>鐵人賽完賽整理&amp;開源 (30)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/</link>
-      <pubDate>Wed, 14 Oct 2020 00:11:40 +0000</pubDate>
+      <pubDate>Mon, 30 Nov 2020 00:11:40 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day30)
@@ -183,7 +161,7 @@ Step 6~7 — 收益來源 &amp;amp; 成本結構 思考定價策略：成本導�
     <item>
       <title>製作婚禮現場即時留言版- Azure SignalR Service II (29)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/</link>
-      <pubDate>Tue, 13 Oct 2020 12:23:59 +0000</pubDate>
+      <pubDate>Sun, 29 Nov 2020 12:23:59 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day29)
@@ -197,7 +175,7 @@ Step 6~7 — 收益來源 &amp;amp; 成本結構 思考定價策略：成本導�
     <item>
       <title>製作婚禮現場即時留言版- Azure SignalR Service I (28)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/</link>
-      <pubDate>Mon, 12 Oct 2020 13:28:25 +0000</pubDate>
+      <pubDate>Sat, 28 Nov 2020 13:28:25 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
@@ -215,7 +193,7 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
     <item>
       <title>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/</link>
-      <pubDate>Sun, 11 Oct 2020 00:32:07 +0000</pubDate>
+      <pubDate>Fri, 27 Nov 2020 00:32:07 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day27)
@@ -232,7 +210,7 @@ GetContentBytesAsync
     <item>
       <title>婚禮禮金用Line Pay II (26)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/</link>
-      <pubDate>Sat, 10 Oct 2020 00:06:44 +0000</pubDate>
+      <pubDate>Thu, 26 Nov 2020 00:06:44 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day26)
@@ -246,7 +224,7 @@ public class LinePayRequest { public int amount { get; set; } public string curr
     <item>
       <title>婚禮禮金用Line Pay I (25)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/</link>
-      <pubDate>Fri, 09 Oct 2020 09:44:01 +0000</pubDate>
+      <pubDate>Wed, 25 Nov 2020 09:44:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day25)
@@ -268,7 +246,7 @@ asp-page-handler 可以在 .cs寫 function 驗證 model
     <item>
       <title>用Line Beacon來搞自動報到 (24)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/</link>
-      <pubDate>Thu, 08 Oct 2020 00:22:05 +0000</pubDate>
+      <pubDate>Tue, 24 Nov 2020 00:22:05 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day24)
@@ -287,7 +265,7 @@ enter : 當使用者進入Line Beacon 發送範圍內 banner：LINE for Business
     <item>
       <title>用QR Code來搞報到 — Razor Page實做 II (23)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/</link>
-      <pubDate>Wed, 07 Oct 2020 12:42:03 +0000</pubDate>
+      <pubDate>Mon, 23 Nov 2020 12:42:03 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day23)
@@ -308,7 +286,7 @@ https://imgur.com/5qsSzRN
     <item>
       <title>用QR Code來搞報到 - Razor Page實做 I (22)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-22/</link>
-      <pubDate>Tue, 06 Oct 2020 21:02:38 +0000</pubDate>
+      <pubDate>Sun, 22 Nov 2020 21:02:38 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-22/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day22)
@@ -327,7 +305,7 @@ wwwroot 把一些靜態檔案搬過來
     <item>
       <title>當有人報名的時候接收通知 (Line Notify) (21)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/</link>
-      <pubDate>Mon, 05 Oct 2020 00:04:31 +0000</pubDate>
+      <pubDate>Sat, 21 Nov 2020 00:04:31 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day21)
@@ -347,7 +325,7 @@ Line 會收到一個通知
     <item>
       <title>主動推播Line訊息給某個使用者(Push Message) (20)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/</link>
-      <pubDate>Sun, 04 Oct 2020 00:52:53 +0000</pubDate>
+      <pubDate>Fri, 20 Nov 2020 00:52:53 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
@@ -362,7 +340,7 @@ Line 會收到一個通知
     <item>
       <title>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/</link>
-      <pubDate>Sat, 03 Oct 2020 10:39:53 +0000</pubDate>
+      <pubDate>Thu, 19 Nov 2020 10:39:53 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day19)
@@ -377,7 +355,7 @@ Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料�
     <item>
       <title>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/</link>
-      <pubDate>Fri, 02 Oct 2020 00:56:25 +0000</pubDate>
+      <pubDate>Wed, 18 Nov 2020 00:56:25 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day18)
@@ -394,7 +372,7 @@ https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
     <item>
       <title>Line Liff App v2 - 用 Vue.js 來實作 (17)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/</link>
-      <pubDate>Thu, 01 Oct 2020 10:06:50 +0000</pubDate>
+      <pubDate>Tue, 17 Nov 2020 10:06:50 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
@@ -409,7 +387,7 @@ ngrok http &amp;lt;your local vue.js port&amp;gt;-host-header=”localhost:&amp;
     <item>
       <title>來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/</link>
-      <pubDate>Wed, 30 Sep 2020 08:17:05 +0000</pubDate>
+      <pubDate>Mon, 16 Nov 2020 08:17:05 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day16)
@@ -426,7 +404,7 @@ Step 4 匯入資料集 (本次先跳過)
     <item>
       <title>切換 Line 的圖文選單 (15)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/</link>
-      <pubDate>Tue, 29 Sep 2020 09:01:22 +0000</pubDate>
+      <pubDate>Sun, 15 Nov 2020 09:01:22 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day15)
@@ -440,7 +418,7 @@ CreateRichMenuAsync
     <item>
       <title>Line 的圖文選單 (14)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-14/</link>
-      <pubDate>Mon, 28 Sep 2020 18:02:39 +0000</pubDate>
+      <pubDate>Sat, 14 Nov 2020 18:02:39 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-14/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day14)
@@ -458,7 +436,7 @@ Get rich menu list：取得此 chatbot 已註冊的 Rich Menu 清單 Upload rich
     <item>
       <title>各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/</link>
-      <pubDate>Sun, 27 Sep 2020 11:49:43 +0000</pubDate>
+      <pubDate>Fri, 13 Nov 2020 11:49:43 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day13)
@@ -473,7 +451,7 @@ IntenFactory.cs
     <item>
       <title>Hold on Hold on 重構一下！ (12)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-12/</link>
-      <pubDate>Sat, 26 Sep 2020 08:26:23 +0000</pubDate>
+      <pubDate>Thu, 12 Nov 2020 08:26:23 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-12/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day12)
@@ -487,7 +465,7 @@ IIntentFactory.cs 定義一個工廠介面
     <item>
       <title>設計師魂發作，改造電子喜帖 (11)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/</link>
-      <pubDate>Fri, 25 Sep 2020 09:28:57 +0000</pubDate>
+      <pubDate>Wed, 11 Nov 2020 09:28:57 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day11)
@@ -505,7 +483,7 @@ https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&amp
     <item>
       <title>婚禮現場交通資訊一覽表 (10)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/</link>
-      <pubDate>Thu, 24 Sep 2020 08:01:05 +0000</pubDate>
+      <pubDate>Tue, 10 Nov 2020 08:01:05 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
@@ -519,7 +497,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
     <item>
       <title>來做一些婚紗輪播 (9)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/</link>
-      <pubDate>Wed, 23 Sep 2020 08:12:33 +0000</pubDate>
+      <pubDate>Mon, 09 Nov 2020 08:12:33 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day9)
@@ -534,7 +512,7 @@ Template message 在 Line 的 Template 有分為四種，可以用來引導使�
     <item>
       <title>一鍵導航婚宴地點辦在哪 (8)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/</link>
-      <pubDate>Tue, 22 Sep 2020 08:16:56 +0000</pubDate>
+      <pubDate>Sun, 08 Nov 2020 08:16:56 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day8)
@@ -550,7 +528,7 @@ public async Task ReplyAsync(string replyToken) { var locationName = &amp;quot;�
     <item>
       <title>有聲有色，傳送婚禮前導預告影片 (7)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-7/</link>
-      <pubDate>Mon, 21 Sep 2020 08:35:49 +0000</pubDate>
+      <pubDate>Sat, 07 Nov 2020 08:35:49 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-7/</guid>
       <description>上一篇我們用 ImageMessage 來傳送圖片，這一篇我們要來實作傳送婚禮的前導預告片 (回想起來那時候我怎麼那麼閒XD )，我當時自己是從淘寶買一些婚禮的影片範本，買回來用 Adobe Effect 來改，或者是網路上可能會有一些免費的 template 也是可以拿來應用
@@ -564,7 +542,7 @@ public class WeddingTrailer : IReplyIntent { private readonly LineReplyMessageUt
     <item>
       <title>環保愛地球，回傳電子喜帖 (6)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-6/</link>
-      <pubDate>Sun, 20 Sep 2020 11:57:27 +0000</pubDate>
+      <pubDate>Fri, 06 Nov 2020 11:57:27 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-6/</guid>
       <description>今天要來做電子喜帖功能，節能減碳，環保愛地球
@@ -582,7 +560,7 @@ protected virtual async Task OnMessageAsync(Event ev) { if (ev.message.Type.Equa
     <item>
       <title>回傳不文謅謅的 Line 貼圖 (5)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/</link>
-      <pubDate>Sat, 19 Sep 2020 12:18:40 +0000</pubDate>
+      <pubDate>Thu, 05 Nov 2020 12:18:40 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/</guid>
       <description>我想 Line 豐富的貼圖，應該是很多人喜歡用它來做 Chatbot 的一個原因吧 接續上一篇，我們試著在歡迎詞後，傳送一個禮貌又不尷尬的貼圖
@@ -593,7 +571,7 @@ public async Task ReplyStickerMessageAsync(string replyToken, string packageId, 
     <item>
       <title>回覆第一個Line的訊息-歡迎詞 (4)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/</link>
-      <pubDate>Fri, 18 Sep 2020 07:50:36 +0000</pubDate>
+      <pubDate>Wed, 04 Nov 2020 07:50:36 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day4)
@@ -610,7 +588,7 @@ using (var httpClient = new HttpClient()) { using (var request = new HttpRequest
     <item>
       <title>用.NET Core 接收Line的訊息事件 (3)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/</link>
-      <pubDate>Thu, 17 Sep 2020 07:53:01 +0000</pubDate>
+      <pubDate>Tue, 03 Nov 2020 07:53:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day3)
@@ -626,7 +604,7 @@ replyToken : 用來回覆該使用者的Token type：使用者傳送訊息的類
     <item>
       <title>用.NET Core接收第一個Line訊息 (2)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/</link>
-      <pubDate>Wed, 16 Sep 2020 07:31:45 +0000</pubDate>
+      <pubDate>Mon, 02 Nov 2020 07:31:45 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/</guid>
       <description>基本設定 關於如何註冊一個串接自己Web Api 的 Line Chatbot 網路上已經很多的教學文了，大概分為以下幾個步驟
@@ -641,7 +619,7 @@ https://developers.line.biz/en/
     <item>
       <title>用.NET Core與Line Bot製作婚禮機器人 (1)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-1/</link>
-      <pubDate>Tue, 15 Sep 2020 07:16:10 +0000</pubDate>
+      <pubDate>Sun, 01 Nov 2020 07:16:10 +0000</pubDate>
       
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-1/</guid>
       <description>寫在開始之前，目的與動機 距離上次參加鐵人賽已經是 2013-2014 的事，很慶幸自己還是活在這行且保有一些技術的熱情還沒死掉。2018 年完成了人生的婚禮，因為個性屬於比較喜歡搞一些特別的，把自己的想法用技術實踐，所以從做影片到還製作婚禮活動官網到婚禮現場都規劃一些比較不一樣的體驗，身為一個技術宅寫一些程式是必須的，所以那時候做了一個當時很流行的 Line Chatbot，整個婚禮報名流程/推播訊息都是透過Line Chatbot完成，幾個朋友回饋都覺得比起一些問卷網站，這種方式還蠻新奇的，後續一些辦婚禮的朋友都還來詢問當時 Line 的一些功能是怎麼用的，也想透過這種方式來玩。2年也過去了，Line 的 Chatbot 也改版了不少，故這次想要藉由鐵人賽，再逐步的好好再把 Line 的文件看過一遍，並重新開發，透過這過程也分享一些當時的一些尚未做的想法實踐
@@ -649,6 +627,28 @@ https://developers.line.biz/en/
  使用者發送訊息，向 Line Server 發送一個 Request Line Server 會知道是哪個 Chatbot 發送的，經過格式處理後會發送到該Chatbot作者所設定的 Webhook Webhook (自己所開發的Web Api)，能接收到 Line Server 所傳的結構化Request，能知道使用者發送了什麼訊息，應該要做什麼相對應的處理 回傳相對應處理的訊息，告訴 Line Server，我們要回覆什麼 透過 Line Server 再回傳給使用者  目標 在這個 Line Chatbot 我們將實作婚禮前的資訊查詢，快速建立各種能理解聊天意圖的回覆，宴客報名… 等等，透過這些功能的實作，我們將會學到，如何用 Line 來傳各式各樣的豐富訊息，學到如何開發一個網頁來搭配 Line Liff 來做一些小程序，在婚禮會現場會嘗試用 QR Code/iBeacon 搭配婚禮的報到，嘗試用 Line Pay 來做紅包的電子支付，婚禮現場做一些互動的功能…
 所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
 也發現在 Line 官方都沒有 .</description>
+    </item>
+    
+    <item>
+      <title>精實執行精實創業指南 - 從初始計畫演化為有效計畫</title>
+      <link>https://kyleap.github.io/2020-10-21-kyle-bite-book-lean-startup/</link>
+      <pubDate>Wed, 21 Oct 2020 20:27:12 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/2020-10-21-kyle-bite-book-lean-startup/</guid>
+      <description>新創事業為何如此艱難? 經濟部中小企業處提供數據：創業一年內就倒閉的機率高達90%，而存活下來的10%中，又有90%會在五年內倒閉。為何做產品那麼難? 有沒有一個框架能遵循，降低風險，精實創業是一個可以參考的方法論
+精實計畫淬鍊成三個步驟  文件化你的初始計畫 識別風險 有系統的試驗計劃   新創會失敗在於跟顧客脫鉤，落於太自我的創新上，直接「走出辦公室」跟顧客面對面吧
+ 精實畫布收斂想法 先寫下願景，譬如阿里巴巴「讓天下沒有難做的生意」、馬斯克「讓人人都可上月球」，沒有願景則無法往下細拆策略目標 精實畫布是一個迅速、簡明、具可攜性的方式，用來產出「商業模式」
+圖片來源：https://ryanisagoodguy.blogspot.com/2016/03/lean-canvas.html
+Step 1~2 — 問題與顧客區隔 列出三項痛點，並目前這些痛點有何既有替代方案，識別哪些人會接觸到此服務，並試著專注於可能的早期採用者，主流顧客在早期產品通常無法滿足
+Step 3 — 獨特價值主張 「銷售」是一種對話，不管什麼身分.職位其實都是在做銷售 e.g 面試過程其實就是在銷售給面試官；而面試官其實在銷售給優秀人才。擬定好故事，從問題出發，擬定好如何在30秒內闡述獨特主張
+Step 4 — 解決方案 針對問題，「草擬」解決方案，為何是草擬？因為會隨著市場變化或經實驗及訪談，會重新排序優先順序，甚至會被新問題取代
+Step 5 — 通路 無法建立接觸「足夠」顧客的途徑，是初期創業失敗的原因，個人認為2C早期應至少接觸上百位顧客，2B需找出2~3個指標客戶。
+免費的最貴，本書作者 Eric Ries 以他這本書為例實踐精實創業，他一天花5塊錢美金，以每次點擊 5 分錢的成本吸引 100 次點擊
+通道要Pull (SEO.Blog…) or Push (活動.電話行銷…)，作為學習，直接銷售最有效；作為營利，直接銷售超過你的薪資整體薪酬才有意義
+避免太早建立策略型夥伴，同理銷售人員只能執行你的計劃，非建立計畫。故初期一定得親自販售你的產品 病毒式行銷前提是產品「值得」這樣做
+Step 6~7 — 收益來源 &amp;amp; 成本結構 思考定價策略：成本導向、競爭導向、需求導向、差異訂價法、特殊的訂價法(SaaS產品定價)…
+成本如何擬定：
+ 訪談30–50顧客將耗費多少成本 開發MVP將耗費多少成本 (e.g 員工薪資 x 1.6 ~2.0倍) 固定成本(薪資…等).變動成本(雲端費用…等)  Step 8 — 關鍵指標  顧客獲取 顧客啟用 顧客續約 收益 轉介  延伸閱讀：從 AARRR 模型幫助對焦商業目標與設計策略</description>
     </item>
     
     

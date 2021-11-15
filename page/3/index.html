@@ -71,25 +71,6 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
-<h2>鐵人賽完賽整理&開源 (30)
-</h2>
-</header>
-<section class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day30)
-終於走到這一天了，每次都覺得鐵人賽過程都生不如死，但寫完30天候總有一種成就感，技術跟文章不難，難的是30天養成一個固定的習慣阿!
-回到第一天文章所講的：所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
-這次寫完30天也收穫良多，主要也是挑一些之前比較少碰的東西順便玩玩看
-把 Line 的 Api 文件又完整K了一遍，並一個一個寫成 .NET Core 的版本， 之前比較沒碰過的是 Line Pay/Line Beacon 寫得過程中看到 vue 海賊王版本推出 (vue 3.0)，起了專案實踐了一些功能，來看看它的架構 用了 Razor Page，讓我回到 ASP.NET WebForm 的復古感 玩了一些 Azure 服務，Azure Storage、QnA Maker，其中 Azure SignalR Service 是之前比較沒玩過的 把之前自己婚禮用的 chatbot 改一版，順便要給接下來結婚的朋友用 XD 真實的把所做的Side Project給用上 邊看文件邊寫SDK出來，並開源出來 本篇就來講講最後一哩路，怎麼發佈到 NuGet 上吧！
-我將這次系列邊走邊看得的程式稍作整理，建立一個 .NET Core 的函示庫專案
-在 VS 按右鍵套件
-或者可以使用CLI : dotnet pack
-編輯套件的資訊...</p>
-</section>
-<footer class=entry-footer>2020-10-14&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 鐵人賽完賽整理&開源 (30)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
 <h2>製作婚禮現場即時留言版- Azure SignalR Service II (29)
 </h2>
 </header>
@@ -101,7 +82,7 @@
 public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize("http://localhost:12733/message"); await hubClient.SendHubMessage("SendMessage", profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, "謝謝您，我們已收到留言"); } GetUserProfile
 public async Task&lt;UserProfile> GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), $"{lineMessageApiBaseUrl}/{userId}")) { request....</p>
 </section>
-<footer class=entry-footer>2020-10-13&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-29&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service II (29)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/></a>
 </article>
 <article class=post-entry>
@@ -121,7 +102,7 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
 在 Web Api 專案案右鍵，建立管理使用者密碼，
 建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上...</p>
 </section>
-<footer class=entry-footer>2020-10-12&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-28&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service I (28)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/></a>
 </article>
 <article class=post-entry>
@@ -140,7 +121,7 @@ public async Task&lt;Stream> GetContentBytesAsync(string messageId) { using (var
 可以透過 Nuget 安裝 Imgur.API
 public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient("&lt;Your Imgur ClientId>"); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint....</p>
 </section>
-<footer class=entry-footer>2020-10-11&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-27&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/></a>
 </article>
 <article class=post-entry>
@@ -156,8 +137,32 @@ Checkout 流程 官方API文件可以從這裡看到
 Request Body 的 C# Class
 public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&lt;Package> packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&lt;Product> products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } } 整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得...</p>
 </section>
-<footer class=entry-footer>2020-10-10&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-26&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 婚禮禮金用Line Pay II (26)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>婚禮禮金用Line Pay I (25)
+</h2>
+</header>
+<section class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day25)
+婚禮最麻煩的就是收禮金了吧，當天還有可能遇到跑錯棚的(本人親自遇到，後來還要退錢給他XD)，婚禮結束還要很辛苦的算鈔票，我一直在想未來有沒有可能都用電子支付，讓婚禮結束後不要扛那麼多的現金，不要花那麼多時間計算。本篇將以 Line 的 Sendbox 進行串接測試，要實際使用的話要先註冊成商家，並通過 Line 的審核。在 Sandbox 有很清楚的step by step 來說明如何串接
+註冊 Sandbox 至 https://pay.line.me/jp/developers/main/main?locale=zh_TW 註冊
+接著 Email 會收到測試的帳號
+接下來到商家後台，用上面的帳號密碼登入 (寫這篇文章的同時，email 裡面提供的商家後台連結不知道為什麼會出錯)，取得 client id與 client secret
+Razor Page 開發禮金表單 新增一個 Razor Page
+PaymentModel
+新增一個 Amount 屬性
+在 Razor 可以用 asp-for 來綁定 model
+表單驗證呢 ? 可以用 asp-validation-for
+asp-page-handler 可以在 .cs寫 function 驗證 model
+實作效果
+下一篇來繼續用 C# 來串 Line Pay ~
+懶人包，本次學到了什麼? Razor Page https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.1&tabs=visual-studio Add validation to an ASP....</p>
+</section>
+<footer class=entry-footer>2020-11-25&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 婚禮禮金用Line Pay I (25)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

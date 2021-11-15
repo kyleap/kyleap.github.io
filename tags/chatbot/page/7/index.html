@@ -88,7 +88,7 @@ OnMessageAsync 在前幾篇我們有介紹的OnMessageAsync，我們在這實作
 public interface IReplyIntent { Task ReplyAsync(string replyToken); } 接收文字
 protected virtual async Task OnMessageAsync(Event ev) { if (ev.message.Type.Equals(LineMessageType.text)) { // 完整比對使用者輸入的訊息，決定要回傳什麼 var msg = ev.message.Text; var intents = new Dictionary&lt;string, IReplyIntent>() { { "電子喜帖" ,new WeddingInvitation(lineMessageUtility,lineProfileUtility)}, { "Default" ,new DefaultIntent(lineMessageUtility,lineProfileUtility)}, }; var intent = intents....</p>
 </section>
-<footer class=entry-footer>2020-09-20&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-06&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 環保愛地球，回傳電子喜帖 (6)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-6/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -101,7 +101,7 @@ protected virtual async Task OnMessageAsync(Event ev) { if (ev.message.Type.Equa
 在 LineReplyMessageUtility.cs 擴充回傳貼圖 我們接續前一篇 LineReplyMessageUtility 這個類別再實作一個回覆貼圖的method
 public async Task ReplyStickerMessageAsync(string replyToken, string packageId, string stickerId) { using(var httpClient = new HttpClient()) { using(var request = new HttpRequestMessage(new HttpMethod("POST"), $ "{lineMessageApiBaseUrl}")) { request.Headers.TryAddWithoutValidation("Authorization", $ "Bearer {accessToken}"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new StickerMessage() { PackageId = packageId, StickerId = stickerId }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting....</p>
 </section>
-<footer class=entry-footer>2020-09-19&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-05&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 回傳不文謅謅的 Line 貼圖 (5)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -120,7 +120,7 @@ curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H 'Authorization: 
 轉換後如下：
 using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), "[https://api....</p>
 </section>
-<footer class=entry-footer>2020-09-18&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-04&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 回覆第一個Line的訊息-歡迎詞 (4)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -138,7 +138,7 @@ replyToken : 用來回覆該使用者的Token type：使用者傳送訊息的類
 結果會長這樣，通常我不會在一個 .cs 放多個類別，但為了文章好呈現故直接貼上來，拆一拆檔案的工也還好
 做點加工，把 Event 的 Type 一些文件改成 C# 的 Enum，讓開發更順暢，新增一個 WebhookEventType....</p>
 </section>
-<footer class=entry-footer>2020-09-17&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-03&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用.NET Core 接收Line的訊息事件 (3)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -155,7 +155,7 @@ https://developers.line.biz/en/
 透過 ngrok 讓 Line Server 跟 Local Web API 做連結
 安裝 node....</p>
 </section>
-<footer class=entry-footer>2020-09-16&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-02&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用.NET Core接收第一個Line訊息 (2)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/></a>
 </article>
 <footer class=page-footer>

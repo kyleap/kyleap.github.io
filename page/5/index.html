@@ -71,23 +71,6 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
-<h2>主動推播Line訊息給某個使用者(Push Message) (20)
-</h2>
-</header>
-<section class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
-在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
-準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID) 新增一個 .NET Core Console專案來發送
-官方的 Shell 範例
-一樣丟到 Curl To C# 做轉換，並做格式修改
-當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
-static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://api.line.me/v2/bot/message/multicast")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer &lt;Your Access Token>"); PushMessage req = new PushMessage(); req.to = new List&lt;string>() { "&lt;User Id>" }; req....</p>
-</section>
-<footer class=entry-footer>2020-10-04&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 主動推播Line訊息給某個使用者(Push Message) (20)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
 <h2>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)
 </h2>
 </header>
@@ -100,7 +83,7 @@ Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料�
 如何透過 SDK 新增 Azure Table
 public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net"; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount....</p>
 </section>
-<footer class=entry-footer>2020-10-03&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-19&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/></a>
 </article>
 <article class=post-entry>
@@ -119,7 +102,7 @@ https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
 如果不參加喜帖，相對的也不用填那麼多資訊了，這時可以透過 v-if or v-show 來實現，兩者差異為 v-if 會實際產生 dom，v-show 儘會顯示隱藏
 透過 VeeValidate 來做表單必填驗證，請注意 vue 3.0 要使用 VeeValidate 的 v4 版本...</p>
 </section>
-<footer class=entry-footer>2020-10-02&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/></a>
 </article>
 <article class=post-entry>
@@ -136,7 +119,7 @@ ngrok http &lt;your local vue.js port>-host-header=”localhost:&lt;your local v
 在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
 把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：...</p>
 </section>
-<footer class=entry-footer>2020-10-01&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-17&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 - 用 Vue.js 來實作 (17)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/></a>
 </article>
 <article class=post-entry>
@@ -155,8 +138,24 @@ Step 3 knowledge base 名稱
 Step 4 匯入資料集 (本次先跳過)
 開始瘋狂建題目吧！我們來試試建立：“新人怎麼認識的？” 回答我們設定 “我們是在打工餐廳認識的喔，那時的同事 put your hands up ??"，並點選Save And Train...</p>
 </section>
-<footer class=entry-footer>2020-09-30&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-16&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>切換 Line 的圖文選單 (15)
+</h2>
+</header>
+<section class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day15)
+在上一篇我們介紹如何設定圖文選單，本篇要來介紹如何切換圖文選單，此部分只能用程式來達成，在 Line Business 後台只能設定固定的圖文選單起訖日，有了這功能就可以像網站一樣有網站地圖的概念
+今天實作要將 chatbot 隨機切換不同的圖文選單，給使用者不同的體驗，今天的範例圖片在這 https://i.imgur.com/pupYvXr.jpg
+CreateRichMenuAsync
+原本預設的 Rich Menu 是寫在 SetDefaultRichMenuAsync，我們做點重構，讓Rich Menu 的物件是從外部傳入，因為我們現在要設定多個選單
+public async Task&lt;Richmenu> CreateRichMenuAsync(CreateRichmenu richmenu) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), lineMessageApiBaseUrl)) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); var postJson = JsonConvert.SerializeObject(richmenu, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } }); request.Content = new StringContent(postJson); request....</p>
+</section>
+<footer class=entry-footer>2020-11-15&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 切換 Line 的圖文選單 (15)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

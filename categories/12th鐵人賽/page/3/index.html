@@ -85,7 +85,7 @@
 當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
 static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://api.line.me/v2/bot/message/multicast")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer &lt;Your Access Token>"); PushMessage req = new PushMessage(); req.to = new List&lt;string>() { "&lt;User Id>" }; req....</p>
 </section>
-<footer class=entry-footer>2020-10-04&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-20&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 主動推播Line訊息給某個使用者(Push Message) (20)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -102,7 +102,7 @@ Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料�
 如何透過 SDK 新增 Azure Table
 public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net"; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount....</p>
 </section>
-<footer class=entry-footer>2020-10-03&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-19&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -121,7 +121,7 @@ https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
 如果不參加喜帖，相對的也不用填那麼多資訊了，這時可以透過 v-if or v-show 來實現，兩者差異為 v-if 會實際產生 dom，v-show 儘會顯示隱藏
 透過 VeeValidate 來做表單必填驗證，請注意 vue 3.0 要使用 VeeValidate 的 v4 版本...</p>
 </section>
-<footer class=entry-footer>2020-10-02&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -138,7 +138,7 @@ ngrok http &lt;your local vue.js port>-host-header=”localhost:&lt;your local v
 在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
 把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：...</p>
 </section>
-<footer class=entry-footer>2020-10-01&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-17&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 - 用 Vue.js 來實作 (17)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -157,7 +157,7 @@ Step 3 knowledge base 名稱
 Step 4 匯入資料集 (本次先跳過)
 開始瘋狂建題目吧！我們來試試建立：“新人怎麼認識的？” 回答我們設定 “我們是在打工餐廳認識的喔，那時的同事 put your hands up ??"，並點選Save And Train...</p>
 </section>
-<footer class=entry-footer>2020-09-30&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-16&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/></a>
 </article>
 <footer class=page-footer>

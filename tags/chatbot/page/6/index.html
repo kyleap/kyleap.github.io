@@ -88,7 +88,7 @@ https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&dat
 回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync
 public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), $"{lineMessageApiBaseUrl}")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); LineMessageReq req = new LineMessageReq(); req....</p>
 </section>
-<footer class=entry-footer>2020-09-25&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-11&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 設計師魂發作，改造電子喜帖 (11)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -104,7 +104,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
 public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List&lt;ColumnMultipleAction> columns) { Columns = columns; } public string Type => "carousel"; public List&lt;ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
 ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1....</p>
 </section>
-<footer class=entry-footer>2020-09-24&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-10&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 婚禮現場交通資訊一覽表 (10)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -121,7 +121,7 @@ Buttons Confirm Carousel Image carousel Template Message 發送的結構如下
 擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充
 public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), $"{lineMessageApiBaseUrl}")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert....</p>
 </section>
-<footer class=entry-footer>2020-09-23&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-09&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 來做一些婚紗輪播 (9)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -139,7 +139,7 @@ public class LocationMessage : IMessage { public LineMessageType Type => LineMes
 實作 WeddingLocation.cs
 public async Task ReplyAsync(string replyToken) { var locationName = "臺北文華東方酒店"; var msg = new TextMessage() { Text = $"我們在 {locationName} 舉辦唷!...</p>
 </section>
-<footer class=entry-footer>2020-09-22&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-08&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 一鍵導航婚宴地點辦在哪 (8)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -155,7 +155,7 @@ public class VideoMessage : IMessage { public LineMessageType Type => LineMessag
 實作內容
 public class WeddingTrailer : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public WeddingTrailer(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var imageMessage = new VideoMessage() { OriginalContentUrl = "https://i....</p>
 </section>
-<footer class=entry-footer>2020-09-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2020-11-07&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 有聲有色，傳送婚禮前導預告影片 (7)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-7/></a>
 </article>
 <footer class=page-footer>
