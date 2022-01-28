@@ -5,7 +5,7 @@
     <link>https://kyleap.github.io/</link>
     <description>Recent content on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Aug 2021 23:07:24 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Sep 2021 19:04:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Kyle Shen</title>
       <link>https://kyleap.github.io/kyleshen/</link>
@@ -15,8 +15,19 @@
       <description>一個跑進設計學院的工程師
  曾任 2014-2018 微軟最有價值專家 (Microsoft MVP)，期望能利用 IT力量改變世界。任職過軟體、教育、物流產業…等，依據不同產業的經驗，以使用者角度思維出發設計成可行性的資訊架構。與友人經營 Study4.TW 技術社群，定期舉辦各種領域的技術研討會，在團隊裡樂於分享技術，相信與人分享的同時，會自己能帶來更多。
 Linkedin : https://www.linkedin.com/in/kyleshen-net
- 演講經歷
-  2021 六角學院「大神來六角」 - 講師 (用 Line Bot 來打造 MVP 產品) 2020 .NET Conf 2020 - 講師 (用.NET Core 來開發.NET Conf 2020 Line活動機器人) 2020 微軟亞太技術年會 - DevDays Asia Online 講師 2019 Microsoft AI Day - 講師 2019 微軟亞太技術年會 - DevDays Asia講師 2019 ESH環安衛年度高峰會講師 2018 ESH環安衛年度高峰會講師 2018 Insider Dev Tour @ 台北 - 講師 (無伺服器架構與 Azure Functions) 2018 Azure Bootcamp @ 北京 - 講師 (快速建立Web服务 - 使用Azure Function) 2017 Study4.</description>
+ 線上課程
+  用 Python 快速打造 8 款 LINE Bot 生活助理 (https://hiskio.com/fundraising/602/about?s=tc) 活用 Line Bot + 商業思維打造 MVP 產品！ (https://hiskio.com/courses/588/about)   演講經歷
+  2021 .NET Conf Taiwan - 活動策劃小組 2021 MOPCON UnConf - 講師 (行動化解決方案的技術選型，交給 Line Bot 來搞定) 2021 六角學院「大神來六角」 - 講師 (用 Line Bot 來打造 MVP 產品) 2020 .NET Conf Taiwan - 講師 (用.</description>
+    </item>
+    
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle)</title>
+      <link>https://kyleap.github.io/posts/2021/2021-09-16-feature-flag-dotnet-core-basic/</link>
+      <pubDate>Thu, 16 Sep 2021 19:04:41 +0800</pubDate>
+      
+      <guid>https://kyleap.github.io/posts/2021/2021-09-16-feature-flag-dotnet-core-basic/</guid>
+      <description>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
+ Nuget 安裝  dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle  public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c =&amp;gt; { c.SwaggerDoc(&amp;quot;v1&amp;quot;, new OpenApiInfo {Title = &amp;quot;FeatureFlagPoc.API&amp;quot;, Version = &amp;quot;v1&amp;quot;}); }); } 要使用時直接注入  private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&amp;lt;WeatherForecastController&amp;gt; logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用  var isFeatureAEnabled = await _featureManager.</description>
     </item>
     
     <item>
