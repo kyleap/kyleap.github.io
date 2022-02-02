@@ -5,7 +5,17 @@
     <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</link>
     <description>Recent content in 凱爾打扣 on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Aug 2021 23:07:24 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Sep 2021 20:06:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
+      <pubDate>Fri, 17 Sep 2021 20:06:41 +0800</pubDate>
+      
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
+      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
+ appsettings.json  &amp;quot;FeatureManagement&amp;quot;: { &amp;quot;FeatureB&amp;quot;: { &amp;quot;EnabledFor&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Microsoft.TimeWindow&amp;quot;, &amp;quot;Parameters&amp;quot;: { &amp;quot;Start&amp;quot;: &amp;quot;2020-11-09 04:58:00Z&amp;quot;, &amp;quot;End&amp;quot;: &amp;quot;2099-11-09 05:00:00Z&amp;quot; } } ] } } 基本的 Feature Toggle 使用  var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;quot;FeatureA&amp;quot;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404  [FeatureGate(&amp;quot;FeatureA&amp;quot;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開  [FeatureGate(requirementType: RequirementType.Any, &amp;quot;FeatureA&amp;quot;, &amp;quot;FeatureB&amp;quot;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo  [FeatureGate(MyFeatureFlags.</description>
+    </item>
+    
     <item>
       <title>將 Line Liff App 發佈到免費的 Azure Static Web App</title>
       <link>https://kyleap.github.io/liff-app-deploy-azure-static-web/</link>

@@ -5,7 +5,16 @@
     <link>https://kyleap.github.io/tags/</link>
     <description>Recent content in Tags on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 17 Aug 2021 23:07:24 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Sep 2021 20:06:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>.NET</title>
+      <link>https://kyleap.github.io/tags/.net/</link>
+      <pubDate>Fri, 17 Sep 2021 20:06:41 +0800</pubDate>
+      
+      <guid>https://kyleap.github.io/tags/.net/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Chatbot</title>
       <link>https://kyleap.github.io/tags/chatbot/</link>
