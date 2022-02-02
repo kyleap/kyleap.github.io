@@ -85,6 +85,18 @@
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制
+</h2>
+</header>
+<section class=entry-content>
+<p>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
+appsettings.json "FeatureManagement": { "FeatureB": { "EnabledFor": [ { "Name": "Microsoft.TimeWindow", "Parameters": { "Start": "2020-11-09 04:58:00Z", "End": "2099-11-09 05:00:00Z" } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync("FeatureA"); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate("FeatureA")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, "FeatureA", "FeatureB")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags....</p>
+</section>
+<footer class=entry-footer>2021-09-17&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>在 .NET Core 使用 Feature Flag (Feature Toggle)
 </h2>
 </header>
@@ -93,7 +105,7 @@
 Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "FeatureFlagPoc.API", Version = "v1"}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&lt;WeatherForecastController> logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager....</p>
 </section>
 <footer class=entry-footer>2021-09-16&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/posts/2021/2021-09-16-feature-flag-dotnet-core-basic/></a>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic/></a>
 </article>
 <article class=post-entry>
 <header class=entry-header>
@@ -136,22 +148,6 @@ Demo Flex 範例 { "type": "bubble", "body": { "type": "box", "layout": "vertica
 </section>
 <footer class=entry-footer>2021-07-11&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Flex Message 傳送動畫訊息，讓訊息更生動" href=https://kyleap.github.io/2021-07-11-line-flex-message-animation/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Line RichMenu 設定與切換，以 NET 5 為例
-</h2>
-</header>
-<section class=entry-content>
-<p>Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
-你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
-但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
-新增一個選單 上傳該選單的圖檔 我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
-方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
-那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面...</p>
-</section>
-<footer class=entry-footer>2021-07-08&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to Line RichMenu 設定與切換，以 NET 5 為例" href=https://kyleap.github.io/2021-07-08-line-rich-menu-switch/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

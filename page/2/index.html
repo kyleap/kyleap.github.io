@@ -71,6 +71,22 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Line RichMenu 設定與切換，以 NET 5 為例
+</h2>
+</header>
+<section class=entry-content>
+<p>Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
+你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
+但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
+新增一個選單 上傳該選單的圖檔 我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
+方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
+那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面...</p>
+</section>
+<footer class=entry-footer>2021-07-08&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line RichMenu 設定與切換，以 NET 5 為例" href=https://kyleap.github.io/2021-07-08-line-rich-menu-switch/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>用 BeefText 來減少常輸入的文字，增加工作效率
 </h2>
 </header>
@@ -131,25 +147,6 @@ Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.
 </section>
 <footer class=entry-footer>2021-05-23&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 不用寫程式，Line URL Scheme 應用整理" href=https://kyleap.github.io/play-with-line-url-scheme/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>(啃書) Chatbot從0到1
-</h2>
-</header>
-<section class=entry-content>
-<p>啃書代表是在閱讀時，針對自己有幫助的片段，做反思與紀錄，如想閱讀完整知識建議還是購買完整書籍 :P
-always center.
-Chatbot 的機會與未來 近年來 Chatbot 技術興起，使用者下載App意願降低，加上各大平台也開始推出聊天機器人Api串接，開始越來越多應用出現，交互介面已經從傳統的App點擊互動，轉變為對話互動，也因為 Chatbot 依附在各大平台上 e.g Line/Facebook…等，推廣上也較容易，再加上自然語言分析技術日漸成熟，越來越多的AI服務可以應用，可以想像成百上千的 App 會逐漸轉為 Chatbot。
-在設計 Chatbot 時，要時刻記得對話交互是手段而非目的，要通過最簡單的互動方式讓使用者獲取服務，而最簡單的交付方式不一定要用對話，這時就能透過圖形化介面與人工接入流程來替使用者完成目標，且應該時時刻刻去觀察使用者的心理變化，觀察上下文，是否造成迷路，觀察對話節奏是否合理，逐步的調教與優化流程，讓重複性的任務交給Bot引導來完成。本書提出軟體開發的生命週期，提供給產品設計師在規劃 Chatbot 產品時一個指南。
-思考一下產品定位，定義產品邊界 Chatobt 的應用情境大概可以分為開放領域 (open-domain) 或封閉領域 (closed-domain) 兩大類，開放式大概沒有限定主題，像Google助理或者 Siri 這種問什麼都自由對話，這實踐起來也較困難，而封閉式通常會限縮在一定的場景下，也就是 Chatbot 的輸入輸出是有限的，譬如訂位為在線客服/教育/個人助理，跟這幾個任務無關的事項，就引導客戶能目前能完成什麼事情，僅針對該領域，結合商業.產品.運營，針對領域場景優化交互內容。
-以應用市場角度來看，可以將 Chatbot 定為四類:
-陪伴型: 自由回答，譬如兒童陪伴類的Bot 商務型: 協助企業完成商業任務Bot，譬如 Github 推出 Hubot 來完成跟 DevOps 有關的相關任務 資訊型: 讓使用者獲取新聞類的訊息，譬如疾管家 指令型: 透過指令來讓Bot完成一些任務，譬如串接智能家電打開電燈/電視 在設計 Chatbot 前，先思考一下產品定位，把商務型的bot對話設計成像陪伴型，只會讓人感覺到這個Bot很不智能，什麼都不會，造成極差的使用者體驗
-流程設計應專注在完成商業目標及幫助使用者完成任務 影響網站成功的應用程式都有一個共同點，卓越的使用者體驗，Chatbot 可透過以下因素來評估
-如何用最少的步驟解決使使用者問題? 能比其他方式更好解決使用者問題? 能否在使用者習慣的平台上運行 用戶獲取 Chatbot 的途徑是否方便 用戶能無門檻的使用 Chatbot 在進開發前，可透過以下的步驟來收斂需求：先有大量的對話腳本，再來繪製流程圖，Chatbot 常見的技術名詞有意圖 (intent) 及 實體 (entity)，繪製流程圖避免將意圖跟對話混在一起思考，因對話存在多種可能，故不能只考慮核心場景，故可從對話腳本裡面確定場景與優先及拆出意圖跟實體，e....</p>
-</section>
-<footer class=entry-footer>2021-05-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to (啃書) Chatbot從0到1" href=https://kyleap.github.io/chatbot-zero-to-one/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

@@ -74,6 +74,22 @@
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>婚禮禮金用Line Pay II (26)
+</h2>
+</header>
+<section class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day26)
+以下是 Line 官方文件的流程，今天會依據這個圖的流程來實作 Line Pay 付款
+https://pay.line.me/jp/developers/apis/onlineApis?locale=zh_TW
+Checkout 流程 官方API文件可以從這裡看到
+Request Body 的 C# Class
+public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&lt;Package> packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&lt;Product> products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } } 整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得...</p>
+</section>
+<footer class=entry-footer>2020-11-26&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 婚禮禮金用Line Pay II (26)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>婚禮禮金用Line Pay I (25)
 </h2>
 </header>
@@ -160,28 +176,6 @@ Razor Page 對我來講好有復古的感覺，彷彿回到 WebForm 的時代…
 </section>
 <footer class=entry-footer>2020-11-22&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用QR Code來搞報到 - Razor Page實做 I (22)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-22/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>當有人報名的時候接收通知 (Line Notify) (21)
-</h2>
-</header>
-<section class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day21)
-上一篇介紹如何主動式推播給使用者訊息，但Push Message發送到一定的量是要收費的，Line Notify是另一種主動式推播的解決方案，且是免費的，缺點就是收到訊息時候，不會顯示是從本身Chatbot的角度，而是Line的Chatbot，要發送Notify訊息，大概需要做以下事情，缺一不可
-註冊 Line Notify 服務 取得 client_id 取得 client_secret 取得驗證的 code 透過第2-4項取得 access token 註冊 Line Notify 服務 LINE Notify
-透過 ngrok http 8888 取得一個local的對外站台，貼到 Callback URL
-接著會驗證 Email，驗證通過後可以進到這個 Service
-Client ID 跟 Client Secret 取得了
-接著可以透過下列網址訂閱服務
-[https://notify-bot.line.me/oauth/authorize?response_type=code&scope=notify&response_mode=form_post&client_id=](https://notify-bot.line.me/oauth/authorize?response_type=code&scope=notify&response_mode=form_post&client_id=)&lt;client_id>&redirect_uri=&lt;client_secret>/&state=&lt;驗證身分代碼，任意給> 可以看到可以從這個頁面綁定
-Line 會收到一個通知
-到我們剛剛 ngrok 的後台看看 (http://127.0.0.1:4040)，有接收到這個 Request，取得加密後的 code
-用剛剛取得的這三個資訊來取得 access token
-public static async Task&lt;string> GetAccessToken() { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://notify-bot....</p>
-</section>
-<footer class=entry-footer>2020-11-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 當有人報名的時候接收通知 (Line Notify) (21)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
