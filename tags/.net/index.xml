@@ -5,7 +5,18 @@
     <link>https://kyleap.github.io/tags/.net/</link>
     <description>Recent content in .NET on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 17 Sep 2021 20:06:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/tags/.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Sep 2021 22:32:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/tags/.net/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
+      <pubDate>Sat, 18 Sep 2021 22:32:41 +0800</pubDate>
+      
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
+      <description>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
+ appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
+ &amp;quot;FeatureManagement&amp;quot;: { &amp;quot;FeatureA&amp;quot;: { &amp;quot;EnabledFor&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Microsoft.Targeting&amp;quot;, &amp;quot;Parameters&amp;quot;: { &amp;quot;Audience&amp;quot;: { &amp;quot;Users&amp;quot;: [ &amp;quot;1948fcc1-dc03-44a6-824f-fb48166ffa9d&amp;quot; ], &amp;quot;Group&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Group1&amp;quot;, &amp;quot;RolloutPercentage&amp;quot;: 80 }, { &amp;quot;Name&amp;quot;: &amp;quot;Group2&amp;quot; } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &amp;quot;TestTargetingContextAccessor.TargetingContext&amp;quot;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?</description>
+    </item>
+    
     <item>
       <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
       <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>

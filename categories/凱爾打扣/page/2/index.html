@@ -73,6 +73,22 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>Line RichMenu 設定與切換，以 NET 5 為例
+</h2>
+</header>
+<section class=entry-content>
+<p>Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
+你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
+但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
+新增一個選單 上傳該選單的圖檔 我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
+方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
+那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面...</p>
+</section>
+<footer class=entry-footer>2021-07-08&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line RichMenu 設定與切換，以 NET 5 為例" href=https://kyleap.github.io/2021-07-08-line-rich-menu-switch/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>用 BeefText 來減少常輸入的文字，增加工作效率
 </h2>
 </header>

@@ -73,6 +73,19 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)
+</h2>
+</header>
+<section class=entry-content>
+<p>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
+appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
+"FeatureManagement": { "FeatureA": { "EnabledFor": [ { "Name": "Microsoft.Targeting", "Parameters": { "Audience": { "Users": [ "1948fcc1-dc03-44a6-824f-fb48166ffa9d" ], "Group": [ { "Name": "Group1", "RolloutPercentage": 80 }, { "Name": "Group2" } ] } } } ] } } 實作 ITargetingContextAccessor public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = "TestTargetingContextAccessor.TargetingContext"; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?...</p>
+</section>
+<footer class=entry-footer>2021-09-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制
 </h2>
 </header>

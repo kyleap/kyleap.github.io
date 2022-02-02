@@ -71,6 +71,22 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>有聲有色，傳送婚禮前導預告影片 (7)
+</h2>
+</header>
+<section class=entry-content>
+<p>上一篇我們用 ImageMessage 來傳送圖片，這一篇我們要來實作傳送婚禮的前導預告片 (回想起來那時候我怎麼那麼閒XD )，我當時自己是從淘寶買一些婚禮的影片範本，買回來用 Adobe Effect 來改，或者是網路上可能會有一些免費的 template 也是可以拿來應用
+上傳 Video Line VideoMessage 一樣要透過URL來發送，我們一樣傳到 Imgur，就能產生一個網址，這是我當時所購買的影片範本 https://i.imgur.com/n8QsXTk.mp4
+定義 VideoMessage.cs
+public class VideoMessage : IMessage { public LineMessageType Type => LineMessageType.video; public string OriginalContentUrl { get; set; } public string PreviewImageUrl { get; set; } } 一樣在 OnMessageAsync 增加一個 前導影片 的實作
+實作內容
+public class WeddingTrailer : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public WeddingTrailer(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var imageMessage = new VideoMessage() { OriginalContentUrl = "https://i....</p>
+</section>
+<footer class=entry-footer>2020-11-07&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 有聲有色，傳送婚禮前導預告影片 (7)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-7/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>環保愛地球，回傳電子喜帖 (6)
 </h2>
 </header>
@@ -138,23 +154,6 @@ replyToken : 用來回覆該使用者的Token type：使用者傳送訊息的類
 </section>
 <footer class=entry-footer>2020-11-03&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用.NET Core 接收Line的訊息事件 (3)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>用.NET Core接收第一個Line訊息 (2)
-</h2>
-</header>
-<section class=entry-content>
-<p>基本設定 關於如何註冊一個串接自己Web Api 的 Line Chatbot 網路上已經很多的教學文了，大概分為以下幾個步驟
-https://developers.line.biz/en/
-申請一個Provider 申請一個Channel (一個Provider可以有多個Channel) 於Channel取得 Channel Secret 及 Access Token Use webhook 啟用 Auto-reply messages 關閉 設定 Webhook URL (需為https) 起始 Web API 專案與 Line Server 做連結 建立一個 .NET Core 3.1 的 Web Api 專案
-建立一個 Line Controller，先用 dynamic 接收，看看 Request 過來的是什麼
-執行看看，weatherforecast 為初始專案的 Sample，此Local Api 的 Port 為 44300
-透過 ngrok 讓 Line Server 跟 Local Web API 做連結
-安裝 node....</p>
-</section>
-<footer class=entry-footer>2020-11-02&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 用.NET Core接收第一個Line訊息 (2)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

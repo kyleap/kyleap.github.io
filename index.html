@@ -85,6 +85,19 @@
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)
+</h2>
+</header>
+<section class=entry-content>
+<p>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
+appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
+"FeatureManagement": { "FeatureA": { "EnabledFor": [ { "Name": "Microsoft.Targeting", "Parameters": { "Audience": { "Users": [ "1948fcc1-dc03-44a6-824f-fb48166ffa9d" ], "Group": [ { "Name": "Group1", "RolloutPercentage": 80 }, { "Name": "Group2" } ] } } } ] } } 實作 ITargetingContextAccessor public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = "TestTargetingContextAccessor.TargetingContext"; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?...</p>
+</section>
+<footer class=entry-footer>2021-09-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制
 </h2>
 </header>
@@ -132,22 +145,6 @@ Azure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，
 </section>
 <footer class=entry-footer>2021-07-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Message Api Postman Collections" href=https://kyleap.github.io/line-message-api-postman-collections/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Line Flex Message 傳送動畫訊息，讓訊息更生動
-</h2>
-</header>
-<section class=entry-content>
-<p>Flex Message 是 Line 透過 JSON 格式所實現的動態訊息，可以組出各種訊息格式，且比起 Template Message，Flex Message 也支援 Line 電腦版，故現在在寫 Line Bot 的時候，第一考量就會用 Flex 來自訂一些較特別的訊息，官網提供兩個 GUI 工具來快速拉 Flex 的訊息：
-Bot Designer Flex Simulator 我自己比較常用是第二個，官網已經很多的範本提供套入
-且目前支援很方便的功能，可以直接發到手機裝置瀏覽結果
-在 Flex 的 image 類型是可支援放入 .APNG 格式圖片的動畫，透過以下網站可以將 Git 轉成 .APNG 格式
-https://ezgif.com/gif-to-apng
-Demo Flex 範例 { "type": "bubble", "body": { "type": "box", "layout": "vertical", "contents": [ { "type": "image", "url": "https://apng.onevcat.com/assets/elephant.png", "size": "full", "aspectMode": "cover", "aspectRatio": "1:1", "gravity": "center" }, { "type": "box", "layout": "vertical", "contents": [], "position": "absolute", "background": { "type": "linearGradient", "angle": "0deg", "endColor": "#00000000", "startColor": "#00000099" }, "width": "100%", "height": "40%", "offsetBottom": "0px", "offsetStart": "0px", "offsetEnd": "0px" }, { "type": "box", "layout": "horizontal", "contents": [ { "type": "box", "layout": "vertical", "contents": [ { "type": "box", "layout": "horizontal", "contents": [ { "type": "text", "text": "APNG Demo", "size": "xl", "color": "#ffffff" } ] } ], "spacing": "xs" } ], "position": "absolute", "offsetBottom": "0px", "offsetStart": "0px", "offsetEnd": "0px", "paddingAll": "20px" } ], "paddingAll": "0px" } } –...</p>
-</section>
-<footer class=entry-footer>2021-07-11&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to Line Flex Message 傳送動畫訊息，讓訊息更生動" href=https://kyleap.github.io/2021-07-11-line-flex-message-animation/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
