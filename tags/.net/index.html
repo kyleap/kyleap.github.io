@@ -60,6 +60,11 @@
 </a>
 </li>
 <li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
 <a href=https://kyleap.github.io/tags/ title=tags>
 <span>tags</span>
 </a>
@@ -73,6 +78,18 @@
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯
+</h2>
+</header>
+<section class=entry-content>
+<p>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
+實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案 [FilterAlias("Browser")] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task&lt;bool> EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get&lt;BrowserFilterSettings>(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult&lt;bool>(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能) "FeatureManagement": { "FeatureA": { "EnabledFor": [ { "Name": "Browser", "Parameters": { "Allowed": [ "Edg" ] } } ] } } startup 注入 services....</p>
+</section>
+<footer class=entry-footer>2021-12-09&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)
 </h2>
 </header>
@@ -81,8 +98,20 @@
 appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
 "FeatureManagement": { "FeatureA": { "EnabledFor": [ { "Name": "Microsoft.Targeting", "Parameters": { "Audience": { "Users": [ "1948fcc1-dc03-44a6-824f-fb48166ffa9d" ], "Group": [ { "Name": "Group1", "RolloutPercentage": 80 }, { "Name": "Group2" } ] } } } ] } } 實作 ITargetingContextAccessor public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = "TestTargetingContextAccessor.TargetingContext"; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?...</p>
 </section>
-<footer class=entry-footer>2021-09-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2021-12-08&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle)
+</h2>
+</header>
+<section class=entry-content>
+<p>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
+Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "FeatureFlagPoc.API", Version = "v1"}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&lt;WeatherForecastController> logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager....</p>
+</section>
+<footer class=entry-footer>2021-12-07&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic/></a>
 </article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
@@ -93,7 +122,7 @@ appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為�
 <p>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
 appsettings.json "FeatureManagement": { "FeatureB": { "EnabledFor": [ { "Name": "Microsoft.TimeWindow", "Parameters": { "Start": "2020-11-09 04:58:00Z", "End": "2099-11-09 05:00:00Z" } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync("FeatureA"); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate("FeatureA")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, "FeatureA", "FeatureB")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags....</p>
 </section>
-<footer class=entry-footer>2021-09-17&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer>2021-12-07&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/></a>
 </article>
 </main>

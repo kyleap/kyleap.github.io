@@ -61,6 +61,11 @@
 </a>
 </li>
 <li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
 <a href=https://kyleap.github.io/tags/ title=tags>
 <span>tags</span>
 </a>
@@ -72,6 +77,29 @@
 <header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a></div>
 <h1>Posts</h1>
 </header>
+<article class=post-entry>
+<header class=entry-header>
+<h2>用QR Code來搞報到 — Razor Page實做 II (23)
+</h2>
+</header>
+<section class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day23)
+在上一篇我們實作了Liff App 的 QR Code 掃瞄功能後，我們要來將這個值傳到後端完成報到的動作
+在 Razor Page 一樣可以跟以往一樣把一些共用的 Template 抽出來，譬如 _Layout，一個蘿蔔一個坑，在有用到此 Template 最終就會 Render 在這些所埋的坑裡面
+_Layout.cshtml
+QrCode.cshtml
+今晚我想來點jQuery，預設 Razor Page 有載入 jQuery，我們直接用 jQuery Ajax 來跟後端溝通
+QrCode Api 的內容，其實就是前幾篇講的，針對 Azure Table 的操作
+實作畫面
+https://imgur.com/5qsSzRN
+懶人包，本次學到了什麼? Razor 的 RenderBody() vs RenderSection() http://coding.anyun.tw/2012/02/19/razor-learning-renderbody-renderpartial-and-rendersection/
+jQuery Ajax https://api.jquery.com/jquery.ajax/
+如何新增/編輯一個結構化的 Azure Table 資料 https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+</p>
+</section>
+<footer class=entry-footer>2020-11-23&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 用QR Code來搞報到 — Razor Page實做 II (23)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>用QR Code來搞報到 - Razor Page實做 I (22)
@@ -148,25 +176,6 @@ public static CloudTable CreateTableAsync(string tableName) { string storageConn
 </section>
 <footer class=entry-footer>2020-11-19&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)
-</h2>
-</header>
-<section class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day18)
-在上一篇我們成功將 chatbot 透過 Liff App 後，跟所開發網站有一些連結後，本篇我們將要來實作前端的報名表單
-本篇實作內容放在這個 Git Repo：
-https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
-本篇將會學到：
-如何起始 vue-next (v3.0) 專案 如何在 vue.js 加入 Line Liff App，並取得使用者資訊 如何在 vue 做一個報名表單 怎麼依據使用者選取條件來顯示隱藏表單內容 在 vue 如何做表單驗證 Vue.js 的表單 本次範例用了 Google 風格的 CSS 框架 Materialize，使得我們的表單比較像 Google Form 的風格，在 index.html 加入相關 css/javascript CDN
-原始碼可以至 Github 看，實作的 UI 大概長這樣
-如果不參加喜帖，相對的也不用填那麼多資訊了，這時可以透過 v-if or v-show 來實現，兩者差異為 v-if 會實際產生 dom，v-show 儘會顯示隱藏
-透過 VeeValidate 來做表單必填驗證，請注意 vue 3.0 要使用 VeeValidate 的 v4 版本...</p>
-</section>
-<footer class=entry-footer>2020-11-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

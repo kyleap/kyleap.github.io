@@ -5,11 +5,21 @@
     <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</link>
     <description>Recent content in 凱爾打扣 on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 Sep 2021 22:32:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Dec 2021 21:30:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
+      <pubDate>Thu, 09 Dec 2021 21:30:41 +0800</pubDate>
+      
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
+      <description>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
+ 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(&amp;quot;Browser&amp;quot;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task&amp;lt;bool&amp;gt; EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[&amp;quot;User-Agent&amp;quot;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get&amp;lt;BrowserFilterSettings&amp;gt;(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult&amp;lt;bool&amp;gt;(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  &amp;quot;FeatureManagement&amp;quot;: { &amp;quot;FeatureA&amp;quot;: { &amp;quot;EnabledFor&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Browser&amp;quot;, &amp;quot;Parameters&amp;quot;: { &amp;quot;Allowed&amp;quot;: [ &amp;quot;Edg&amp;quot; ] } } ] } } startup 注入  services.</description>
+    </item>
+    
     <item>
       <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)</title>
       <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
-      <pubDate>Sat, 18 Sep 2021 22:32:41 +0800</pubDate>
+      <pubDate>Wed, 08 Dec 2021 22:32:41 +0800</pubDate>
       
       <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
       <description>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
@@ -18,9 +28,19 @@
     </item>
     
     <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle)</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic/</link>
+      <pubDate>Tue, 07 Dec 2021 21:54:41 +0800</pubDate>
+      
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic/</guid>
+      <description>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
+ Nuget 安裝  dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle  public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c =&amp;gt; { c.SwaggerDoc(&amp;quot;v1&amp;quot;, new OpenApiInfo {Title = &amp;quot;FeatureFlagPoc.API&amp;quot;, Version = &amp;quot;v1&amp;quot;}); }); } 要使用時直接注入  private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&amp;lt;WeatherForecastController&amp;gt; logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用  var isFeatureAEnabled = await _featureManager.</description>
+    </item>
+    
+    <item>
       <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
       <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
-      <pubDate>Fri, 17 Sep 2021 20:06:41 +0800</pubDate>
+      <pubDate>Tue, 07 Dec 2021 20:06:41 +0800</pubDate>
       
       <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
       <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow

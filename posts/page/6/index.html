@@ -61,6 +61,11 @@
 </a>
 </li>
 <li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
 <a href=https://kyleap.github.io/tags/ title=tags>
 <span>tags</span>
 </a>
@@ -72,6 +77,25 @@
 <header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a></div>
 <h1>Posts</h1>
 </header>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)
+</h2>
+</header>
+<section class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day18)
+在上一篇我們成功將 chatbot 透過 Liff App 後，跟所開發網站有一些連結後，本篇我們將要來實作前端的報名表單
+本篇實作內容放在這個 Git Repo：
+https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
+本篇將會學到：
+如何起始 vue-next (v3.0) 專案 如何在 vue.js 加入 Line Liff App，並取得使用者資訊 如何在 vue 做一個報名表單 怎麼依據使用者選取條件來顯示隱藏表單內容 在 vue 如何做表單驗證 Vue.js 的表單 本次範例用了 Google 風格的 CSS 框架 Materialize，使得我們的表單比較像 Google Form 的風格，在 index.html 加入相關 css/javascript CDN
+原始碼可以至 Github 看，實作的 UI 大概長這樣
+如果不參加喜帖，相對的也不用填那麼多資訊了，這時可以透過 v-if or v-show 來實現，兩者差異為 v-if 會實際產生 dom，v-show 儘會顯示隱藏
+透過 VeeValidate 來做表單必填驗證，請注意 vue 3.0 要使用 VeeValidate 的 v4 版本...</p>
+</section>
+<footer class=entry-footer>2020-11-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>Line Liff App v2 - 用 Vue.js 來實作 (17)
@@ -143,23 +167,6 @@ Get rich menu list：取得此 chatbot 已註冊的 Rich Menu 清單 Upload rich
 </section>
 <footer class=entry-footer>2020-11-14&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line 的圖文選單 (14)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-14/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)
-</h2>
-</header>
-<section class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day13)
-Chatbot 有分為兩種類型，一個是任務型導向，另一個是聊天型導向，聊天型導向最典型的就是 Siri，講什麼他都會回答你，這背後所支撐的是海量數據訓練出來的，在我們設計應用 Chatbot 時，多半會偏向任務型導向，使用者用你的 Chatbot 不是要跟你聊天，是要快速的用你這服務達到任務，所以在設計時，如果定位 Chatbot 是 “人” ，是非常可怕的設計，只會降低使用者的觀感。
-在設計 Line Chatbot 時，如果使用者在對話過程中迷路了，不妨設計一些快捷鍵引導到他的目標吧，這個在 Line 裡面實作叫 Quick Reply，我們今天將做在無法辨識使用者的意圖時，回傳一些引導的快捷鍵
-IntenFactory.cs
-之前有設定一個 DefaultIntent.cs 我們將修改這個實作
-當聽不懂的時候 回傳三個快捷鍵
-public async Task ReplyAsync(string replyToken) { if (!string.IsNullOrEmpty(replyText)) { await lineMessageUtility.ReplyMessageAsync(replyToken, replyText); } else { // 回傳歡迎詞 var unknow = new TextMessage() { Text = $@"不好意思，我不太清楚您的意思，或許你可以用下列快速鍵 (僅支援手機)" }; // Quick Reply unknow.QuickReply = new QuickReply(); unknow.QuickReply.Items.Add(new QuickReplyItem() { action = new MessageAction("電子喜帖"), }); unknow....</p>
-</section>
-<footer class=entry-footer>2020-11-13&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

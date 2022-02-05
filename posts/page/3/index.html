@@ -61,6 +61,11 @@
 </a>
 </li>
 <li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
 <a href=https://kyleap.github.io/tags/ title=tags>
 <span>tags</span>
 </a>
@@ -72,6 +77,20 @@
 <header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a></div>
 <h1>Posts</h1>
 </header>
+<article class=post-entry>
+<header class=entry-header>
+<h2>利用 AzCopy 來將 Azure Blob Container 所有檔案移轉至另一個 Blob Container
+</h2>
+</header>
+<section class=entry-content>
+<p>之前也一個需求是需要將一個Blob移轉至另一個另一個訂閱，但不太可能一個一個搬或重新上傳，透過 AzCopy 就可以一鍵完成這件事，且搬移的效能也蠻快的
+AzureCopy 可以在這邊下載 https://docs.microsoft.com/zh-tw/azure/storage/common/storage-use-azcopy-v10
+azcopy copy &lt;source> &lt;destination> --recursive --overwrite false source: https://.blob.core.windows.net/ destination: 可以在 Azure Portal 取得，需要產生一個可以存取的 Access Signature recursive: 是否要遞迴去抓更多資料夾底下的檔案，有時候檔案階層會是 files/aaa/file.txt overwrite: false 表示檔案已存在就忽略 在Azure Portal 取得 Access Signature
+– References https://docs.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy?toc=/azure/storage/blobs/toc.json</p>
+</section>
+<footer class=entry-footer>2021-06-03&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 利用 AzCopy 來將 Azure Blob Container 所有檔案移轉至另一個 Blob Container" href=https://kyleap.github.io/azure-copy-to-blob-container/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>不用寫程式，Line URL Scheme 應用整理
@@ -141,26 +160,6 @@ public async Task&lt;UserProfile> GetUserProfile(string userId) { using (var htt
 </section>
 <footer class=entry-footer>2020-11-29&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service II (29)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>製作婚禮現場即時留言版- Azure SignalR Service I (28)
-</h2>
-</header>
-<section class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
-SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
-https://www.pubnub.com/learn/glossary/what-is-signalr/
-而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容
-建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
-建完後，到key的選單，我們等等需要這個 Connection String
-建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼
-&lt;ItemGroup> &lt;DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" /> &lt;DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" /> &lt;/ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
-在 Web Api 專案案右鍵，建立管理使用者密碼，
-建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上...</p>
-</section>
-<footer class=entry-footer>2020-11-28&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service I (28)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

@@ -19,6 +19,7 @@
 <meta name=msapplication-TileColor content="#2e2e33">
 <meta name=generator content="Hugo 0.92.1">
 <link rel=alternate type=application/rss+xml href=https://kyleap.github.io/index.xml>
+<link rel=alternate type=application/json href=https://kyleap.github.io/index.json>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 </noscript>
@@ -61,6 +62,11 @@
 </a>
 </li>
 <li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
 <a href=https://kyleap.github.io/tags/ title=tags>
 <span>tags</span>
 </a>
@@ -69,6 +75,24 @@
 </nav>
 </header>
 <main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>用.NET Core 接收Line的訊息事件 (3)
+</h2>
+</header>
+<section class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day3)
+先來看看文件 在 Line 的文件裡有定義 Webhook Event Objects 傳過來的 JSON 的結構
+可以看到它會傳一個 events 過來，裡面包含幾個 properties
+replyToken : 用來回覆該使用者的Token type：使用者傳送訊息的類型 (message/video/sticker…) mode: Channel是否有效 source:使用者/群組的資訊 … 以上都可以從上方的文件去查看 properties 的用途
+將 Line Event Request 轉成 C# Class 在上一篇我們 Web Api 是用 dynamic 來接收 Request，在VS有個功能是很快的把 JSON 結構轉成 C# 的 Class，這個技巧在串接異質 Api 蠻常用的，或者是可以用 json2csharp.com 這種服務來處理。
+複製官方的JSON Sample，在 VS 點選編輯 => 選擇性貼上 => 貼上 JSON
+結果會長這樣，通常我不會在一個 .cs 放多個類別，但為了文章好呈現故直接貼上來，拆一拆檔案的工也還好
+做點加工，把 Event 的 Type 一些文件改成 C# 的 Enum，讓開發更順暢，新增一個 WebhookEventType....</p>
+</section>
+<footer class=entry-footer>2020-11-03&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 用.NET Core 接收Line的訊息事件 (3)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/></a>
+</article>
 <article class=post-entry>
 <header class=entry-header>
 <h2>用.NET Core接收第一個Line訊息 (2)

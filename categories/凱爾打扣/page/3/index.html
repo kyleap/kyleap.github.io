@@ -3,11 +3,11 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
-<title>Chatbot | Kyle Studio</title>
+<title>凱爾打扣 | Kyle Studio</title>
 <meta name=keywords content>
 <meta name=description content="Kyle Studio | Share your knowledge. It’s a way to achieve immortality.">
 <meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/tags/chatbot/>
+<link rel=canonical href=https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/>
 <meta name=google-site-verification content="XYZabc">
 <link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://kyleap.github.io/favicon.ico>
@@ -18,18 +18,18 @@
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
 <meta name=generator content="Hugo 0.92.1">
-<link rel=alternate type=application/rss+xml href=https://kyleap.github.io/tags/chatbot/index.xml>
+<link rel=alternate type=application/rss+xml href=https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 </noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="Chatbot">
+<meta property="og:title" content="凱爾打扣">
 <meta property="og:description" content="Kyle Studio | Share your knowledge. It’s a way to achieve immortality.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kyleap.github.io/tags/chatbot/"><meta property="og:site_name" content="Kyle Studio">
+<meta property="og:url" content="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/"><meta property="og:site_name" content="Kyle Studio">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="Chatbot">
+<meta name=twitter:title content="凱爾打扣">
 <meta name=twitter:description content="Kyle Studio | Share your knowledge. It’s a way to achieve immortality.">
 </head>
 <body class="list dark" id=top>
@@ -73,27 +73,28 @@
 </nav>
 </header>
 <main class=main>
-<header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/tags/>Tags</a></div>
-<h1>Chatbot</h1>
+<header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/categories/>Categories</a></div>
+<h1>凱爾打扣</h1>
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
-<h2>用.NET Core與Line Bot製作婚禮機器人 (1)
+<h2>不用寫程式，Line URL Scheme 應用整理
 </h2>
 </header>
 <section class=entry-content>
-<p>寫在開始之前，目的與動機 距離上次參加鐵人賽已經是 2013-2014 的事，很慶幸自己還是活在這行且保有一些技術的熱情還沒死掉。2018 年完成了人生的婚禮，因為個性屬於比較喜歡搞一些特別的，把自己的想法用技術實踐，所以從做影片到還製作婚禮活動官網到婚禮現場都規劃一些比較不一樣的體驗，身為一個技術宅寫一些程式是必須的，所以那時候做了一個當時很流行的 Line Chatbot，整個婚禮報名流程/推播訊息都是透過Line Chatbot完成，幾個朋友回饋都覺得比起一些問卷網站，這種方式還蠻新奇的，後續一些辦婚禮的朋友都還來詢問當時 Line 的一些功能是怎麼用的，也想透過這種方式來玩。2年也過去了，Line 的 Chatbot 也改版了不少，故這次想要藉由鐵人賽，再逐步的好好再把 Line 的文件看過一遍，並重新開發，透過這過程也分享一些當時的一些尚未做的想法實踐
-先來聊聊一個基本的 Line 對話的流程大概會遇到什麼事情
-使用者發送訊息，向 Line Server 發送一個 Request Line Server 會知道是哪個 Chatbot 發送的，經過格式處理後會發送到該Chatbot作者所設定的 Webhook Webhook (自己所開發的Web Api)，能接收到 Line Server 所傳的結構化Request，能知道使用者發送了什麼訊息，應該要做什麼相對應的處理 回傳相對應處理的訊息，告訴 Line Server，我們要回覆什麼 透過 Line Server 再回傳給使用者 目標 在這個 Line Chatbot 我們將實作婚禮前的資訊查詢，快速建立各種能理解聊天意圖的回覆，宴客報名… 等等，透過這些功能的實作，我們將會學到，如何用 Line 來傳各式各樣的豐富訊息，學到如何開發一個網頁來搭配 Line Liff 來做一些小程序，在婚禮會現場會嘗試用 QR Code/iBeacon 搭配婚禮的報到，嘗試用 Line Pay 來做紅包的電子支付，婚禮現場做一些互動的功能…
-所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
-也發現在 Line 官方都沒有 ....</p>
+<p>寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
+開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
+開啟定位 https://line.me/R/nv/location/ (打開地圖)
+分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&postId={postId} (移至貼文)
+Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
+個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet (移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line....</p>
 </section>
-<footer class=entry-footer>2020-11-01&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 用.NET Core與Line Bot製作婚禮機器人 (1)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-1/></a>
+<footer class=entry-footer>2021-05-23&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 不用寫程式，Line URL Scheme 應用整理" href=https://kyleap.github.io/play-with-line-url-scheme/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
-<a class=prev href=https://kyleap.github.io/tags/chatbot/page/7/>« Prev Page</a>
+<a class=prev href=https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/page/2/>« Prev Page</a>
 </nav>
 </footer>
 </main>

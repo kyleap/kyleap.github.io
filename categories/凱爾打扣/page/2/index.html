@@ -60,6 +60,11 @@
 </a>
 </li>
 <li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
 <a href=https://kyleap.github.io/tags/ title=tags>
 <span>tags</span>
 </a>
@@ -71,6 +76,35 @@
 <header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/categories/>Categories</a></div>
 <h1>凱爾打扣</h1>
 </header>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Line Message Api Postman Collections
+</h2>
+</header>
+<section class=entry-content>
+<p>這是我自己整理的 Line Message Api Postman Collections
+任何人只要 Import 後修改即可直接調用測試
+詳細內容請見我的 Github Repo: https://github.com/kyleap/line-message-api-postman</p>
+</section>
+<footer class=entry-footer>2021-07-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line Message Api Postman Collections" href=https://kyleap.github.io/line-message-api-postman-collections/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>Line Flex Message 傳送動畫訊息，讓訊息更生動
+</h2>
+</header>
+<section class=entry-content>
+<p>Flex Message 是 Line 透過 JSON 格式所實現的動態訊息，可以組出各種訊息格式，且比起 Template Message，Flex Message 也支援 Line 電腦版，故現在在寫 Line Bot 的時候，第一考量就會用 Flex 來自訂一些較特別的訊息，官網提供兩個 GUI 工具來快速拉 Flex 的訊息：
+Bot Designer Flex Simulator 我自己比較常用是第二個，官網已經很多的範本提供套入
+且目前支援很方便的功能，可以直接發到手機裝置瀏覽結果
+在 Flex 的 image 類型是可支援放入 .APNG 格式圖片的動畫，透過以下網站可以將 Git 轉成 .APNG 格式
+https://ezgif.com/gif-to-apng
+Demo Flex 範例 { "type": "bubble", "body": { "type": "box", "layout": "vertical", "contents": [ { "type": "image", "url": "https://apng.onevcat.com/assets/elephant.png", "size": "full", "aspectMode": "cover", "aspectRatio": "1:1", "gravity": "center" }, { "type": "box", "layout": "vertical", "contents": [], "position": "absolute", "background": { "type": "linearGradient", "angle": "0deg", "endColor": "#00000000", "startColor": "#00000099" }, "width": "100%", "height": "40%", "offsetBottom": "0px", "offsetStart": "0px", "offsetEnd": "0px" }, { "type": "box", "layout": "horizontal", "contents": [ { "type": "box", "layout": "vertical", "contents": [ { "type": "box", "layout": "horizontal", "contents": [ { "type": "text", "text": "APNG Demo", "size": "xl", "color": "#ffffff" } ] } ], "spacing": "xs" } ], "position": "absolute", "offsetBottom": "0px", "offsetStart": "0px", "offsetEnd": "0px", "paddingAll": "20px" } ], "paddingAll": "0px" } } –...</p>
+</section>
+<footer class=entry-footer>2021-07-11&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line Flex Message 傳送動畫訊息，讓訊息更生動" href=https://kyleap.github.io/2021-07-11-line-flex-message-animation/></a>
+</article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>Line RichMenu 設定與切換，以 NET 5 為例
@@ -119,25 +153,10 @@ azcopy copy &lt;source> &lt;destination> --recursive --overwrite false source: h
 <footer class=entry-footer>2021-06-03&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 利用 AzCopy 來將 Azure Blob Container 所有檔案移轉至另一個 Blob Container" href=https://kyleap.github.io/azure-copy-to-blob-container/></a>
 </article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>不用寫程式，Line URL Scheme 應用整理
-</h2>
-</header>
-<section class=entry-content>
-<p>寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
-開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
-開啟定位 https://line.me/R/nv/location/ (打開地圖)
-分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&postId={postId} (移至貼文)
-Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
-個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet (移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line....</p>
-</section>
-<footer class=entry-footer>2021-05-23&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 不用寫程式，Line URL Scheme 應用整理" href=https://kyleap.github.io/play-with-line-url-scheme/></a>
-</article>
 <footer class=page-footer>
 <nav class=pagination>
 <a class=prev href=https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/>« Prev Page</a>
+<a class=next href=https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/page/3/>Next Page »</a>
 </nav>
 </footer>
 </main>
