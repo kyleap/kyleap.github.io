@@ -116,18 +116,6 @@ appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為�
 </article>
 <article class=post-entry>
 <header class=entry-header>
-<h2>在 .NET Core 使用 Feature Flag (Feature Toggle)
-</h2>
-</header>
-<section class=entry-content>
-<p>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
-Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "FeatureFlagPoc.API", Version = "v1"}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&lt;WeatherForecastController> logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager....</p>
-</section>
-<footer class=entry-footer>2021-12-07&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
 <h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制
 </h2>
 </header>
@@ -137,6 +125,18 @@ appsettings.json "FeatureManagement": { "FeatureB": { "EnabledFor": [ { "Name": 
 </section>
 <footer class=entry-footer>2021-12-07&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle)
+</h2>
+</header>
+<section class=entry-content>
+<p>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
+Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "FeatureFlagPoc.API", Version = "v1"}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&lt;WeatherForecastController> logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager....</p>
+</section>
+<footer class=entry-footer>2021-12-06&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic/></a>
 </article>
 <article class=post-entry>
 <header class=entry-header>
