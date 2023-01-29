@@ -1,5 +1,6 @@
 <!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
+<head>
+<meta name=generator content="Hugo 0.92.1"><meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
@@ -9,7 +10,7 @@
 <meta name=author content="Kyle">
 <link rel=canonical href=https://kyleap.github.io/>
 <meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://kyleap.github.io/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
@@ -17,7 +18,6 @@
 <link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.92.1">
 <link rel=alternate type=application/rss+xml href=https://kyleap.github.io/index.xml>
 <link rel=alternate type=application/json href=https://kyleap.github.io/index.json>
 <noscript>
@@ -40,10 +40,10 @@
 <nav class=nav>
 <div class=logo>
 <a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<div class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
-</span>
+</div>
 </div>
 <ul id=menu>
 <li>
@@ -80,7 +80,7 @@
 <h2>製作婚禮現場即時留言版- Azure SignalR Service I (28)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
 SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
 https://www.pubnub.com/learn/glossary/what-is-signalr/
@@ -91,8 +91,8 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
 &lt;ItemGroup> &lt;DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" /> &lt;DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" /> &lt;/ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
 在 Web Api 專案案右鍵，建立管理使用者密碼，
 建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上...</p>
-</section>
-<footer class=entry-footer>2020-11-28&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-28 13:28:25 +0000 UTC">2020-11-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service I (28)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/></a>
 </article>
 <article class=post-entry>
@@ -100,7 +100,7 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
 <h2>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day27)
 婚禮現場一定會有各種親朋好友視角的照片，以往都要一個一個傳在社群媒體之類的，本次來實作 chatbot 來廣收各種朋友拍的照片.. XD
 上傳到 Imgur Imgur是個圖床服務，如果是非商業使用，是完全免費的，串接起來也很容易，首先先到 https://api.imgur.com/oauth2/addclient 註冊一個 OAuth 服務
@@ -110,8 +110,8 @@ GetContentBytesAsync
 public async Task&lt;Stream> GetContentBytesAsync(string messageId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), $"https://api-data.line.me/v2/bot/message/{messageId}/content")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); var response = await httpClient.SendAsync(request); var results = await response.Content.ReadAsStreamAsync(); return results; } } } UploadToImgurAsync
 可以透過 Nuget 安裝 Imgur.API
 public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient("&lt;Your Imgur ClientId>"); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint....</p>
-</section>
-<footer class=entry-footer>2020-11-27&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-27 00:32:07 +0000 UTC">2020-11-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/></a>
 </article>
 <article class=post-entry>
@@ -119,15 +119,15 @@ public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient =
 <h2>婚禮禮金用Line Pay II (26)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day26)
 以下是 Line 官方文件的流程，今天會依據這個圖的流程來實作 Line Pay 付款
 https://pay.line.me/jp/developers/apis/onlineApis?locale=zh_TW
 Checkout 流程 官方API文件可以從這裡看到
 Request Body 的 C# Class
 public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&lt;Package> packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&lt;Product> products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } } 整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得...</p>
-</section>
-<footer class=entry-footer>2020-11-26&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-26 00:06:44 +0000 UTC">2020-11-26</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 婚禮禮金用Line Pay II (26)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/></a>
 </article>
 <article class=post-entry>
@@ -135,7 +135,7 @@ public class LinePayRequest { public int amount { get; set; } public string curr
 <h2>婚禮禮金用Line Pay I (25)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day25)
 婚禮最麻煩的就是收禮金了吧，當天還有可能遇到跑錯棚的(本人親自遇到，後來還要退錢給他XD)，婚禮結束還要很辛苦的算鈔票，我一直在想未來有沒有可能都用電子支付，讓婚禮結束後不要扛那麼多的現金，不要花那麼多時間計算。本篇將以 Line 的 Sendbox 進行串接測試，要實際使用的話要先註冊成商家，並通過 Line 的審核。在 Sandbox 有很清楚的step by step 來說明如何串接
 註冊 Sandbox 至 https://pay.line.me/jp/developers/main/main?locale=zh_TW 註冊
@@ -150,8 +150,8 @@ asp-page-handler 可以在 .cs寫 function 驗證 model
 實作效果
 下一篇來繼續用 C# 來串 Line Pay ~
 懶人包，本次學到了什麼? Razor Page https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.1&tabs=visual-studio Add validation to an ASP....</p>
-</section>
-<footer class=entry-footer>2020-11-25&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-25 09:44:01 +0000 UTC">2020-11-25</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 婚禮禮金用Line Pay I (25)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/></a>
 </article>
 <article class=post-entry>
@@ -159,7 +159,7 @@ asp-page-handler 可以在 .cs寫 function 驗證 model
 <h2>用Line Beacon來搞自動報到 (24)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day24)
 上一篇講到了用 QR Code 來做婚禮報到，如果能進一步來做自動報到就更方便了，LINE Beacon，是 LINE 推出的藍芽Sensor，可以讓 LINE Bot 接收設備附近的資訊，有時路過一些店家或捷運，他會推播給你一些訊息給你，這就是 Beacon 的技術
 但寫到此篇發現 Line Beacon 無法用簡單的手機或平板來模擬 (就我之前搞beacon的經驗，那時候開發都是用手機當 Sensor)，目前看到可以模擬的方式是用Raspberry Pi 來架設 https://github.com/line/line-simple-beacon
@@ -171,14 +171,17 @@ enter : 當使用者進入Line Beacon 發送範圍內 banner：LINE for Business
 接著就是在收到訊息後判斷是否為 Beacon 事件，並做實際處理啦
 本篇有點可惜，來不及買 Line Beacon 來玩，無法嘗試實際效果，之後有機會再拿來應用~
 懶人包，本次學到了什麼? Line Beacon https://developers.line.biz/en/docs/messaging-api/using-beacons/ </p>
-</section>
-<footer class=entry-footer>2020-11-24&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-24 00:22:05 +0000 UTC">2020-11-24</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用Line Beacon來搞自動報到 (24)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
-<a class=prev href=https://kyleap.github.io/page/3/>« Prev Page</a>
-<a class=next href=https://kyleap.github.io/page/5/>Next Page »</a>
+<a class=prev href=https://kyleap.github.io/page/3/>
+«&nbsp;Prev&nbsp;
+</a>
+<a class=next href=https://kyleap.github.io/page/5/>Next&nbsp;&nbsp;»
+</a>
 </nav>
 </footer>
 </main>
@@ -187,12 +190,12 @@ enter : 當使用者進入Line Beacon 發送範圍內 banner：LINE for Business
 <span>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
 </span>
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
 <script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
 <script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
 </body>

@@ -9,7 +9,7 @@
 <meta name=author content="Kyle">
 <link rel=canonical href=https://kyleap.github.io/tags/chatbot/>
 <meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.min.5e2b4101351c21e906f398ae96901791830f58d430f96f2659dab7eaef7b3cb7.css integrity="sha256-XitBATUcIekG85iulpAXkYMPWNQw+W8mWdq36u97PLc=" rel="preload stylesheet" as=style>
+<link crossorigin=anonymous href=/assets/css/stylesheet.bccfefac377bc340f06c260aed1bddf49a4354816d7c570d6aac75a997986c95.css integrity="sha256-vM/vrDd7w0DwbCYK7Rvd9JpDVIFtfFcNaqx1qZeYbJU=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://kyleap.github.io/favicon.ico>
 <link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
 <link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
@@ -17,7 +17,6 @@
 <link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<meta name=generator content="Hugo 0.92.1">
 <link rel=alternate type=application/rss+xml href=https://kyleap.github.io/tags/chatbot/index.xml>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
@@ -38,10 +37,10 @@
 <nav class=nav>
 <div class=logo>
 <a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<span class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+<div class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
 </button>
-</span>
+</div>
 </div>
 <ul id=menu>
 <li>
@@ -74,14 +73,16 @@
 </header>
 <main class=main>
 <header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/tags/>Tags</a></div>
-<h1>Chatbot</h1>
+<h1>
+Chatbot
+</h1>
 </header>
 <article class="post-entry tag-entry">
 <header class=entry-header>
 <h2>當有人報名的時候接收通知 (Line Notify) (21)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day21)
 上一篇介紹如何主動式推播給使用者訊息，但Push Message發送到一定的量是要收費的，Line Notify是另一種主動式推播的解決方案，且是免費的，缺點就是收到訊息時候，不會顯示是從本身Chatbot的角度，而是Line的Chatbot，要發送Notify訊息，大概需要做以下事情，缺一不可
 註冊 Line Notify 服務 取得 client_id 取得 client_secret 取得驗證的 code 透過第2-4項取得 access token 註冊 Line Notify 服務 LINE Notify
@@ -94,8 +95,8 @@ Line 會收到一個通知
 到我們剛剛 ngrok 的後台看看 (http://127.0.0.1:4040)，有接收到這個 Request，取得加密後的 code
 用剛剛取得的這三個資訊來取得 access token
 public static async Task&lt;string> GetAccessToken() { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://notify-bot....</p>
-</section>
-<footer class=entry-footer>2020-11-21&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-21 00:04:31 +0000 UTC">2020-11-21</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 當有人報名的時候接收通知 (Line Notify) (21)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -103,7 +104,7 @@ public static async Task&lt;string> GetAccessToken() { using (var httpClient = n
 <h2>主動推播Line訊息給某個使用者(Push Message) (20)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
 在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID) 新增一個 .NET Core Console專案來發送
@@ -111,8 +112,8 @@ public static async Task&lt;string> GetAccessToken() { using (var httpClient = n
 一樣丟到 Curl To C# 做轉換，並做格式修改
 當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
 static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://api.line.me/v2/bot/message/multicast")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer &lt;Your Access Token>"); PushMessage req = new PushMessage(); req.to = new List&lt;string>() { "&lt;User Id>" }; req....</p>
-</section>
-<footer class=entry-footer>2020-11-20&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-20 00:52:53 +0000 UTC">2020-11-20</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 主動推播Line訊息給某個使用者(Push Message) (20)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -120,7 +121,7 @@ static async System.Threading.Tasks.Task Main(string[] args) { using (var httpCl
 <h2>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day19)
 Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料結構不具備太複雜的關聯關係，透過這種 Key-Value 的方式做儲存，用 JSON 反序列化回來是一個不錯且方便的方式。
 註冊 Azure Table 服務 如何註冊一個 Azure Table 服務，可以參考官方文件，建立完成後，可以透過以下路徑取得 Storage 的 Connection String
@@ -128,8 +129,8 @@ Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料�
 新增 AzureTableUtility.cs 並實作
 如何透過 SDK 新增 Azure Table
 public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net"; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount....</p>
-</section>
-<footer class=entry-footer>2020-11-19&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-19 10:39:53 +0000 UTC">2020-11-19</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -137,7 +138,7 @@ public static CloudTable CreateTableAsync(string tableName) { string storageConn
 <h2>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day18)
 在上一篇我們成功將 chatbot 透過 Liff App 後，跟所開發網站有一些連結後，本篇我們將要來實作前端的報名表單
 本篇實作內容放在這個 Git Repo：
@@ -147,8 +148,8 @@ https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
 原始碼可以至 Github 看，實作的 UI 大概長這樣
 如果不參加喜帖，相對的也不用填那麼多資訊了，這時可以透過 v-if or v-show 來實現，兩者差異為 v-if 會實際產生 dom，v-show 儘會顯示隱藏
 透過 VeeValidate 來做表單必填驗證，請注意 vue 3.0 要使用 VeeValidate 的 v4 版本...</p>
-</section>
-<footer class=entry-footer>2020-11-18&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-18 00:56:25 +0000 UTC">2020-11-18</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/></a>
 </article>
 <article class="post-entry tag-entry">
@@ -156,7 +157,7 @@ https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
 <h2>Line Liff App v2 - 用 Vue.js 來實作 (17)
 </h2>
 </header>
-<section class=entry-content>
+<div class=entry-content>
 <p>第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
 LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現
 建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面
@@ -164,14 +165,17 @@ LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網�
 ngrok http &lt;your local vue.js port>-host-header=”localhost:&lt;your local vue.js port>" 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
 在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
 把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：...</p>
-</section>
-<footer class=entry-footer>2020-11-17&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+</div>
+<footer class=entry-footer><span title="2020-11-17 10:06:50 +0000 UTC">2020-11-17</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 - 用 Vue.js 來實作 (17)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
-<a class=prev href=https://kyleap.github.io/tags/chatbot/page/3/>« Prev Page</a>
-<a class=next href=https://kyleap.github.io/tags/chatbot/page/5/>Next Page »</a>
+<a class=prev href=https://kyleap.github.io/tags/chatbot/page/3/>
+«&nbsp;Prev&nbsp;
+</a>
+<a class=next href=https://kyleap.github.io/tags/chatbot/page/5/>Next&nbsp;&nbsp;»
+</a>
 </nav>
 </footer>
 </main>
@@ -180,12 +184,12 @@ ngrok http &lt;your local vue.js port>-host-header=”localhost:&lt;your local v
 <span>
 Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
 </span>
 </footer>
 <a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
 </a>
-<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
 <script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
 <script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
 </body>
