@@ -95,6 +95,21 @@ Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，�
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>透過 docker 發行 FastAPI 到 Azure
+</h2>
+</header>
+<div class=entry-content>
+<p>前言 除了 Azure 外，還有很多公有雲的服務可以做選擇，譬如AWS/GCP/heroku…等等，甚至可能不採用公有雲服務，自己架設伺服器也是有可能，基於以上這些不同環境，我會建議將服務都包成 docker，讓所開發的應用程式比較不會受到伺服器環境的影響，本篇就來介紹從一個基本的 FastAPI 包成 docker，並發佈的 Azure 服務上
+docker 環境安裝 Docker 是一種軟體平台，可讓您快速地建立、測試和部署應用程式。Docker 將軟體封裝到名為容器的標準化單位，其中包含程式庫、系統工具、程式碼和執行時間等執行軟體所需的所有項目。使用 Docker，您可以將應用程式快速地部署到各種環境並加以擴展，而且知道程式碼可以執行 — from AWS 的介紹 https://aws.amazon.com/tw/docker/
+關於 docker 環境的安裝，網路上教學應該很多了，此篇文章就不再介紹，如果安裝成功，應該在命令列透過 docker — version 指令可以看到版本
+建立一個基本的 FastAPI 本篇再以一個最基本的 API 來做包成 docker 的介紹
+requirements.txt fastAPI uvicorn main.py from typing import Optional from fastapi import FastAPI app = FastAPI() @app.get("/") def read_root(): return {"Hello": "World"} @app.get("/items/{item_id}") def read_item(item_id: int, q: Optional[str] = None): return {"item_id": item_id, "q": q} 執行以下指令 pip install -r requirement....</p>
+</div>
+<footer class=entry-footer><span title="2023-02-01 09:41:01 +0000 UTC">2023-02-01</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 透過 docker 發行 FastAPI 到 Azure" href=https://kyleap.github.io/docker-deploy-fastapi-to-azure/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>在 Azure Repo 設定 Pull Request Template
 </h2>
 </header>
@@ -107,7 +122,7 @@ Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，�
 撰寫一個範本並 Commit
 **將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明: 建立一個 Branch 並針對任一檔案做異動...</p>
 </div>
-<footer class=entry-footer><span title="2023-01-14 09:41:01 +0000 UTC">2023-01-14</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer><span title="2023-01-15 15:21:01 +0000 UTC">2023-01-15</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 Azure Repo 設定 Pull Request Template" href=https://kyleap.github.io/azure-board-pull-request-template/></a>
 </article>
 <article class=post-entry>
@@ -134,18 +149,6 @@ appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為�
 </div>
 <footer class=entry-footer><span title="2021-12-08 22:32:41 +0800 +0800">2021-12-08</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制
-</h2>
-</header>
-<div class=entry-content>
-<p>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
-appsettings.json "FeatureManagement": { "FeatureB": { "EnabledFor": [ { "Name": "Microsoft.TimeWindow", "Parameters": { "Start": "2020-11-09 04:58:00Z", "End": "2099-11-09 05:00:00Z" } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync("FeatureA"); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate("FeatureA")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, "FeatureA", "FeatureB")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags....</p>
-</div>
-<footer class=entry-footer><span title="2021-12-07 20:06:41 +0800 +0800">2021-12-07</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
