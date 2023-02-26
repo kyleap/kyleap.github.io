@@ -20,22 +20,9 @@
     </item>
     
     <item>
-      <title>透過 docker 發行 FastAPI 到 Azure</title>
-      <link>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</link>
-      <pubDate>Wed, 01 Feb 2023 09:41:01 +0000</pubDate>
-      
-      <guid>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</guid>
-      <description>前言 除了 Azure 外，還有很多公有雲的服務可以做選擇，譬如AWS/GCP/heroku…等等，甚至可能不採用公有雲服務，自己架設伺服器也是有可能，基於以上這些不同環境，我會建議將服務都包成 docker，讓所開發的應用程式比較不會受到伺服器環境的影響，本篇就來介紹從一個基本的 FastAPI 包成 docker，並發佈的 Azure 服務上
-docker 環境安裝 Docker 是一種軟體平台，可讓您快速地建立、測試和部署應用程式。Docker 將軟體封裝到名為容器的標準化單位，其中包含程式庫、系統工具、程式碼和執行時間等執行軟體所需的所有項目。使用 Docker，您可以將應用程式快速地部署到各種環境並加以擴展，而且知道程式碼可以執行 — from AWS 的介紹 https://aws.amazon.com/tw/docker/
- 關於 docker 環境的安裝，網路上教學應該很多了，此篇文章就不再介紹，如果安裝成功，應該在命令列透過 docker — version 指令可以看到版本
- 建立一個基本的 FastAPI 本篇再以一個最基本的 API 來做包成 docker 的介紹
-requirements.txt fastAPI uvicorn  main.py from typing import Optional from fastapi import FastAPI app = FastAPI() @app.get(&amp;quot;/&amp;quot;) def read_root(): return {&amp;quot;Hello&amp;quot;: &amp;quot;World&amp;quot;} @app.get(&amp;quot;/items/{item_id}&amp;quot;) def read_item(item_id: int, q: Optional[str] = None): return {&amp;quot;item_id&amp;quot;: item_id, &amp;quot;q&amp;quot;: q}  執行以下指令 pip install -r requirement.</description>
-    </item>
-    
-    <item>
       <title>在 Azure Repo 設定 Pull Request Template</title>
       <link>https://kyleap.github.io/azure-board-pull-request-template/</link>
-      <pubDate>Sun, 15 Jan 2023 15:21:01 +0000</pubDate>
+      <pubDate>Wed, 01 Feb 2023 09:41:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/azure-board-pull-request-template/</guid>
       <description>建立良好規範與開發者的互動 當團隊開始 Pull Request 順暢後，慢慢的也會討論出一些規範與 Pull Request 的重點, 如果在建立的時候，能有一些 Checklist 讓新工程師自我檢查，或者是讓每個工程師都能遵循相同的寫法，讓同事快速理解這次審核的目的與重點，這時就能利用 Template 來標準化
@@ -45,6 +32,19 @@ requirements.txt fastAPI uvicorn  main.py from typing import Optional from fasta
 建立一個 docs/pull_request_template 資料夾, 並直接新增 Default-PR-Template.md 檔案
 撰寫一個範本並 Commit
 **將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明:  建立一個 Branch 並針對任一檔案做異動</description>
+    </item>
+    
+    <item>
+      <title>透過 docker 發行 FastAPI 到 Azure</title>
+      <link>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</link>
+      <pubDate>Sun, 15 Jan 2023 15:21:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</guid>
+      <description>前言 除了 Azure 外，還有很多公有雲的服務可以做選擇，譬如AWS/GCP/heroku…等等，甚至可能不採用公有雲服務，自己架設伺服器也是有可能，基於以上這些不同環境，我會建議將服務都包成 docker，讓所開發的應用程式比較不會受到伺服器環境的影響，本篇就來介紹從一個基本的 FastAPI 包成 docker，並發佈的 Azure 服務上
+docker 環境安裝 Docker 是一種軟體平台，可讓您快速地建立、測試和部署應用程式。Docker 將軟體封裝到名為容器的標準化單位，其中包含程式庫、系統工具、程式碼和執行時間等執行軟體所需的所有項目。使用 Docker，您可以將應用程式快速地部署到各種環境並加以擴展，而且知道程式碼可以執行 — from AWS 的介紹 https://aws.amazon.com/tw/docker/
+ 關於 docker 環境的安裝，網路上教學應該很多了，此篇文章就不再介紹，如果安裝成功，應該在命令列透過 docker — version 指令可以看到版本
+ 建立一個基本的 FastAPI 本篇再以一個最基本的 API 來做包成 docker 的介紹
+requirements.txt fastAPI uvicorn  main.py from typing import Optional from fastapi import FastAPI app = FastAPI() @app.get(&amp;quot;/&amp;quot;) def read_root(): return {&amp;quot;Hello&amp;quot;: &amp;quot;World&amp;quot;} @app.get(&amp;quot;/items/{item_id}&amp;quot;) def read_item(item_id: int, q: Optional[str] = None): return {&amp;quot;item_id&amp;quot;: item_id, &amp;quot;q&amp;quot;: q}  執行以下指令 pip install -r requirement.</description>
     </item>
     
     <item>

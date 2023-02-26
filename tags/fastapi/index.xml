@@ -5,11 +5,11 @@
     <link>https://kyleap.github.io/tags/fastapi/</link>
     <description>Recent content in FastAPI on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 01 Feb 2023 09:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jan 2023 15:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/fastapi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>透過 docker 發行 FastAPI 到 Azure</title>
       <link>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</link>
-      <pubDate>Wed, 01 Feb 2023 09:41:01 +0000</pubDate>
+      <pubDate>Sun, 15 Jan 2023 15:21:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</guid>
       <description>前言 除了 Azure 外，還有很多公有雲的服務可以做選擇，譬如AWS/GCP/heroku…等等，甚至可能不採用公有雲服務，自己架設伺服器也是有可能，基於以上這些不同環境，我會建議將服務都包成 docker，讓所開發的應用程式比較不會受到伺服器環境的影響，本篇就來介紹從一個基本的 FastAPI 包成 docker，並發佈的 Azure 服務上

@@ -5,11 +5,11 @@
     <link>https://kyleap.github.io/tags/azurerepo/</link>
     <description>Recent content in AzureRepo on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 Jan 2023 15:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/azurerepo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Feb 2023 09:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/azurerepo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 Azure Repo 設定 Pull Request Template</title>
       <link>https://kyleap.github.io/azure-board-pull-request-template/</link>
-      <pubDate>Sun, 15 Jan 2023 15:21:01 +0000</pubDate>
+      <pubDate>Wed, 01 Feb 2023 09:41:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/azure-board-pull-request-template/</guid>
       <description>建立良好規範與開發者的互動 當團隊開始 Pull Request 順暢後，慢慢的也會討論出一些規範與 Pull Request 的重點, 如果在建立的時候，能有一些 Checklist 讓新工程師自我檢查，或者是讓每個工程師都能遵循相同的寫法，讓同事快速理解這次審核的目的與重點，這時就能利用 Template 來標準化

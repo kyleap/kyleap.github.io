@@ -89,7 +89,7 @@ docker 環境安裝 Docker 是一種軟體平台，可讓您快速地建立、�
 建立一個基本的 FastAPI 本篇再以一個最基本的 API 來做包成 docker 的介紹
 requirements.txt fastAPI uvicorn main.py from typing import Optional from fastapi import FastAPI app = FastAPI() @app.get("/") def read_root(): return {"Hello": "World"} @app.get("/items/{item_id}") def read_item(item_id: int, q: Optional[str] = None): return {"item_id": item_id, "q": q} 執行以下指令 pip install -r requirement....</p>
 </div>
-<footer class=entry-footer><span title="2023-02-01 09:41:01 +0000 UTC">2023-02-01</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<footer class=entry-footer><span title="2023-01-15 15:21:01 +0000 UTC">2023-01-15</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 透過 docker 發行 FastAPI 到 Azure" href=https://kyleap.github.io/docker-deploy-fastapi-to-azure/></a>
 </article>
 </main>
