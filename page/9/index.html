@@ -77,6 +77,25 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>回覆第一個Line的訊息-歡迎詞 (4)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day4)
+本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！
+我們預期在加入好友的時候 (OnFollow) 事件時回傳歡迎詞：Hi UserName, 感謝您加入 Kyle 的婚禮小助理！
+取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId
+查看文件後，可以透過 access token 和 userId 來取得用戶資訊
+建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample
+curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H 'Authorization: Bearer {channel access token}' 有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了
+轉換後如下：
+using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), "[https://api....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-04 07:50:36 +0000 UTC">2020-11-04</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 回覆第一個Line的訊息-歡迎詞 (4)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>用.NET Core 接收Line的訊息事件 (3)
 </h2>
 </header>

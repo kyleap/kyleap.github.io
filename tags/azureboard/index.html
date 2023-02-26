@@ -3,11 +3,11 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
-<title>Tags | Kyle Studio</title>
+<title>AzureBoard | Kyle Studio</title>
 <meta name=keywords content>
 <meta name=description content="Kyle Studio | Share your knowledge. It’s a way to achieve immortality.">
 <meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/tags/>
+<link rel=canonical href=https://kyleap.github.io/tags/azureboard/>
 <meta name=google-site-verification content="XYZabc">
 <link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
 <link rel=icon href=https://kyleap.github.io/favicon.ico>
@@ -17,18 +17,18 @@
 <link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
 <meta name=theme-color content="#2e2e33">
 <meta name=msapplication-TileColor content="#2e2e33">
-<link rel=alternate type=application/rss+xml href=https://kyleap.github.io/tags/index.xml>
+<link rel=alternate type=application/rss+xml href=https://kyleap.github.io/tags/azureboard/index.xml>
 <noscript>
 <style>#theme-toggle,.top-link{display:none}</style>
 </noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="Tags">
+<meta property="og:title" content="AzureBoard">
 <meta property="og:description" content="Kyle Studio | Share your knowledge. It’s a way to achieve immortality.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://kyleap.github.io/tags/"><meta property="og:site_name" content="Kyle Studio">
+<meta property="og:url" content="https://kyleap.github.io/tags/azureboard/"><meta property="og:site_name" content="Kyle Studio">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="Tags">
+<meta name=twitter:title content="AzureBoard">
 <meta name=twitter:description content="Kyle Studio | Share your knowledge. It’s a way to achieve immortality.">
 </head>
 <body class="list dark" id=top>
@@ -65,45 +65,33 @@
 </li>
 <li>
 <a href=https://kyleap.github.io/tags/ title=tags>
-<span class=active>tags</span>
+<span>tags</span>
 </a>
 </li>
 </ul>
 </nav>
 </header>
 <main class=main>
-<header class=page-header>
-<h1>Tags</h1>
+<header class=page-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/tags/>Tags</a></div>
+<h1>
+AzureBoard
+</h1>
 </header>
-<ul class=terms-tags>
-<li>
-<a href=https://kyleap.github.io/tags/.net/>.NET <sup><strong><sup>4</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/azure/>Azure <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/azureboard/>AzureBoard <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/chatbot/>Chatbot <sup><strong><sup>36</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/scrum/>Scrum <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/tools/>Tools <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/%E5%95%83%E6%9B%B8/>啃書 <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/%E9%81%A0%E7%AB%AF%E5%B7%A5%E4%BD%9C/>遠端工作 <sup><strong><sup>1</sup></strong></sup> </a>
-</li>
-</ul>
+<article class="post-entry tag-entry">
+<header class=entry-header>
+<h2>在 Azure Board 建立 workitem template 加強團隊共識
+</h2>
+</header>
+<div class=entry-content>
+<p>Introduction 在 Scrum 的開發過程中，維護好 Work Items 是非常重要的一個步驟。這些 Work Items 會在Planning Meeting 或者是 Refine Meeting 被拿出來討論，如果內容定義不清，會導致討論會議的浪費，為了確保團隊在建立工作項目時有一致的認識和理解，以及在回顧過程中能夠更清楚地了解工作項目的緣由，此篇文章將介紹我在 Epic/Feature/User Story/Task會寫的項目，以實際案例來分享，並簡單介紹如何在 Azure Board 裡面變成範本直接讓團隊套用
+先來聊一下 Workitem 層級 在 Azure Devops 預設就有四種 Process 可以選，以目前 Agile 為大宗的開發模式，多半會選擇 Scurm/Agile，但這兩者基本上大同小異，如果要我一句話解讀這些 Item 代表的定義，我會這樣解釋:
+Epic: 高層老闆看的, 通常是公司的高大尚目標, 時間長度不超過1年 Feature: PM或主管看的, 把高大尚收斂後的具體策略, 時間長度以季為單位 User Story: PM/工程師看的, 達成策略的手段, 時間以1個sprint可交付為單位 Task: 工程師看的, 達成手段需要拆寫的實作, 時間以1-2天為單位 至於這些 Workitem 該寫什麼? 以下章節來細部說明
+我認為 Azure Devops 設計緣由可適用於大型組織，但導入需要逐步，也許小團隊可用 User Story+Task就可足夠了，太早一步到位反而會導致交付混亂
+Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，這個目標還沒有詳細的策略，也可以把它定義成是老闆的期望，也可以是 OKR 上層的指標，以 Product Owner 角度而言，我會思考如何傳達老闆的想法，並把它收斂成可量化的目標範圍，這會是一個半年不超過一年的時間長度，並需要有達成的指標，在標題上明確表達(e....</p>
+</div>
+<footer class=entry-footer><span title="2023-02-25 15:41:01 +0000 UTC">2023-02-25</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 Azure Board 建立 workitem template 加強團隊共識" href=https://kyleap.github.io/azure-board-workitem-template/></a>
+</article>
 </main>
 <footer class=footer>
 <span>&copy; 2023 <a href=https://kyleap.github.io/>Kyle Studio</a></span>
