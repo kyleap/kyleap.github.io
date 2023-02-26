@@ -19,5 +19,20 @@
  Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，這個目標還沒有詳細的策略，也可以把它定義成是老闆的期望，也可以是 OKR 上層的指標，以 Product Owner 角度而言，我會思考如何傳達老闆的想法，並把它收斂成可量化的目標範圍，這會是一個半年不超過一年的時間長度，並需要有達成的指標，在標題上明確表達(e.</description>
     </item>
     
+    <item>
+      <title>在 Azure Repo 設定 Pull Request Template</title>
+      <link>https://kyleap.github.io/azure-board-pull-request-template/</link>
+      <pubDate>Sat, 14 Jan 2023 09:41:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-board-pull-request-template/</guid>
+      <description>建立良好規範與開發者的互動 當團隊開始 Pull Request 順暢後，慢慢的也會討論出一些規範與 Pull Request 的重點, 如果在建立的時候，能有一些 Checklist 讓新工程師自我檢查，或者是讓每個工程師都能遵循相同的寫法，讓同事快速理解這次審核的目的與重點，這時就能利用 Template 來標準化
+建立第一個 Pull Request Template Template 檔案可以是 .md 或 .txt 的檔案類型，預設的範本放置以下的路徑即可生效 (則一即可)
+&amp;lt;repository root&amp;gt;/.azuredevops/pull_request_template/ &amp;lt;repository root&amp;gt;/.vsts/pull_request_template/ &amp;lt;repository root&amp;gt;/docs/pull_request_template/ &amp;lt;repository root&amp;gt;/pull_request_template/  以下直接用 Azure Repo 的 UI 來做示範：
+建立一個 Folder
+建立一個 docs/pull_request_template 資料夾, 並直接新增 Default-PR-Template.md 檔案
+撰寫一個範本並 Commit
+**將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明:  建立一個 Branch 並針對任一檔案做異動</description>
+    </item>
+    
   </channel>
 </rss>
