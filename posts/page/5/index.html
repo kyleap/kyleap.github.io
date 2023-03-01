@@ -80,6 +80,25 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day27)
+婚禮現場一定會有各種親朋好友視角的照片，以往都要一個一個傳在社群媒體之類的，本次來實作 chatbot 來廣收各種朋友拍的照片.. XD
+上傳到 Imgur Imgur是個圖床服務，如果是非商業使用，是完全免費的，串接起來也很容易，首先先到 https://api.imgur.com/oauth2/addclient 註冊一個 OAuth 服務
+會得到 client id 和 client secret
+回到 LineBotApp.cs，我們可以針對圖片類型的訊息做處理
+GetContentBytesAsync
+public async Task&lt;Stream> GetContentBytesAsync(string messageId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), $"https://api-data.line.me/v2/bot/message/{messageId}/content")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); var response = await httpClient.SendAsync(request); var results = await response.Content.ReadAsStreamAsync(); return results; } } } UploadToImgurAsync
+可以透過 Nuget 安裝 Imgur.API
+public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient("&lt;Your Imgur ClientId>"); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-27 00:32:07 +0000 UTC">2020-11-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>婚禮禮金用Line Pay II (26)
 </h2>
 </header>
@@ -161,27 +180,6 @@ jQuery Ajax https://api.jquery.com/jquery.ajax/
 </div>
 <footer class=entry-footer><span title="2020-11-23 12:42:03 +0000 UTC">2020-11-23</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用QR Code來搞報到 — Razor Page實做 II (23)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>用QR Code來搞報到 - Razor Page實做 I (22)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day22)
-婚禮當天必須請一些親戚來協助朋友報到，但前面都收集報名資訊了，用一些報到的機制方便統計也是挺潮的…看到 Liff App V2 有支援 QR Code 報到，剛好前面也有存報名的使用者資料，就能來判斷報到狀況，本次來實現一下這個功能。至於為啥不用 vue，要用 Razor Page，也沒為啥，鐵人賽就是順便玩玩沒玩過的 XD
-在 .NET Core Web API 專案加入 Razor Page 如果當初起始專案選擇是存 Web Api 專案，可以考慮重新一個Web Application的時候把相關檔案搬過來
-Startup.cs 要加入下列三段程式
-wwwroot 把一些靜態檔案搬過來
-開個資料夾叫 Pages 把 cdhtml 搬過來
-按右鍵 加入一個叫做 QRCode 的 Razor Page
-再來就是跟前幾篇實作一樣，加入 liff app SDK啦，說明如下：
-Line Liff SDK v2 Liff App 的 初始化 (記得要註冊一個 Liff App Id) 取得當前使用者 QR Code 掃描 實作畫面
-下一篇，我們就繼續實作，怎麼完成後端報到的功能
-Razor Page 對我來講好有復古的感覺，彷彿回到 WebForm 的時代… 懶人包，本次學到了什麼?...</p>
-</div>
-<footer class=entry-footer><span title="2020-11-22 21:02:38 +0000 UTC">2020-11-22</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 用QR Code來搞報到 - Razor Page實做 I (22)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-22/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

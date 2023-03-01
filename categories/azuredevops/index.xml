@@ -5,14 +5,35 @@
     <link>https://kyleap.github.io/categories/azuredevops/</link>
     <description>Recent content in AzureDevOps on Kyle Studio</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 25 Feb 2023 15:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/azuredevops/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Feb 2023 09:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/azuredevops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛</title>
+      <link>https://kyleap.github.io/azure-board-extensions/</link>
+      <pubDate>Mon, 27 Feb 2023 09:41:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-board-extensions/</guid>
+      <description>Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
+裡面提到有個口訣 Scrum 353 的，它的核心概念是 &amp;ldquo;三個角色、五個事件、三個交付物&amp;rdquo;，其中：
+ 三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
+ 此文章會不定期更新
+ 價值排序 WSJF (Weighted Shortest Job First
+Tags Manager
+Multivalue control
+SpecMap aka User Story Mapping
+Refine &amp;amp; Planning Estimate
+Personas
+Split!
+Sprint Goal
+Daily Board Group</description>
+    </item>
+    
     <item>
       <title>在 Azure Board 建立 workitem template 加強團隊共識</title>
       <link>https://kyleap.github.io/azure-board-workitem-template/</link>
       <pubDate>Sat, 25 Feb 2023 15:41:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/azure-board-workitem-template/</guid>
-      <description>Introduction 在 Scrum 的開發過程中，維護好 Work Items 是非常重要的一個步驟。這些 Work Items 會在Planning Meeting 或者是 Refine Meeting 被拿出來討論，如果內容定義不清，會導致討論會議的浪費，為了確保團隊在建立工作項目時有一致的認識和理解，以及在回顧過程中能夠更清楚地了解工作項目的緣由，此篇文章將介紹我在 Epic/Feature/User Story/Task會寫的項目，以實際案例來分享，並簡單介紹如何在 Azure Board 裡面變成範本直接讓團隊套用
+      <description>前言 在 Scrum 的開發過程中，維護好 Work Items 是非常重要的一個步驟。這些 Work Items 會在Planning Meeting 或者是 Refine Meeting 被拿出來討論，如果內容定義不清，會導致討論會議的浪費，為了確保團隊在建立工作項目時有一致的認識和理解，以及在回顧過程中能夠更清楚地了解工作項目的緣由，此篇文章將介紹我在 Epic/Feature/User Story/Task 會寫的項目，以實際案例來分享，並簡單介紹如何在 Azure Board 裡面變成範本直接讓團隊套用
 先來聊一下 Workitem 層級 在 Azure Devops 預設就有四種 Process 可以選，以目前 Agile 為大宗的開發模式，多半會選擇 Scurm/Agile，但這兩者基本上大同小異，如果要我一句話解讀這些 Item 代表的定義，我會這樣解釋:
  Epic: 高層老闆看的, 通常是公司的高大尚目標, 時間長度不超過1年 Feature: PM或主管看的, 把高大尚收斂後的具體策略, 時間長度以季為單位 User Story: PM/工程師看的, 達成策略的手段, 時間以1個sprint可交付為單位 Task: 工程師看的, 達成手段需要拆寫的實作, 時間以1-2天為單位  至於這些 Workitem 該寫什麼? 以下章節來細部說明
  我認為 Azure Devops 設計緣由可適用於大型組織，但導入需要逐步，也許小團隊可用 User Story+Task就可足夠了，太早一步到位反而會導致交付混亂

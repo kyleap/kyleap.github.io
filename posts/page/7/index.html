@@ -80,6 +80,23 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Line Liff App v2 - 用 Vue.js 來實作 (17)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
+LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現
+建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面
+本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址
+ngrok http &lt;your local vue.js port>-host-header=”localhost:&lt;your local vue.js port>" 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
+在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
+把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：...</p>
+</div>
+<footer class=entry-footer><span title="2020-11-17 10:06:50 +0000 UTC">2020-11-17</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line Liff App v2 - 用 Vue.js 來實作 (17)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)
 </h2>
 </header>
@@ -149,22 +166,6 @@ public async Task ReplyAsync(string replyToken) { if (!string.IsNullOrEmpty(repl
 </div>
 <footer class=entry-footer><span title="2020-11-13 11:49:43 +0000 UTC">2020-11-13</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Hold on Hold on 重構一下！ (12)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day12)
-這篇要來緩一下，做第一次的重構，寫到現在會發現 LineBotApp.cs 這個 class開始複雜了，程式碼越來越長，在OnMessageAsync.OnPostbackAsync 開始有相同的 Intent 重複定義
-我們把取得 Intent 封裝成一個工廠
-IIntentFactory.cs 定義一個工廠介面
-public interface IIntentFactory { IReplyIntent GetIntent(string intentName, string userId); } IntentFactory.cs 實作這個介面
-public class IntentFactory : IIntentFactory { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public IntentFactory(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public IReplyIntent GetIntent(string intentName, string userId) { var intents = new Dictionary&lt;string, IReplyIntent>() { { "Welcome" , new Welcome(lineMessageUtility,lineProfileUtility,userId)}, { "電子喜帖" , new WeddingInvitationFromImage(lineMessageUtility,lineProfileUtility)}, { "電子喜帖(FlexMsg)" , new WeddingInvitation(lineMessageUtility,lineProfileUtility)}, { "前導影片" , new WeddingTrailer(lineMessageUtility,lineProfileUtility)}, { "婚宴地點" , new WeddingLocation(lineMessageUtility,lineProfileUtility)}, { "婚紗輪播" , new PhotoCarousel(lineMessageUtility,lineProfileUtility)}, { "交通資訊" , new Directions(lineMessageUtility,lineProfileUtility)}, { "從高鐵" , new DefaultIntent(lineMessageUtility,lineProfileUtility,"至 北門站 搭乘松山新店線至 南京復興站 步行7分鐘")}, { "從捷運" , new DefaultIntent(lineMessageUtility,lineProfileUtility,"捷運台北小巨蛋站6分鐘/南京復興站只需7分鐘")}, { "從機場" , new DefaultIntent(lineMessageUtility,lineProfileUtility,"酒店距離松山國際機場僅 5 分鐘車程")}, { "停車資訊" , new DefaultIntent(lineMessageUtility,lineProfileUtility,"酒店的停車場為室內停車場，位於B5及B6")}, { "開車提醒" , new DefaultIntent(lineMessageUtility,lineProfileUtility,"?...</p>
-</div>
-<footer class=entry-footer><span title="2020-11-12 08:26:23 +0000 UTC">2020-11-12</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to Hold on Hold on 重構一下！ (12)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-12/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
