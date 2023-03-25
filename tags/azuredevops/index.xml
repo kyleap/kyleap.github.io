@@ -22,14 +22,12 @@
  三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
  此文章會不定期更新
  價值排序 WSJF (Weighted Shortest Job First
+backlogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數
 Tags Manager
+Tag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag
 Multivalue control
-SpecMap aka User Story Mapping
-Refine &amp;amp; Planning Estimate
-Personas
-Split!
-Sprint Goal
-Daily Board Group</description>
+如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類
+SpecMap aka User Story Mapping</description>
     </item>
     
     <item>
