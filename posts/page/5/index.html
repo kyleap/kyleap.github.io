@@ -81,6 +81,26 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>製作婚禮現場即時留言版- Azure SignalR Service I (28)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
+SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
+https://www.pubnub.com/learn/glossary/what-is-signalr/
+而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容
+建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
+建完後，到key的選單，我們等等需要這個 Connection String
+建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼
+&lt;ItemGroup> &lt;DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" /> &lt;DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" /> &lt;/ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
+在 Web Api 專案案右鍵，建立管理使用者密碼，
+建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上...</p>
+</div>
+<footer class=entry-footer><span title="2020-11-28 13:28:25 +0000 UTC">2020-11-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service I (28)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)
 </h2>
 </header>
@@ -158,29 +178,6 @@ enter : 當使用者進入Line Beacon 發送範圍內 banner：LINE for Business
 </div>
 <footer class=entry-footer><span title="2020-11-24 00:22:05 +0000 UTC">2020-11-24</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 用Line Beacon來搞自動報到 (24)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>用QR Code來搞報到 — Razor Page實做 II (23)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day23)
-在上一篇我們實作了Liff App 的 QR Code 掃瞄功能後，我們要來將這個值傳到後端完成報到的動作
-在 Razor Page 一樣可以跟以往一樣把一些共用的 Template 抽出來，譬如 _Layout，一個蘿蔔一個坑，在有用到此 Template 最終就會 Render 在這些所埋的坑裡面
-_Layout.cshtml
-QrCode.cshtml
-今晚我想來點jQuery，預設 Razor Page 有載入 jQuery，我們直接用 jQuery Ajax 來跟後端溝通
-QrCode Api 的內容，其實就是前幾篇講的，針對 Azure Table 的操作
-實作畫面
-https://imgur.com/5qsSzRN
-懶人包，本次學到了什麼? Razor 的 RenderBody() vs RenderSection() http://coding.anyun.tw/2012/02/19/razor-learning-renderbody-renderpartial-and-rendersection/
-jQuery Ajax https://api.jquery.com/jquery.ajax/
-如何新增/編輯一個結構化的 Azure Table 資料 https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-</p>
-</div>
-<footer class=entry-footer><span title="2020-11-23 12:42:03 +0000 UTC">2020-11-23</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 用QR Code來搞報到 — Razor Page實做 II (23)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

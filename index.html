@@ -92,6 +92,24 @@
 </article>
 <article class=post-entry>
 <header class=entry-header>
+<h2>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖
+</h2>
+</header>
+<div class=entry-content>
+<p>在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
+透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表
+::: mermaid pie title 年度銷售量 "Q1" : 2000 "Q2" : 1500 "Q3" : 3500 "Q4" : 4000 ::: 會產生以下結果
+也可以加入 pie showData 讓 Label 呈現數值
+也支援小數點數值
+只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
+Reference
+https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html </p>
+</div>
+<footer class=entry-footer><span title="2023-03-27 09:41:01 +0000 UTC">2023-03-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖" href=https://kyleap.github.io/azure-wiki-pie-chart/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛
 </h2>
 </header>
@@ -157,18 +175,6 @@ requirements.txt fastAPI uvicorn main.py from typing import Optional from fastap
 </div>
 <footer class=entry-footer><span title="2023-01-15 15:21:01 +0000 UTC">2023-01-15</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 透過 docker 發行 FastAPI 到 Azure" href=https://kyleap.github.io/docker-deploy-fastapi-to-azure/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯
-</h2>
-</header>
-<div class=entry-content>
-<p>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
-實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案 [FilterAlias("Browser")] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task&lt;bool> EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get&lt;BrowserFilterSettings>(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult&lt;bool>(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能) "FeatureManagement": { "FeatureA": { "EnabledFor": [ { "Name": "Browser", "Parameters": { "Allowed": [ "Edg" ] } } ] } } startup 注入 services....</p>
-</div>
-<footer class=entry-footer><span title="2021-12-09 21:30:41 +0800 +0800">2021-12-09</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

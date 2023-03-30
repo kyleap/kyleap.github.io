@@ -10,7 +10,23 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 27 Feb 2023 09:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/azuredevops/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 27 Mar 2023 09:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/azuredevops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖</title>
+      <link>https://kyleap.github.io/azure-wiki-pie-chart/</link>
+      <pubDate>Mon, 27 Mar 2023 09:41:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-wiki-pie-chart/</guid>
+      <description>在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
+透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表
+::: mermaid pie title 年度銷售量 &amp;quot;Q1&amp;quot; : 2000 &amp;quot;Q2&amp;quot; : 1500 &amp;quot;Q3&amp;quot; : 3500 &amp;quot;Q4&amp;quot; : 4000 ::: 會產生以下結果
+也可以加入 pie showData 讓 Label 呈現數值
+ 也支援小數點數值
+ 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
+Reference
+ https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  </description>
+    </item>
+    
     <item>
       <title>以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛</title>
       <link>https://kyleap.github.io/azure-board-extensions/</link>

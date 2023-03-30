@@ -78,6 +78,23 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day13)
+Chatbot 有分為兩種類型，一個是任務型導向，另一個是聊天型導向，聊天型導向最典型的就是 Siri，講什麼他都會回答你，這背後所支撐的是海量數據訓練出來的，在我們設計應用 Chatbot 時，多半會偏向任務型導向，使用者用你的 Chatbot 不是要跟你聊天，是要快速的用你這服務達到任務，所以在設計時，如果定位 Chatbot 是 “人” ，是非常可怕的設計，只會降低使用者的觀感。
+在設計 Line Chatbot 時，如果使用者在對話過程中迷路了，不妨設計一些快捷鍵引導到他的目標吧，這個在 Line 裡面實作叫 Quick Reply，我們今天將做在無法辨識使用者的意圖時，回傳一些引導的快捷鍵
+IntenFactory.cs
+之前有設定一個 DefaultIntent.cs 我們將修改這個實作
+當聽不懂的時候 回傳三個快捷鍵
+public async Task ReplyAsync(string replyToken) { if (!string.IsNullOrEmpty(replyText)) { await lineMessageUtility.ReplyMessageAsync(replyToken, replyText); } else { // 回傳歡迎詞 var unknow = new TextMessage() { Text = $@"不好意思，我不太清楚您的意思，或許你可以用下列快速鍵 (僅支援手機)" }; // Quick Reply unknow.QuickReply = new QuickReply(); unknow.QuickReply.Items.Add(new QuickReplyItem() { action = new MessageAction("電子喜帖"), }); unknow....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-13 11:49:43 +0000 UTC">2020-11-13</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Hold on Hold on 重構一下！ (12)
 </h2>
 </header>
@@ -144,24 +161,6 @@ public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemp
 </div>
 <footer class=entry-footer><span title="2020-11-09 08:12:33 +0000 UTC">2020-11-09</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 來做一些婚紗輪播 (9)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>一鍵導航婚宴地點辦在哪 (8)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day8)
-籌備婚禮期間甚至婚禮當天(暈)，常常被問的就是問地點在哪了，Line 本身能直接傳送地圖資訊，可以直接引導到 Google Map 進行導航，在 Line 可以透過 LocationMessage 發送
-定義 LocationMessage.cs
-public class LocationMessage : IMessage { public LineMessageType Type => LineMessageType.location; public string Title { get; set; } public string Address { get; set; } public decimal Latitude { get; set; } public decimal Longitude { get; set; } } 假設我們今天辦在東方文華 (當然沒那麼有錢)
-地址為 台灣台北市敦化北路 158 號
-經緯度可以在 google map 看到為 @25.0557416,121.5481485
-實作 WeddingLocation.cs
-public async Task ReplyAsync(string replyToken) { var locationName = "臺北文華東方酒店"; var msg = new TextMessage() { Text = $"我們在 {locationName} 舉辦唷!...</p>
-</div>
-<footer class=entry-footer><span title="2020-11-08 08:16:56 +0000 UTC">2020-11-08</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 一鍵導航婚宴地點辦在哪 (8)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
