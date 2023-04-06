@@ -81,6 +81,27 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>用Line Beacon來搞自動報到 (24)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day24)
+上一篇講到了用 QR Code 來做婚禮報到，如果能進一步來做自動報到就更方便了，LINE Beacon，是 LINE 推出的藍芽Sensor，可以讓 LINE Bot 接收設備附近的資訊，有時路過一些店家或捷運，他會推播給你一些訊息給你，這就是 Beacon 的技術
+但寫到此篇發現 Line Beacon 無法用簡單的手機或平板來模擬 (就我之前搞beacon的經驗，那時候開發都是用手機當 Sensor)，目前看到可以模擬的方式是用Raspberry Pi 來架設 https://github.com/line/line-simple-beacon
+故此篇內容會來講講怎麼申請和怎麼在程式裡面去擴充接收Line Beacon事件 LINE Business ID Edit descriptionmanager.line.biz
+WebhookEventType 增加 Beacon 事件
+在 Event 繼續擴充
+BeaconType
+enter : 當使用者進入Line Beacon 發送範圍內 banner：LINE for Business用戶限定，可讓用戶收到打開藍芽資訊，進而引導到加企業用戶好友及收到企業帳號的訊息 stay：LINE for Business用戶限定，偵測在區域內的使用者，每10秒會觸發一次
+接著就是在收到訊息後判斷是否為 Beacon 事件，並做實際處理啦
+本篇有點可惜，來不及買 Line Beacon 來玩，無法嘗試實際效果，之後有機會再拿來應用~
+懶人包，本次學到了什麼? Line Beacon https://developers.line.biz/en/docs/messaging-api/using-beacons/ </p>
+</div>
+<footer class=entry-footer><span title="2020-11-24 00:22:05 +0000 UTC">2020-11-24</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 用Line Beacon來搞自動報到 (24)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>用QR Code來搞報到 — Razor Page實做 II (23)
 </h2>
 </header>
@@ -161,23 +182,6 @@ static async System.Threading.Tasks.Task Main(string[] args) { using (var httpCl
 </div>
 <footer class=entry-footer><span title="2020-11-20 00:52:53 +0000 UTC">2020-11-20</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 主動推播Line訊息給某個使用者(Push Message) (20)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day19)
-Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料結構不具備太複雜的關聯關係，透過這種 Key-Value 的方式做儲存，用 JSON 反序列化回來是一個不錯且方便的方式。
-註冊 Azure Table 服務 如何註冊一個 Azure Table 服務，可以參考官方文件，建立完成後，可以透過以下路徑取得 Storage 的 Connection String
-在 .NET Core Web Api 儲存報名資訊 先從 Nuget 安裝 Microsoft.Azure.Cosmos.Table
-新增 AzureTableUtility.cs 並實作
-如何透過 SDK 新增 Azure Table
-public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net"; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount....</p>
-</div>
-<footer class=entry-footer><span title="2020-11-19 10:39:53 +0000 UTC">2020-11-19</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

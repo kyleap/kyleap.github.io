@@ -81,6 +81,23 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day19)
+Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料結構不具備太複雜的關聯關係，透過這種 Key-Value 的方式做儲存，用 JSON 反序列化回來是一個不錯且方便的方式。
+註冊 Azure Table 服務 如何註冊一個 Azure Table 服務，可以參考官方文件，建立完成後，可以透過以下路徑取得 Storage 的 Connection String
+在 .NET Core Web Api 儲存報名資訊 先從 Nuget 安裝 Microsoft.Azure.Cosmos.Table
+新增 AzureTableUtility.cs 並實作
+如何透過 SDK 新增 Azure Table
+public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net"; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-19 10:39:53 +0000 UTC">2020-11-19</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)
 </h2>
 </header>
@@ -149,26 +166,6 @@ public async Task&lt;Richmenu> CreateRichMenuAsync(CreateRichmenu richmenu) { us
 </div>
 <footer class=entry-footer><span title="2020-11-15 09:01:22 +0000 UTC">2020-11-15</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 切換 Line 的圖文選單 (15)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>Line 的圖文選單 (14)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day14)
-在 Line 的官方帳號可以設定進入時的選單，讓使用者快速點選，設定方式可以從官方帳號後台(有既定的範本可以參考)，或者是用程式自己指定(可以自己控制圖片的座標&設定點選區塊)，以下分別介紹
-從官方帳號後台 這應該是最方便的方式了，Line 已經提供了一些範本和設計規範，只要照著範本製作一個圖片，並設定每個區塊要觸發的事件，即可完成一個圖文選單
-進入 https://manager.line.biz/ 選擇圖文選單 => 建立 => 設計規範 => 下載範本，(或者直接點此下載)，下載後會是一個壓縮檔，今天來用這個範例做修改
-我們用 PhotoShop 改成我們要的圖片 (這就不介紹啦) https://imgur.com/ev4LQzp.jpg
-上傳圖片，並設定 A.B.C 所要觸發的文字
-這樣就完成了，是不是很方便阿
-從程式指定 Rich Menu 程式就沒有用 Business 後台直接上傳圖片來得那麼方便，但程式可以做到極彈性，它可以自訂圖片的座標來設定 click 的範圍，可以針對使用者來動態的切換 Rich Menu 等等…。Rich Menu 所牽扯的 Api 有點多，故先整理今天會實作的 Api 清單如下
-Get rich menu list：取得此 chatbot 已註冊的 Rich Menu 清單 Upload rich menu image：設定 Rich Menu 的圖片 Set default rich menu：設定所檢視的 Rich Menu
-新增 LineRichMenuUtility.cs 之前 Message API 我們做了 一個 Utility ，Rich Menu 我們也新增一個...</p>
-</div>
-<footer class=entry-footer><span title="2020-11-14 18:02:39 +0000 UTC">2020-11-14</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to Line 的圖文選單 (14)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-14/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
