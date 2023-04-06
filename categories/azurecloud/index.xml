@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Azure on 凱哥打扣 | Kyle Studio</title>
-    <link>https://kyleap.github.io/categories/azure/</link>
-    <description>Recent content in Azure on 凱哥打扣 | Kyle Studio</description>
+    <title>AzureCloud on 凱哥打扣 | Kyle Studio</title>
+    <link>https://kyleap.github.io/categories/azurecloud/</link>
+    <description>Recent content in AzureCloud on 凱哥打扣 | Kyle Studio</description>
     <image>
       <title>凱哥打扣 | Kyle Studio</title>
       <url>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</url>
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 15 Jan 2023 15:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/azure/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jan 2023 15:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/azurecloud/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>透過 docker 發行 FastAPI 到 Azure</title>
       <link>https://kyleap.github.io/docker-deploy-fastapi-to-azure/</link>

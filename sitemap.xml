@@ -32,7 +32,7 @@
     <loc>https://kyleap.github.io/tags/azureboard/</loc>
     <lastmod>2023-03-17T08:21:01+00:00</lastmod>
   </url><url>
-    <loc>https://kyleap.github.io/categories/scrum/</loc>
+    <loc>https://kyleap.github.io/tags/scrum/</loc>
     <lastmod>2023-03-17T08:21:01+00:00</lastmod>
   </url><url>
     <loc>https://kyleap.github.io/azure-boards-retro-meeting/</loc>
@@ -40,9 +40,6 @@
   </url><url>
     <loc>https://kyleap.github.io/azure-boards-daily-meeting/</loc>
     <lastmod>2023-03-15T08:21:01+00:00</lastmod>
-  </url><url>
-    <loc>https://kyleap.github.io/tags/user-story/</loc>
-    <lastmod>2023-03-08T08:21:01+00:00</lastmod>
   </url><url>
     <loc>https://kyleap.github.io/azure-boards-user-story-point/</loc>
     <lastmod>2023-03-08T08:21:01+00:00</lastmod>
@@ -53,22 +50,19 @@
     <loc>https://kyleap.github.io/azure-boards-backlogs/</loc>
     <lastmod>2023-03-05T08:21:01+00:00</lastmod>
   </url><url>
-    <loc>https://kyleap.github.io/tags/scrum/</loc>
-    <lastmod>2023-02-27T09:41:01+00:00</lastmod>
-  </url><url>
     <loc>https://kyleap.github.io/azure-board-extensions/</loc>
     <lastmod>2023-02-27T09:41:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/tags/azurerepo/</loc>
+    <lastmod>2023-02-25T15:41:01+00:00</lastmod>
   </url><url>
     <loc>https://kyleap.github.io/azure-board-workitem-template/</loc>
     <lastmod>2023-02-25T15:41:01+00:00</lastmod>
   </url><url>
-    <loc>https://kyleap.github.io/tags/azurerepo/</loc>
-    <lastmod>2023-02-01T09:41:01+00:00</lastmod>
-  </url><url>
     <loc>https://kyleap.github.io/azure-board-pull-request-template/</loc>
     <lastmod>2023-02-01T09:41:01+00:00</lastmod>
   </url><url>
-    <loc>https://kyleap.github.io/categories/azure/</loc>
+    <loc>https://kyleap.github.io/categories/azurecloud/</loc>
     <lastmod>2023-01-15T15:21:01+00:00</lastmod>
   </url><url>
     <loc>https://kyleap.github.io/tags/docker/</loc>
