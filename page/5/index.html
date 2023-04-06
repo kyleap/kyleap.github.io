@@ -78,6 +78,22 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>不用寫程式，Line URL Scheme 應用整理
+</h2>
+</header>
+<div class=entry-content>
+<p>寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
+開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
+開啟定位 https://line.me/R/nv/location/ (打開地圖)
+分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&postId={postId} (移至貼文)
+Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
+個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet (移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line....</p>
+</div>
+<footer class=entry-footer><span title="2021-05-23 22:16:16 +0000 UTC">2021-05-23</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 不用寫程式，Line URL Scheme 應用整理" href=https://kyleap.github.io/play-with-line-url-scheme/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>(啃書) Chatbot從0到1
 </h2>
 </header>
@@ -149,25 +165,6 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
 </div>
 <footer class=entry-footer><span title="2020-11-28 13:28:25 +0000 UTC">2020-11-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 製作婚禮現場即時留言版- Azure SignalR Service I (28)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day27)
-婚禮現場一定會有各種親朋好友視角的照片，以往都要一個一個傳在社群媒體之類的，本次來實作 chatbot 來廣收各種朋友拍的照片.. XD
-上傳到 Imgur Imgur是個圖床服務，如果是非商業使用，是完全免費的，串接起來也很容易，首先先到 https://api.imgur.com/oauth2/addclient 註冊一個 OAuth 服務
-會得到 client id 和 client secret
-回到 LineBotApp.cs，我們可以針對圖片類型的訊息做處理
-GetContentBytesAsync
-public async Task&lt;Stream> GetContentBytesAsync(string messageId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("GET"), $"https://api-data.line.me/v2/bot/message/{messageId}/content")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); var response = await httpClient.SendAsync(request); var results = await response.Content.ReadAsStreamAsync(); return results; } } } UploadToImgurAsync
-可以透過 Nuget 安裝 Imgur.API
-public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient("&lt;Your Imgur ClientId>"); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint....</p>
-</div>
-<footer class=entry-footer><span title="2020-11-27 00:32:07 +0000 UTC">2020-11-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
