@@ -1,0 +1,162 @@
+<!doctype html><html lang=en dir=auto>
+<head><meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta name=robots content="index, follow">
+<title>一個好的 User Story, 應具備哪些要素? | 凱哥打扣 | Kyle Studio</title>
+<meta name=keywords content="AzureDevOps,AzureBoard,.NET Conf 2022,User Story">
+<meta name=description content="這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容
+獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。
+可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。
+有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。
+可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。">
+<meta name=author content="Kyle">
+<link rel=canonical href=https://kyleap.github.io/azure-boards-user-story/>
+<meta name=google-site-verification content="XYZabc">
+<link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
+<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://kyleap.github.io/favicon.ico>
+<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
+<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
+<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
+<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
+<meta name=theme-color content="#2e2e33">
+<meta name=msapplication-TileColor content="#2e2e33">
+<noscript>
+<style>#theme-toggle,.top-link{display:none}</style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
+<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
+<meta property="og:title" content="一個好的 User Story, 應具備哪些要素?">
+<meta property="og:description" content="這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容
+獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。
+可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。
+有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。
+可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://kyleap.github.io/azure-boards-user-story/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2023-03-06T08:21:01+00:00">
+<meta property="article:modified_time" content="2023-03-06T08:21:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
+<meta name=twitter:title content="一個好的 User Story, 應具備哪些要素?">
+<meta name=twitter:description content="這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容
+獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。
+可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。
+有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。
+可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"一個好的 User Story, 應具備哪些要素?","item":"https://kyleap.github.io/azure-boards-user-story/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"一個好的 User Story, 應具備哪些要素?","name":"一個好的 User Story, 應具備哪些要素?","description":"這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容\n獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。\n可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。\n有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。\n可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。","keywords":["AzureDevOps","AzureBoard",".NET Conf 2022","User Story"],"articleBody":"這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容\n獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。\n可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。\n有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。\n可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。\n夠小的 (Small-sized) User Story 通常會以 Story Point 來做複雜度評估，但點數過大的時候需要思考是否要拆解，代表這個單子要做的事情收斂的不夠，複雜度越高，代表 Delay 風險越高，估時一定是不準的，我們能做的就是將 Scope 鎖小，讓不確定性降低，也更好的統計完成度\n可測試的 (Testable) 為了保證產品開發的品質和有效性，User Story 必須要提供必要的資料，以讓故事可以被測試。這些資料可能包括用戶需求、功能要求、測試條件、期望結果等等。這些資料可以幫助開發團隊確定 User Story 的可行性和功能性，並確保 User Story 滿足用戶需求和期望。通過提供必要的資料，開發團隊可以更好地進行故事測試和驗證，以確保產品能夠符合用戶期望和需求。因此，提供必要的資料是確保 User Story 的可測試性和產品品質的重要一環。\n以下是一個在 Azure Boards 撰寫單子的範例及所要注意的重點\n如果你想要看完整的演講影片，現在也已經傳到 Youtube\n 影片: https://www.youtube.com/watch?v=G0ggjY5kzF8 簡報: https://speakerdeck.com/kyleshen/dot-net-conf-taiwan-na-xie-nian-yong-azure-boards-jiao-fu-guo-de-chan-pin  ","wordCount":"111","inLanguage":"en","datePublished":"2023-03-06T08:21:01Z","dateModified":"2023-03-06T08:21:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-boards-user-story/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+</head>
+<body class=dark id=top>
+<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
+<header class=header>
+<nav class=nav>
+<div class=logo>
+<a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
+<div class=logo-switches>
+<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+</div>
+</div>
+<ul id=menu>
+<li>
+<a href=https://kyleap.github.io/kyleshen/ title=about>
+<span>about</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/archives/ title=archives>
+<span>archives</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/categories/ title=categories>
+<span>categories</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
+<span>search</span>
+</a>
+</li>
+<li>
+<a href=https://kyleap.github.io/tags/ title=tags>
+<span>tags</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-header>
+<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
+<h1 class=post-title>
+一個好的 User Story, 應具備哪些要素?
+</h1>
+<div class=post-meta><span title="2023-03-06 08:21:01 +0000 UTC">2023-03-06</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
+</div>
+</header>
+<div class=post-content><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品
+以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決，
+並將其整理成為文章版更難完整記錄本場的內容 
+</code></pre></div><p>在 <a href=https://www.books.com.tw/products/0010898429>Mike Cohn 的 使用者故事</a>一書中，有提到一個好的 User Story 應具備以下內容</p>
+<h3 id=獨立的-independent>獨立的 (Independent)<a hidden class=anchor aria-hidden=true href=#獨立的-independent>#</a></h3>
+<p>為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。</p>
+<h3 id=可協調的-negotiable>可協調的 (Negotiable)<a hidden class=anchor aria-hidden=true href=#可協調的-negotiable>#</a></h3>
+<p>為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。</p>
+<h3 id=有價值的-valuable>有價值的 (Valuable)<a hidden class=anchor aria-hidden=true href=#有價值的-valuable>#</a></h3>
+<p>User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。</p>
+<h3 id=可預估的-estimable>可預估的 (Estimable)<a hidden class=anchor aria-hidden=true href=#可預估的-estimable>#</a></h3>
+<p>必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。</p>
+<h3 id=夠小的-small-sized>夠小的 (Small-sized)<a hidden class=anchor aria-hidden=true href=#夠小的-small-sized>#</a></h3>
+<p>User Story 通常會以 Story Point 來做複雜度評估，但點數過大的時候需要思考是否要拆解，代表這個單子要做的事情收斂的不夠，複雜度越高，代表 Delay 風險越高，估時一定是不準的，我們能做的就是將 Scope 鎖小，讓不確定性降低，也更好的統計完成度</p>
+<h3 id=可測試的-testable>可測試的 (Testable)<a hidden class=anchor aria-hidden=true href=#可測試的-testable>#</a></h3>
+<p>為了保證產品開發的品質和有效性，User Story 必須要提供必要的資料，以讓故事可以被測試。這些資料可能包括用戶需求、功能要求、測試條件、期望結果等等。這些資料可以幫助開發團隊確定 User Story 的可行性和功能性，並確保 User Story 滿足用戶需求和期望。通過提供必要的資料，開發團隊可以更好地進行故事測試和驗證，以確保產品能夠符合用戶期望和需求。因此，提供必要的資料是確保 User Story 的可測試性和產品品質的重要一環。</p>
+<p>以下是一個在 Azure Boards 撰寫單子的範例及所要注意的重點</p>
+<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/230374167-dc225bf1-4343-40fc-a859-9038cf29e7e3.png alt=image>
+</p>
+<p>如果你想要看完整的演講影片，現在也已經傳到 Youtube</p>
+<ul>
+<li>影片: <a href="https://www.youtube.com/watch?v=G0ggjY5kzF8">https://www.youtube.com/watch?v=G0ggjY5kzF8</a></li>
+<li>簡報: <a href=https://speakerdeck.com/kyleshen/dot-net-conf-taiwan-na-xie-nian-yong-azure-boards-jiao-fu-guo-de-chan-pin>https://speakerdeck.com/kyleshen/dot-net-conf-taiwan-na-xie-nian-yong-azure-boards-jiao-fu-guo-de-chan-pin</a></li>
+</ul>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li>
+<li><a href=https://kyleap.github.io/tags/azureboard/>AzureBoard</a></li>
+<li><a href=https://kyleap.github.io/tags/.net-conf-2022/>.NET Conf 2022</a></li>
+<li><a href=https://kyleap.github.io/tags/user-story/>User Story</a></li>
+</ul>
+<nav class=paginav>
+<a class=prev href=https://kyleap.github.io/azure-wiki-pie-chart/>
+<span class=title>« Prev</span>
+<br>
+<span>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖</span>
+</a>
+<a class=next href=https://kyleap.github.io/azure-boards-backlogs/>
+<span class=title>Next »</span>
+<br>
+<span>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?</span>
+</a>
+</nav>
+</footer>
+</article>
+</main>
+<footer class=footer>
+<span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
+<span>
+Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
+</span>
+</footer>
+<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a>
+<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
+<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
+<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
+</body>
+</html>

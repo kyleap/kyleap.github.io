@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>.NET Conf 2022 on 凱哥打扣 | Kyle Studio</title>
-    <link>https://kyleap.github.io/tags/.net-conf-2022/</link>
-    <description>Recent content in .NET Conf 2022 on 凱哥打扣 | Kyle Studio</description>
+    <title>Scurm on 凱哥打扣 | Kyle Studio</title>
+    <link>https://kyleap.github.io/categories/scurm/</link>
+    <description>Recent content in Scurm on 凱哥打扣 | Kyle Studio</description>
     <image>
       <title>凱哥打扣 | Kyle Studio</title>
       <url>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</url>
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Mar 2023 08:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/.net-conf-2022/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Mar 2023 08:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/scurm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一個好的 User Story, 應具備哪些要素?</title>
       <link>https://kyleap.github.io/azure-boards-user-story/</link>

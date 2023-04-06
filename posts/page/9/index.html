@@ -81,6 +81,22 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>婚禮現場交通資訊一覽表 (10)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
+在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果
+上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的"地址導覽" 的 intent，這就是我們今天會帶到的 postback event
+CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作
+public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List&lt;ColumnMultipleAction> columns) { Columns = columns; } public string Type => "carousel"; public List&lt;ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
+ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-10 08:01:05 +0000 UTC">2020-11-10</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 婚禮現場交通資訊一覽表 (10)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>來做一些婚紗輪播 (9)
 </h2>
 </header>
@@ -149,19 +165,6 @@ protected virtual async Task OnMessageAsync(Event ev) { if (ev.message.Type.Equa
 </div>
 <footer class=entry-footer><span title="2020-11-06 11:57:27 +0000 UTC">2020-11-06</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 環保愛地球，回傳電子喜帖 (6)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-6/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>回傳不文謅謅的 Line 貼圖 (5)
-</h2>
-</header>
-<div class=entry-content>
-<p>我想 Line 豐富的貼圖，應該是很多人喜歡用它來做 Chatbot 的一個原因吧 接續上一篇，我們試著在歡迎詞後，傳送一個禮貌又不尷尬的貼圖
-在 LineReplyMessageUtility.cs 擴充回傳貼圖 我們接續前一篇 LineReplyMessageUtility 這個類別再實作一個回覆貼圖的method
-public async Task ReplyStickerMessageAsync(string replyToken, string packageId, string stickerId) { using(var httpClient = new HttpClient()) { using(var request = new HttpRequestMessage(new HttpMethod("POST"), $ "{lineMessageApiBaseUrl}")) { request.Headers.TryAddWithoutValidation("Authorization", $ "Bearer {accessToken}"); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new StickerMessage() { PackageId = packageId, StickerId = stickerId }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting....</p>
-</div>
-<footer class=entry-footer><span title="2020-11-05 12:18:40 +0000 UTC">2020-11-05</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 回傳不文謅謅的 Line 貼圖 (5)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

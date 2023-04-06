@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>.NET Conf 2022 on 凱哥打扣 | Kyle Studio</title>
-    <link>https://kyleap.github.io/tags/.net-conf-2022/</link>
-    <description>Recent content in .NET Conf 2022 on 凱哥打扣 | Kyle Studio</description>
+    <title>User Story on 凱哥打扣 | Kyle Studio</title>
+    <link>https://kyleap.github.io/tags/user-story/</link>
+    <description>Recent content in User Story on 凱哥打扣 | Kyle Studio</description>
     <image>
       <title>凱哥打扣 | Kyle Studio</title>
       <url>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</url>
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 06 Mar 2023 08:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/.net-conf-2022/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Mar 2023 08:21:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/user-story/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一個好的 User Story, 應具備哪些要素?</title>
       <link>https://kyleap.github.io/azure-boards-user-story/</link>
@@ -22,21 +22,6 @@
 可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。
 有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。
 可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。</description>
-    </item>
-    
-    <item>
-      <title>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?</title>
-      <link>https://kyleap.github.io/azure-boards-backlogs/</link>
-      <pubDate>Sun, 05 Mar 2023 08:21:01 +0000</pubDate>
-      
-      <guid>https://kyleap.github.io/azure-boards-backlogs/</guid>
-      <description>這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 Scrum Guide 說 Product Owner 需要依照價值排好 Backlogs，讓整個團隊可有穩定的節奏開發產品，但怎麼排序往往是個難題，有沒有一個框架可以參考?
-https://uxdesign.cc/how-to-choose-your-product-prioritization-framework-ff0320d63ebf 的作者製作了一個框架提供參考
-可以用兩個面向各字給 1-5 分來決定用哪種價值排序方式
- 需給客戶驗證的程度: 需要在End User的參與下進行一定程度的數據收集或假設驗證練習來驗證程度，越密切分數越高 定性定量的程度: 需要更多的數據驗證，因素越多分數越高  透過這樣的兩個面向，可以初步選擇所使用的框架，本文以最 MoSCoW 及 WSJF 做舉例
-MoSCoW MoSCoW是一種常用的優先順序法，用於將需求和功能分為四個類別：
- &amp;ldquo;M&amp;rdquo; 代表必需品（Must Have），這些功能或需求是關鍵的，必須在產品中實現，否則產品無法正常工作或無法交付。這些功能或需求通常是必要的核心功能或重要的業務需求。以我自己定義通常為 &amp;ldquo;沒有交付就不能達成商業目標&amp;rdquo; 的項目 &amp;ldquo;S&amp;rdquo; 代表應該品（Should Have），這些功能或需求是非常重要的，但不是必須的。如果有足夠的時間和資源，這些功能或需求應該被優先實現。 &amp;ldquo;C&amp;rdquo; 代表願望品（Could Have），這些功能或需求是可選的，通常是增強產品體驗或功能的選項。如果時間和資源允許，可以考慮實現這些功能或需求。 &amp;ldquo;W&amp;rdquo; 代表不需要品（Won’t Have），這些功能或需求是不必要的，不需要在產品中實現。這些功能或需求可能已被視為過時或不再需要。  當然，以上可以自己定義，目的為直覺得加速判斷，以我自己定義可以用以下方式來做收斂:
- Must Have: 沒有交付就不能達成商業目標 Should Have: 重要但短期有替代方案 Could Have: 不做沒關係，但做了能為產品帶來加分效果 Won’t Have: 就算做了有無助於提升產品價值  而 Azure Boards 可以怎麼做?</description>
     </item>
     
   </channel>

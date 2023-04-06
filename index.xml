@@ -28,6 +28,19 @@ Reference
     </item>
     
     <item>
+      <title>一個好的 User Story, 應具備哪些要素?</title>
+      <link>https://kyleap.github.io/azure-boards-user-story/</link>
+      <pubDate>Mon, 06 Mar 2023 08:21:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-boards-user-story/</guid>
+      <description>這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容
+獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。
+可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。
+有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。
+可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。</description>
+    </item>
+    
+    <item>
       <title>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?</title>
       <link>https://kyleap.github.io/azure-boards-backlogs/</link>
       <pubDate>Sun, 05 Mar 2023 08:21:01 +0000</pubDate>

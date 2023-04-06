@@ -81,6 +81,18 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>在 .NET Core 使用 Feature Flag (Feature Toggle)
+</h2>
+</header>
+<div class=entry-content>
+<p>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
+Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "FeatureFlagPoc.API", Version = "v1"}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&lt;WeatherForecastController> logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager....</p>
+</div>
+<footer class=entry-footer><span title="2021-12-06 21:54:41 +0800 +0800">2021-12-06</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>將 Line Liff App 發佈到免費的 Azure Static Web App
 </h2>
 </header>
@@ -136,24 +148,6 @@ Demo Flex 範例 { "type": "bubble", "body": { "type": "box", "layout": "vertica
 </div>
 <footer class=entry-footer><span title="2021-07-08 15:06:17 +0000 UTC">2021-07-08</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line RichMenu 設定與切換，以 NET 5 為例" href=https://kyleap.github.io/2021-07-08-line-rich-menu-switch/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>用 BeefText 來減少常輸入的文字，增加工作效率
-</h2>
-</header>
-<div class=entry-content>
-<p>前言 在非洲一分鐘就有60秒過去，所以在工作上只要節省5秒鐘，一年下來就是省下1825秒阿，比爾蓋茲說過懶惰的人歡迎到微軟，主要是能找到那種工作上會不斷優化自己工作的員工，所以要時時刻刻思考，如果你工作上有太多的重複的事項/太多固定的流程，下一步就要思考自動化。
-今天要介紹的是免費工具 beefText ，工作上可能會有一些長打的程式片段，譬如撰寫SQL查詢一些問題時，但這些片段也許可以用編輯器存起來，但WFH可能也會有一些常見要回的話，或者是一些email範本(面試感謝信…等等)，每次都要重新輸入人生就浪費了幾秒鐘了阿!!
-功能介紹 你可建立多個Group來做分類，Group底下可以建 Combo，譬如 e_ii (email_interview_invite) 就能觸發 Email 的邀請範本，寫 Email 時候再去微調就好了
-預設只要輸入偵測到關鍵字就會觸發取代你建立好的 Template，但也可調整空白鍵才去偵測
-指令越來越多時候，也可以用 picker 功能，我習慣適用 windows+alt+p
-如果換電腦的話，可以將設定檔從以下路徑備份出來，List會是一個JSON檔
-BeefText下載
-https://beeftext.org/</p>
-</div>
-<footer class=entry-footer><span title="2021-06-25 20:34:35 +0000 UTC">2021-06-25</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 用 BeefText 來減少常輸入的文字，增加工作效率" href=https://kyleap.github.io/tools-beeftext/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

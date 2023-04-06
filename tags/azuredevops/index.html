@@ -98,6 +98,21 @@ https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidan
 </article>
 <article class="post-entry tag-entry">
 <header class=entry-header>
+<h2>一個好的 User Story, 應具備哪些要素?
+</h2>
+</header>
+<div class=entry-content>
+<p>這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 在 Mike Cohn 的 使用者故事一書中，有提到一個好的 User Story 應具備以下內容
+獨立的 (Independent) 為了提高產品開發效率，User Story 必須盡可能獨立，與其他單子的依賴性越低越好。這樣可以讓團隊更好地分配工作，並使開發流程更加靈活和高效。當 User Story 之間有很強的相互依賴性時，只要一 Delay 可能就會影響其他單子的進度，進而影響整個產品的交付。因此，將 User Story 設計為盡可能獨立的單元，可以降低風險，減少延遲和錯誤，同時提高產品的可靠性和可維護性。
+可協調的 (Negotiable) 為了達到產品開發的效率和靈活性，User Story 必須是可協調的，即可以保留一些開放式描述，讓團隊進行討論和協調。User Story 的開放式描述可以激發團隊成員的討論，進而確定 User Story 的實際需求和功能。同時，開放式描述也可以在開發過程中進行調整和修改，以適應產品開發的實際情況。在 User Story 中保留開放式描述可以幫助團隊在開發期間進行更好的協調和溝通，並確保產品能夠滿足用戶需求。最終，這樣的協調和討論可以幫助團隊建立更強的團隊合作精神，以達成產品開發的最終目標。
+有價值的 (Valuable) User Story 對於使用者來說非常重要，因為它們確定了產品的功能和特性，並且能夠滿足用戶的需求。如果 User Story 無法滿足用戶需求，那麼產品將無法被成功接受。為了確保 User Story 的價值，開發團隊必須理解並關注用戶需求，將其轉化為可實現的 User Story。只有這樣，才能創造出一個有價值的產品，並滿足用戶需求。
+可預估的 (Estimable) 必須能夠對它們的大小、難易度和所需時間進行預估。這樣可以幫助開發團隊更好地分配工作，同時確保產品交付的準時性和品質。通過對 User Story 進行預估，開發團隊可以更好地掌握開發進度和進度風險，並提前進行調整。但需要注意的是，User Story 的預估並不是一個精確的科學，因為它們可能受到多種因素的影響。因此，開發團隊需要持續進行評估和調整，以確保 User Story 的準確性和可行性，並最終創造出高質量的產品。...</p>
+</div>
+<footer class=entry-footer><span title="2023-03-06 08:21:01 +0000 UTC">2023-03-06</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 一個好的 User Story, 應具備哪些要素?" href=https://kyleap.github.io/azure-boards-user-story/></a>
+</article>
+<article class="post-entry tag-entry">
+<header class=entry-header>
 <h2>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?
 </h2>
 </header>
@@ -149,23 +164,12 @@ Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，�
 <footer class=entry-footer><span title="2023-02-25 15:41:01 +0000 UTC">2023-02-25</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 Azure Board 建立 workitem template 加強團隊共識" href=https://kyleap.github.io/azure-board-workitem-template/></a>
 </article>
-<article class="post-entry tag-entry">
-<header class=entry-header>
-<h2>在 Azure Repo 設定 Pull Request Template
-</h2>
-</header>
-<div class=entry-content>
-<p>建立良好規範與開發者的互動 當團隊開始 Pull Request 順暢後，慢慢的也會討論出一些規範與 Pull Request 的重點, 如果在建立的時候，能有一些 Checklist 讓新工程師自我檢查，或者是讓每個工程師都能遵循相同的寫法，讓同事快速理解這次審核的目的與重點，這時就能利用 Template 來標準化
-建立第一個 Pull Request Template Template 檔案可以是 .md 或 .txt 的檔案類型，預設的範本放置以下的路徑即可生效 (則一即可)
-&lt;repository root>/.azuredevops/pull_request_template/ &lt;repository root>/.vsts/pull_request_template/ &lt;repository root>/docs/pull_request_template/ &lt;repository root>/pull_request_template/ 以下直接用 Azure Repo 的 UI 來做示範：
-建立一個 Folder
-建立一個 docs/pull_request_template 資料夾, 並直接新增 Default-PR-Template.md 檔案
-撰寫一個範本並 Commit
-**將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明: 建立一個 Branch 並針對任一檔案做異動...</p>
-</div>
-<footer class=entry-footer><span title="2023-02-01 09:41:01 +0000 UTC">2023-02-01</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 Azure Repo 設定 Pull Request Template" href=https://kyleap.github.io/azure-board-pull-request-template/></a>
-</article>
+<footer class=page-footer>
+<nav class=pagination>
+<a class=next href=https://kyleap.github.io/tags/azuredevops/page/2/>Next&nbsp;&nbsp;»
+</a>
+</nav>
+</footer>
 </main>
 <footer class=footer>
 <span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
