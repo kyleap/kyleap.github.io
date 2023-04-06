@@ -78,6 +78,23 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?
+</h2>
+</header>
+<div class=entry-content>
+<p>這是我在 .NET Conf Taiwan 2022 的演講 - 那些年用 Azure Boards 交付過的產品 以 5 個痛點來分享之前 Scurm 所遇到的問題，當時怎麼解決， 並將其整理成為文章版更難完整記錄本場的內容 Scrum Guide 說 Product Owner 需要依照價值排好 Backlogs，讓整個團隊可有穩定的節奏開發產品，但怎麼排序往往是個難題，有沒有一個框架可以參考?
+https://uxdesign.cc/how-to-choose-your-product-prioritization-framework-ff0320d63ebf 的作者製作了一個框架提供參考
+可以用兩個面向各字給 1-5 分來決定用哪種價值排序方式
+需給客戶驗證的程度: 需要在End User的參與下進行一定程度的數據收集或假設驗證練習來驗證程度，越密切分數越高 定性定量的程度: 需要更多的數據驗證，因素越多分數越高 透過這樣的兩個面向，可以初步選擇所使用的框架，本文以最 MoSCoW 及 WSJF 做舉例
+MoSCoW MoSCoW是一種常用的優先順序法，用於將需求和功能分為四個類別：
+“M” 代表必需品（Must Have），這些功能或需求是關鍵的，必須在產品中實現，否則產品無法正常工作或無法交付。這些功能或需求通常是必要的核心功能或重要的業務需求。以我自己定義通常為 “沒有交付就不能達成商業目標” 的項目 “S” 代表應該品（Should Have），這些功能或需求是非常重要的，但不是必須的。如果有足夠的時間和資源，這些功能或需求應該被優先實現。 “C” 代表願望品（Could Have），這些功能或需求是可選的，通常是增強產品體驗或功能的選項。如果時間和資源允許，可以考慮實現這些功能或需求。 “W” 代表不需要品（Won’t Have），這些功能或需求是不必要的，不需要在產品中實現。這些功能或需求可能已被視為過時或不再需要。 當然，以上可以自己定義，目的為直覺得加速判斷，以我自己定義可以用以下方式來做收斂:
+Must Have: 沒有交付就不能達成商業目標 Should Have: 重要但短期有替代方案 Could Have: 不做沒關係，但做了能為產品帶來加分效果 Won’t Have: 就算做了有無助於提升產品價值 而 Azure Boards 可以怎麼做?...</p>
+</div>
+<footer class=entry-footer><span title="2023-03-05 08:21:01 +0000 UTC">2023-03-05</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?" href=https://kyleap.github.io/azure-boards-backlogs/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛
 </h2>
 </header>
@@ -143,18 +160,6 @@ requirements.txt fastAPI uvicorn main.py from typing import Optional from fastap
 </div>
 <footer class=entry-footer><span title="2023-01-15 15:21:01 +0000 UTC">2023-01-15</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 透過 docker 發行 FastAPI 到 Azure" href=https://kyleap.github.io/docker-deploy-fastapi-to-azure/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯
-</h2>
-</header>
-<div class=entry-content>
-<p>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
-實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案 [FilterAlias("Browser")] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task&lt;bool> EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers["User-Agent"].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get&lt;BrowserFilterSettings>(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult&lt;bool>(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能) "FeatureManagement": { "FeatureA": { "EnabledFor": [ { "Name": "Browser", "Parameters": { "Allowed": [ "Edg" ] } } ] } } startup 注入 services....</p>
-</div>
-<footer class=entry-footer><span title="2021-12-09 21:30:41 +0800 +0800">2021-12-09</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
