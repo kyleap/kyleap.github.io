@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>凱爾啃書 on 凱哥打扣 | Kyle Studio</title>
-    <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/</link>
-    <description>Recent content in 凱爾啃書 on 凱哥打扣 | Kyle Studio</description>
+    <title>Product Owner on 凱哥打扣 | Kyle Studio</title>
+    <link>https://kyleap.github.io/tags/product-owner/</link>
+    <description>Recent content in Product Owner on 凱哥打扣 | Kyle Studio</description>
     <image>
       <title>凱哥打扣 | Kyle Studio</title>
       <url>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</url>
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Apr 2023 15:46:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Apr 2023 15:46:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/product-owner/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>(啃書) 產品負責人實戰守則：從洞悉顧客需求，到引領敏捷開發</title>
       <link>https://kyleap.github.io/book-review-product-owner-guide/</link>
@@ -32,23 +32,6 @@
 產品負責人應該努力將組織塑造成一個不斷學習和自我改進的團隊。這意味著他們需要鼓勵團隊成員犯錯並從錯誤中學習，以達到最佳的創新水平。團隊成員應該被鼓勵提出各種想法，即使這些想法可能在實施過程中遇到困難。產品負責人需要在失敗中尋找改進的機會，並將這些改進運用到未來的產品開發中。
  在有限的資源裡發揮最大的價值，就是PO的職責所在，如果無法與團隊維持良好的協作關係，開誠步公地討論，都會影響到PO的決策跟產品交付日期
  </description>
-    </item>
-    
-    <item>
-      <title>(啃書) Chatbot從0到1</title>
-      <link>https://kyleap.github.io/chatbot-zero-to-one/</link>
-      <pubDate>Fri, 21 May 2021 20:41:01 +0000</pubDate>
-      
-      <guid>https://kyleap.github.io/chatbot-zero-to-one/</guid>
-      <description>啃書代表是在閱讀時，針對自己有幫助的片段，做反思與紀錄，如想閱讀完整知識建議還是購買完整書籍 :P
- always center.
-Chatbot 的機會與未來 近年來 Chatbot 技術興起，使用者下載App意願降低，加上各大平台也開始推出聊天機器人Api串接，開始越來越多應用出現，交互介面已經從傳統的App點擊互動，轉變為對話互動，也因為 Chatbot 依附在各大平台上 e.g Line/Facebook…等，推廣上也較容易，再加上自然語言分析技術日漸成熟，越來越多的AI服務可以應用，可以想像成百上千的 App 會逐漸轉為 Chatbot。
-在設計 Chatbot 時，要時刻記得對話交互是手段而非目的，要通過最簡單的互動方式讓使用者獲取服務，而最簡單的交付方式不一定要用對話，這時就能透過圖形化介面與人工接入流程來替使用者完成目標，且應該時時刻刻去觀察使用者的心理變化，觀察上下文，是否造成迷路，觀察對話節奏是否合理，逐步的調教與優化流程，讓重複性的任務交給Bot引導來完成。本書提出軟體開發的生命週期，提供給產品設計師在規劃 Chatbot 產品時一個指南。
-思考一下產品定位，定義產品邊界 Chatobt 的應用情境大概可以分為開放領域 (open-domain) 或封閉領域 (closed-domain) 兩大類，開放式大概沒有限定主題，像Google助理或者 Siri 這種問什麼都自由對話，這實踐起來也較困難，而封閉式通常會限縮在一定的場景下，也就是 Chatbot 的輸入輸出是有限的，譬如訂位為在線客服/教育/個人助理，跟這幾個任務無關的事項，就引導客戶能目前能完成什麼事情，僅針對該領域，結合商業.產品.運營，針對領域場景優化交互內容。
-以應用市場角度來看，可以將 Chatbot 定為四類:
- 陪伴型: 自由回答，譬如兒童陪伴類的Bot 商務型: 協助企業完成商業任務Bot，譬如 Github 推出 Hubot 來完成跟 DevOps 有關的相關任務 資訊型: 讓使用者獲取新聞類的訊息，譬如疾管家 指令型: 透過指令來讓Bot完成一些任務，譬如串接智能家電打開電燈/電視   在設計 Chatbot 前，先思考一下產品定位，把商務型的bot對話設計成像陪伴型，只會讓人感覺到這個Bot很不智能，什麼都不會，造成極差的使用者體驗
- 流程設計應專注在完成商業目標及幫助使用者完成任務 影響網站成功的應用程式都有一個共同點，卓越的使用者體驗，Chatbot 可透過以下因素來評估
- 如何用最少的步驟解決使使用者問題? 能比其他方式更好解決使用者問題? 能否在使用者習慣的平台上運行 用戶獲取 Chatbot 的途徑是否方便 用戶能無門檻的使用 Chatbot  在進開發前，可透過以下的步驟來收斂需求：先有大量的對話腳本，再來繪製流程圖，Chatbot 常見的技術名詞有意圖 (intent) 及 實體 (entity)，繪製流程圖避免將意圖跟對話混在一起思考，因對話存在多種可能，故不能只考慮核心場景，故可從對話腳本裡面確定場景與優先及拆出意圖跟實體，e.</description>
     </item>
     
     <item>

@@ -3,11 +3,10 @@
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta name=robots content="index, follow">
-<title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting) | 凱哥打扣 | Kyle Studio</title>
+<title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯 | 凱哥打扣 | Kyle Studio</title>
 <meta name=keywords content=".NET">
-<meta name=description content="如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
- appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
- &#34;FeatureManagement&#34;: { &#34;FeatureA&#34;: { &#34;EnabledFor&#34;: [ { &#34;Name&#34;: &#34;Microsoft.Targeting&#34;, &#34;Parameters&#34;: { &#34;Audience&#34;: { &#34;Users&#34;: [ &#34;1948fcc1-dc03-44a6-824f-fb48166ffa9d&#34; ], &#34;Group&#34;: [ { &#34;Name&#34;: &#34;Group1&#34;, &#34;RolloutPercentage&#34;: 80 }, { &#34;Name&#34;: &#34;Group2&#34; } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &#34;TestTargetingContextAccessor.TargetingContext&#34;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?">
+<meta name=description content="Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
+ 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(&#34;Browser&#34;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task<bool> EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[&#34;User-Agent&#34;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get<BrowserFilterSettings>(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult<bool>(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  &#34;FeatureManagement&#34;: { &#34;FeatureA&#34;: { &#34;EnabledFor&#34;: [ { &#34;Name&#34;: &#34;Browser&#34;, &#34;Parameters&#34;: { &#34;Allowed&#34;: [ &#34;Edg&#34; ] } } ] } } startup 注入  services.">
 <meta name=author content="Kyle">
 <link rel=canonical href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/>
 <meta name=google-site-verification content="XYZabc">
@@ -25,22 +24,20 @@
 </noscript>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)">
-<meta property="og:description" content="如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
- appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
- &#34;FeatureManagement&#34;: { &#34;FeatureA&#34;: { &#34;EnabledFor&#34;: [ { &#34;Name&#34;: &#34;Microsoft.Targeting&#34;, &#34;Parameters&#34;: { &#34;Audience&#34;: { &#34;Users&#34;: [ &#34;1948fcc1-dc03-44a6-824f-fb48166ffa9d&#34; ], &#34;Group&#34;: [ { &#34;Name&#34;: &#34;Group1&#34;, &#34;RolloutPercentage&#34;: 80 }, { &#34;Name&#34;: &#34;Group2&#34; } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &#34;TestTargetingContextAccessor.TargetingContext&#34;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?">
+<meta property="og:title" content="在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯">
+<meta property="og:description" content="Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
+ 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(&#34;Browser&#34;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task<bool> EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[&#34;User-Agent&#34;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get<BrowserFilterSettings>(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult<bool>(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  &#34;FeatureManagement&#34;: { &#34;FeatureA&#34;: { &#34;EnabledFor&#34;: [ { &#34;Name&#34;: &#34;Browser&#34;, &#34;Parameters&#34;: { &#34;Allowed&#34;: [ &#34;Edg&#34; ] } } ] } } startup 注入  services.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-12-08T22:32:41+08:00">
-<meta property="article:modified_time" content="2021-12-08T22:32:41+08:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
+<meta property="article:published_time" content="2021-12-09T21:30:41+08:00">
+<meta property="article:modified_time" content="2021-12-09T21:30:41+08:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
-<meta name=twitter:title content="在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)">
-<meta name=twitter:description content="如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
- appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
- &#34;FeatureManagement&#34;: { &#34;FeatureA&#34;: { &#34;EnabledFor&#34;: [ { &#34;Name&#34;: &#34;Microsoft.Targeting&#34;, &#34;Parameters&#34;: { &#34;Audience&#34;: { &#34;Users&#34;: [ &#34;1948fcc1-dc03-44a6-824f-fb48166ffa9d&#34; ], &#34;Group&#34;: [ { &#34;Name&#34;: &#34;Group1&#34;, &#34;RolloutPercentage&#34;: 80 }, { &#34;Name&#34;: &#34;Group2&#34; } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &#34;TestTargetingContextAccessor.TargetingContext&#34;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)","item":"https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)","name":"在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)","description":"如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定\n appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能\n \u0026quot;FeatureManagement\u0026quot;: { \u0026quot;FeatureA\u0026quot;: { \u0026quot;EnabledFor\u0026quot;: [ { \u0026quot;Name\u0026quot;: \u0026quot;Microsoft.Targeting\u0026quot;, \u0026quot;Parameters\u0026quot;: { \u0026quot;Audience\u0026quot;: { \u0026quot;Users\u0026quot;: [ \u0026quot;1948fcc1-dc03-44a6-824f-fb48166ffa9d\u0026quot; ], \u0026quot;Group\u0026quot;: [ { \u0026quot;Name\u0026quot;: \u0026quot;Group1\u0026quot;, \u0026quot;RolloutPercentage\u0026quot;: 80 }, { \u0026quot;Name\u0026quot;: \u0026quot;Group2\u0026quot; } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = \u0026quot;TestTargetingContextAccessor.TargetingContext\u0026quot;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?","keywords":[".NET"],"articleBody":"如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定\n appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能\n \"FeatureManagement\": { \"FeatureA\": { \"EnabledFor\": [ { \"Name\": \"Microsoft.Targeting\", \"Parameters\": { \"Audience\": { \"Users\": [ \"1948fcc1-dc03-44a6-824f-fb48166ffa9d\" ], \"Group\": [ { \"Name\": \"Group1\", \"RolloutPercentage\": 80 }, { \"Name\": \"Group2\" } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = \"TestTargetingContextAccessor.TargetingContext\"; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor)); } public ValueTask GetContextAsync() { HttpContext httpContext = _httpContextAccessor.HttpContext; if (httpContext.Items.TryGetValue(TargetingContextLookup, out object value)) { return new ValueTask((TargetingContext)value); } List groups = new List(); if (httpContext.User.Identity.Name != null) { groups.Add(httpContext.User.Identity.Name.Split(\"@\", StringSplitOptions.None)[1]); } TargetingContext targetingContext = new TargetingContext { UserId = httpContext.User.Identity.Name, Groups = groups }; httpContext.Items[TargetingContextLookup] = targetingContext; return new ValueTask(targetingContext); } } startup 注入  services.AddSingleton(); services.AddFeatureManagement() .AddFeatureFilter(); ","wordCount":"135","inLanguage":"en","datePublished":"2021-12-08T22:32:41+08:00","dateModified":"2021-12-08T22:32:41+08:00","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
+<meta name=twitter:title content="在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯">
+<meta name=twitter:description content="Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
+ 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(&#34;Browser&#34;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task<bool> EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[&#34;User-Agent&#34;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get<BrowserFilterSettings>(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult<bool>(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  &#34;FeatureManagement&#34;: { &#34;FeatureA&#34;: { &#34;EnabledFor&#34;: [ { &#34;Name&#34;: &#34;Browser&#34;, &#34;Parameters&#34;: { &#34;Allowed&#34;: [ &#34;Edg&#34; ] } } ] } } startup 注入  services.">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯","item":"https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/"}]}</script>
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯","name":"在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯","description":"Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例\n 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(\u0026quot;Browser\u0026quot;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task\u0026lt;bool\u0026gt; EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[\u0026quot;User-Agent\u0026quot;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get\u0026lt;BrowserFilterSettings\u0026gt;(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult\u0026lt;bool\u0026gt;(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  \u0026quot;FeatureManagement\u0026quot;: { \u0026quot;FeatureA\u0026quot;: { \u0026quot;EnabledFor\u0026quot;: [ { \u0026quot;Name\u0026quot;: \u0026quot;Browser\u0026quot;, \u0026quot;Parameters\u0026quot;: { \u0026quot;Allowed\u0026quot;: [ \u0026quot;Edg\u0026quot; ] } } ] } } startup 注入  services.","keywords":[".NET"],"articleBody":"Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例\n 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(\"Browser\")] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[\"User-Agent\"].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  \"FeatureManagement\": { \"FeatureA\": { \"EnabledFor\": [ { \"Name\": \"Browser\", \"Parameters\": { \"Allowed\": [ \"Edg\" ] } } ] } } startup 注入  services.AddSingleton(); services.AddFeatureManagement() .AddFeatureFilter(); ","wordCount":"92","inLanguage":"en","datePublished":"2021-12-09T21:30:41+08:00","dateModified":"2021-12-09T21:30:41+08:00","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
 </head>
 <body class=dark id=top>
 <script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
@@ -87,75 +84,55 @@
 <header class=post-header>
 <div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
 <h1 class=post-title>
-在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)
+在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯
 </h1>
-<div class=post-meta><span title="2021-12-08 22:32:41 +0800 +0800">2021-12-08</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
+<div class=post-meta><span title="2021-12-09 21:30:41 +0800 +0800">2021-12-09</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
 </div>
 </header>
-<div class=post-content><p>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 <code>TargetFilter</code> 來指定</p>
+<div class=post-content><p>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例</p>
 <ol>
-<li>appsettings.json (指定當前使用者的Guid或群組)</li>
+<li>實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案</li>
 </ol>
-<blockquote>
-<p>RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能</p>
-</blockquote>
+<pre tabindex=0><code>[FilterAlias(&quot;Browser&quot;)]
+public class BrowserFeatureFilter : IFeatureFilter
+{
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+    public Task&lt;bool&gt; EvaluateAsync(FeatureFilterEvaluationContext context)
+    {
+        // 取得Request的瀏覽器類型
+        var agent = _httpContextAccessor.HttpContext.Request.Headers[&quot;User-Agent&quot;].ToString();
+        // 取得 appSettings.json的設定
+        var settings = context.Parameters.Get&lt;BrowserFilterSettings&gt;();
+        // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能
+        return Task.FromResult&lt;bool&gt;(false);
+    }
+}
+
+public class BrowserFilterSettings
+{
+    public string[] Allowed { get; set; }
+}
+</code></pre><ol start=2>
+<li>appsettings.json (允許Edge瀏覽器開啟FeatureA功能)</li>
+</ol>
 <pre tabindex=0><code>&quot;FeatureManagement&quot;: {
     &quot;FeatureA&quot;: {
         &quot;EnabledFor&quot;: [
             {
-                &quot;Name&quot;: &quot;Microsoft.Targeting&quot;,
+                &quot;Name&quot;: &quot;Browser&quot;,
                 &quot;Parameters&quot;: {
-                    &quot;Audience&quot;: {
-                    &quot;Users&quot;: [
-                        &quot;1948fcc1-dc03-44a6-824f-fb48166ffa9d&quot;
-                    ],
-                    &quot;Group&quot;: [
-                        {
-                            &quot;Name&quot;: &quot;Group1&quot;,
-                            &quot;RolloutPercentage&quot;: 80
-                        },
-                        {
-                            &quot;Name&quot;: &quot;Group2&quot;
-                        }
+                    &quot;Allowed&quot;: [
+                    &quot;Edg&quot;
                     ]
-                    }
                 }
             }
         ]
-    }
-}
-</code></pre><ol start=2>
-<li>實作 ITargetingContextAccessor</li>
-</ol>
-<pre tabindex=0><code>public class TestTargetingContextAccessor : ITargetingContextAccessor
-{
-    private const string TargetingContextLookup = &quot;TestTargetingContextAccessor.TargetingContext&quot;;
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor)
-    {
-        _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
-    }
-
-    public ValueTask&lt;TargetingContext&gt; GetContextAsync()
-    {
-        HttpContext httpContext = _httpContextAccessor.HttpContext;
-        if (httpContext.Items.TryGetValue(TargetingContextLookup, out object value))
-        {
-            return new ValueTask&lt;TargetingContext&gt;((TargetingContext)value);
-        }
-        List&lt;string&gt; groups = new List&lt;string&gt;();
-        if (httpContext.User.Identity.Name != null)
-        {
-            groups.Add(httpContext.User.Identity.Name.Split(&quot;@&quot;, StringSplitOptions.None)[1]);
-        }
-        TargetingContext targetingContext = new TargetingContext
-        {
-            UserId = httpContext.User.Identity.Name,
-            Groups = groups
-        };
-        httpContext.Items[TargetingContextLookup] = targetingContext;
-        return new ValueTask&lt;TargetingContext&gt;(targetingContext);
     }
 }
 </code></pre><ol start=3>
@@ -164,7 +141,7 @@
 <pre tabindex=0><code>services.AddSingleton&lt;ITargetingContextAccessor, TestTargetingContextAccessor&gt;();
 
 services.AddFeatureManagement()
-        .AddFeatureFilter&lt;TargetingFilter&gt;();
+        .AddFeatureFilter&lt;BrowserFeatureFilter&gt;();
 </code></pre>
 </div>
 <footer class=post-footer>
@@ -172,15 +149,15 @@ services.AddFeatureManagement()
 <li><a href=https://kyleap.github.io/tags/.net/>.NET</a></li>
 </ul>
 <nav class=paginav>
-<a class=prev href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/>
+<a class=prev href=https://kyleap.github.io/docker-deploy-fastapi-to-azure/>
 <span class=title>« Prev</span>
 <br>
-<span>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯</span>
+<span>透過 docker 發行 FastAPI 到 Azure</span>
 </a>
-<a class=next href=https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/>
+<a class=next href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/>
 <span class=title>Next »</span>
 <br>
-<span>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</span>
+<span>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)</span>
 </a>
 </nav>
 </footer>
