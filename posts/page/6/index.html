@@ -81,6 +81,44 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>(啃書) Chatbot從0到1
+</h2>
+</header>
+<div class=entry-content>
+<p>啃書代表是在閱讀時，針對自己有幫助的片段，做反思與紀錄，如想閱讀完整知識建議還是購買完整書籍 :P
+always center.
+Chatbot 的機會與未來 近年來 Chatbot 技術興起，使用者下載App意願降低，加上各大平台也開始推出聊天機器人Api串接，開始越來越多應用出現，交互介面已經從傳統的App點擊互動，轉變為對話互動，也因為 Chatbot 依附在各大平台上 e.g Line/Facebook…等，推廣上也較容易，再加上自然語言分析技術日漸成熟，越來越多的AI服務可以應用，可以想像成百上千的 App 會逐漸轉為 Chatbot。
+在設計 Chatbot 時，要時刻記得對話交互是手段而非目的，要通過最簡單的互動方式讓使用者獲取服務，而最簡單的交付方式不一定要用對話，這時就能透過圖形化介面與人工接入流程來替使用者完成目標，且應該時時刻刻去觀察使用者的心理變化，觀察上下文，是否造成迷路，觀察對話節奏是否合理，逐步的調教與優化流程，讓重複性的任務交給Bot引導來完成。本書提出軟體開發的生命週期，提供給產品設計師在規劃 Chatbot 產品時一個指南。
+思考一下產品定位，定義產品邊界 Chatobt 的應用情境大概可以分為開放領域 (open-domain) 或封閉領域 (closed-domain) 兩大類，開放式大概沒有限定主題，像Google助理或者 Siri 這種問什麼都自由對話，這實踐起來也較困難，而封閉式通常會限縮在一定的場景下，也就是 Chatbot 的輸入輸出是有限的，譬如訂位為在線客服/教育/個人助理，跟這幾個任務無關的事項，就引導客戶能目前能完成什麼事情，僅針對該領域，結合商業.產品.運營，針對領域場景優化交互內容。
+以應用市場角度來看，可以將 Chatbot 定為四類:
+陪伴型: 自由回答，譬如兒童陪伴類的Bot 商務型: 協助企業完成商業任務Bot，譬如 Github 推出 Hubot 來完成跟 DevOps 有關的相關任務 資訊型: 讓使用者獲取新聞類的訊息，譬如疾管家 指令型: 透過指令來讓Bot完成一些任務，譬如串接智能家電打開電燈/電視 在設計 Chatbot 前，先思考一下產品定位，把商務型的bot對話設計成像陪伴型，只會讓人感覺到這個Bot很不智能，什麼都不會，造成極差的使用者體驗
+流程設計應專注在完成商業目標及幫助使用者完成任務 影響網站成功的應用程式都有一個共同點，卓越的使用者體驗，Chatbot 可透過以下因素來評估
+如何用最少的步驟解決使使用者問題? 能比其他方式更好解決使用者問題? 能否在使用者習慣的平台上運行 用戶獲取 Chatbot 的途徑是否方便 用戶能無門檻的使用 Chatbot 在進開發前，可透過以下的步驟來收斂需求：先有大量的對話腳本，再來繪製流程圖，Chatbot 常見的技術名詞有意圖 (intent) 及 實體 (entity)，繪製流程圖避免將意圖跟對話混在一起思考，因對話存在多種可能，故不能只考慮核心場景，故可從對話腳本裡面確定場景與優先及拆出意圖跟實體，e....</p>
+</div>
+<footer class=entry-footer><span title="2021-05-21 20:41:01 +0000 UTC">2021-05-21</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to (啃書) Chatbot從0到1" href=https://kyleap.github.io/chatbot-zero-to-one/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>鐵人賽完賽整理&開源 (30)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day30)
+終於走到這一天了，每次都覺得鐵人賽過程都生不如死，但寫完30天候總有一種成就感，技術跟文章不難，難的是30天養成一個固定的習慣阿!
+回到第一天文章所講的：所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
+這次寫完30天也收穫良多，主要也是挑一些之前比較少碰的東西順便玩玩看
+把 Line 的 Api 文件又完整K了一遍，並一個一個寫成 .NET Core 的版本， 之前比較沒碰過的是 Line Pay/Line Beacon 寫得過程中看到 vue 海賊王版本推出 (vue 3.0)，起了專案實踐了一些功能，來看看它的架構 用了 Razor Page，讓我回到 ASP.NET WebForm 的復古感 玩了一些 Azure 服務，Azure Storage、QnA Maker，其中 Azure SignalR Service 是之前比較沒玩過的 把之前自己婚禮用的 chatbot 改一版，順便要給接下來結婚的朋友用 XD 真實的把所做的Side Project給用上 邊看文件邊寫SDK出來，並開源出來 本篇就來講講最後一哩路，怎麼發佈到 NuGet 上吧！
+我將這次系列邊走邊看得的程式稍作整理，建立一個 .NET Core 的函示庫專案
+在 VS 按右鍵套件
+或者可以使用CLI : dotnet pack
+編輯套件的資訊...</p>
+</div>
+<footer class=entry-footer><span title="2020-11-30 00:11:40 +0000 UTC">2020-11-30</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 鐵人賽完賽整理&開源 (30)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>製作婚禮現場即時留言版- Azure SignalR Service II (29)
 </h2>
 </header>
@@ -133,46 +171,6 @@ public async Task&lt;string> UploadToImgurAsync(Stream stream) { var apiClient =
 </div>
 <footer class=entry-footer><span title="2020-11-27 00:32:07 +0000 UTC">2020-11-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>婚禮禮金用Line Pay II (26)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day26)
-以下是 Line 官方文件的流程，今天會依據這個圖的流程來實作 Line Pay 付款
-https://pay.line.me/jp/developers/apis/onlineApis?locale=zh_TW
-Checkout 流程 官方API文件可以從這裡看到
-Request Body 的 C# Class
-public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&lt;Package> packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&lt;Product> products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } } 整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得...</p>
-</div>
-<footer class=entry-footer><span title="2020-11-26 00:06:44 +0000 UTC">2020-11-26</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 婚禮禮金用Line Pay II (26)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>婚禮禮金用Line Pay I (25)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day25)
-婚禮最麻煩的就是收禮金了吧，當天還有可能遇到跑錯棚的(本人親自遇到，後來還要退錢給他XD)，婚禮結束還要很辛苦的算鈔票，我一直在想未來有沒有可能都用電子支付，讓婚禮結束後不要扛那麼多的現金，不要花那麼多時間計算。本篇將以 Line 的 Sendbox 進行串接測試，要實際使用的話要先註冊成商家，並通過 Line 的審核。在 Sandbox 有很清楚的step by step 來說明如何串接
-註冊 Sandbox 至 https://pay.line.me/jp/developers/main/main?locale=zh_TW 註冊
-接著 Email 會收到測試的帳號
-接下來到商家後台，用上面的帳號密碼登入 (寫這篇文章的同時，email 裡面提供的商家後台連結不知道為什麼會出錯)，取得 client id與 client secret
-Razor Page 開發禮金表單 新增一個 Razor Page
-PaymentModel
-新增一個 Amount 屬性
-在 Razor 可以用 asp-for 來綁定 model
-表單驗證呢 ? 可以用 asp-validation-for
-asp-page-handler 可以在 .cs寫 function 驗證 model
-實作效果
-下一篇來繼續用 C# 來串 Line Pay ~
-懶人包，本次學到了什麼? Razor Page https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.1&tabs=visual-studio Add validation to an ASP....</p>
-</div>
-<footer class=entry-footer><span title="2020-11-25 09:44:01 +0000 UTC">2020-11-25</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 婚禮禮金用Line Pay I (25)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

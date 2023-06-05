@@ -10,7 +10,42 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Apr 2023 15:46:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Apr 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在 Azure Wiki 調整圖片大小</title>
+      <link>https://kyleap.github.io/azure-wiki-resize-image/</link>
+      <pubDate>Sun, 16 Apr 2023 10:52:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-wiki-resize-image/</guid>
+      <description>在撰寫和編輯 Azure Wiki 上的內容時，圖片是一種非常有用的方式，能可以更好地傳達訊息並增強文章的可讀性。但有時候圖片的大小會導致可讀性下降，這時候就需要調整圖片的大小，以符合頁面的版面設計或減少圖片的檔案大小。
+第一種方式可以用 HTML Tag
+&amp;lt;IMG src=&amp;quot;&amp;lt;圖片網址&amp;gt;&amp;quot; alt=&amp;quot;圖片描述&amp;quot; style=&amp;quot;width: 500px;&amp;quot;/&amp;gt; 但如果你的圖片是複製貼上來的，會存在於 Azure Wiki 這個 Repo，這時可以這樣設定去等比例縮放大小
+![xxx.jpg](/.attachments/xxx.jpg =500x) 或明確的給寬跟高
+![xxx.jpg](/.attachments/xxx.jpg =500x1000) </description>
+    </item>
+    
+    <item>
+      <title>如何在 Azure Boards 透過 csv 匯入 Workitems</title>
+      <link>https://kyleap.github.io/azure-boards-import-workitems-from-csv/</link>
+      <pubDate>Mon, 10 Apr 2023 10:52:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/azure-boards-import-workitems-from-csv/</guid>
+      <description>有時候需求來源可能來自於一份 Excel，但這樣一個一個建到平台上實在太累了，這篇就來介紹一下如何用 Azure Boards 的 Import 功能將 csv 匯入進平台
+ 要注意匯入功能狀態只能是起始的 state，無法指定該單子為 Doing 的狀態
+ 第一個簡單的匯入 從 Boards =&amp;gt; Workitem 進入
+我們用 Work Item Type 跟 Title 來做舉例，最後一筆我故意輸入一個錯誤的類型
+如果欄位驗證錯誤，也會明確指出哪一筆資料，哪一欄出錯
+如果成功匯入，也不會馬上儲存，可以在這介面微調內容
+批次修改 如果想要透過 csv 批次修改，首先要先將單子匯出，存在ID欄位，我們可以到 Query，並透過 Column Options 設定所需要的欄位匯入
+這時就會看到包含 ID 欄位，我們將 Work Item Type 修改為 Bug
+再重新執行一次匯入就能看到全部變 Bug 了
+也可以用這種方式來進行不同 Project 之間的單子移動
+可以有階層關係嗎? 譬如我們想要將某些單子指向上一層的 Feature 單，ID為 669
+只要加一個 Parent 欄位即可
+支援匯入的欄位 在官方文件有依據字母排列出所支援的欄位
+https://learn.microsoft.com/en-us/azure/devops/boards/work-items/guidance/work-item-field?view=azure-devops</description>
+    </item>
+    
     <item>
       <title>(啃書) 產品負責人實戰守則：從洞悉顧客需求，到引領敏捷開發</title>
       <link>https://kyleap.github.io/book-review-product-owner-guide/</link>

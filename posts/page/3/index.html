@@ -81,6 +81,38 @@ Posts
 </header>
 <article class=post-entry>
 <header class=entry-header>
+<h2>在 Azure Board 建立 workitem template 加強團隊共識
+</h2>
+</header>
+<div class=entry-content>
+<p>前言 在 Scrum 的開發過程中，維護好 Work Items 是非常重要的一個步驟。這些 Work Items 會在Planning Meeting 或者是 Refine Meeting 被拿出來討論，如果內容定義不清，會導致討論會議的浪費，為了確保團隊在建立工作項目時有一致的認識和理解，以及在回顧過程中能夠更清楚地了解工作項目的緣由，此篇文章將介紹我在 Epic/Feature/User Story/Task 會寫的項目，以實際案例來分享，並簡單介紹如何在 Azure Board 裡面變成範本直接讓團隊套用
+先來聊一下 Workitem 層級 在 Azure Devops 預設就有四種 Process 可以選，以目前 Agile 為大宗的開發模式，多半會選擇 Scurm/Agile，但這兩者基本上大同小異，如果要我一句話解讀這些 Item 代表的定義，我會這樣解釋:
+Epic: 高層老闆看的, 通常是公司的高大尚目標, 時間長度不超過1年 Feature: PM或主管看的, 把高大尚收斂後的具體策略, 時間長度以季為單位 User Story: PM/工程師看的, 達成策略的手段, 時間以1個sprint可交付為單位 Task: 工程師看的, 達成手段需要拆寫的實作, 時間以1-2天為單位 至於這些 Workitem 該寫什麼? 以下章節來細部說明
+我認為 Azure Devops 設計緣由可適用於大型組織，但導入需要逐步，也許小團隊可用 User Story+Task就可足夠了，太早一步到位反而會導致交付混亂
+Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，這個目標還沒有詳細的策略，也可以把它定義成是老闆的期望，也可以是 OKR 上層的指標，以 Product Owner 角度而言，我會思考如何傳達老闆的想法，並把它收斂成可量化的目標範圍，這會是一個半年不超過一年的時間長度，並需要有達成的指標，在標題上明確表達(e....</p>
+</div>
+<footer class=entry-footer><span title="2023-02-25 15:41:01 +0000 UTC">2023-02-25</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 Azure Board 建立 workitem template 加強團隊共識" href=https://kyleap.github.io/azure-board-workitem-template/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>在 Azure Repo 設定 Pull Request Template
+</h2>
+</header>
+<div class=entry-content>
+<p>建立良好規範與開發者的互動 當團隊開始 Pull Request 順暢後，慢慢的也會討論出一些規範與 Pull Request 的重點, 如果在建立的時候，能有一些 Checklist 讓新工程師自我檢查，或者是讓每個工程師都能遵循相同的寫法，讓同事快速理解這次審核的目的與重點，這時就能利用 Template 來標準化
+建立第一個 Pull Request Template Template 檔案可以是 .md 或 .txt 的檔案類型，預設的範本放置以下的路徑即可生效 (則一即可)
+&lt;repository root>/.azuredevops/pull_request_template/ &lt;repository root>/.vsts/pull_request_template/ &lt;repository root>/docs/pull_request_template/ &lt;repository root>/pull_request_template/ 以下直接用 Azure Repo 的 UI 來做示範：
+建立一個 Folder
+建立一個 docs/pull_request_template 資料夾, 並直接新增 Default-PR-Template.md 檔案
+撰寫一個範本並 Commit
+**將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明: 建立一個 Branch 並針對任一檔案做異動...</p>
+</div>
+<footer class=entry-footer><span title="2023-02-01 09:41:01 +0000 UTC">2023-02-01</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 在 Azure Repo 設定 Pull Request Template" href=https://kyleap.github.io/azure-board-pull-request-template/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>透過 docker 發行 FastAPI 到 Azure
 </h2>
 </header>
@@ -118,30 +150,6 @@ appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為�
 </div>
 <footer class=entry-footer><span title="2021-12-08 22:32:41 +0800 +0800">2021-12-08</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制
-</h2>
-</header>
-<div class=entry-content>
-<p>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
-appsettings.json "FeatureManagement": { "FeatureB": { "EnabledFor": [ { "Name": "Microsoft.TimeWindow", "Parameters": { "Start": "2020-11-09 04:58:00Z", "End": "2099-11-09 05:00:00Z" } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync("FeatureA"); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate("FeatureA")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, "FeatureA", "FeatureB")] public async Task&lt;ActionResult> Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags....</p>
-</div>
-<footer class=entry-footer><span title="2021-12-07 20:06:41 +0800 +0800">2021-12-07</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制" href=https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>在 .NET Core 使用 Feature Flag (Feature Toggle)
-</h2>
-</header>
-<div class=entry-content>
-<p>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
-Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "FeatureFlagPoc.API", Version = "v1"}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&lt;WeatherForecastController> logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager....</p>
-</div>
-<footer class=entry-footer><span title="2021-12-06 21:54:41 +0800 +0800">2021-12-06</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 在 .NET Core 使用 Feature Flag (Feature Toggle)" href=https://kyleap.github.io/feature-flag-dotnet-core-basic/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>

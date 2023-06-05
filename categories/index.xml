@@ -10,22 +10,22 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 08 Apr 2023 15:46:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Apr 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AzureDevOps</title>
+      <link>https://kyleap.github.io/categories/azuredevops/</link>
+      <pubDate>Sun, 16 Apr 2023 10:52:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/categories/azuredevops/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>凱爾啃書</title>
       <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/</link>
       <pubDate>Sat, 08 Apr 2023 15:46:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AzureDevOps</title>
-      <link>https://kyleap.github.io/categories/azuredevops/</link>
-      <pubDate>Mon, 27 Mar 2023 09:41:01 +0000</pubDate>
-      
-      <guid>https://kyleap.github.io/categories/azuredevops/</guid>
       <description></description>
     </item>
     

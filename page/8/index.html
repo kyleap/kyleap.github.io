@@ -78,6 +78,45 @@
 <main class=main>
 <article class=post-entry>
 <header class=entry-header>
+<h2>當有人報名的時候接收通知 (Line Notify) (21)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day21)
+上一篇介紹如何主動式推播給使用者訊息，但Push Message發送到一定的量是要收費的，Line Notify是另一種主動式推播的解決方案，且是免費的，缺點就是收到訊息時候，不會顯示是從本身Chatbot的角度，而是Line的Chatbot，要發送Notify訊息，大概需要做以下事情，缺一不可
+註冊 Line Notify 服務 取得 client_id 取得 client_secret 取得驗證的 code 透過第2-4項取得 access token 註冊 Line Notify 服務 LINE Notify
+透過 ngrok http 8888 取得一個local的對外站台，貼到 Callback URL
+接著會驗證 Email，驗證通過後可以進到這個 Service
+Client ID 跟 Client Secret 取得了
+接著可以透過下列網址訂閱服務
+[https://notify-bot.line.me/oauth/authorize?response_type=code&scope=notify&response_mode=form_post&client_id=](https://notify-bot.line.me/oauth/authorize?response_type=code&scope=notify&response_mode=form_post&client_id=)&lt;client_id>&redirect_uri=&lt;client_secret>/&state=&lt;驗證身分代碼，任意給> 可以看到可以從這個頁面綁定
+Line 會收到一個通知
+到我們剛剛 ngrok 的後台看看 (http://127.0.0.1:4040)，有接收到這個 Request，取得加密後的 code
+用剛剛取得的這三個資訊來取得 access token
+public static async Task&lt;string> GetAccessToken() { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://notify-bot....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-21 00:04:31 +0000 UTC">2020-11-21</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 當有人報名的時候接收通知 (Line Notify) (21)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>主動推播Line訊息給某個使用者(Push Message) (20)
+</h2>
+</header>
+<div class=entry-content>
+<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
+在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
+準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID) 新增一個 .NET Core Console專案來發送
+官方的 Shell 範例
+一樣丟到 Curl To C# 做轉換，並做格式修改
+當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
+static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), "https://api.line.me/v2/bot/message/multicast")) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer &lt;Your Access Token>"); PushMessage req = new PushMessage(); req.to = new List&lt;string>() { "&lt;User Id>" }; req....</p>
+</div>
+<footer class=entry-footer><span title="2020-11-20 00:52:53 +0000 UTC">2020-11-20</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
+<a class=entry-link aria-label="post link to 主動推播Line訊息給某個使用者(Push Message) (20)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
 <h2>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)
 </h2>
 </header>
@@ -128,41 +167,6 @@ ngrok http &lt;your local vue.js port>-host-header=”localhost:&lt;your local v
 </div>
 <footer class=entry-footer><span title="2020-11-17 10:06:50 +0000 UTC">2020-11-17</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</footer>
 <a class=entry-link aria-label="post link to Line Liff App v2 - 用 Vue.js 來實作 (17)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day16)
-QnA Maker 是啥 QnA Maker 是微軟提供一個雲端的自然語言處理 (NLP) 處理服務，可輕鬆透過網站後台建立自己的知識庫，並能從使用者所輸入的語句，理解他的意圖，提供可能對應的知識庫答案。QnA Maker提供了免費的方案，但限制就是只能有3份知識庫、每秒只能調用Api 3次，每月50,000筆Request，對於一般使用或技術評估來講很夠用了。要在 Line 串接大概分為以下步驟：
-在Azure註冊 QnA Maker 新增一個 knowledge base 增加題目與回答 完成訓練 & 發佈 取得 Endpoint、EndpointKey，來讓程式串接 建立 QnA Maker 照著 https://www.qnamaker.ai/Create Step By Step 步驟，因為QnA Maker是Azure的服務，故您可以需要Azure的訂閱，由此註冊試用
-Step 1 在 Azure 新增 QnA Maker 服務
-Step 2 選取剛剛建立的QnA Maker服務，並選擇繁體中文
-Step 3 knowledge base 名稱
-步驟四可以匯入現有的資料集，來源可以是文件或者是線上的網站，這樣就不用重新建檔了，是不是很酷啊 :D
-Step 4 匯入資料集 (本次先跳過)
-開始瘋狂建題目吧！我們來試試建立：“新人怎麼認識的？” 回答我們設定 “我們是在打工餐廳認識的喔，那時的同事 put your hands up ??"，並點選Save And Train...</p>
-</div>
-<footer class=entry-footer><span title="2020-11-16 08:17:05 +0000 UTC">2020-11-16</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/></a>
-</article>
-<article class=post-entry>
-<header class=entry-header>
-<h2>切換 Line 的圖文選單 (15)
-</h2>
-</header>
-<div class=entry-content>
-<p>第12 屆iT邦幫忙鐵人賽系列文章 (Day15)
-在上一篇我們介紹如何設定圖文選單，本篇要來介紹如何切換圖文選單，此部分只能用程式來達成，在 Line Business 後台只能設定固定的圖文選單起訖日，有了這功能就可以像網站一樣有網站地圖的概念
-今天實作要將 chatbot 隨機切換不同的圖文選單，給使用者不同的體驗，今天的範例圖片在這 https://i.imgur.com/pupYvXr.jpg
-CreateRichMenuAsync
-原本預設的 Rich Menu 是寫在 SetDefaultRichMenuAsync，我們做點重構，讓Rich Menu 的物件是從外部傳入，因為我們現在要設定多個選單
-public async Task&lt;Richmenu> CreateRichMenuAsync(CreateRichmenu richmenu) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod("POST"), lineMessageApiBaseUrl)) { request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {accessToken}"); var postJson = JsonConvert.SerializeObject(richmenu, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } }); request.Content = new StringContent(postJson); request....</p>
-</div>
-<footer class=entry-footer><span title="2020-11-15 09:01:22 +0000 UTC">2020-11-15</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</footer>
-<a class=entry-link aria-label="post link to 切換 Line 的圖文選單 (15)" href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/></a>
 </article>
 <footer class=page-footer>
 <nav class=pagination>
