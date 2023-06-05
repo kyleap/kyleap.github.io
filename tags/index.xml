@@ -10,11 +10,20 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 16 Apr 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 May 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AzureBoards</title>
+      <link>https://kyleap.github.io/tags/azureboards/</link>
+      <pubDate>Thu, 04 May 2023 10:52:01 +0000</pubDate>
+      
+      <guid>https://kyleap.github.io/tags/azureboards/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>AzureDevOps</title>
       <link>https://kyleap.github.io/tags/azuredevops/</link>
-      <pubDate>Sun, 16 Apr 2023 10:52:01 +0000</pubDate>
+      <pubDate>Thu, 04 May 2023 10:52:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/tags/azuredevops/</guid>
       <description></description>
@@ -26,15 +35,6 @@
       <pubDate>Sun, 16 Apr 2023 10:52:01 +0000</pubDate>
       
       <guid>https://kyleap.github.io/tags/azurewiki/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AzureBoards</title>
-      <link>https://kyleap.github.io/tags/azureboards/</link>
-      <pubDate>Mon, 10 Apr 2023 10:52:01 +0000</pubDate>
-      
-      <guid>https://kyleap.github.io/tags/azureboards/</guid>
       <description></description>
     </item>
     
