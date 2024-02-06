@@ -1,193 +1,40 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛 | 凱哥打扣 | Kyle Studio</title>
-<meta name=keywords content="AzureDevOps,AzureBoard,Scrum">
-<meta name=description content="Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛 | 凱哥打扣 | Kyle Studio</title>
+<meta name=keywords content="AzureDevOps,AzureBoard,Scrum"><meta name=description content="Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
 裡面提到有個口訣 Scrum 353 的，它的核心概念是 &ldquo;三個角色、五個事件、三個交付物&rdquo;，其中：
- 三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
- 此文章會不定期更新
- 價值排序 WSJF (Weighted Shortest Job First
+三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量 在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
+此文章會不定期更新
+價值排序 WSJF (Weighted Shortest Job First
 backlogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數
 Tags Manager
 Tag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag
 Multivalue control
 如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類
-SpecMap aka User Story Mapping">
-<meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/azure-board-extensions/>
-<meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://kyleap.github.io/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
-<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛">
-<meta property="og:description" content="Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
+SpecMap aka User Story Mapping
+如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式"><meta name=author content="Kyle"><link rel=canonical href=https://kyleap.github.io/azure-board-extensions/><meta name=google-site-verification content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://kyleap.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-DPE6YM5E5N",{anonymize_ip:!1})}</script><meta property="og:title" content="以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛"><meta property="og:description" content="Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
 裡面提到有個口訣 Scrum 353 的，它的核心概念是 &ldquo;三個角色、五個事件、三個交付物&rdquo;，其中：
- 三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
- 此文章會不定期更新
- 價值排序 WSJF (Weighted Shortest Job First
+三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量 在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
+此文章會不定期更新
+價值排序 WSJF (Weighted Shortest Job First
 backlogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數
 Tags Manager
 Tag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag
 Multivalue control
 如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類
-SpecMap aka User Story Mapping">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://kyleap.github.io/azure-board-extensions/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2023-02-27T09:41:01+00:00">
-<meta property="article:modified_time" content="2023-02-27T09:41:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
-<meta name=twitter:title content="以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛">
-<meta name=twitter:description content="Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
+SpecMap aka User Story Mapping
+如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式"><meta property="og:type" content="article"><meta property="og:url" content="https://kyleap.github.io/azure-board-extensions/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-02-27T09:41:01+00:00"><meta property="article:modified_time" content="2023-02-27T09:41:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta name=twitter:title content="以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛"><meta name=twitter:description content="Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。
 裡面提到有個口訣 Scrum 353 的，它的核心概念是 &ldquo;三個角色、五個事件、三個交付物&rdquo;，其中：
- 三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
- 此文章會不定期更新
- 價值排序 WSJF (Weighted Shortest Job First
+三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量 在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛
+此文章會不定期更新
+價值排序 WSJF (Weighted Shortest Job First
 backlogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數
 Tags Manager
 Tag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag
 Multivalue control
 如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類
-SpecMap aka User Story Mapping">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛","item":"https://kyleap.github.io/azure-board-extensions/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛","name":"以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛","description":"Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。\n裡面提到有個口訣 Scrum 353 的，它的核心概念是 \u0026ldquo;三個角色、五個事件、三個交付物\u0026rdquo;，其中：\n 三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛\n 此文章會不定期更新\n 價值排序 WSJF (Weighted Shortest Job First\nbacklogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數\nTags Manager\nTag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag\nMultivalue control\n如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類\nSpecMap aka User Story Mapping","keywords":["AzureDevOps","AzureBoard","Scrum"],"articleBody":"Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。\n裡面提到有個口訣 Scrum 353 的，它的核心概念是 “三個角色、五個事件、三個交付物”，其中：\n 三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量  在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛\n 此文章會不定期更新\n 價值排序 WSJF (Weighted Shortest Job First\nbacklogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數\nTags Manager\nTag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag\nMultivalue control\n如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類\nSpecMap aka User Story Mapping\n如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式\nRefine \u0026 Planning Personas\nPO 對於專案的 TA 進行 Persona 描述讓團隊理解為哪一類型使用者\nEstimate\nPlanning 針對單一 Story 進行複雜度估算，這是一個即時的 Story poker 工具\nSplit!\n當 Sprint 有遺留單子時，可以透過這個工具快速將遺留的拆解到新的 Sprint\nSprint Goal\n在 Azure Board 顯示當前 Sprint 目標\nDaily Board Group\n在 Backlogs 檢視下，可以用這種方式移動 Board View 的渠道\nSprint Drop Plan\n以橫軸方式瀏覽當前 Sprint 單子狀況\nReview \u0026 Retro Retrospectives\n透過 Collect - Group - Vote - Actions 方向進行回顧會議\n","wordCount":"135","inLanguage":"en","datePublished":"2023-02-27T09:41:01Z","dateModified":"2023-02-27T09:41:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-board-extensions/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
-</head>
-<body class=dark id=top>
-<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<div class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</div>
-</div>
-<ul id=menu>
-<li>
-<a href=https://kyleap.github.io/kyleshen/ title=about>
-<span>about</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/archives/ title=archives>
-<span>archives</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/categories/ title=categories>
-<span>categories</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
-<span>search</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/ title=tags>
-<span>tags</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
-<h1 class=post-title>
-以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛
-</h1>
-<div class=post-meta><span title="2023-02-27 09:41:01 +0000 UTC">2023-02-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
-</div>
-</header>
-<div class=post-content><h1 id=scrum-353>Scrum 353<a hidden class=anchor aria-hidden=true href=#scrum-353>#</a></h1>
-<p>Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。</p>
-<p>裡面提到有個口訣 Scrum 353 的，它的核心概念是 &ldquo;三個角色、五個事件、三個交付物&rdquo;，其中：</p>
-<ul>
-<li>三個角色：產品負責人、開發團隊、Scrum Master</li>
-<li>五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective</li>
-<li>三個工件：產品待辦清單、Sprint待辦清單、增量</li>
-</ul>
-<p>在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛</p>
-<blockquote>
-<p>此文章會不定期更新</p>
-</blockquote>
-<h1 id=價值排序>價值排序<a hidden class=anchor aria-hidden=true href=#價值排序>#</a></h1>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=MS-Agile-SAFe.WSJF-extension">WSJF (Weighted Shortest Job First</a></p>
-<p>backlogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=YodLabs.TagsManager2">Tags Manager</a></p>
-<p>Tag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=ms-devlabs.vsts-extensions-multivalue-control">Multivalue control</a></p>
-<p>如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=techtalk.specmap">SpecMap aka User Story Mapping</a></p>
-<p>如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式</p>
-<h1 id=refine--planning>Refine & Planning<a hidden class=anchor aria-hidden=true href=#refine--planning>#</a></h1>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=agile-extensions.personas">Personas</a></p>
-<p>PO 對於專案的 TA 進行 Persona 描述讓團隊理解為哪一類型使用者</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=ms-devlabs.estimate">Estimate</a></p>
-<p>Planning 針對單一 Story 進行複雜度估算，這是一個即時的 Story poker 工具</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=blueprint.vsts-extension-split-work">Split!</a></p>
-<p>當 Sprint 有遺留單子時，可以透過這個工具快速將遺留的拆解到新的 Sprint</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=keesschollaart.sprint-goal">Sprint Goal</a></p>
-<p>在 Azure Board 顯示當前 Sprint 目標</p>
-<h1 id=daily>Daily<a hidden class=anchor aria-hidden=true href=#daily>#</a></h1>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=ottostreifel.board-group">Board Group</a></p>
-<p>在 Backlogs 檢視下，可以用這種方式移動 Board View 的渠道</p>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=yanivsegev.Drop-plan-extension">Sprint Drop Plan</a></p>
-<p>以橫軸方式瀏覽當前 Sprint 單子狀況</p>
-<h1 id=review--retro>Review & Retro<a hidden class=anchor aria-hidden=true href=#review--retro>#</a></h1>
-<p><a href="https://marketplace.visualstudio.com/items?itemName=ms-devlabs.team-retrospectives">Retrospectives</a></p>
-<p>透過 Collect -> Group -> Vote -> Actions 方向進行回顧會議</p>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li>
-<li><a href=https://kyleap.github.io/tags/azureboard/>AzureBoard</a></li>
-<li><a href=https://kyleap.github.io/tags/scrum/>Scrum</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://kyleap.github.io/azure-boards-backlogs/>
-<span class=title>« Prev</span>
-<br>
-<span>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?</span>
-</a>
-<a class=next href=https://kyleap.github.io/azure-board-workitem-template/>
-<span class=title>Next »</span>
-<br>
-<span>在 Azure Board 建立 workitem template 加強團隊共識</span>
-</a>
-</nav>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
-<span>
-Powered by
+SpecMap aka User Story Mapping
+如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛","item":"https://kyleap.github.io/azure-board-extensions/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛","name":"以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛","description":"Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。\n裡面提到有個口訣 Scrum 353 的，它的核心概念是 \u0026ldquo;三個角色、五個事件、三個交付物\u0026rdquo;，其中：\n三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量 在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛\n此文章會不定期更新\n價值排序 WSJF (Weighted Shortest Job First\nbacklogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數\nTags Manager\nTag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag\nMultivalue control\n如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類\nSpecMap aka User Story Mapping\n如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式","keywords":["AzureDevOps","AzureBoard","Scrum"],"articleBody":"Scrum 353 Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。\n裡面提到有個口訣 Scrum 353 的，它的核心概念是 “三個角色、五個事件、三個交付物”，其中：\n三個角色：產品負責人、開發團隊、Scrum Master 五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective 三個工件：產品待辦清單、Sprint待辦清單、增量 在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛\n此文章會不定期更新\n價值排序 WSJF (Weighted Shortest Job First\nbacklogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數\nTags Manager\nTag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag\nMultivalue control\n如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類\nSpecMap aka User Story Mapping\n如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式\nRefine \u0026 Planning Personas\nPO 對於專案的 TA 進行 Persona 描述讓團隊理解為哪一類型使用者\nEstimate\nPlanning 針對單一 Story 進行複雜度估算，這是一個即時的 Story poker 工具\nSplit!\n當 Sprint 有遺留單子時，可以透過這個工具快速將遺留的拆解到新的 Sprint\nSprint Goal\n在 Azure Board 顯示當前 Sprint 目標\nDaily Board Group\n在 Backlogs 檢視下，可以用這種方式移動 Board View 的渠道\nSprint Drop Plan\n以橫軸方式瀏覽當前 Sprint 單子狀況\nReview \u0026 Retro Retrospectives\n透過 Collect -\u003e Group -\u003e Vote -\u003e Actions 方向進行回顧會議\n","wordCount":"135","inLanguage":"en","datePublished":"2023-02-27T09:41:01Z","dateModified":"2023-02-27T09:41:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-board-extensions/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kyleap.github.io/kyleshen/ title=about><span>about</span></a></li><li><a href=https://kyleap.github.io/archives/ title=archives><span>archives</span></a></li><li><a href=https://kyleap.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li><li><a href=https://kyleap.github.io/tags/ title=tags><span>tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">以 Scrum 流程來看 Azure Boards 有哪些必裝的 Extensions 外掛</h1><div class=post-meta><span title='2023-02-27 09:41:01 +0000 UTC'>2023-02-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</div></header><div class=post-content><h1 id=scrum-353>Scrum 353<a hidden class=anchor aria-hidden=true href=#scrum-353>#</a></h1><p>Scrum Inc.創辦人 Jeff Sutherland 在他的書《Scrum: The Art of Doing Twice the Work in Half the Time》中提出的概念，它是 Scrum 框架的一種擴展，旨在幫助團隊更好地應對複雜性和不確定性。</p><p>裡面提到有個口訣 Scrum 353 的，它的核心概念是 &ldquo;三個角色、五個事件、三個交付物&rdquo;，其中：</p><ul><li>三個角色：產品負責人、開發團隊、Scrum Master</li><li>五個事件：Sprint、Sprint Planning、Daily Scrum、Sprint Review、Sprint Retrospective</li><li>三個工件：產品待辦清單、Sprint待辦清單、增量</li></ul><p>在跑 Scrum 一直以來我都是用 Azure DevOps 來完成整個流程，但就像 JIRA 一樣，裝了一些外掛後會讓整個運作更順，此篇文章整理我在實務上推薦必裝的外掛</p><blockquote><p>此文章會不定期更新</p></blockquote><h1 id=價值排序>價值排序<a hidden class=anchor aria-hidden=true href=#價值排序>#</a></h1><p><a href="https://marketplace.visualstudio.com/items?itemName=MS-Agile-SAFe.WSJF-extension">WSJF (Weighted Shortest Job First</a></p><p>backlogs開始跟大海一樣，需要的是更多因素的評估，WSJF是一個考量 PMF 及開發成本的評估方式，此外掛可以自動計算出分數</p><p><a href="https://marketplace.visualstudio.com/items?itemName=YodLabs.TagsManager2">Tags Manager</a></p><p>Tag 維護的好，可以用 Query 產生出更多的報表，此外掛可以用來維護已建立的 Tag</p><p><a href="https://marketplace.visualstudio.com/items?itemName=ms-devlabs.vsts-extensions-multivalue-control">Multivalue control</a></p><p>如果想區別單子的Compoment，除了 Tag 外，也可以獨立用這種方式進行分類</p><p><a href="https://marketplace.visualstudio.com/items?itemName=techtalk.specmap">SpecMap aka User Story Mapping</a></p><p>如果想跟團隊跑 User Story Mapping 腦力激盪跑出產品方向，這就是在 Azure DevOps 實踐的方式</p><h1 id=refine--planning>Refine & Planning<a hidden class=anchor aria-hidden=true href=#refine--planning>#</a></h1><p><a href="https://marketplace.visualstudio.com/items?itemName=agile-extensions.personas">Personas</a></p><p>PO 對於專案的 TA 進行 Persona 描述讓團隊理解為哪一類型使用者</p><p><a href="https://marketplace.visualstudio.com/items?itemName=ms-devlabs.estimate">Estimate</a></p><p>Planning 針對單一 Story 進行複雜度估算，這是一個即時的 Story poker 工具</p><p><a href="https://marketplace.visualstudio.com/items?itemName=blueprint.vsts-extension-split-work">Split!</a></p><p>當 Sprint 有遺留單子時，可以透過這個工具快速將遺留的拆解到新的 Sprint</p><p><a href="https://marketplace.visualstudio.com/items?itemName=keesschollaart.sprint-goal">Sprint Goal</a></p><p>在 Azure Board 顯示當前 Sprint 目標</p><h1 id=daily>Daily<a hidden class=anchor aria-hidden=true href=#daily>#</a></h1><p><a href="https://marketplace.visualstudio.com/items?itemName=ottostreifel.board-group">Board Group</a></p><p>在 Backlogs 檢視下，可以用這種方式移動 Board View 的渠道</p><p><a href="https://marketplace.visualstudio.com/items?itemName=yanivsegev.Drop-plan-extension">Sprint Drop Plan</a></p><p>以橫軸方式瀏覽當前 Sprint 單子狀況</p><h1 id=review--retro>Review & Retro<a hidden class=anchor aria-hidden=true href=#review--retro>#</a></h1><p><a href="https://marketplace.visualstudio.com/items?itemName=ms-devlabs.team-retrospectives">Retrospectives</a></p><p>透過 Collect -> Group -> Vote -> Actions 方向進行回顧會議</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li><li><a href=https://kyleap.github.io/tags/azureboard/>AzureBoard</a></li><li><a href=https://kyleap.github.io/tags/scrum/>Scrum</a></li></ul><nav class=paginav><a class=prev href=https://kyleap.github.io/azure-boards-backlogs/><span class=title>« Prev</span><br><span>Product Owner 需維護好 Backlogs, 但怎麼判斷價值順序?</span>
+</a><a class=next href=https://kyleap.github.io/azure-board-workitem-template/><span class=title>Next »</span><br><span>在 Azure Board 建立 workitem template 加強團隊共識</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
-</html>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

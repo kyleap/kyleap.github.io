@@ -1,166 +1,29 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>Azure Boards 繼承 Process的 3 大好處 | 凱哥打扣 | Kyle Studio</title>
-<meta name=keywords content="AzureDevOps,AzureBoards">
-<meta name=description content="我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Azure Boards 繼承 Process的 3 大好處 | 凱哥打扣 | Kyle Studio</title>
+<meta name=keywords content="AzureDevOps,AzureBoards"><meta name=description content="我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
 Organzation Setting => Process
 好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位
 並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位
 好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State &ldquo;Pull Request&rdquo;
 好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法
 玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純
-玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例">
-<meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/azure-boards-inheritance-process/>
-<meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://kyleap.github.io/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
-<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="Azure Boards 繼承 Process的 3 大好處">
-<meta property="og:description" content="我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
+玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例"><meta name=author content="Kyle"><link rel=canonical href=https://kyleap.github.io/azure-boards-inheritance-process/><meta name=google-site-verification content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://kyleap.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-DPE6YM5E5N",{anonymize_ip:!1})}</script><meta property="og:title" content="Azure Boards 繼承 Process的 3 大好處"><meta property="og:description" content="我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
 Organzation Setting => Process
 好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位
 並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位
 好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State &ldquo;Pull Request&rdquo;
 好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法
 玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純
-玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://kyleap.github.io/azure-boards-inheritance-process/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2023-05-04T10:52:01+00:00">
-<meta property="article:modified_time" content="2023-05-04T10:52:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
-<meta name=twitter:title content="Azure Boards 繼承 Process的 3 大好處">
-<meta name=twitter:description content="我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
+玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例"><meta property="og:type" content="article"><meta property="og:url" content="https://kyleap.github.io/azure-boards-inheritance-process/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-07-04T10:52:01+00:00"><meta property="article:modified_time" content="2023-07-04T10:52:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta name=twitter:title content="Azure Boards 繼承 Process的 3 大好處"><meta name=twitter:description content="我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
 Organzation Setting => Process
 好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位
 並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位
 好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State &ldquo;Pull Request&rdquo;
 好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法
 玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純
-玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Azure Boards 繼承 Process的 3 大好處","item":"https://kyleap.github.io/azure-boards-inheritance-process/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Azure Boards 繼承 Process的 3 大好處","name":"Azure Boards 繼承 Process的 3 大好處","description":"我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式\nOrganzation Setting =\u0026gt; Process\n好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位\n並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位\n好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State \u0026ldquo;Pull Request\u0026rdquo;\n好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法\n玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純\n玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例","keywords":["AzureDevOps","AzureBoards"],"articleBody":"我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式\nOrganzation Setting = Process\n好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位\n並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位\n好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State “Pull Request”\n好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法\n玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純\n玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例\n","wordCount":"61","inLanguage":"en","datePublished":"2023-05-04T10:52:01Z","dateModified":"2023-05-04T10:52:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-boards-inheritance-process/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
-</head>
-<body class=dark id=top>
-<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<div class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</div>
-</div>
-<ul id=menu>
-<li>
-<a href=https://kyleap.github.io/kyleshen/ title=about>
-<span>about</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/archives/ title=archives>
-<span>archives</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/categories/ title=categories>
-<span>categories</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
-<span>search</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/ title=tags>
-<span>tags</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
-<h1 class=post-title>
-Azure Boards 繼承 Process的 3 大好處
-</h1>
-<div class=post-meta><span title="2023-05-04 10:52:01 +0000 UTC">2023-05-04</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
-</div>
-</header>
-<div class=post-content><p>我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式</p>
-<p>Organzation Setting => Process</p>
-<p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/77e11eb8-cf70-4ca3-b53e-4247993d7062 alt=image>
-</p>
-<h2 id=好處1-可自訂欄位>好處1: 可自訂欄位<a hidden class=anchor aria-hidden=true href=#好處1-可自訂欄位>#</a></h2>
-<p>可自己設計 Layout 調整不必要顯示的欄位</p>
-<p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/38f4529e-b1f6-4069-8daf-26d9e29ed34a alt=image>
-</p>
-<p>並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位</p>
-<p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/73595e7b-09fe-47ed-aa78-39dccf4103cd alt=image>
-</p>
-<h2 id=好處2-自訂工作流程state>好處2: 自訂工作流程(State)<a hidden class=anchor aria-hidden=true href=#好處2-自訂工作流程state>#</a></h2>
-<p>如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State &ldquo;Pull Request&rdquo;</p>
-<p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/43cf4446-237a-4c57-baee-36c8f0d8c785 alt=image>
-</p>
-<h2 id=好處3-隱藏不必要的-work-items>好處3: 隱藏不必要的 Work Items<a hidden class=anchor aria-hidden=true href=#好處3-隱藏不必要的-work-items>#</a></h2>
-<p>敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法</p>
-<h3 id=玩法a-只用-product-backlogs-或者是-user-story>玩法A: 只用 Product Backlogs 或者是 User Story<a hidden class=anchor aria-hidden=true href=#玩法a-只用-product-backlogs-或者是-user-story>#</a></h3>
-<p>任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純</p>
-<p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/7c72f79c-1238-4e58-a6ec-3b16102f1382 alt=image>
-</p>
-<h3 id=玩法b-product-backlogs--user-story--bug>玩法B: Product Backlogs + User Story + Bug<a hidden class=anchor aria-hidden=true href=#玩法b-product-backlogs--user-story--bug>#</a></h3>
-<p>將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟
-用這種玩法可以進一步撈出每次 Sprint 所著重的比例</p>
-<p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/72d86803-047b-4bb9-8da9-e9180e757393 alt=image>
-</p>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li>
-<li><a href=https://kyleap.github.io/tags/azureboards/>AzureBoards</a></li>
-</ul>
-<nav class=paginav>
-<a class=next href=https://kyleap.github.io/azure-wiki-resize-image/>
-<span class=title>Next »</span>
-<br>
-<span>如何在 Azure Wiki 調整圖片大小</span>
-</a>
-</nav>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
-<span>
-Powered by
+玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Azure Boards 繼承 Process的 3 大好處","item":"https://kyleap.github.io/azure-boards-inheritance-process/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Azure Boards 繼承 Process的 3 大好處","name":"Azure Boards 繼承 Process的 3 大好處","description":"我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式\nOrganzation Setting =\u0026gt; Process\n好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位\n並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位\n好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State \u0026ldquo;Pull Request\u0026rdquo;\n好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法\n玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純\n玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例","keywords":["AzureDevOps","AzureBoards"],"articleBody":"我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式\nOrganzation Setting =\u003e Process\n好處1: 可自訂欄位 可自己設計 Layout 調整不必要顯示的欄位\n並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位\n好處2: 自訂工作流程(State) 如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State “Pull Request”\n好處3: 隱藏不必要的 Work Items 敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法\n玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純\n玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例\n","wordCount":"61","inLanguage":"en","datePublished":"2023-07-04T10:52:01Z","dateModified":"2023-07-04T10:52:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-boards-inheritance-process/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kyleap.github.io/kyleshen/ title=about><span>about</span></a></li><li><a href=https://kyleap.github.io/archives/ title=archives><span>archives</span></a></li><li><a href=https://kyleap.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li><li><a href=https://kyleap.github.io/tags/ title=tags><span>tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">Azure Boards 繼承 Process的 3 大好處</h1><div class=post-meta><span title='2023-07-04 10:52:01 +0000 UTC'>2023-07-04</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</div></header><div class=post-content><p>我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式</p><p>Organzation Setting => Process</p><p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/77e11eb8-cf70-4ca3-b53e-4247993d7062 alt=image></p><h2 id=好處1-可自訂欄位>好處1: 可自訂欄位<a hidden class=anchor aria-hidden=true href=#好處1-可自訂欄位>#</a></h2><p>可自己設計 Layout 調整不必要顯示的欄位</p><p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/38f4529e-b1f6-4069-8daf-26d9e29ed34a alt=image></p><p>並且可以增加欄位，譬如增加 Version 用來指定該單子的版號，增加 Selection 來日常管理時挑選單子的輔助欄位</p><p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/73595e7b-09fe-47ed-aa78-39dccf4103cd alt=image></p><h2 id=好處2-自訂工作流程state>好處2: 自訂工作流程(State)<a hidden class=anchor aria-hidden=true href=#好處2-自訂工作流程state>#</a></h2><p>如果想要讓狀態更明確，可以自己去擴充或增減，譬如可以考慮多一個 State &ldquo;Pull Request&rdquo;</p><p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/43cf4446-237a-4c57-baee-36c8f0d8c785 alt=image></p><h2 id=好處3-隱藏不必要的-work-items>好處3: 隱藏不必要的 Work Items<a hidden class=anchor aria-hidden=true href=#好處3-隱藏不必要的-work-items>#</a></h2><p>敏捷最重要的精神就是極簡，但如果造內建定義好的 Work Items，也許會讓管理上更綁手綁腳的，通常我會建議可以有兩種玩法</p><h3 id=玩法a-只用-product-backlogs-或者是-user-story>玩法A: 只用 Product Backlogs 或者是 User Story<a hidden class=anchor aria-hidden=true href=#玩法a-只用-product-backlogs-或者是-user-story>#</a></h3><p>任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純</p><p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/7c72f79c-1238-4e58-a6ec-3b16102f1382 alt=image></p><h3 id=玩法b-product-backlogs--user-story--bug>玩法B: Product Backlogs + User Story + Bug<a hidden class=anchor aria-hidden=true href=#玩法b-product-backlogs--user-story--bug>#</a></h3><p>將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟
+用這種玩法可以進一步撈出每次 Sprint 所著重的比例</p><p><img loading=lazy src=https://github.com/kyleap/kyleap.github.io/assets/8849818/72d86803-047b-4bb9-8da9-e9180e757393 alt=image></p></div><footer class=post-footer><ul class=post-tags><li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li><li><a href=https://kyleap.github.io/tags/azureboards/>AzureBoards</a></li></ul><nav class=paginav><a class=prev href=https://kyleap.github.io/azure-wiki-resize-image/><span class=title>« Prev</span><br><span>如何在 Azure Wiki 調整圖片大小</span>
+</a><a class=next href=https://kyleap.github.io/azure-boards-import-workitems-from-csv/><span class=title>Next »</span><br><span>如何在 Azure Boards 透過 csv 匯入 Workitems</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
-</html>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AzureRepo on 凱哥打扣 | Kyle Studio</title>
     <link>https://kyleap.github.io/tags/azurerepo/</link>
@@ -10,34 +10,32 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 25 Feb 2023 15:41:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/azurerepo/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Sat, 25 Feb 2023 15:41:01 +0000</lastBuildDate>
+    <atom:link href="https://kyleap.github.io/tags/azurerepo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 Azure Board 建立 workitem template 加強團隊共識</title>
       <link>https://kyleap.github.io/azure-board-workitem-template/</link>
       <pubDate>Sat, 25 Feb 2023 15:41:01 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/azure-board-workitem-template/</guid>
       <description>前言 在 Scrum 的開發過程中，維護好 Work Items 是非常重要的一個步驟。這些 Work Items 會在Planning Meeting 或者是 Refine Meeting 被拿出來討論，如果內容定義不清，會導致討論會議的浪費，為了確保團隊在建立工作項目時有一致的認識和理解，以及在回顧過程中能夠更清楚地了解工作項目的緣由，此篇文章將介紹我在 Epic/Feature/User Story/Task 會寫的項目，以實際案例來分享，並簡單介紹如何在 Azure Board 裡面變成範本直接讓團隊套用
 先來聊一下 Workitem 層級 在 Azure Devops 預設就有四種 Process 可以選，以目前 Agile 為大宗的開發模式，多半會選擇 Scurm/Agile，但這兩者基本上大同小異，如果要我一句話解讀這些 Item 代表的定義，我會這樣解釋:
- Epic: 高層老闆看的, 通常是公司的高大尚目標, 時間長度不超過1年 Feature: PM或主管看的, 把高大尚收斂後的具體策略, 時間長度以季為單位 User Story: PM/工程師看的, 達成策略的手段, 時間以1個sprint可交付為單位 Task: 工程師看的, 達成手段需要拆寫的實作, 時間以1-2天為單位  至於這些 Workitem 該寫什麼? 以下章節來細部說明
- 我認為 Azure Devops 設計緣由可適用於大型組織，但導入需要逐步，也許小團隊可用 User Story+Task就可足夠了，太早一步到位反而會導致交付混亂
- Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，這個目標還沒有詳細的策略，也可以把它定義成是老闆的期望，也可以是 OKR 上層的指標，以 Product Owner 角度而言，我會思考如何傳達老闆的想法，並把它收斂成可量化的目標範圍，這會是一個半年不超過一年的時間長度，並需要有達成的指標，在標題上明確表達(e.</description>
+Epic: 高層老闆看的, 通常是公司的高大尚目標, 時間長度不超過1年 Feature: PM或主管看的, 把高大尚收斂後的具體策略, 時間長度以季為單位 User Story: PM/工程師看的, 達成策略的手段, 時間以1個sprint可交付為單位 Task: 工程師看的, 達成手段需要拆寫的實作, 時間以1-2天為單位 至於這些 Workitem 該寫什麼? 以下章節來細部說明
+我認為 Azure Devops 設計緣由可適用於大型組織，但導入需要逐步，也許小團隊可用 User Story+Task就可足夠了，太早一步到位反而會導致交付混亂
+Epic Epic 對我來講它代表了一個大型的、跨部門的產品目標，這個目標還沒有詳細的策略，也可以把它定義成是老闆的期望，也可以是 OKR 上層的指標，以 Product Owner 角度而言，我會思考如何傳達老闆的想法，並把它收斂成可量化的目標範圍，這會是一個半年不超過一年的時間長度，並需要有達成的指標，在標題上明確表達(e.g. 提升產品使用者滿意度 &amp;gt; 5%)，內容以描述這個需求的背景是什麼，經老闆與客戶的原話，有條理地闡述清楚，以 Azure DevOps Roadmap 來看，Updated Boards experience 這個層級的寫法就很適合當 Epic，屬於比較大方向的描述</description>
     </item>
-    
     <item>
       <title>在 Azure Repo 設定 Pull Request Template</title>
       <link>https://kyleap.github.io/azure-board-pull-request-template/</link>
       <pubDate>Wed, 01 Feb 2023 09:41:01 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/azure-board-pull-request-template/</guid>
       <description>建立良好規範與開發者的互動 當團隊開始 Pull Request 順暢後，慢慢的也會討論出一些規範與 Pull Request 的重點, 如果在建立的時候，能有一些 Checklist 讓新工程師自我檢查，或者是讓每個工程師都能遵循相同的寫法，讓同事快速理解這次審核的目的與重點，這時就能利用 Template 來標準化
 建立第一個 Pull Request Template Template 檔案可以是 .md 或 .txt 的檔案類型，預設的範本放置以下的路徑即可生效 (則一即可)
-&amp;lt;repository root&amp;gt;/.azuredevops/pull_request_template/ &amp;lt;repository root&amp;gt;/.vsts/pull_request_template/ &amp;lt;repository root&amp;gt;/docs/pull_request_template/ &amp;lt;repository root&amp;gt;/pull_request_template/  以下直接用 Azure Repo 的 UI 來做示範：
+&amp;lt;repository root&amp;gt;/.azuredevops/pull_request_template/ &amp;lt;repository root&amp;gt;/.vsts/pull_request_template/ &amp;lt;repository root&amp;gt;/docs/pull_request_template/ &amp;lt;repository root&amp;gt;/pull_request_template/ 以下直接用 Azure Repo 的 UI 來做示範：
 建立一個 Folder
 建立一個 docs/pull_request_template 資料夾, 並直接新增 Default-PR-Template.md 檔案
 撰寫一個範本並 Commit
-**將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明:  建立一個 Branch 並針對任一檔案做異動</description>
+**將這支 PR 所做的事情，取代這段文字，描述越詳細越好。** 提交 PR 前，請先檢查以下是否已完成： - [ ] 是否已將此 PR 綁定相關 Ticket - [ ] 請先自行 rebase/merge - [ ] 是否撰寫單元測試 - [ ] 這支 PR 是否有明確的標題、內容描述 ----------------- 補充說明: 建立一個 Branch 並針對任一檔案做異動</description>
     </item>
-    
   </channel>
 </rss>

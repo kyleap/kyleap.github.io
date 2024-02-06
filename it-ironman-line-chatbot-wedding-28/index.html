@@ -1,156 +1,43 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>製作婚禮現場即時留言版- Azure SignalR Service I (28) | 凱哥打扣 | Kyle Studio</title>
-<meta name=keywords content="Chatbot">
-<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>製作婚禮現場即時留言版- Azure SignalR Service I (28) | 凱哥打扣 | Kyle Studio</title>
+<meta name=keywords content="Chatbot"><meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
 SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
 https://www.pubnub.com/learn/glossary/what-is-signalr/
 而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容
- 建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息  建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
+建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
 建完後，到key的選單，我們等等需要這個 Connection String
 建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼
- <ItemGroup> <DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /> <DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /> </ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
+<ItemGroup> <DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /> <DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /> </ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
 在 Web Api 專案案右鍵，建立管理使用者密碼，
-建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上">
-<meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/>
-<meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://kyleap.github.io/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
-<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="製作婚禮現場即時留言版- Azure SignalR Service I (28)">
-<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
+建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上
+Web Api 專案 Startup."><meta name=author content="Kyle"><link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/><meta name=google-site-verification content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://kyleap.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-DPE6YM5E5N",{anonymize_ip:!1})}</script><meta property="og:title" content="製作婚禮現場即時留言版- Azure SignalR Service I (28)"><meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
 SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
 https://www.pubnub.com/learn/glossary/what-is-signalr/
 而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容
- 建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息  建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
+建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
 建完後，到key的選單，我們等等需要這個 Connection String
 建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼
- <ItemGroup> <DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /> <DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /> </ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
+<ItemGroup> <DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /> <DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /> </ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
 在 Web Api 專案案右鍵，建立管理使用者密碼，
-建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2020-11-28T13:28:25+00:00">
-<meta property="article:modified_time" content="2020-11-28T13:28:25+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
-<meta name=twitter:title content="製作婚禮現場即時留言版- Azure SignalR Service I (28)">
-<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
+建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上
+Web Api 專案 Startup."><meta property="og:type" content="article"><meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-11-28T13:28:25+00:00"><meta property="article:modified_time" content="2020-11-28T13:28:25+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta name=twitter:title content="製作婚禮現場即時留言版- Azure SignalR Service I (28)"><meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
 SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
 https://www.pubnub.com/learn/glossary/what-is-signalr/
 而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容
- 建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息  建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
+建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
 建完後，到key的選單，我們等等需要這個 Connection String
 建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼
- <ItemGroup> <DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /> <DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /> </ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
+<ItemGroup> <DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /> <DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /> </ItemGroup> 用 Nuget 安裝 Microsoft.Azure.SignalR
 在 Web Api 專案案右鍵，建立管理使用者密碼，
-建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"製作婚禮現場即時留言版- Azure SignalR Service I (28)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"製作婚禮現場即時留言版- Azure SignalR Service I (28)","name":"製作婚禮現場即時留言版- Azure SignalR Service I (28)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day28)\nSignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者\nhttps://www.pubnub.com/learn/glossary/what-is-signalr/\n而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容\n 建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息  建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務\n建完後，到key的選單，我們等等需要這個 Connection String\n建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼\n \u0026lt;ItemGroup\u0026gt; \u0026lt;DotNetCliToolReference Include=\u0026quot;Microsoft.VisualStudio.Web.CodeGeneration.Tools\u0026quot; Version=\u0026quot;2.0.0\u0026quot; /\u0026gt; \u0026lt;DotNetCliToolReference Include=\u0026quot;Microsoft.Extensions.SecretManager.Tools\u0026quot; Version=\u0026quot;2.0.0\u0026quot; /\u0026gt; \u0026lt;/ItemGroup\u0026gt; 用 Nuget 安裝 Microsoft.Azure.SignalR\n在 Web Api 專案案右鍵，建立管理使用者密碼，\n建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day28)\nSignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者\nhttps://www.pubnub.com/learn/glossary/what-is-signalr/\" / https://www.pubnub.com/learn/glossary/what-is-signalr/\n而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容\n 建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息  建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務\n建完後，到key的選單，我們等等需要這個 Connection String\n建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼\n   用 Nuget 安裝 Microsoft.Azure.SignalR\n在 Web Api 專案案右鍵，建立管理使用者密碼，\n建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上\nWeb Api 專案 Startup.cs 的 ConfigureServices 增加 AddSignalR\n services.AddSignalR().AddAzureSignalR(); Configure 增加 Hub 的實作 app.UseEndpoints(endpoints = { endpoints.MapControllers(); endpoints.MapRazorPages(); endpoints.MapHub(\"/message\"); }); WeddingMessage.cs\n之後可以依照自己的需求在此實作方法\n public class WeddingMessage : Hub { public void SendMessage(string name, string message) { Clients.All.SendAsync(\"SendMessage\", name, message); } } 簡單幾個步驟就完成 Server Side 的 Hub\n建立 HTML Client 即時呈現訊息 本篇繼續使用 Razor Page，但純HTML也是可以的，因為我們會載入SignalR的JavaScript SDK\n 在JavaScript也蠻容易實作發送訊息及接收訊息\n  document.addEventListener('DOMContentLoaded', function () { // 建立連線 var connection = new signalR.HubConnectionBuilder() .withUrl('/message') //因為是同個網域，要視情況換成完成Server Hub的URL .build(); // 開始連線 connection.start() .then(function () { connection.send('SendMessage', 'SYSTEM', '連線成功...'); }) .catch(function (error) { console.error(error.message); }); bindConnectionMessage(connection); // 呈現資料到Html function createMessageEntry(encodedName, encodedMsg) { var entry = document.createElement('li'); entry.innerHTML = encodedName + \":\" + encodedMsg; return entry; } // 監聽接收訊息事件 function bindConnectionMessage(connection) { connection.on('CallBackMessage', function (name, message) { if (!message) return; var encodedName = name; var encodedMsg = message.replace(/\u0026/g, \"\u0026\").replace(//g, \"\"); var messageEntry = createMessageEntry(encodedName, encodedMsg); var messageBox = document.getElementById('messages'); messageBox.appendChild(messageEntry); messageBox.scrollTop = messageBox.scrollHeight; }); } });  Html 部分\nKyle's Wedding 留言板  建立 .NET Console App 來發送訊息 再來我們建立個 Console App 來發送看看\n安裝 Microsoft.AspNetCore.SignalR.Client\n建立一個 ClientSignalR 來封裝發送\n public class ClientSignalR { private HubConnection _hub; public HubConnection Hub { get; } private string _connectionUrl; public string ConnectionUrl { get; } public ClientSignalR() { } public async Task Initialize(string connectionUrl) { _connectionUrl = connectionUrl; _hub = new HubConnectionBuilder() .WithUrl(_connectionUrl) .Build(); await _hub.StartAsync(); } public async Task SendHubMessage(string methodName, string name, string message) { await _hub?.InvokeAsync(methodName, name, message); } public async Task CloseConnection() { await _hub.DisposeAsync(); } } Program.cs\n static async System.Threading.Tasks.Task Main(string[] args) { var hubClient = new ClientSignalR(); await hubClient.Initialize(\"/message\"); while (true) { Console.WriteLine(\"Please enter you message:\"); var input = Console.ReadLine(); await hubClient.SendHubMessage(\"SendMessage\", \"Kyle\", input); } } 實作效果 今天這一篇先這樣避免太長，下一篇我們要來美化HTML\u0026跟Chatbot結合\n懶人包，本次學到了什麼?  建立 Azure SignalR 服務 https://azure.microsoft.com/zh-tw/services/signalr-service/ 建立 SignalR Server Hub https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core 建立 HTML Client 即時呈現訊息 https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core 建立 .NET Console App 來發送訊息 https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/  ","wordCount":"366","inLanguage":"en","datePublished":"2020-11-28T13:28:25Z","dateModified":"2020-11-28T13:28:25Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
-</head>
-<body class=dark id=top>
-<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<div class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</div>
-</div>
-<ul id=menu>
-<li>
-<a href=https://kyleap.github.io/kyleshen/ title=about>
-<span>about</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/archives/ title=archives>
-<span>archives</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/categories/ title=categories>
-<span>categories</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
-<span>search</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/ title=tags>
-<span>tags</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
-<h1 class=post-title>
-製作婚禮現場即時留言版- Azure SignalR Service I (28)
-</h1>
-<div class=post-meta><span title="2020-11-28 13:28:25 +0000 UTC">2020-11-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle
-</div>
-</header>
-<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)</p>
-<p>SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/0*qIWlsb6LLdxhr0gA.png alt='<a href="https://www.pubnub.com/learn/glossary/what-is-signalr/">https://www.pubnub.com/learn/glossary/what-is-signalr/</a>'>
-<em><a href=https://www.pubnub.com/learn/glossary/what-is-signalr/>https://www.pubnub.com/learn/glossary/what-is-signalr/</a></em></p>
-<p>而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容</p>
-<ul>
-<li><input disabled type=checkbox> 建立 Azure SignalR 服務</li>
-<li><input disabled type=checkbox> 建立 SignalR Server Hub</li>
-<li><input disabled type=checkbox> 建立 HTML Client 即時呈現訊息</li>
-<li><input disabled type=checkbox> 建立 .NET Console App 來發送訊息</li>
-</ul>
-<h3 id=建立-azure-signalr-服務>建立 Azure SignalR 服務<a hidden class=anchor aria-hidden=true href=#建立-azure-signalr-服務>#</a></h3>
-<p>登入Azure，進入<a href=https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage>https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage</a> 新增服務</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*o3ecVETBmwvi3MJJ9qhweg.png alt>
-</p>
-<p>建完後，到key的選單，我們等等需要這個 Connection String</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*PBd0enIFdQ7uFLVBsg97Lw.png alt>
-</p>
-<h3 id=建立-signalr-server-hub>建立 SignalR Server Hub<a hidden class=anchor aria-hidden=true href=#建立-signalr-server-hub>#</a></h3>
-<p>打開 Web Api 專案的 .csproj，加入以下程式碼</p>
-<pre tabindex=0><code>    &lt;ItemGroup&gt;
+建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上
+Web Api 專案 Startup."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"製作婚禮現場即時留言版- Azure SignalR Service I (28)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"製作婚禮現場即時留言版- Azure SignalR Service I (28)","name":"製作婚禮現場即時留言版- Azure SignalR Service I (28)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day28)\nSignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者\nhttps://www.pubnub.com/learn/glossary/what-is-signalr/\n而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容\n建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務\n建完後，到key的選單，我們等等需要這個 Connection String\n建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼\n\u0026lt;ItemGroup\u0026gt; \u0026lt;DotNetCliToolReference Include=\u0026#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools\u0026#34; Version=\u0026#34;2.0.0\u0026#34; /\u0026gt; \u0026lt;DotNetCliToolReference Include=\u0026#34;Microsoft.Extensions.SecretManager.Tools\u0026#34; Version=\u0026#34;2.0.0\u0026#34; /\u0026gt; \u0026lt;/ItemGroup\u0026gt; 用 Nuget 安裝 Microsoft.Azure.SignalR\n在 Web Api 專案案右鍵，建立管理使用者密碼，\n建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上\nWeb Api 專案 Startup.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day28)\nSignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者\n","wordCount":"366","inLanguage":"en","datePublished":"2020-11-28T13:28:25Z","dateModified":"2020-11-28T13:28:25Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kyleap.github.io/kyleshen/ title=about><span>about</span></a></li><li><a href=https://kyleap.github.io/archives/ title=archives><span>archives</span></a></li><li><a href=https://kyleap.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li><li><a href=https://kyleap.github.io/tags/ title=tags><span>tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">製作婚禮現場即時留言版- Azure SignalR Service I (28)</h1><div class=post-meta><span title='2020-11-28 13:28:25 +0000 UTC'>2020-11-28</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Kyle</div></header><div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)</p><p>SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/0*qIWlsb6LLdxhr0gA.png alt='<a href="https://www.pubnub.com/learn/glossary/what-is-signalr/">https://www.pubnub.com/learn/glossary/what-is-signalr/</a>'>
+<em><a href=https://www.pubnub.com/learn/glossary/what-is-signalr/>https://www.pubnub.com/learn/glossary/what-is-signalr/</a></em></p><p>而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容</p><ul><li><input disabled type=checkbox> 建立 Azure SignalR 服務</li><li><input disabled type=checkbox> 建立 SignalR Server Hub</li><li><input disabled type=checkbox> 建立 HTML Client 即時呈現訊息</li><li><input disabled type=checkbox> 建立 .NET Console App 來發送訊息</li></ul><h3 id=建立-azure-signalr-服務>建立 Azure SignalR 服務<a hidden class=anchor aria-hidden=true href=#建立-azure-signalr-服務>#</a></h3><p>登入Azure，進入<a href=https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage>https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage</a> 新增服務</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*o3ecVETBmwvi3MJJ9qhweg.png alt></p><p>建完後，到key的選單，我們等等需要這個 Connection String</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*PBd0enIFdQ7uFLVBsg97Lw.png alt></p><h3 id=建立-signalr-server-hub>建立 SignalR Server Hub<a hidden class=anchor aria-hidden=true href=#建立-signalr-server-hub>#</a></h3><p>打開 Web Api 專案的 .csproj，加入以下程式碼</p><pre tabindex=0><code>    &lt;ItemGroup&gt;
 
-    &lt;DotNetCliToolReference Include=&quot;Microsoft.VisualStudio.Web.CodeGeneration.Tools&quot; Version=&quot;2.0.0&quot; /&gt;
+    &lt;DotNetCliToolReference Include=&#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&#34; Version=&#34;2.0.0&#34; /&gt;
 
-    &lt;DotNetCliToolReference Include=&quot;Microsoft.Extensions.SecretManager.Tools&quot; Version=&quot;2.0.0&quot; /&gt;
+    &lt;DotNetCliToolReference Include=&#34;Microsoft.Extensions.SecretManager.Tools&#34; Version=&#34;2.0.0&#34; /&gt;
 
     &lt;/ItemGroup&gt;
-</code></pre><p>用 Nuget 安裝 <a href="https://www.nuget.org/packages/Microsoft.Azure.SignalR/1.5.1?_src=template">Microsoft.Azure.SignalR</a></p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*-NG8hxbtTGHCWLYy06LWYQ.png alt>
-</p>
-<p>在 Web Api 專案案右鍵，建立管理使用者密碼，</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*qWjzGHwX1oKVxibSF1OeWw.png alt>
-</p>
-<p>建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*cLkMdZsE7Dj_FDuKp8TZCQ.png alt>
-</p>
-<p>Web Api 專案 Startup.cs 的 ConfigureServices 增加 AddSignalR</p>
-<pre tabindex=0><code>    services.AddSignalR().AddAzureSignalR();
+</code></pre><p>用 Nuget 安裝 <a href="https://www.nuget.org/packages/Microsoft.Azure.SignalR/1.5.1?_src=template">Microsoft.Azure.SignalR</a></p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*-NG8hxbtTGHCWLYy06LWYQ.png alt></p><p>在 Web Api 專案案右鍵，建立管理使用者密碼，</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*qWjzGHwX1oKVxibSF1OeWw.png alt></p><p>建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*cLkMdZsE7Dj_FDuKp8TZCQ.png alt></p><p>Web Api 專案 Startup.cs 的 ConfigureServices 增加 AddSignalR</p><pre tabindex=0><code>    services.AddSignalR().AddAzureSignalR();
 
 Configure 增加 Hub 的實作
 
@@ -162,12 +49,10 @@ Configure 增加 Hub 的實作
 
     endpoints.MapRazorPages();
 
-    endpoints.MapHub&lt;WeddingMessage&gt;(&quot;/message&quot;);
+    endpoints.MapHub&lt;WeddingMessage&gt;(&#34;/message&#34;);
 
     });
-</code></pre><p>WeddingMessage.cs</p>
-<p>之後可以依照自己的需求在此實作方法</p>
-<pre tabindex=0><code>    public class WeddingMessage : Hub
+</code></pre><p>WeddingMessage.cs</p><p>之後可以依照自己的需求在此實作方法</p><pre tabindex=0><code>    public class WeddingMessage : Hub
 
     {
 
@@ -175,25 +60,21 @@ Configure 增加 Hub 的實作
 
     {
 
-    Clients.All.SendAsync(&quot;SendMessage&quot;, name, message);
+    Clients.All.SendAsync(&#34;SendMessage&#34;, name, message);
 
     }
 
     }
-</code></pre><p>簡單幾個步驟就完成 Server Side 的 Hub</p>
-<h3 id=建立-html-client-即時呈現訊息>建立 HTML Client 即時呈現訊息<a hidden class=anchor aria-hidden=true href=#建立-html-client-即時呈現訊息>#</a></h3>
-<p>本篇繼續使用 Razor Page，但純HTML也是可以的，因為我們會載入SignalR的JavaScript SDK</p>
-<pre tabindex=0><code>&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.jsdelivr.net/npm/@@aspnet/signalr@1.1.0/dist/browser/signalr.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>在JavaScript也蠻容易實作發送訊息及接收訊息</p>
-<pre tabindex=0><code>    &lt;script&gt;
+</code></pre><p>簡單幾個步驟就完成 Server Side 的 Hub</p><h3 id=建立-html-client-即時呈現訊息>建立 HTML Client 即時呈現訊息<a hidden class=anchor aria-hidden=true href=#建立-html-client-即時呈現訊息>#</a></h3><p>本篇繼續使用 Razor Page，但純HTML也是可以的，因為我們會載入SignalR的JavaScript SDK</p><pre tabindex=0><code>&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdn.jsdelivr.net/npm/@@aspnet/signalr@1.1.0/dist/browser/signalr.min.js&#34;&gt;&lt;/script&gt;
+</code></pre><p>在JavaScript也蠻容易實作發送訊息及接收訊息</p><pre tabindex=0><code>    &lt;script&gt;
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener(&#39;DOMContentLoaded&#39;, function () {
 
     // 建立連線
 
     var connection = new signalR.HubConnectionBuilder()
 
-    .withUrl('/message') //因為是同個網域，要視情況換成完成Server Hub的URL
+    .withUrl(&#39;/message&#39;) //因為是同個網域，要視情況換成完成Server Hub的URL
 
     .build();
 
@@ -203,7 +84,7 @@ Configure 增加 Hub 的實作
 
     .then(function () {
 
-    connection.send('SendMessage', 'SYSTEM', '連線成功...');
+    connection.send(&#39;SendMessage&#39;, &#39;SYSTEM&#39;, &#39;連線成功...&#39;);
 
     })
 
@@ -219,9 +100,9 @@ Configure 增加 Hub 的實作
 
     function createMessageEntry(encodedName, encodedMsg) {
 
-    var entry = document.createElement('li');
+    var entry = document.createElement(&#39;li&#39;);
 
-    entry.innerHTML = encodedName + &quot;:&quot; + encodedMsg;
+    entry.innerHTML = encodedName + &#34;:&#34; + encodedMsg;
 
     return entry;
 
@@ -231,17 +112,17 @@ Configure 增加 Hub 的實作
 
     function bindConnectionMessage(connection) {
 
-    connection.on('CallBackMessage', function (name, message) {
+    connection.on(&#39;CallBackMessage&#39;, function (name, message) {
 
     if (!message) return;
 
     var encodedName = name;
 
-    var encodedMsg = message.replace(/&amp;/g, &quot;&amp;&quot;).replace(/&lt;/g, &quot;&lt;&quot;).replace(/&gt;/g, &quot;&gt;&quot;);
+    var encodedMsg = message.replace(/&amp;/g, &#34;&amp;&#34;).replace(/&lt;/g, &#34;&lt;&#34;).replace(/&gt;/g, &#34;&gt;&#34;);
 
     var messageEntry = createMessageEntry(encodedName, encodedMsg);
 
-    var messageBox = document.getElementById('messages');
+    var messageBox = document.getElementById(&#39;messages&#39;);
 
     messageBox.appendChild(messageEntry);
 
@@ -254,19 +135,12 @@ Configure 增加 Hub 的實作
     });
 
     &lt;/script&gt;
-</code></pre><p>Html 部分</p>
-<pre tabindex=0><code>&lt;h2&gt;Kyle's Wedding 留言板&lt;/h2&gt;
+</code></pre><p>Html 部分</p><pre tabindex=0><code>&lt;h2&gt;Kyle&#39;s Wedding 留言板&lt;/h2&gt;
 
-&lt;ul id=&quot;messages&quot;&gt;
+&lt;ul id=&#34;messages&#34;&gt;
 
 &lt;/ul&gt;
-</code></pre><h3 id=建立-net-console-app-來發送訊息>建立 .NET Console App 來發送訊息<a hidden class=anchor aria-hidden=true href=#建立-net-console-app-來發送訊息>#</a></h3>
-<p>再來我們建立個 Console App 來發送看看</p>
-<p>安裝 <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/3.1.8?_src=template">Microsoft.AspNetCore.SignalR.Client</a></p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*xi1CY5MYlp09iDVm8wnl3A.png alt>
-</p>
-<p>建立一個 ClientSignalR 來封裝發送</p>
-<pre tabindex=0><code>    public class ClientSignalR
+</code></pre><h3 id=建立-net-console-app-來發送訊息>建立 .NET Console App 來發送訊息<a hidden class=anchor aria-hidden=true href=#建立-net-console-app-來發送訊息>#</a></h3><p>再來我們建立個 Console App 來發送看看</p><p>安裝 <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/3.1.8?_src=template">Microsoft.AspNetCore.SignalR.Client</a></p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*xi1CY5MYlp09iDVm8wnl3A.png alt></p><p>建立一個 ClientSignalR 來封裝發送</p><pre tabindex=0><code>    public class ClientSignalR
 
     {
 
@@ -317,75 +191,34 @@ Configure 增加 Hub 的實作
     }
 
     }
-</code></pre><p>Program.cs</p>
-<pre tabindex=0><code>    static async System.Threading.Tasks.Task Main(string[] args)
+</code></pre><p>Program.cs</p><pre tabindex=0><code>    static async System.Threading.Tasks.Task Main(string[] args)
 
     {
 
     var hubClient = new ClientSignalR();
 
-    await hubClient.Initialize(&quot;&lt;Your Server Hub URL&gt;/message&quot;);
+    await hubClient.Initialize(&#34;&lt;Your Server Hub URL&gt;/message&#34;);
 
     while (true)
 
     {
 
-    Console.WriteLine(&quot;Please enter you message:&quot;);
+    Console.WriteLine(&#34;Please enter you message:&#34;);
 
     var input = Console.ReadLine();
 
-    await hubClient.SendHubMessage(&quot;SendMessage&quot;, &quot;Kyle&quot;, input);
+    await hubClient.SendHubMessage(&#34;SendMessage&#34;, &#34;Kyle&#34;, input);
 
     }
 
     }
-</code></pre><h3 id=實作效果>實作效果<a hidden class=anchor aria-hidden=true href=#實作效果>#</a></h3>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2236/1*7jxG_S1om1Pzo_eHlSJAwQ.gif alt>
-</p>
-<p>今天這一篇先這樣避免太長，下一篇我們要來美化HTML&跟Chatbot結合</p>
-<h2 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h2>
-<ul>
-<li>建立 Azure SignalR 服務
-<a href=https://azure.microsoft.com/zh-tw/services/signalr-service/>https://azure.microsoft.com/zh-tw/services/signalr-service/</a></li>
-<li>建立 SignalR Server Hub
-<a href=https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core>https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core</a></li>
-<li>建立 HTML Client 即時呈現訊息
-<a href=https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core>https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core</a></li>
-<li>建立 .NET Console App 來發送訊息
-<a href=https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/>https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/</a></li>
-</ul>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/>
-<span class=title>« Prev</span>
-<br>
-<span>製作婚禮現場即時留言版- Azure SignalR Service II (29)</span>
-</a>
-<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/>
-<span class=title>Next »</span>
-<br>
-<span>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)</span>
-</a>
-</nav>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
-<span>
-Powered by
+</code></pre><h3 id=實作效果>實作效果<a hidden class=anchor aria-hidden=true href=#實作效果>#</a></h3><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2236/1*7jxG_S1om1Pzo_eHlSJAwQ.gif alt></p><p>今天這一篇先這樣避免太長，下一篇我們要來美化HTML&跟Chatbot結合</p><h2 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h2><ul><li>建立 Azure SignalR 服務
+<a href=https://azure.microsoft.com/zh-tw/services/signalr-service/>https://azure.microsoft.com/zh-tw/services/signalr-service/</a></li><li>建立 SignalR Server Hub
+<a href=https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core>https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core</a></li><li>建立 HTML Client 即時呈現訊息
+<a href=https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core>https://docs.microsoft.com/zh-tw/azure/azure-signalr/signalr-quickstart-dotnet-core</a></li><li>建立 .NET Console App 來發送訊息
+<a href=https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/>https://daniel-krzyczkowski.github.io/Real-time-data-with-Microsoft-Azure-SignalR-Service/</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li></ul><nav class=paginav><a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/><span class=title>« Prev</span><br><span>製作婚禮現場即時留言版- Azure SignalR Service II (29)</span>
+</a><a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/><span class=title>Next »</span><br><span>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
-</html>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

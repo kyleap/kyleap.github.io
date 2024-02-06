@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>12th鐵人賽 on 凱哥打扣 | Kyle Studio</title>
     <link>https://kyleap.github.io/categories/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
@@ -10,61 +10,58 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 30 Nov 2020 00:11:40 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Nov 2020 00:11:40 +0000</lastBuildDate>
+    <atom:link href="https://kyleap.github.io/categories/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>鐵人賽完賽整理&amp;開源 (30)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/</link>
       <pubDate>Mon, 30 Nov 2020 00:11:40 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-30/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day30)
 終於走到這一天了，每次都覺得鐵人賽過程都生不如死，但寫完30天候總有一種成就感，技術跟文章不難，難的是30天養成一個固定的習慣阿!
 回到第一天文章所講的：所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
 這次寫完30天也收穫良多，主要也是挑一些之前比較少碰的東西順便玩玩看
- 把 Line 的 Api 文件又完整K了一遍，並一個一個寫成 .NET Core 的版本， 之前比較沒碰過的是 Line Pay/Line Beacon 寫得過程中看到 vue 海賊王版本推出 (vue 3.0)，起了專案實踐了一些功能，來看看它的架構 用了 Razor Page，讓我回到 ASP.NET WebForm 的復古感 玩了一些 Azure 服務，Azure Storage、QnA Maker，其中 Azure SignalR Service 是之前比較沒玩過的 把之前自己婚禮用的 chatbot 改一版，順便要給接下來結婚的朋友用 XD 真實的把所做的Side Project給用上 邊看文件邊寫SDK出來，並開源出來  本篇就來講講最後一哩路，怎麼發佈到 NuGet 上吧！
+把 Line 的 Api 文件又完整K了一遍，並一個一個寫成 .NET Core 的版本， 之前比較沒碰過的是 Line Pay/Line Beacon 寫得過程中看到 vue 海賊王版本推出 (vue 3.0)，起了專案實踐了一些功能，來看看它的架構 用了 Razor Page，讓我回到 ASP.NET WebForm 的復古感 玩了一些 Azure 服務，Azure Storage、QnA Maker，其中 Azure SignalR Service 是之前比較沒玩過的 把之前自己婚禮用的 chatbot 改一版，順便要給接下來結婚的朋友用 XD 真實的把所做的Side Project給用上 邊看文件邊寫SDK出來，並開源出來 本篇就來講講最後一哩路，怎麼發佈到 NuGet 上吧！
 我將這次系列邊走邊看得的程式稍作整理，建立一個 .NET Core 的函示庫專案
 在 VS 按右鍵套件
- 或者可以使用CLI : dotnet pack
- 編輯套件的資訊</description>
+或者可以使用CLI : dotnet pack
+編輯套件的資訊
+release 編譯後，可以看到 bin\release 有 nupkg 檔案</description>
     </item>
-    
     <item>
       <title>製作婚禮現場即時留言版- Azure SignalR Service II (29)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/</link>
       <pubDate>Sun, 29 Nov 2020 12:23:59 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-29/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day29)
 在上一篇我們用 Console App 發送訊息到 Api 的 Server Hub，並呈現在HTML上，今天這篇我們要來結合 chatbot，其實就是在chatbot當成SignalR的client而已，實際效果如下(本篇不會介紹CSS部分)：
 新增一個 MessageBoard class 來處理留言板發送，這部分可以看這篇
 而透過 Line 的 User Id ，我們能取得使用者的大頭照.姓名…等等資訊
- public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(&amp;quot;http://localhost:12733/message&amp;quot;); await hubClient.SendHubMessage(&amp;quot;SendMessage&amp;quot;, profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, &amp;quot;謝謝您，我們已收到留言&amp;quot;); } GetUserProfile
- public async Task&amp;lt;UserProfile&amp;gt; GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;GET&amp;quot;), $&amp;quot;{lineMessageApiBaseUrl}/{userId}&amp;quot;)) { request.</description>
+public async Task ReplyAsync(string replyToken) { var profile = await lineProfileUtility.GetUserProfile(userId); var hubClient = new ClientSignalR(); await hubClient.Initialize(&amp;#34;http://localhost:12733/message&amp;#34;); await hubClient.SendHubMessage(&amp;#34;SendMessage&amp;#34;, profile.pictureUrl, profile.displayName, message); await lineMessageUtility.ReplyMessageAsync(replyToken, &amp;#34;謝謝您，我們已收到留言&amp;#34;); } GetUserProfile
+public async Task&amp;lt;UserProfile&amp;gt; GetUserProfile(string userId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;GET&amp;#34;), $&amp;#34;{lineMessageApiBaseUrl}/{userId}&amp;#34;)) { request.</description>
     </item>
-    
     <item>
       <title>製作婚禮現場即時留言版- Azure SignalR Service I (28)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/</link>
       <pubDate>Sat, 28 Nov 2020 13:28:25 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-28/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day28)
 SignalR是實現即時通訊的框架，如下圖，在Server Hub宣告要給client端呼叫的方法，能傳送即時訊息給已連線的使用者
 https://www.pubnub.com/learn/glossary/what-is-signalr/
 而透過Azure SignalR 服務，大大簡化使用門檻，很簡單就能建立一個服務，且享有雲端帶來的高拓展性，這篇文章會step by step 實作以下內容
- 建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息  建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
+建立 Azure SignalR 服務 建立 SignalR Server Hub 建立 HTML Client 即時呈現訊息 建立 .NET Console App 來發送訊息 建立 Azure SignalR 服務 登入Azure，進入https://portal.azure.com/#create/Microsoft.SignalRGalleryPackage 新增服務
 建完後，到key的選單，我們等等需要這個 Connection String
 建立 SignalR Server Hub 打開 Web Api 專案的 .csproj，加入以下程式碼
- &amp;lt;ItemGroup&amp;gt; &amp;lt;DotNetCliToolReference Include=&amp;quot;Microsoft.VisualStudio.Web.CodeGeneration.Tools&amp;quot; Version=&amp;quot;2.0.0&amp;quot; /&amp;gt; &amp;lt;DotNetCliToolReference Include=&amp;quot;Microsoft.Extensions.SecretManager.Tools&amp;quot; Version=&amp;quot;2.0.0&amp;quot; /&amp;gt; &amp;lt;/ItemGroup&amp;gt; 用 Nuget 安裝 Microsoft.Azure.SignalR
+&amp;lt;ItemGroup&amp;gt; &amp;lt;DotNetCliToolReference Include=&amp;#34;Microsoft.VisualStudio.Web.CodeGeneration.Tools&amp;#34; Version=&amp;#34;2.0.0&amp;#34; /&amp;gt; &amp;lt;DotNetCliToolReference Include=&amp;#34;Microsoft.Extensions.SecretManager.Tools&amp;#34; Version=&amp;#34;2.0.0&amp;#34; /&amp;gt; &amp;lt;/ItemGroup&amp;gt; 用 Nuget 安裝 Microsoft.Azure.SignalR
 在 Web Api 專案案右鍵，建立管理使用者密碼，
-建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上</description>
+建立 Azure:SignalR:ConnectionString ，把剛剛的連線字串貼上
+Web Api 專案 Startup.</description>
     </item>
-    
     <item>
       <title>收集婚禮現場照片- 將圖片用C#傳到 Imgur 服務 (27)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/</link>
       <pubDate>Fri, 27 Nov 2020 00:32:07 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-27/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day27)
 婚禮現場一定會有各種親朋好友視角的照片，以往都要一個一個傳在社群媒體之類的，本次來實作 chatbot 來廣收各種朋友拍的照片.. XD
@@ -72,33 +69,29 @@ https://www.pubnub.com/learn/glossary/what-is-signalr/
 會得到 client id 和 client secret
 回到 LineBotApp.cs，我們可以針對圖片類型的訊息做處理
 GetContentBytesAsync
- public async Task&amp;lt;Stream&amp;gt; GetContentBytesAsync(string messageId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;GET&amp;quot;), $&amp;quot;https://api-data.line.me/v2/bot/message/{messageId}/content&amp;quot;)) { request.Headers.TryAddWithoutValidation(&amp;quot;Authorization&amp;quot;, $&amp;quot;Bearer {accessToken}&amp;quot;); var response = await httpClient.SendAsync(request); var results = await response.Content.ReadAsStreamAsync(); return results; } } } UploadToImgurAsync
+public async Task&amp;lt;Stream&amp;gt; GetContentBytesAsync(string messageId) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;GET&amp;#34;), $&amp;#34;https://api-data.line.me/v2/bot/message/{messageId}/content&amp;#34;)) { request.Headers.TryAddWithoutValidation(&amp;#34;Authorization&amp;#34;, $&amp;#34;Bearer {accessToken}&amp;#34;); var response = await httpClient.SendAsync(request); var results = await response.Content.ReadAsStreamAsync(); return results; } } } UploadToImgurAsync
 可以透過 Nuget 安裝 Imgur.API
- public async Task&amp;lt;string&amp;gt; UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient(&amp;quot;&amp;lt;Your Imgur ClientId&amp;gt;&amp;quot;); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint.</description>
+public async Task&amp;lt;string&amp;gt; UploadToImgurAsync(Stream stream) { var apiClient = new ApiClient(&amp;#34;&amp;lt;Your Imgur ClientId&amp;gt;&amp;#34;); var httpClient = new HttpClient(); var imageEndpoint = new ImageEndpoint(apiClient, httpClient); var imageUpload = await imageEndpoint.</description>
     </item>
-    
     <item>
       <title>婚禮禮金用Line Pay II (26)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/</link>
       <pubDate>Thu, 26 Nov 2020 00:06:44 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-26/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day26)
 以下是 Line 官方文件的流程，今天會依據這個圖的流程來實作 Line Pay 付款
 https://pay.line.me/jp/developers/apis/onlineApis?locale=zh_TW
 Checkout 流程 官方API文件可以從這裡看到
 Request Body 的 C# Class
-public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&amp;lt;Package&amp;gt; packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&amp;lt;Product&amp;gt; products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } }  整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得</description>
+public class LinePayRequest { public int amount { get; set; } public string currency { get; set; } public string orderId { get; set; } public List&amp;lt;Package&amp;gt; packages { get; set; } public Options options { get; set; } public Redirecturls redirectUrls { get; set; } } public class Package { public string id { get; set; } public int amount { get; set; } public string name { get; set; } public List&amp;lt;Product&amp;gt; products { get; set; } } public class Product { public string id { get; set; } public string name { get; set; } public string imageUrl { get; set; } public int quantity { get; set; } public int price { get; set; } } public class Options { public Payment payment { get; set; } } public class Payment { public bool capture { get; set; } } public class Redirecturls { public string confirmUrl { get; set; } public string cancelUrl { get; set; } } 整個 Post 的 Body 可以這樣組成，channelId和channelSecret可以在前一篇申請sandbox時候取得</description>
     </item>
-    
     <item>
       <title>婚禮禮金用Line Pay I (25)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/</link>
       <pubDate>Wed, 25 Nov 2020 09:44:01 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-25/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day25)
-婚禮最麻煩的就是收禮金了吧，當天還有可能遇到跑錯棚的(本人親自遇到，後來還要退錢給他XD)，婚禮結束還要很辛苦的算鈔票，我一直在想未來有沒有可能都用電子支付，讓婚禮結束後不要扛那麼多的現金，不要花那麼多時間計算。本篇將以 Line 的 Sendbox 進行串接測試，要實際使用的話要先註冊成商家，並通過 Line 的審核。在 Sandbox 有很清楚的step by step 來說明如何串接
+婚禮最麻煩的就是收禮金了吧，當天還有可能遇到跑錯棚的(本人親自遇到，後來還要退錢給他XD)，婚禮結束還要很辛苦的算鈔票，我一直在想未來有沒有可能都用電子支付，讓婚禮結束後不要扛那麼多的現金，不要花那麼多時間計算。本篇將以 Line 的 Sendbox 進行串接測試，要實際使用的話要先註冊成商家，並通過 Line 的審核。在 Sandbox 有很清楚的 step by step 來說明如何串接
 註冊 Sandbox 至 https://pay.line.me/jp/developers/main/main?locale=zh_TW 註冊
 接著 Email 會收到測試的帳號
 接下來到商家後台，用上面的帳號密碼登入 (寫這篇文章的同時，email 裡面提供的商家後台連結不知道為什麼會出錯)，取得 client id與 client secret
@@ -110,14 +103,12 @@ PaymentModel
 asp-page-handler 可以在 .cs寫 function 驗證 model
 實作效果
 下一篇來繼續用 C# 來串 Line Pay ~
-懶人包，本次學到了什麼?  Razor Page https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.1&amp;amp;tabs=visual-studio Add validation to an ASP.</description>
+懶人包，本次學到了什麼? Razor Page https://docs.microsoft.com/zh-tw/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-3.1&amp;amp;tabs=visual-studio Add validation to an ASP.</description>
     </item>
-    
     <item>
       <title>用Line Beacon來搞自動報到 (24)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/</link>
       <pubDate>Tue, 24 Nov 2020 00:22:05 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-24/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day24)
 上一篇講到了用 QR Code 來做婚禮報到，如果能進一步來做自動報到就更方便了，LINE Beacon，是 LINE 推出的藍芽Sensor，可以讓 LINE Bot 接收設備附近的資訊，有時路過一些店家或捷運，他會推播給你一些訊息給你，這就是 Beacon 的技術
@@ -129,14 +120,12 @@ BeaconType
 enter : 當使用者進入Line Beacon 發送範圍內 banner：LINE for Business用戶限定，可讓用戶收到打開藍芽資訊，進而引導到加企業用戶好友及收到企業帳號的訊息 stay：LINE for Business用戶限定，偵測在區域內的使用者，每10秒會觸發一次
 接著就是在收到訊息後判斷是否為 Beacon 事件，並做實際處理啦
 本篇有點可惜，來不及買 Line Beacon 來玩，無法嘗試實際效果，之後有機會再拿來應用~
-懶人包，本次學到了什麼?  Line Beacon https://developers.line.biz/en/docs/messaging-api/using-beacons/  </description>
+懶人包，本次學到了什麼? Line Beacon https://developers.line.biz/en/docs/messaging-api/using-beacons/ </description>
     </item>
-    
     <item>
       <title>用QR Code來搞報到 — Razor Page實做 II (23)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/</link>
       <pubDate>Mon, 23 Nov 2020 12:42:03 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-23/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day23)
 在上一篇我們實作了Liff App 的 QR Code 掃瞄功能後，我們要來將這個值傳到後端完成報到的動作
@@ -147,17 +136,14 @@ QrCode.cshtml
 QrCode Api 的內容，其實就是前幾篇講的，針對 Azure Table 的操作
 實作畫面
 https://imgur.com/5qsSzRN
-懶人包，本次學到了什麼?   Razor 的 RenderBody() vs RenderSection() http://coding.anyun.tw/2012/02/19/razor-learning-renderbody-renderpartial-and-rendersection/
-  jQuery Ajax https://api.jquery.com/jquery.ajax/
-  如何新增/編輯一個結構化的 Azure Table 資料 https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&amp;amp;bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-  </description>
+懶人包，本次學到了什麼? Razor 的 RenderBody() vs RenderSection() http://coding.anyun.tw/2012/02/19/razor-learning-renderbody-renderpartial-and-rendersection/
+jQuery Ajax https://api.jquery.com/jquery.ajax/
+如何新增/編輯一個結構化的 Azure Table 資料 https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2Ftoc.json&amp;amp;bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json</description>
     </item>
-    
     <item>
       <title>用QR Code來搞報到 - Razor Page實做 I (22)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-22/</link>
       <pubDate>Sun, 22 Nov 2020 21:02:38 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-22/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day22)
 婚禮當天必須請一些親戚來協助朋友報到，但前面都收集報名資訊了，用一些報到的機制方便統計也是挺潮的…看到 Liff App V2 有支援 QR Code 報到，剛好前面也有存報名的使用者資料，就能來判斷報到狀況，本次來實現一下這個功能。至於為啥不用 vue，要用 Razor Page，也沒為啥，鐵人賽就是順便玩玩沒玩過的 XD
@@ -167,20 +153,18 @@ wwwroot 把一些靜態檔案搬過來
 開個資料夾叫 Pages 把 cdhtml 搬過來
 按右鍵 加入一個叫做 QRCode 的 Razor Page
 再來就是跟前幾篇實作一樣，加入 liff app SDK啦，說明如下：
- Line Liff SDK v2 Liff App 的 初始化 (記得要註冊一個 Liff App Id) 取得當前使用者 QR Code 掃描  實作畫面
+Line Liff SDK v2 Liff App 的 初始化 (記得要註冊一個 Liff App Id) 取得當前使用者 QR Code 掃描 實作畫面
 下一篇，我們就繼續實作，怎麼完成後端報到的功能
- Razor Page 對我來講好有復古的感覺，彷彿回到 WebForm 的時代…  懶人包，本次學到了什麼?</description>
+Razor Page 對我來講好有復古的感覺，彷彿回到 WebForm 的時代… 懶人包，本次學到了什麼?</description>
     </item>
-    
     <item>
       <title>當有人報名的時候接收通知 (Line Notify) (21)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/</link>
       <pubDate>Sat, 21 Nov 2020 00:04:31 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-21/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day21)
 上一篇介紹如何主動式推播給使用者訊息，但Push Message發送到一定的量是要收費的，Line Notify是另一種主動式推播的解決方案，且是免費的，缺點就是收到訊息時候，不會顯示是從本身Chatbot的角度，而是Line的Chatbot，要發送Notify訊息，大概需要做以下事情，缺一不可
- 註冊 Line Notify 服務 取得 client_id 取得 client_secret 取得驗證的 code 透過第2-4項取得 access token  註冊 Line Notify 服務 LINE Notify
+註冊 Line Notify 服務 取得 client_id 取得 client_secret 取得驗證的 code 透過第2-4項取得 access token 註冊 Line Notify 服務 LINE Notify
 透過 ngrok http 8888 取得一個local的對外站台，貼到 Callback URL
 接著會驗證 Email，驗證通過後可以進到這個 Service
 Client ID 跟 Client Secret 取得了
@@ -189,29 +173,25 @@ Client ID 跟 Client Secret 取得了
 Line 會收到一個通知
 到我們剛剛 ngrok 的後台看看 (http://127.0.0.1:4040)，有接收到這個 Request，取得加密後的 code
 用剛剛取得的這三個資訊來取得 access token
- public static async Task&amp;lt;string&amp;gt; GetAccessToken() { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;POST&amp;quot;), &amp;quot;https://notify-bot.</description>
+public static async Task&amp;lt;string&amp;gt; GetAccessToken() { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;POST&amp;#34;), &amp;#34;https://notify-bot.</description>
     </item>
-    
     <item>
       <title>主動推播Line訊息給某個使用者(Push Message) (20)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/</link>
       <pubDate>Fri, 20 Nov 2020 00:52:53 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-20/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day20)
 在上一篇我們儲存報名表單後，也有一併打使用者的ID儲存起來，透過這個ID，我們就能發送一些主動的推播訊息
- 準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID)  新增一個 .NET Core Console專案來發送
+準備 Line Chatbot 的 Access Tokne 準備要發送的 UserId (可以從接收到的訊息及Liff App 取得使用者ID) 新增一個 .NET Core Console專案來發送
 官方的 Shell 範例
 一樣丟到 Curl To C# 做轉換，並做格式修改
 當然 Push Message 也支援各種前面介紹的格式，此篇就不再多做介紹了，可以參考本系列文的各種訊息格式教學
- static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;POST&amp;quot;), &amp;quot;https://api.line.me/v2/bot/message/multicast&amp;quot;)) { request.Headers.TryAddWithoutValidation(&amp;quot;Authorization&amp;quot;, $&amp;quot;Bearer &amp;lt;Your Access Token&amp;gt;&amp;quot;); PushMessage req = new PushMessage(); req.to = new List&amp;lt;string&amp;gt;() { &amp;quot;&amp;lt;User Id&amp;gt;&amp;quot; }; req.</description>
+static async System.Threading.Tasks.Task Main(string[] args) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;POST&amp;#34;), &amp;#34;https://api.line.me/v2/bot/message/multicast&amp;#34;)) { request.Headers.TryAddWithoutValidation(&amp;#34;Authorization&amp;#34;, $&amp;#34;Bearer &amp;lt;Your Access Token&amp;gt;&amp;#34;); PushMessage req = new PushMessage(); req.to = new List&amp;lt;string&amp;gt;() { &amp;#34;&amp;lt;User Id&amp;gt;&amp;#34; }; req.</description>
     </item>
-    
     <item>
       <title>Line Liff App v2 — 用 Azure Table 儲存報名資訊 (19)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/</link>
       <pubDate>Thu, 19 Nov 2020 10:39:53 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-19/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day19)
 Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料結構不具備太複雜的關聯關係，透過這種 Key-Value 的方式做儲存，用 JSON 反序列化回來是一個不錯且方便的方式。
@@ -219,50 +199,44 @@ Azure Table Azure Table 是一個具有結構性的 NoSQL 服務，如果資料�
 在 .NET Core Web Api 儲存報名資訊 先從 Nuget 安裝 Microsoft.Azure.Cosmos.Table
 新增 AzureTableUtility.cs 並實作
 如何透過 SDK 新增 Azure Table
- public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = &amp;quot;DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net&amp;quot;; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount.</description>
+public static CloudTable CreateTableAsync(string tableName) { string storageConnectionString = &amp;#34;DefaultEndpointsProtocol=https;AccountName=kylewedding;AccountKey=2mVDAPWt6xZAlxY9xx6pxhzJMvp3vyULGql7PZz9tHEwJ0zc+1vtdt50ZcDwb9I862ez+OoHQGcCkOhU0OvAng==;EndpointSuffix=core.windows.net&amp;#34;; // Storage 的 連線字串，來源可以用appSetting.json搭配 IOption 注入 CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString); // 新增 Azure Table CloudTableClient tableClient = storageAccount.</description>
     </item>
-    
     <item>
       <title>Line Liff App v2 — 用 Vue.js 來做報名頁面 (18)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/</link>
       <pubDate>Wed, 18 Nov 2020 00:56:25 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-18/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day18)
 在上一篇我們成功將 chatbot 透過 Liff App 後，跟所開發網站有一些連結後，本篇我們將要來實作前端的報名表單
 本篇實作內容放在這個 Git Repo：
 https://github.com/kyleap/vue-next-vee-validate-v4-line-liff-app-sample
 本篇將會學到：
- 如何起始 vue-next (v3.0) 專案 如何在 vue.js 加入 Line Liff App，並取得使用者資訊 如何在 vue 做一個報名表單 怎麼依據使用者選取條件來顯示隱藏表單內容 在 vue 如何做表單驗證  Vue.js 的表單 本次範例用了 Google 風格的 CSS 框架 Materialize，使得我們的表單比較像 Google Form 的風格，在 index.html 加入相關 css/javascript CDN
+如何起始 vue-next (v3.0) 專案 如何在 vue.js 加入 Line Liff App，並取得使用者資訊 如何在 vue 做一個報名表單 怎麼依據使用者選取條件來顯示隱藏表單內容 在 vue 如何做表單驗證 Vue.js 的表單 本次範例用了 Google 風格的 CSS 框架 Materialize，使得我們的表單比較像 Google Form 的風格，在 index.html 加入相關 css/javascript CDN
 原始碼可以至 Github 看，實作的 UI 大概長這樣
 如果不參加喜帖，相對的也不用填那麼多資訊了，這時可以透過 v-if or v-show 來實現，兩者差異為 v-if 會實際產生 dom，v-show 儘會顯示隱藏
 透過 VeeValidate 來做表單必填驗證，請注意 vue 3.0 要使用 VeeValidate 的 v4 版本</description>
     </item>
-    
     <item>
       <title>Line Liff App v2 - 用 Vue.js 來實作 (17)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/</link>
       <pubDate>Tue, 17 Nov 2020 10:06:50 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-17/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day17)
 LIFF 全名是 LINE Front-end Framework，一個可以在 LINE app 內運作網頁的機制，所以網頁工程師真的很通用阿，只要會網頁的語言就可以在各種平台實現，Liff App 可以在 line chatbot 裡面打開所開發的網頁，呈現效果大概會是以下這樣，我們本次用較新的 v2 來實現
 建立 vue 專案 npm install -g @vue/cli vue create hello-line-liff-app cd hello-line-liff-app npm run serve 這樣應該就能看到以下畫面
 本系列不會講 vue 怎麼發佈到 web server上，我們用 ngrok 來打通對外網址
-ngrok http &amp;lt;your local vue.js port&amp;gt;-host-header=”localhost:&amp;lt;your local vue.js port&amp;gt;&amp;quot; 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
+ngrok http &amp;lt;your local vue.js port&amp;gt;-host-header=”localhost:&amp;lt;your local vue.js port&amp;gt;&amp;#34; 要新增一個 Line Liff App，得先新增一個 channel，性質為Line Login
 在 Line Login Liff 的 tab 新增一個 App，網址指向上面 ngrok 產生的網址
 把 https://liff.line.me 的網址複製，貼到 chatbot 的對話，點擊測試看看，會是以下畫面：</description>
     </item>
-    
     <item>
       <title>來點AI感，用QnA Maker來搞Line Chatbot回覆 (16)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/</link>
       <pubDate>Mon, 16 Nov 2020 08:17:05 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-16/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day16)
 QnA Maker 是啥 QnA Maker 是微軟提供一個雲端的自然語言處理 (NLP) 處理服務，可輕鬆透過網站後台建立自己的知識庫，並能從使用者所輸入的語句，理解他的意圖，提供可能對應的知識庫答案。QnA Maker提供了免費的方案，但限制就是只能有3份知識庫、每秒只能調用Api 3次，每月50,000筆Request，對於一般使用或技術評估來講很夠用了。要在 Line 串接大概分為以下步驟：
- 在Azure註冊 QnA Maker 新增一個 knowledge base 增加題目與回答 完成訓練 &amp;amp; 發佈 取得 Endpoint、EndpointKey，來讓程式串接  建立 QnA Maker 照著 https://www.qnamaker.ai/Create Step By Step 步驟，因為QnA Maker是Azure的服務，故您可以需要Azure的訂閱，由此註冊試用
+在Azure註冊 QnA Maker 新增一個 knowledge base 增加題目與回答 完成訓練 &amp;amp; 發佈 取得 Endpoint、EndpointKey，來讓程式串接 建立 QnA Maker 照著 https://www.qnamaker.ai/Create Step By Step 步驟，因為QnA Maker是Azure的服務，故您可以需要Azure的訂閱，由此註冊試用
 Step 1 在 Azure 新增 QnA Maker 服務
 Step 2 選取剛剛建立的QnA Maker服務，並選擇繁體中文
 Step 3 knowledge base 名稱
@@ -270,26 +244,22 @@ Step 3 knowledge base 名稱
 Step 4 匯入資料集 (本次先跳過)
 開始瘋狂建題目吧！我們來試試建立：&amp;ldquo;新人怎麼認識的？&amp;rdquo; 回答我們設定 &amp;ldquo;我們是在打工餐廳認識的喔，那時的同事 put your hands up ??&amp;quot;，並點選Save And Train</description>
     </item>
-    
     <item>
       <title>切換 Line 的圖文選單 (15)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/</link>
       <pubDate>Sun, 15 Nov 2020 09:01:22 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-15/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day15)
 在上一篇我們介紹如何設定圖文選單，本篇要來介紹如何切換圖文選單，此部分只能用程式來達成，在 Line Business 後台只能設定固定的圖文選單起訖日，有了這功能就可以像網站一樣有網站地圖的概念
 今天實作要將 chatbot 隨機切換不同的圖文選單，給使用者不同的體驗，今天的範例圖片在這 https://i.imgur.com/pupYvXr.jpg
 CreateRichMenuAsync
 原本預設的 Rich Menu 是寫在 SetDefaultRichMenuAsync，我們做點重構，讓Rich Menu 的物件是從外部傳入，因為我們現在要設定多個選單
- public async Task&amp;lt;Richmenu&amp;gt; CreateRichMenuAsync(CreateRichmenu richmenu) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;POST&amp;quot;), lineMessageApiBaseUrl)) { request.Headers.TryAddWithoutValidation(&amp;quot;Authorization&amp;quot;, $&amp;quot;Bearer {accessToken}&amp;quot;); var postJson = JsonConvert.SerializeObject(richmenu, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } }); request.Content = new StringContent(postJson); request.</description>
+public async Task&amp;lt;Richmenu&amp;gt; CreateRichMenuAsync(CreateRichmenu richmenu) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;POST&amp;#34;), lineMessageApiBaseUrl)) { request.Headers.TryAddWithoutValidation(&amp;#34;Authorization&amp;#34;, $&amp;#34;Bearer {accessToken}&amp;#34;); var postJson = JsonConvert.SerializeObject(richmenu, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() } }); request.Content = new StringContent(postJson); request.Content.Headers.ContentType = MediaTypeHeaderValue.</description>
     </item>
-    
     <item>
       <title>Line 的圖文選單 (14)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-14/</link>
       <pubDate>Sat, 14 Nov 2020 18:02:39 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-14/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day14)
 在 Line 的官方帳號可以設定進入時的選單，讓使用者快速點選，設定方式可以從官方帳號後台(有既定的範本可以參考)，或者是用程式自己指定(可以自己控制圖片的座標&amp;amp;設定點選區塊)，以下分別介紹
@@ -302,12 +272,10 @@ CreateRichMenuAsync
 Get rich menu list：取得此 chatbot 已註冊的 Rich Menu 清單 Upload rich menu image：設定 Rich Menu 的圖片 Set default rich menu：設定所檢視的 Rich Menu
 新增 LineRichMenuUtility.cs 之前 Message API 我們做了 一個 Utility ，Rich Menu 我們也新增一個</description>
     </item>
-    
     <item>
       <title>各種訊息都玩過了，來聊聊使用者體驗 (Quick Reply) (13)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/</link>
       <pubDate>Fri, 13 Nov 2020 11:49:43 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-13/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day13)
 Chatbot 有分為兩種類型，一個是任務型導向，另一個是聊天型導向，聊天型導向最典型的就是 Siri，講什麼他都會回答你，這背後所支撐的是海量數據訓練出來的，在我們設計應用 Chatbot 時，多半會偏向任務型導向，使用者用你的 Chatbot 不是要跟你聊天，是要快速的用你這服務達到任務，所以在設計時，如果定位 Chatbot 是 &amp;ldquo;人&amp;rdquo; ，是非常可怕的設計，只會降低使用者的觀感。
@@ -315,28 +283,24 @@ Chatbot 有分為兩種類型，一個是任務型導向，另一個是聊天型
 IntenFactory.cs
 之前有設定一個 DefaultIntent.cs 我們將修改這個實作
 當聽不懂的時候 回傳三個快捷鍵
- public async Task ReplyAsync(string replyToken) { if (!string.IsNullOrEmpty(replyText)) { await lineMessageUtility.ReplyMessageAsync(replyToken, replyText); } else { // 回傳歡迎詞 var unknow = new TextMessage() { Text = $@&amp;quot;不好意思，我不太清楚您的意思，或許你可以用下列快速鍵 (僅支援手機)&amp;quot; }; // Quick Reply unknow.QuickReply = new QuickReply(); unknow.QuickReply.Items.Add(new QuickReplyItem() { action = new MessageAction(&amp;quot;電子喜帖&amp;quot;), }); unknow.</description>
+public async Task ReplyAsync(string replyToken) { if (!string.IsNullOrEmpty(replyText)) { await lineMessageUtility.ReplyMessageAsync(replyToken, replyText); } else { // 回傳歡迎詞 var unknow = new TextMessage() { Text = $@&amp;#34;不好意思，我不太清楚您的意思，或許你可以用下列快速鍵 (僅支援手機)&amp;#34; }; // Quick Reply unknow.QuickReply = new QuickReply(); unknow.QuickReply.Items.Add(new QuickReplyItem() { action = new MessageAction(&amp;#34;電子喜帖&amp;#34;), }); unknow.</description>
     </item>
-    
     <item>
       <title>Hold on Hold on 重構一下！ (12)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-12/</link>
       <pubDate>Thu, 12 Nov 2020 08:26:23 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-12/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day12)
 這篇要來緩一下，做第一次的重構，寫到現在會發現 LineBotApp.cs 這個 class開始複雜了，程式碼越來越長，在OnMessageAsync.OnPostbackAsync 開始有相同的 Intent 重複定義
 我們把取得 Intent 封裝成一個工廠
 IIntentFactory.cs 定義一個工廠介面
- public interface IIntentFactory { IReplyIntent GetIntent(string intentName, string userId); } IntentFactory.cs 實作這個介面
- public class IntentFactory : IIntentFactory { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public IntentFactory(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public IReplyIntent GetIntent(string intentName, string userId) { var intents = new Dictionary&amp;lt;string, IReplyIntent&amp;gt;() { { &amp;quot;Welcome&amp;quot; , new Welcome(lineMessageUtility,lineProfileUtility,userId)}, { &amp;quot;電子喜帖&amp;quot; , new WeddingInvitationFromImage(lineMessageUtility,lineProfileUtility)}, { &amp;quot;電子喜帖(FlexMsg)&amp;quot; , new WeddingInvitation(lineMessageUtility,lineProfileUtility)}, { &amp;quot;前導影片&amp;quot; , new WeddingTrailer(lineMessageUtility,lineProfileUtility)}, { &amp;quot;婚宴地點&amp;quot; , new WeddingLocation(lineMessageUtility,lineProfileUtility)}, { &amp;quot;婚紗輪播&amp;quot; , new PhotoCarousel(lineMessageUtility,lineProfileUtility)}, { &amp;quot;交通資訊&amp;quot; , new Directions(lineMessageUtility,lineProfileUtility)}, { &amp;quot;從高鐵&amp;quot; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;quot;至 北門站 搭乘松山新店線至 南京復興站 步行7分鐘&amp;quot;)}, { &amp;quot;從捷運&amp;quot; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;quot;捷運台北小巨蛋站6分鐘/南京復興站只需7分鐘&amp;quot;)}, { &amp;quot;從機場&amp;quot; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;quot;酒店距離松山國際機場僅 5 分鐘車程&amp;quot;)}, { &amp;quot;停車資訊&amp;quot; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;quot;酒店的停車場為室內停車場，位於B5及B6&amp;quot;)}, { &amp;quot;開車提醒&amp;quot; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;quot;?</description>
+public interface IIntentFactory { IReplyIntent GetIntent(string intentName, string userId); } IntentFactory.cs 實作這個介面
+public class IntentFactory : IIntentFactory { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public IntentFactory(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public IReplyIntent GetIntent(string intentName, string userId) { var intents = new Dictionary&amp;lt;string, IReplyIntent&amp;gt;() { { &amp;#34;Welcome&amp;#34; , new Welcome(lineMessageUtility,lineProfileUtility,userId)}, { &amp;#34;電子喜帖&amp;#34; , new WeddingInvitationFromImage(lineMessageUtility,lineProfileUtility)}, { &amp;#34;電子喜帖(FlexMsg)&amp;#34; , new WeddingInvitation(lineMessageUtility,lineProfileUtility)}, { &amp;#34;前導影片&amp;#34; , new WeddingTrailer(lineMessageUtility,lineProfileUtility)}, { &amp;#34;婚宴地點&amp;#34; , new WeddingLocation(lineMessageUtility,lineProfileUtility)}, { &amp;#34;婚紗輪播&amp;#34; , new PhotoCarousel(lineMessageUtility,lineProfileUtility)}, { &amp;#34;交通資訊&amp;#34; , new Directions(lineMessageUtility,lineProfileUtility)}, { &amp;#34;從高鐵&amp;#34; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;#34;至 北門站 搭乘松山新店線至 南京復興站 步行7分鐘&amp;#34;)}, { &amp;#34;從捷運&amp;#34; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;#34;捷運台北小巨蛋站6分鐘/南京復興站只需7分鐘&amp;#34;)}, { &amp;#34;從機場&amp;#34; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;#34;酒店距離松山國際機場僅 5 分鐘車程&amp;#34;)}, { &amp;#34;停車資訊&amp;#34; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;#34;酒店的停車場為室內停車場，位於B5及B6&amp;#34;)}, { &amp;#34;開車提醒&amp;#34; , new DefaultIntent(lineMessageUtility,lineProfileUtility,&amp;#34;?</description>
     </item>
-    
     <item>
       <title>設計師魂發作，改造電子喜帖 (11)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/</link>
       <pubDate>Wed, 11 Nov 2020 09:28:57 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day11)
 如果前面介紹的訊息類型都不夠怎麼辦？就用 Flex Message 做個客製化的訊息吧，看看官網這些 showcase，4不4很酷阿
@@ -347,43 +311,37 @@ IIntentFactory.cs 定義一個工廠介面
 https://calendar.google.com/calendar/u/0/r/eventedit?text=Kyle%27s%20Wedding&amp;amp;dates=20201208T100000Z/20201208T140000Z&amp;amp;details&amp;amp;location=%E5%8F%B0%E5%8C%97%E6%9D%B1%E6%96%B9%E6%96%87%E8%8F%AF
 點選右上角 View as JSON 就能取得完整的 JSON 字串
 回到 .NET 發送吧，在 LineReplyMessageUtility.cs 實作 ReplyMessageByJsonAsync
- public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;POST&amp;quot;), $&amp;quot;{lineMessageApiBaseUrl}&amp;quot;)) { request.Headers.TryAddWithoutValidation(&amp;quot;Authorization&amp;quot;, $&amp;quot;Bearer {accessToken}&amp;quot;); LineMessageReq req = new LineMessageReq(); req.</description>
+public async Task ReplyMessageByJsonAsync(string replyToken, string jsonString) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;POST&amp;#34;), $&amp;#34;{lineMessageApiBaseUrl}&amp;#34;)) { request.Headers.TryAddWithoutValidation(&amp;#34;Authorization&amp;#34;, $&amp;#34;Bearer {accessToken}&amp;#34;); LineMessageReq req = new LineMessageReq(); req.</description>
     </item>
-    
     <item>
       <title>婚禮現場交通資訊一覽表 (10)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/</link>
       <pubDate>Tue, 10 Nov 2020 08:01:05 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
 在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果
 上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的&amp;quot;地址導覽&amp;quot; 的 intent，這就是我們今天會帶到的 postback event
 CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作
- public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List&amp;lt;ColumnMultipleAction&amp;gt; columns) { Columns = columns; } public string Type =&amp;gt; &amp;quot;carousel&amp;quot;; public List&amp;lt;ColumnMultipleAction&amp;gt; Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
- ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.</description>
+public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List&amp;lt;ColumnMultipleAction&amp;gt; columns) { Columns = columns; } public string Type =&amp;gt; &amp;#34;carousel&amp;#34;; public List&amp;lt;ColumnMultipleAction&amp;gt; Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
+ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action public class ColumnMultipleAction { /// &amp;lt;summary&amp;gt; /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG /// &amp;lt;/summary&amp;gt; public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType.</description>
     </item>
-    
     <item>
       <title>來做一些婚紗輪播 (9)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/</link>
       <pubDate>Mon, 09 Nov 2020 08:12:33 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day9)
 這篇會開始進入一些較複雜的訊息格式，我們要來做一個婚紗輪播，讓各種參加喜宴的朋友瀏覽，今天先來看成果
 Template message 在 Line 的 Template 有分為四種，可以用來引導使用者做下一步的動作
- Buttons Confirm Carousel Image carousel  Template Message 發送的結構如下
+Buttons Confirm Carousel Image carousel Template Message 發送的結構如下
 本次要用 ImageCarousel 來實作
 擴充 LineReplyMessageUtility.cs 我們在發送的 class 的擴充
- public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;POST&amp;quot;), $&amp;quot;{lineMessageApiBaseUrl}&amp;quot;)) { request.Headers.TryAddWithoutValidation(&amp;quot;Authorization&amp;quot;, $&amp;quot;Bearer {accessToken}&amp;quot;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.</description>
+public async Task ReplyTemplateMessageAsync(string replyToken, ImageCarouselTemplate template) { using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;POST&amp;#34;), $&amp;#34;{lineMessageApiBaseUrl}&amp;#34;)) { request.Headers.TryAddWithoutValidation(&amp;#34;Authorization&amp;#34;, $&amp;#34;Bearer {accessToken}&amp;#34;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new TemplateMessageBase() { Template = template }); var postJson = JsonConvert.</description>
     </item>
-    
     <item>
       <title>一鍵導航婚宴地點辦在哪 (8)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/</link>
       <pubDate>Sun, 08 Nov 2020 08:16:56 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-8/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day8)
 籌備婚禮期間甚至婚禮當天(暈)，常常被問的就是問地點在哪了，Line 本身能直接傳送地圖資訊，可以直接引導到 Google Map 進行導航，在 Line 可以透過 LocationMessage 發送
@@ -392,57 +350,49 @@ public class LocationMessage : IMessage { public LineMessageType Type =&amp;gt; 
 地址為 台灣台北市敦化北路 158 號
 經緯度可以在 google map 看到為 @25.0557416,121.5481485
 實作 WeddingLocation.cs
-public async Task ReplyAsync(string replyToken) { var locationName = &amp;quot;臺北文華東方酒店&amp;quot;; var msg = new TextMessage() { Text = $&amp;quot;我們在 {locationName} 舉辦唷!</description>
+public async Task ReplyAsync(string replyToken) { var locationName = &amp;#34;臺北文華東方酒店&amp;#34;; var msg = new TextMessage() { Text = $&amp;#34;我們在 {locationName} 舉辦唷!</description>
     </item>
-    
     <item>
       <title>有聲有色，傳送婚禮前導預告影片 (7)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-7/</link>
       <pubDate>Sat, 07 Nov 2020 08:35:49 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-7/</guid>
       <description>上一篇我們用 ImageMessage 來傳送圖片，這一篇我們要來實作傳送婚禮的前導預告片 (回想起來那時候我怎麼那麼閒XD )，我當時自己是從淘寶買一些婚禮的影片範本，買回來用 Adobe Effect 來改，或者是網路上可能會有一些免費的 template 也是可以拿來應用
 上傳 Video Line VideoMessage 一樣要透過URL來發送，我們一樣傳到 Imgur，就能產生一個網址，這是我當時所購買的影片範本 https://i.imgur.com/n8QsXTk.mp4
 定義 VideoMessage.cs
 public class VideoMessage : IMessage { public LineMessageType Type =&amp;gt; LineMessageType.video; public string OriginalContentUrl { get; set; } public string PreviewImageUrl { get; set; } } 一樣在 OnMessageAsync 增加一個 前導影片 的實作
 實作內容
-public class WeddingTrailer : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public WeddingTrailer(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var imageMessage = new VideoMessage() { OriginalContentUrl = &amp;quot;https://i.</description>
+public class WeddingTrailer : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public WeddingTrailer(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var imageMessage = new VideoMessage() { OriginalContentUrl = &amp;#34;https://i.</description>
     </item>
-    
     <item>
       <title>環保愛地球，回傳電子喜帖 (6)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-6/</link>
       <pubDate>Fri, 06 Nov 2020 11:57:27 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-6/</guid>
       <description>今天要來做電子喜帖功能，節能減碳，環保愛地球
-主要傳送是用 Line 的ImageMessage
+主要傳送是用 Line 的 ImageMessage
 這部分跟程式無關 XD 只是分享 template 網站，設計苦手的工程師其實可以考慮一些素材網站，或 template 網站，付點錢就能拿到質感極佳的設計
 https://www.greetingsisland.com/
 將圖片傳到圖床 (imgur) Line 發送圖片時候是以 URL，通常我會傳到 imgur 平台產生一個 https 的連結，從上面網站製作好範例喜帖如下：
 OnMessageAsync 在前幾篇我們有介紹的OnMessageAsync，我們在這實作接收到文字訊息時候要回傳的訊息，考量到再來使用者的意圖 (intent) 可能會越來越多，我們用一個簡單的 Dictionary 來做處理
- 使用者的意圖 (intent) 是在做chatbot NLP 或使用 chatbot 一些服務時很常看見的名詞，簡單來講就是當使用者打出這句話時，是想做什麼事
- 定義一個介面，包含 ReplyAsync 方法，需要傳入回覆所需 replyToken
+使用者的意圖 (intent) 是在做chatbot NLP 或使用 chatbot 一些服務時很常看見的名詞，簡單來講就是當使用者打出這句話時，是想做什麼事
+定義一個介面，包含 ReplyAsync 方法，需要傳入回覆所需 replyToken
 public interface IReplyIntent { Task ReplyAsync(string replyToken); } 接收文字
-protected virtual async Task OnMessageAsync(Event ev) { if (ev.message.Type.Equals(LineMessageType.text)) { // 完整比對使用者輸入的訊息，決定要回傳什麼 var msg = ev.message.Text; var intents = new Dictionary&amp;lt;string, IReplyIntent&amp;gt;() { { &amp;quot;電子喜帖&amp;quot; ,new WeddingInvitation(lineMessageUtility,lineProfileUtility)}, { &amp;quot;Default&amp;quot; ,new DefaultIntent(lineMessageUtility,lineProfileUtility)}, }; var intent = intents.</description>
+protected virtual async Task OnMessageAsync(Event ev) { if (ev.message.Type.Equals(LineMessageType.text)) { // 完整比對使用者輸入的訊息，決定要回傳什麼 var msg = ev.message.Text; var intents = new Dictionary&amp;lt;string, IReplyIntent&amp;gt;() { { &amp;#34;電子喜帖&amp;#34; ,new WeddingInvitation(lineMessageUtility,lineProfileUtility)}, { &amp;#34;Default&amp;#34; ,new DefaultIntent(lineMessageUtility,lineProfileUtility)}, }; var intent = intents.</description>
     </item>
-    
     <item>
       <title>回傳不文謅謅的 Line 貼圖 (5)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/</link>
       <pubDate>Thu, 05 Nov 2020 12:18:40 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-5/</guid>
       <description>我想 Line 豐富的貼圖，應該是很多人喜歡用它來做 Chatbot 的一個原因吧 接續上一篇，我們試著在歡迎詞後，傳送一個禮貌又不尷尬的貼圖
 在 LineReplyMessageUtility.cs 擴充回傳貼圖 我們接續前一篇 LineReplyMessageUtility 這個類別再實作一個回覆貼圖的method
-public async Task ReplyStickerMessageAsync(string replyToken, string packageId, string stickerId) { using(var httpClient = new HttpClient()) { using(var request = new HttpRequestMessage(new HttpMethod(&amp;quot;POST&amp;quot;), $ &amp;quot;{lineMessageApiBaseUrl}&amp;quot;)) { request.Headers.TryAddWithoutValidation(&amp;quot;Authorization&amp;quot;, $ &amp;quot;Bearer {accessToken}&amp;quot;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new StickerMessage() { PackageId = packageId, StickerId = stickerId }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting.</description>
+public async Task ReplyStickerMessageAsync(string replyToken, string packageId, string stickerId) { using(var httpClient = new HttpClient()) { using(var request = new HttpRequestMessage(new HttpMethod(&amp;#34;POST&amp;#34;), $ &amp;#34;{lineMessageApiBaseUrl}&amp;#34;)) { request.Headers.TryAddWithoutValidation(&amp;#34;Authorization&amp;#34;, $ &amp;#34;Bearer {accessToken}&amp;#34;); LineMessageReq req = new LineMessageReq(); req.ReplyToken = replyToken; req.Messages.Add(new StickerMessage() { PackageId = packageId, StickerId = stickerId }); var postJson = JsonConvert.SerializeObject(req, new JsonSerializerSettings { ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() }, Formatting = Formatting.</description>
     </item>
-    
     <item>
       <title>回覆第一個Line的訊息-歡迎詞 (4)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/</link>
       <pubDate>Wed, 04 Nov 2020 07:50:36 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-4/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day4)
 本篇開始我們要來逐步實踐我們的婚禮 Chatbot 了！
@@ -450,16 +400,14 @@ public async Task ReplyStickerMessageAsync(string replyToken, string packageId, 
 取得使用者的資訊 記得上一篇講 Webhook Event 時的結構嗎? 裡面有個 userId
 查看文件後，可以透過 access token 和 userId 來取得用戶資訊
 建立一個 LineProfileUtility.cs 取得使用者資訊 我們建立一個 Class 來實作取得使用者相關程式，讓未來不同的情境可以調用，以下是文件取得使用者範例的Sample
- curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H &#39;Authorization: Bearer {channel access token}&#39;  有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了
- 轉換後如下：
-using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;quot;GET&amp;quot;), &amp;quot;[https://api.</description>
+curl -v -X GET https://api.line.me/v2/bot/profile/{userId} \ -H &amp;#39;Authorization: Bearer {channel access token}&amp;#39; 有個小技巧可以把 curl 轉成 C# 的 HttpClinet ，將以上的資訊貼到 https://curl.olsh.me/ 即可轉換完成，再做一些微調就好了
+轉換後如下：
+using (var httpClient = new HttpClient()) { using (var request = new HttpRequestMessage(new HttpMethod(&amp;#34;GET&amp;#34;), &amp;#34;[https://api.line.me/v2/bot/profile/{userId](https://api.line.me/v2/bot/profile/{userId)}&amp;#34;)) { request.</description>
     </item>
-    
     <item>
       <title>用.NET Core 接收Line的訊息事件 (3)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/</link>
       <pubDate>Tue, 03 Nov 2020 07:53:01 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-3/</guid>
       <description>第12 屆iT邦幫忙鐵人賽系列文章 (Day3)
 先來看看文件 在 Line 的文件裡有定義 Webhook Event Objects 傳過來的 JSON 的結構
@@ -470,34 +418,29 @@ replyToken : 用來回覆該使用者的Token type：使用者傳送訊息的類
 結果會長這樣，通常我不會在一個 .cs 放多個類別，但為了文章好呈現故直接貼上來，拆一拆檔案的工也還好
 做點加工，把 Event 的 Type 一些文件改成 C# 的 Enum，讓開發更順暢，新增一個 WebhookEventType.</description>
     </item>
-    
     <item>
       <title>用.NET Core接收第一個Line訊息 (2)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/</link>
       <pubDate>Mon, 02 Nov 2020 07:31:45 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-2/</guid>
       <description>基本設定 關於如何註冊一個串接自己Web Api 的 Line Chatbot 網路上已經很多的教學文了，大概分為以下幾個步驟
 https://developers.line.biz/en/
- 申請一個Provider 申請一個Channel (一個Provider可以有多個Channel) 於Channel取得 Channel Secret 及 Access Token Use webhook 啟用 Auto-reply messages 關閉 設定 Webhook URL (需為https)  起始 Web API 專案與 Line Server 做連結 建立一個 .NET Core 3.1 的 Web Api 專案
+申請一個Provider 申請一個Channel (一個Provider可以有多個Channel) 於Channel取得 Channel Secret 及 Access Token Use webhook 啟用 Auto-reply messages 關閉 設定 Webhook URL (需為https) 起始 Web API 專案與 Line Server 做連結 建立一個 .NET Core 3.1 的 Web Api 專案
 建立一個 Line Controller，先用 dynamic 接收，看看 Request 過來的是什麼
 執行看看，weatherforecast 為初始專案的 Sample，此Local Api 的 Port 為 44300
 透過 ngrok 讓 Line Server 跟 Local Web API 做連結
- 安裝 node.</description>
+安裝 node.js npm install ngrok -g ngrok -v 本文章所使用的版本為 2.</description>
     </item>
-    
     <item>
       <title>用.NET Core與Line Bot製作婚禮機器人 (1)</title>
       <link>https://kyleap.github.io/it-ironman-line-chatbot-wedding-1/</link>
       <pubDate>Sun, 01 Nov 2020 07:16:10 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/it-ironman-line-chatbot-wedding-1/</guid>
       <description>寫在開始之前，目的與動機 距離上次參加鐵人賽已經是 2013-2014 的事，很慶幸自己還是活在這行且保有一些技術的熱情還沒死掉。2018 年完成了人生的婚禮，因為個性屬於比較喜歡搞一些特別的，把自己的想法用技術實踐，所以從做影片到還製作婚禮活動官網到婚禮現場都規劃一些比較不一樣的體驗，身為一個技術宅寫一些程式是必須的，所以那時候做了一個當時很流行的 Line Chatbot，整個婚禮報名流程/推播訊息都是透過Line Chatbot完成，幾個朋友回饋都覺得比起一些問卷網站，這種方式還蠻新奇的，後續一些辦婚禮的朋友都還來詢問當時 Line 的一些功能是怎麼用的，也想透過這種方式來玩。2年也過去了，Line 的 Chatbot 也改版了不少，故這次想要藉由鐵人賽，再逐步的好好再把 Line 的文件看過一遍，並重新開發，透過這過程也分享一些當時的一些尚未做的想法實踐
 先來聊聊一個基本的 Line 對話的流程大概會遇到什麼事情
- 使用者發送訊息，向 Line Server 發送一個 Request Line Server 會知道是哪個 Chatbot 發送的，經過格式處理後會發送到該Chatbot作者所設定的 Webhook Webhook (自己所開發的Web Api)，能接收到 Line Server 所傳的結構化Request，能知道使用者發送了什麼訊息，應該要做什麼相對應的處理 回傳相對應處理的訊息，告訴 Line Server，我們要回覆什麼 透過 Line Server 再回傳給使用者  目標 在這個 Line Chatbot 我們將實作婚禮前的資訊查詢，快速建立各種能理解聊天意圖的回覆，宴客報名… 等等，透過這些功能的實作，我們將會學到，如何用 Line 來傳各式各樣的豐富訊息，學到如何開發一個網頁來搭配 Line Liff 來做一些小程序，在婚禮會現場會嘗試用 QR Code/iBeacon 搭配婚禮的報到，嘗試用 Line Pay 來做紅包的電子支付，婚禮現場做一些互動的功能…
+使用者發送訊息，向 Line Server 發送一個 Request Line Server 會知道是哪個 Chatbot 發送的，經過格式處理後會發送到該Chatbot作者所設定的 Webhook Webhook (自己所開發的Web Api)，能接收到 Line Server 所傳的結構化Request，能知道使用者發送了什麼訊息，應該要做什麼相對應的處理 回傳相對應處理的訊息，告訴 Line Server，我們要回覆什麼 透過 Line Server 再回傳給使用者 目標 在這個 Line Chatbot 我們將實作婚禮前的資訊查詢，快速建立各種能理解聊天意圖的回覆，宴客報名… 等等，透過這些功能的實作，我們將會學到，如何用 Line 來傳各式各樣的豐富訊息，學到如何開發一個網頁來搭配 Line Liff 來做一些小程序，在婚禮會現場會嘗試用 QR Code/iBeacon 搭配婚禮的報到，嘗試用 Line Pay 來做紅包的電子支付，婚禮現場做一些互動的功能…
 所用到的技術預計採用 .NET Core 3.1、Html/CSS/JavaScript、Line API 、Azure的一些服務…等等 (但寫這篇文章時完全還沒實作XD…只能說待訂)
-也發現在 Line 官方都沒有 .</description>
+也發現在 Line 官方都沒有 .NET 的 SDK，但台灣有董大偉老師所封裝的LineBotSDK ，日本有pierre3所開源的 LineMessagingApi，但在這 30 天過程也會希望從 Line 的官方文件出發，逐步的封裝成自己的 C# 的函式庫，方便自己未來修改，也放到 Nuget Server/Github 提供給需要的人。</description>
     </item>
-    
   </channel>
 </rss>

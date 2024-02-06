@@ -1,173 +1,38 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖 | 凱哥打扣 | Kyle Studio</title>
-<meta name=keywords content="AzureDevOps,AzureWiki">
-<meta name=description content="在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖 | 凱哥打扣 | Kyle Studio</title>
+<meta name=keywords content="AzureDevOps,AzureWiki"><meta name=description content="在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
 透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表
 ::: mermaid pie title 年度銷售量 &#34;Q1&#34; : 2000 &#34;Q2&#34; : 1500 &#34;Q3&#34; : 3500 &#34;Q4&#34; : 4000 ::: 會產生以下結果
 也可以加入 pie showData 讓 Label 呈現數值
- 也支援小數點數值
- 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
+也支援小數點數值
+只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
 Reference
- https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  ">
-<meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/azure-wiki-pie-chart/>
-<meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://kyleap.github.io/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
-<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖">
-<meta property="og:description" content="在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
+https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html "><meta name=author content="Kyle"><link rel=canonical href=https://kyleap.github.io/azure-wiki-pie-chart/><meta name=google-site-verification content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://kyleap.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-DPE6YM5E5N",{anonymize_ip:!1})}</script><meta property="og:title" content="用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖"><meta property="og:description" content="在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
 透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表
 ::: mermaid pie title 年度銷售量 &#34;Q1&#34; : 2000 &#34;Q2&#34; : 1500 &#34;Q3&#34; : 3500 &#34;Q4&#34; : 4000 ::: 會產生以下結果
 也可以加入 pie showData 讓 Label 呈現數值
- 也支援小數點數值
- 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
+也支援小數點數值
+只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
 Reference
- https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  ">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://kyleap.github.io/azure-wiki-pie-chart/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2023-03-27T09:41:01+00:00">
-<meta property="article:modified_time" content="2023-03-27T09:41:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
-<meta name=twitter:title content="用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖">
-<meta name=twitter:description content="在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
+https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html "><meta property="og:type" content="article"><meta property="og:url" content="https://kyleap.github.io/azure-wiki-pie-chart/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-03-27T09:41:01+00:00"><meta property="article:modified_time" content="2023-03-27T09:41:01+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta name=twitter:title content="用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖"><meta name=twitter:description content="在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
 透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表
 ::: mermaid pie title 年度銷售量 &#34;Q1&#34; : 2000 &#34;Q2&#34; : 1500 &#34;Q3&#34; : 3500 &#34;Q4&#34; : 4000 ::: 會產生以下結果
 也可以加入 pie showData 讓 Label 呈現數值
- 也支援小數點數值
- 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
+也支援小數點數值
+只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
 Reference
- https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  ">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖","item":"https://kyleap.github.io/azure-wiki-pie-chart/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖","name":"用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖","description":"在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範\n透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表\n::: mermaid pie title 年度銷售量 \u0026quot;Q1\u0026quot; : 2000 \u0026quot;Q2\u0026quot; : 1500 \u0026quot;Q3\u0026quot; : 3500 \u0026quot;Q4\u0026quot; : 4000 ::: 會產生以下結果\n也可以加入 pie showData 讓 Label 呈現數值\n 也支援小數點數值\n 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色\nReference\n https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  ","keywords":["AzureDevOps","AzureWiki"],"articleBody":"在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範\n透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表\n::: mermaid pie title 年度銷售量 \"Q1\" : 2000 \"Q2\" : 1500 \"Q3\" : 3500 \"Q4\" : 4000 ::: 會產生以下結果\n也可以加入 pie showData 讓 Label 呈現數值\n 也支援小數點數值\n 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色\nReference\n https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  ","wordCount":"58","inLanguage":"en","datePublished":"2023-03-27T09:41:01Z","dateModified":"2023-03-27T09:41:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-wiki-pie-chart/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
-</head>
-<body class=dark id=top>
-<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<div class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</div>
-</div>
-<ul id=menu>
-<li>
-<a href=https://kyleap.github.io/kyleshen/ title=about>
-<span>about</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/archives/ title=archives>
-<span>archives</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/categories/ title=categories>
-<span>categories</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
-<span>search</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/ title=tags>
-<span>tags</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
-<h1 class=post-title>
-用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖
-</h1>
-<div class=post-meta><span title="2023-03-27 09:41:01 +0000 UTC">2023-03-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle
-</div>
-</header>
-<div class=post-content><p>在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範</p>
-<p>透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表</p>
-<pre tabindex=0><code>::: mermaid
+https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html "><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖","item":"https://kyleap.github.io/azure-wiki-pie-chart/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖","name":"用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖","description":"在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範\n透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表\n::: mermaid pie title 年度銷售量 \u0026#34;Q1\u0026#34; : 2000 \u0026#34;Q2\u0026#34; : 1500 \u0026#34;Q3\u0026#34; : 3500 \u0026#34;Q4\u0026#34; : 4000 ::: 會產生以下結果\n也可以加入 pie showData 讓 Label 呈現數值\n也支援小數點數值\n只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色\nReference\nhttps://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html ","keywords":["AzureDevOps","AzureWiki"],"articleBody":"在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範\n透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表\n::: mermaid pie title 年度銷售量 \"Q1\" : 2000 \"Q2\" : 1500 \"Q3\" : 3500 \"Q4\" : 4000 ::: 會產生以下結果\n也可以加入 pie showData 讓 Label 呈現數值\n也支援小數點數值\n只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色\nReference\nhttps://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html ","wordCount":"58","inLanguage":"en","datePublished":"2023-03-27T09:41:01Z","dateModified":"2023-03-27T09:41:01Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/azure-wiki-pie-chart/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kyleap.github.io/kyleshen/ title=about><span>about</span></a></li><li><a href=https://kyleap.github.io/archives/ title=archives><span>archives</span></a></li><li><a href=https://kyleap.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li><li><a href=https://kyleap.github.io/tags/ title=tags><span>tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖</h1><div class=post-meta><span title='2023-03-27 09:41:01 +0000 UTC'>2023-03-27</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Kyle</div></header><div class=post-content><p>在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範</p><p>透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表</p><pre tabindex=0><code>::: mermaid
 
 pie
     title 年度銷售量
-    &quot;Q1&quot; : 2000
-    &quot;Q2&quot; : 1500
-    &quot;Q3&quot; : 3500
-    &quot;Q4&quot; : 4000
+    &#34;Q1&#34; : 2000
+    &#34;Q2&#34; : 1500
+    &#34;Q3&#34; : 3500
+    &#34;Q4&#34; : 4000
 
 :::
-
-</code></pre><p>會產生以下結果</p>
-<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/228889010-758169a8-473b-4075-ae99-f74018a98ba6.png alt=image>
-</p>
-<p>也可以加入 <code>pie showData</code> 讓 Label 呈現數值</p>
-<p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/228889512-b6e06503-f544-4df9-a518-bfef6275748b.png alt=image>
-</p>
-<blockquote>
-<p>也支援小數點數值</p>
-</blockquote>
-<p>只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色</p>
-<p>Reference</p>
-<ul>
-<li><a href="https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops">https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops</a></li>
-<li><a href=https://mermaid.js.org/syntax/pie.html>https://mermaid.js.org/syntax/pie.html</a></li>
-</ul>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li>
-<li><a href=https://kyleap.github.io/tags/azurewiki/>AzureWiki</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://kyleap.github.io/book-review-product-owner-guide/>
-<span class=title>« Prev</span>
-<br>
-<span>(啃書) 產品負責人實戰守則：從洞悉顧客需求，到引領敏捷開發</span>
-</a>
-<a class=next href=https://kyleap.github.io/azure-boards-retro-meeting/>
-<span class=title>Next »</span>
-<br>
-<span>在 Retro Meeting 停下腳步，檢討改善</span>
-</a>
-</nav>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
-<span>
-Powered by
+</code></pre><p>會產生以下結果</p><p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/228889010-758169a8-473b-4075-ae99-f74018a98ba6.png alt=image></p><p>也可以加入 <code>pie showData</code> 讓 Label 呈現數值</p><p><img loading=lazy src=https://user-images.githubusercontent.com/8849818/228889512-b6e06503-f544-4df9-a518-bfef6275748b.png alt=image></p><blockquote><p>也支援小數點數值</p></blockquote><p>只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色</p><p>Reference</p><ul><li><a href="https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops">https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops</a></li><li><a href=https://mermaid.js.org/syntax/pie.html>https://mermaid.js.org/syntax/pie.html</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kyleap.github.io/tags/azuredevops/>AzureDevOps</a></li><li><a href=https://kyleap.github.io/tags/azurewiki/>AzureWiki</a></li></ul><nav class=paginav><a class=prev href=https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/><span class=title>« Prev</span><br><span>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)</span>
+</a><a class=next href=https://kyleap.github.io/azure-boards-retro-meeting/><span class=title>Next »</span><br><span>在 Retro Meeting 停下腳步，檢討改善</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
-</html>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

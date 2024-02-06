@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>凱爾打扣 on 凱哥打扣 | Kyle Studio</title>
     <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</link>
@@ -10,103 +10,80 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 09 Dec 2021 21:30:41 +0800</lastBuildDate><atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯</title>
-      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
-      <pubDate>Thu, 09 Dec 2021 21:30:41 +0800</pubDate>
-      
-      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
-      <description>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
- 實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案  [FilterAlias(&amp;quot;Browser&amp;quot;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task&amp;lt;bool&amp;gt; EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[&amp;quot;User-Agent&amp;quot;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get&amp;lt;BrowserFilterSettings&amp;gt;(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult&amp;lt;bool&amp;gt;(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能)  &amp;quot;FeatureManagement&amp;quot;: { &amp;quot;FeatureA&amp;quot;: { &amp;quot;EnabledFor&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Browser&amp;quot;, &amp;quot;Parameters&amp;quot;: { &amp;quot;Allowed&amp;quot;: [ &amp;quot;Edg&amp;quot; ] } } ] } } startup 注入  services.</description>
-    </item>
-    
-    <item>
-      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)</title>
-      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
-      <pubDate>Wed, 08 Dec 2021 22:32:41 +0800</pubDate>
-      
-      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
-      <description>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
- appsettings.json (指定當前使用者的Guid或群組)   RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
- &amp;quot;FeatureManagement&amp;quot;: { &amp;quot;FeatureA&amp;quot;: { &amp;quot;EnabledFor&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Microsoft.Targeting&amp;quot;, &amp;quot;Parameters&amp;quot;: { &amp;quot;Audience&amp;quot;: { &amp;quot;Users&amp;quot;: [ &amp;quot;1948fcc1-dc03-44a6-824f-fb48166ffa9d&amp;quot; ], &amp;quot;Group&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Group1&amp;quot;, &amp;quot;RolloutPercentage&amp;quot;: 80 }, { &amp;quot;Name&amp;quot;: &amp;quot;Group2&amp;quot; } ] } } } ] } } 實作 ITargetingContextAccessor  public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &amp;quot;TestTargetingContextAccessor.TargetingContext&amp;quot;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?</description>
-    </item>
-    
-    <item>
-      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
-      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
-      <pubDate>Tue, 07 Dec 2021 20:06:41 +0800</pubDate>
-      
-      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
-      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
- appsettings.json  &amp;quot;FeatureManagement&amp;quot;: { &amp;quot;FeatureB&amp;quot;: { &amp;quot;EnabledFor&amp;quot;: [ { &amp;quot;Name&amp;quot;: &amp;quot;Microsoft.TimeWindow&amp;quot;, &amp;quot;Parameters&amp;quot;: { &amp;quot;Start&amp;quot;: &amp;quot;2020-11-09 04:58:00Z&amp;quot;, &amp;quot;End&amp;quot;: &amp;quot;2099-11-09 05:00:00Z&amp;quot; } } ] } } 基本的 Feature Toggle 使用  var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;quot;FeatureA&amp;quot;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404  [FeatureGate(&amp;quot;FeatureA&amp;quot;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開  [FeatureGate(requirementType: RequirementType.Any, &amp;quot;FeatureA&amp;quot;, &amp;quot;FeatureB&amp;quot;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo  [FeatureGate(MyFeatureFlags.</description>
-    </item>
-    
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Apr 2023 21:54:41 +0800</lastBuildDate>
+    <atom:link href="https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 .NET Core 使用 Feature Flag (Feature Toggle)</title>
       <link>https://kyleap.github.io/feature-flag-dotnet-core-basic/</link>
-      <pubDate>Mon, 06 Dec 2021 21:54:41 +0800</pubDate>
-      
+      <pubDate>Sun, 23 Apr 2023 21:54:41 +0800</pubDate>
       <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic/</guid>
       <description>最近開發流程從 Gitflow 改為 Trunk-Based，讓每個 Feature 能很快速地回到主幹分支，但頻繁交付有時也不會想把新功能推出在使用者面前，所以這時候就能用 Feature Flag 來管理這些還沒有要發佈的功能，本篇文章記錄一下如何在 .NET Core 加入此功能，並講解一下目前實務上常規化的 Flag
- Nuget 安裝  dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle  public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c =&amp;gt; { c.SwaggerDoc(&amp;quot;v1&amp;quot;, new OpenApiInfo {Title = &amp;quot;FeatureFlagPoc.API&amp;quot;, Version = &amp;quot;v1&amp;quot;}); }); } 要使用時直接注入  private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&amp;lt;WeatherForecastController&amp;gt; logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用  var isFeatureAEnabled = await _featureManager.</description>
+Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Feature Toggle public void ConfigureServices(IServiceCollection services) { // feature toggle services.AddFeatureManagement(); services.AddControllers(); services.AddSwaggerGen(c =&amp;gt; { c.SwaggerDoc(&amp;#34;v1&amp;#34;, new OpenApiInfo {Title = &amp;#34;FeatureFlagPoc.API&amp;#34;, Version = &amp;#34;v1&amp;#34;}); }); } 要使用時直接注入 private readonly IFeatureManager _featureManager; public WeatherForecastController(ILogger&amp;lt;WeatherForecastController&amp;gt; logger, IFeatureManager featureManager) { _logger = logger; _featureManager = featureManager; } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.</description>
     </item>
-    
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 自訂邏輯</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
+      <pubDate>Thu, 13 Apr 2023 21:30:41 +0800</pubDate>
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
+      <description>Feature Flag 是否開啟，也可以透過自訂的類別來撰寫，可以透過IFeatureFilter來實現，以下範例以取得使用者 User-Agent 為例
+實作IFeatureFilter，新增一個 BrowserFeatureFilter.cs 檔案 [FilterAlias(&amp;#34;Browser&amp;#34;)] public class BrowserFeatureFilter : IFeatureFilter { private readonly IHttpContextAccessor _httpContextAccessor; public BrowserFeatureFilter(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor; } public Task&amp;lt;bool&amp;gt; EvaluateAsync(FeatureFilterEvaluationContext context) { // 取得Request的瀏覽器類型 var agent = _httpContextAccessor.HttpContext.Request.Headers[&amp;#34;User-Agent&amp;#34;].ToString(); // 取得 appSettings.json的設定 var settings = context.Parameters.Get&amp;lt;BrowserFilterSettings&amp;gt;(); // TODO: 這邊就可以撰寫邏輯驗證是否針對該瀏覽器開此功能 return Task.FromResult&amp;lt;bool&amp;gt;(false); } } public class BrowserFilterSettings { public string[] Allowed { get; set; } } appsettings.json (允許Edge瀏覽器開啟FeatureA功能) &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureA&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Browser&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Allowed&amp;#34;: [ &amp;#34;Edg&amp;#34; ] } } ] } } startup 注入 services.</description>
+    </item>
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 針對受眾(targeting)</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</link>
+      <pubDate>Sun, 09 Apr 2023 22:32:41 +0800</pubDate>
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</guid>
+      <description>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
+appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
+&amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureA&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.Targeting&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Audience&amp;#34;: { &amp;#34;Users&amp;#34;: [ &amp;#34;1948fcc1-dc03-44a6-824f-fb48166ffa9d&amp;#34; ], &amp;#34;Group&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Group1&amp;#34;, &amp;#34;RolloutPercentage&amp;#34;: 80 }, { &amp;#34;Name&amp;#34;: &amp;#34;Group2&amp;#34; } ] } } } ] } } 實作 ITargetingContextAccessor public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &amp;#34;TestTargetingContextAccessor.TargetingContext&amp;#34;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?</description>
+    </item>
     <item>
       <title>將 Line Liff App 發佈到免費的 Azure Static Web App</title>
       <link>https://kyleap.github.io/liff-app-deploy-azure-static-web/</link>
       <pubDate>Tue, 17 Aug 2021 23:07:24 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/liff-app-deploy-azure-static-web/</guid>
       <description>Azure Static Web App 是什麼? 在今年 5 月 Azure 推出了 Azure Static Web App 的服務，如果要一句話來說，建立此服務時，可以一併設定與 Github or Azure DevOps 連結，在每次 Commit 的時候，就能直接將前端應用程式佈署到Azure，大大的增加開發體驗。除了靜態的 HTML、CSS、JavaScript，支援主流框架 React/Angular/Vue.js，也支援用 C# 撰寫 SPA 的框架 Blazor，支援的前端框架可以到此連結，後端可搭配 Azure 的 Serverless 服務 (Azure Function) 來實現 Api 的串接，透過 Reverse-Proxy 也省去的 CORS 的設定
 Azure Static Web App 的價格 在免費的方案，即提供 SSL 的 Hosting，及 2 個自訂網域，可於 DNS Server 設定 cname，也可佈署你的後端程式於 Azure Function 搭配前後端串接，享有 100 萬個 Request 的免費額度
 發佈 LINE Liff App 到 Azure Static Web App LIFF 全名是 LINE Front-end Framework，一個可以在 LINE App 內運作的網頁程式，可以將一些不適合對話式的情境，結合於 Line App 裡面，達成一致的體驗，也因為是 Liff App 是全前端實現，所以很適合發佈到 Azure Static Web App，以下用官方的 Liff Starter 來做一個部屬示範 https://github.</description>
     </item>
-    
     <item>
       <title>Line Message Api Postman Collections</title>
       <link>https://kyleap.github.io/line-message-api-postman-collections/</link>
       <pubDate>Wed, 21 Jul 2021 23:36:32 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/line-message-api-postman-collections/</guid>
       <description>這是我自己整理的 Line Message Api Postman Collections
 任何人只要 Import 後修改即可直接調用測試
 詳細內容請見我的 Github Repo: https://github.com/kyleap/line-message-api-postman</description>
     </item>
-    
     <item>
       <title>Line Flex Message 傳送動畫訊息，讓訊息更生動</title>
       <link>https://kyleap.github.io/2021-07-11-line-flex-message-animation/</link>
       <pubDate>Sun, 11 Jul 2021 15:58:59 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/2021-07-11-line-flex-message-animation/</guid>
       <description>Flex Message 是 Line 透過 JSON 格式所實現的動態訊息，可以組出各種訊息格式，且比起 Template Message，Flex Message 也支援 Line 電腦版，故現在在寫 Line Bot 的時候，第一考量就會用 Flex 來自訂一些較特別的訊息，官網提供兩個 GUI 工具來快速拉 Flex 的訊息：
- Bot Designer Flex Simulator  我自己比較常用是第二個，官網已經很多的範本提供套入
+Bot Designer Flex Simulator 我自己比較常用是第二個，官網已經很多的範本提供套入
 且目前支援很方便的功能，可以直接發到手機裝置瀏覽結果
 在 Flex 的 image 類型是可支援放入 .APNG 格式圖片的動畫，透過以下網站可以將 Git 轉成 .APNG 格式
 https://ezgif.com/gif-to-apng
-Demo Flex 範例 { &amp;quot;type&amp;quot;: &amp;quot;bubble&amp;quot;, &amp;quot;body&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;box&amp;quot;, &amp;quot;layout&amp;quot;: &amp;quot;vertical&amp;quot;, &amp;quot;contents&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;image&amp;quot;, &amp;quot;url&amp;quot;: &amp;quot;https://apng.onevcat.com/assets/elephant.png&amp;quot;, &amp;quot;size&amp;quot;: &amp;quot;full&amp;quot;, &amp;quot;aspectMode&amp;quot;: &amp;quot;cover&amp;quot;, &amp;quot;aspectRatio&amp;quot;: &amp;quot;1:1&amp;quot;, &amp;quot;gravity&amp;quot;: &amp;quot;center&amp;quot; }, { &amp;quot;type&amp;quot;: &amp;quot;box&amp;quot;, &amp;quot;layout&amp;quot;: &amp;quot;vertical&amp;quot;, &amp;quot;contents&amp;quot;: [], &amp;quot;position&amp;quot;: &amp;quot;absolute&amp;quot;, &amp;quot;background&amp;quot;: { &amp;quot;type&amp;quot;: &amp;quot;linearGradient&amp;quot;, &amp;quot;angle&amp;quot;: &amp;quot;0deg&amp;quot;, &amp;quot;endColor&amp;quot;: &amp;quot;#00000000&amp;quot;, &amp;quot;startColor&amp;quot;: &amp;quot;#00000099&amp;quot; }, &amp;quot;width&amp;quot;: &amp;quot;100%&amp;quot;, &amp;quot;height&amp;quot;: &amp;quot;40%&amp;quot;, &amp;quot;offsetBottom&amp;quot;: &amp;quot;0px&amp;quot;, &amp;quot;offsetStart&amp;quot;: &amp;quot;0px&amp;quot;, &amp;quot;offsetEnd&amp;quot;: &amp;quot;0px&amp;quot; }, { &amp;quot;type&amp;quot;: &amp;quot;box&amp;quot;, &amp;quot;layout&amp;quot;: &amp;quot;horizontal&amp;quot;, &amp;quot;contents&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;box&amp;quot;, &amp;quot;layout&amp;quot;: &amp;quot;vertical&amp;quot;, &amp;quot;contents&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;box&amp;quot;, &amp;quot;layout&amp;quot;: &amp;quot;horizontal&amp;quot;, &amp;quot;contents&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;, &amp;quot;text&amp;quot;: &amp;quot;APNG Demo&amp;quot;, &amp;quot;size&amp;quot;: &amp;quot;xl&amp;quot;, &amp;quot;color&amp;quot;: &amp;quot;#ffffff&amp;quot; } ] } ], &amp;quot;spacing&amp;quot;: &amp;quot;xs&amp;quot; } ], &amp;quot;position&amp;quot;: &amp;quot;absolute&amp;quot;, &amp;quot;offsetBottom&amp;quot;: &amp;quot;0px&amp;quot;, &amp;quot;offsetStart&amp;quot;: &amp;quot;0px&amp;quot;, &amp;quot;offsetEnd&amp;quot;: &amp;quot;0px&amp;quot;, &amp;quot;paddingAll&amp;quot;: &amp;quot;20px&amp;quot; } ], &amp;quot;paddingAll&amp;quot;: &amp;quot;0px&amp;quot; } } &amp;ndash;</description>
+Demo Flex 範例 { &amp;#34;type&amp;#34;: &amp;#34;bubble&amp;#34;, &amp;#34;body&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;box&amp;#34;, &amp;#34;layout&amp;#34;: &amp;#34;vertical&amp;#34;, &amp;#34;contents&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;image&amp;#34;, &amp;#34;url&amp;#34;: &amp;#34;https://apng.onevcat.com/assets/elephant.png&amp;#34;, &amp;#34;size&amp;#34;: &amp;#34;full&amp;#34;, &amp;#34;aspectMode&amp;#34;: &amp;#34;cover&amp;#34;, &amp;#34;aspectRatio&amp;#34;: &amp;#34;1:1&amp;#34;, &amp;#34;gravity&amp;#34;: &amp;#34;center&amp;#34; }, { &amp;#34;type&amp;#34;: &amp;#34;box&amp;#34;, &amp;#34;layout&amp;#34;: &amp;#34;vertical&amp;#34;, &amp;#34;contents&amp;#34;: [], &amp;#34;position&amp;#34;: &amp;#34;absolute&amp;#34;, &amp;#34;background&amp;#34;: { &amp;#34;type&amp;#34;: &amp;#34;linearGradient&amp;#34;, &amp;#34;angle&amp;#34;: &amp;#34;0deg&amp;#34;, &amp;#34;endColor&amp;#34;: &amp;#34;#00000000&amp;#34;, &amp;#34;startColor&amp;#34;: &amp;#34;#00000099&amp;#34; }, &amp;#34;width&amp;#34;: &amp;#34;100%&amp;#34;, &amp;#34;height&amp;#34;: &amp;#34;40%&amp;#34;, &amp;#34;offsetBottom&amp;#34;: &amp;#34;0px&amp;#34;, &amp;#34;offsetStart&amp;#34;: &amp;#34;0px&amp;#34;, &amp;#34;offsetEnd&amp;#34;: &amp;#34;0px&amp;#34; }, { &amp;#34;type&amp;#34;: &amp;#34;box&amp;#34;, &amp;#34;layout&amp;#34;: &amp;#34;horizontal&amp;#34;, &amp;#34;contents&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;box&amp;#34;, &amp;#34;layout&amp;#34;: &amp;#34;vertical&amp;#34;, &amp;#34;contents&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;box&amp;#34;, &amp;#34;layout&amp;#34;: &amp;#34;horizontal&amp;#34;, &amp;#34;contents&amp;#34;: [ { &amp;#34;type&amp;#34;: &amp;#34;text&amp;#34;, &amp;#34;text&amp;#34;: &amp;#34;APNG Demo&amp;#34;, &amp;#34;size&amp;#34;: &amp;#34;xl&amp;#34;, &amp;#34;color&amp;#34;: &amp;#34;#ffffff&amp;#34; } ] } ], &amp;#34;spacing&amp;#34;: &amp;#34;xs&amp;#34; } ], &amp;#34;position&amp;#34;: &amp;#34;absolute&amp;#34;, &amp;#34;offsetBottom&amp;#34;: &amp;#34;0px&amp;#34;, &amp;#34;offsetStart&amp;#34;: &amp;#34;0px&amp;#34;, &amp;#34;offsetEnd&amp;#34;: &amp;#34;0px&amp;#34;, &amp;#34;paddingAll&amp;#34;: &amp;#34;20px&amp;#34; } ], &amp;#34;paddingAll&amp;#34;: &amp;#34;0px&amp;#34; } } &amp;ndash;</description>
     </item>
-    
     <item>
       <title>Line RichMenu 設定與切換，以 NET 5 為例</title>
       <link>https://kyleap.github.io/2021-07-08-line-rich-menu-switch/</link>
       <pubDate>Thu, 08 Jul 2021 15:06:17 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/2021-07-08-line-rich-menu-switch/</guid>
       <description>Rich Menu 圖文選單是什麼? 寫 Chatbot 引導很重要，在 Line 裡面有 RichMenu 可以用，讓使用者可以快速的點擊常用功能，要如何建立 RichMenu 呢? 快速不用寫程式的方式是透過 Official Account 設定
 你可選擇已經預設好的版型，並針對每個區塊設定要執行的動作
 但如果是透過 Message Api 的話，可以設定的動作就更彈性了，一張圖總共可以設定 20 個 Actions，可以做得事就更多了。要透過 Message Api 新增一個 Rich Menu，有以下步驟
- 新增一個選單 上傳該選單的圖檔   我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
- 方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
+新增一個選單 上傳該選單的圖檔 我整理了Rich Menu相關的 postman collections 只要將環境變數 {{botAcceccToken}} 設為你 Channel 的 Access Token 可直接匯入使用： https://www.getpostman.com/collections/f090d101b7e08e411f12
+方法1: 透過 Postman 來上傳 Rich Menu 在上面的 postman collections，你可以使用 Create Rich Menu 來新增，成功的話會回傳 RichMenuID
 那這個 Post 的 JSON 怎麼產生呢？在 NET 5 你可以直接安裝我的 NetCoreLineBotSDK 透過物件的方式直接產生 Api 所需要的 JSON Request，丟到 postman 裡面</description>
     </item>
-    
     <item>
       <title>用 BeefText 來減少常輸入的文字，增加工作效率</title>
       <link>https://kyleap.github.io/tools-beeftext/</link>
       <pubDate>Fri, 25 Jun 2021 20:34:35 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/tools-beeftext/</guid>
       <description>前言 在非洲一分鐘就有60秒過去，所以在工作上只要節省5秒鐘，一年下來就是省下1825秒阿，比爾蓋茲說過懶惰的人歡迎到微軟，主要是能找到那種工作上會不斷優化自己工作的員工，所以要時時刻刻思考，如果你工作上有太多的重複的事項/太多固定的流程，下一步就要思考自動化。
 今天要介紹的是免費工具 beefText ，工作上可能會有一些長打的程式片段，譬如撰寫SQL查詢一些問題時，但這些片段也許可以用編輯器存起來，但WFH可能也會有一些常見要回的話，或者是一些email範本(面試感謝信…等等)，每次都要重新輸入人生就浪費了幾秒鐘了阿!!
@@ -117,32 +94,35 @@ Demo Flex 範例 { &amp;quot;type&amp;quot;: &amp;quot;bubble&amp;quot;, &amp;qu
 BeefText下載
 https://beeftext.org/</description>
     </item>
-    
     <item>
       <title>利用 AzCopy 來將 Azure Blob Container 所有檔案移轉至另一個 Blob Container</title>
       <link>https://kyleap.github.io/azure-copy-to-blob-container/</link>
       <pubDate>Thu, 03 Jun 2021 23:42:10 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/azure-copy-to-blob-container/</guid>
       <description>之前也一個需求是需要將一個Blob移轉至另一個另一個訂閱，但不太可能一個一個搬或重新上傳，透過 AzCopy 就可以一鍵完成這件事，且搬移的效能也蠻快的
 AzureCopy 可以在這邊下載 https://docs.microsoft.com/zh-tw/azure/storage/common/storage-use-azcopy-v10
-azcopy copy &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt; --recursive --overwrite false  source: https://.blob.core.windows.net/ destination: 可以在 Azure Portal 取得，需要產生一個可以存取的 Access Signature recursive: 是否要遞迴去抓更多資料夾底下的檔案，有時候檔案階層會是 files/aaa/file.txt overwrite: false 表示檔案已存在就忽略  在Azure Portal 取得 Access Signature
+azcopy copy &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt; --recursive --overwrite false source: https://.blob.core.windows.net/ destination: 可以在 Azure Portal 取得，需要產生一個可以存取的 Access Signature recursive: 是否要遞迴去抓更多資料夾底下的檔案，有時候檔案階層會是 files/aaa/file.txt overwrite: false 表示檔案已存在就忽略 在Azure Portal 取得 Access Signature
 &amp;ndash; References https://docs.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy-copy?toc=/azure/storage/blobs/toc.json</description>
     </item>
-    
     <item>
       <title>不用寫程式，Line URL Scheme 應用整理</title>
       <link>https://kyleap.github.io/play-with-line-url-scheme/</link>
       <pubDate>Sun, 23 May 2021 22:16:16 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/play-with-line-url-scheme/</guid>
       <description>寫 Line Bot 也應該理解 Line URL Scheme 怎麼用，它是透過一串特殊的 URL 來啟動 Line 的功能，可以設計於 BOt 的 URL Action，或者是直接傳至對話框，讓使用者點擊此篇文章就能引導到開啟一些功能，此篇文章邊玩並做個紀錄，也為自己當個小抄
 開啟相機或相片 https://line.me/R/nv/camera (打開相機) https://line.me/R/nv/cameraRoll/single (打開相簿，傳送一張) https://line.me/R/nv/cameraRoll/multi (打開相簿，傳送多張
 開啟定位 https://line.me/R/nv/location/	(打開地圖)
-分享官方帳號 https://line.me/R/ti/p/(直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/(傳送此Bot給好友) https://line.me/R/home/public/main?id=(Bot主頁) https://line.me/R/home/public/profile?id=(Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&amp;amp;postId={postId} (移至貼文)
+分享官方帳號 https://line.me/R/ti/p/ (直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/ (傳送此Bot給好友) https://line.me/R/home/public/main?id= (Bot主頁) https://line.me/R/home/public/profile?id= (Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&amp;amp;postId={postId} (移至貼文)
 Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
-個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet	(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.me/R/nv/settings/sticker (貼圖設定) https://line.me/R/nv/stickerShop/mySticker (我的貼圖) https://line.</description>
+個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet	(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.</description>
     </item>
-    
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
+      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
+appsettings.json &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureB&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.TimeWindow&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Start&amp;#34;: &amp;#34;2020-11-09 04:58:00Z&amp;#34;, &amp;#34;End&amp;#34;: &amp;#34;2099-11-09 05:00:00Z&amp;#34; } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;#34;FeatureA&amp;#34;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate(&amp;#34;FeatureA&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, &amp;#34;FeatureA&amp;#34;, &amp;#34;FeatureB&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags.</description>
+    </item>
   </channel>
 </rss>

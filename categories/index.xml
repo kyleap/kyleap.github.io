@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 凱哥打扣 | Kyle Studio</title>
     <link>https://kyleap.github.io/categories/</link>
@@ -10,60 +10,50 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 04 May 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Fri, 28 Jul 2023 10:52:01 +0000</lastBuildDate>
+    <atom:link href="https://kyleap.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AzureDevOps</title>
       <link>https://kyleap.github.io/categories/azuredevops/</link>
-      <pubDate>Thu, 04 May 2023 10:52:01 +0000</pubDate>
-      
+      <pubDate>Fri, 28 Jul 2023 10:52:01 +0000</pubDate>
       <guid>https://kyleap.github.io/categories/azuredevops/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>凱爾啃書</title>
       <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/</link>
-      <pubDate>Sat, 08 Apr 2023 15:46:01 +0000</pubDate>
-      
+      <pubDate>Mon, 12 Jun 2023 15:46:01 +0000</pubDate>
       <guid>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E5%95%83%E6%9B%B8/</guid>
       <description></description>
     </item>
-    
+    <item>
+      <title>凱爾打扣</title>
+      <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</link>
+      <pubDate>Sun, 23 Apr 2023 21:54:41 +0800</pubDate>
+      <guid>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AzureCloud</title>
       <link>https://kyleap.github.io/categories/azurecloud/</link>
       <pubDate>Sun, 15 Jan 2023 15:21:01 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/categories/azurecloud/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>凱爾打扣</title>
-      <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</link>
-      <pubDate>Thu, 09 Dec 2021 21:30:41 +0800</pubDate>
-      
-      <guid>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%89%93%E6%89%A3/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>凱爾滴咕</title>
       <link>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%BB%B4%E5%92%95/</link>
       <pubDate>Mon, 14 Jun 2021 21:03:26 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/categories/%E5%87%B1%E7%88%BE%E6%BB%B4%E5%92%95/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>12th鐵人賽</title>
       <link>https://kyleap.github.io/categories/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/</link>
       <pubDate>Mon, 30 Nov 2020 00:11:40 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/categories/12th%E9%90%B5%E4%BA%BA%E8%B3%BD/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

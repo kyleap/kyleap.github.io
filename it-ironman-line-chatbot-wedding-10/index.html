@@ -1,114 +1,20 @@
-<!doctype html><html lang=en dir=auto>
-<head><meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<meta name=robots content="index, follow">
-<title>婚禮現場交通資訊一覽表 (10) | 凱哥打扣 | Kyle Studio</title>
-<meta name=keywords content="Chatbot">
-<meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>婚禮現場交通資訊一覽表 (10) | 凱哥打扣 | Kyle Studio</title>
+<meta name=keywords content="Chatbot"><meta name=description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
 在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果
 上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的&#34;地址導覽&#34; 的 intent，這就是我們今天會帶到的 postback event
 CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作
- public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List<ColumnMultipleAction> columns) { Columns = columns; } public string Type => &#34;carousel&#34;; public List<ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
- ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.">
-<meta name=author content="Kyle">
-<link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/>
-<meta name=google-site-verification content="XYZabc">
-<link crossorigin=anonymous href=/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as=style>
-<script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://kyleap.github.io/favicon.ico>
-<link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png>
-<link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png>
-<link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png>
-<link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg>
-<meta name=theme-color content="#2e2e33">
-<meta name=msapplication-TileColor content="#2e2e33">
-<noscript>
-<style>#theme-toggle,.top-link{display:none}</style>
-</noscript>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script>
-<script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-DPE6YM5E5N',{anonymize_ip:!1})}</script>
-<meta property="og:title" content="婚禮現場交通資訊一覽表 (10)">
-<meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
+public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List<ColumnMultipleAction> columns) { Columns = columns; } public string Type => &#34;carousel&#34;; public List<ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
+ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action public class ColumnMultipleAction { /// <summary> /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG /// </summary> public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType."><meta name=author content="Kyle"><link rel=canonical href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/><meta name=google-site-verification content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z+V9+cO1A=" rel="preload stylesheet" as=style><link rel=icon href=https://kyleap.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://kyleap.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://kyleap.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://kyleap.github.io/apple-touch-icon.png><link rel=mask-icon href=https://kyleap.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script async src="https://www.googletagmanager.com/gtag/js?id=G-DPE6YM5E5N"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-DPE6YM5E5N",{anonymize_ip:!1})}</script><meta property="og:title" content="婚禮現場交通資訊一覽表 (10)"><meta property="og:description" content="第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
 在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果
 上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的&#34;地址導覽&#34; 的 intent，這就是我們今天會帶到的 postback event
 CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作
- public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List<ColumnMultipleAction> columns) { Columns = columns; } public string Type => &#34;carousel&#34;; public List<ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
- ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2020-11-10T08:01:05+00:00">
-<meta property="article:modified_time" content="2020-11-10T08:01:05+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg">
-<meta name=twitter:title content="婚禮現場交通資訊一覽表 (10)">
-<meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
+public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List<ColumnMultipleAction> columns) { Columns = columns; } public string Type => &#34;carousel&#34;; public List<ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
+ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action public class ColumnMultipleAction { /// <summary> /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG /// </summary> public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType."><meta property="og:type" content="article"><meta property="og:url" content="https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/"><meta property="og:image" content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-11-10T08:01:05+00:00"><meta property="article:modified_time" content="2020-11-10T08:01:05+00:00"><meta property="og:site_name" content="凱哥打扣 | Kyle Studio"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg"><meta name=twitter:title content="婚禮現場交通資訊一覽表 (10)"><meta name=twitter:description content="第12 屆iT邦幫忙鐵人賽系列文章 (Day10)
 在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果
 上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的&#34;地址導覽&#34; 的 intent，這就是我們今天會帶到的 postback event
 CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作
- public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List<ColumnMultipleAction> columns) { Columns = columns; } public string Type => &#34;carousel&#34;; public List<ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
- ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"婚禮現場交通資訊一覽表 (10)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/"}]}</script>
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"婚禮現場交通資訊一覽表 (10)","name":"婚禮現場交通資訊一覽表 (10)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day10)\n在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果\n上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的\u0026quot;地址導覽\u0026quot; 的 intent，這就是我們今天會帶到的 postback event\nCarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作\n public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List\u0026lt;ColumnMultipleAction\u0026gt; columns) { Columns = columns; } public string Type =\u0026gt; \u0026quot;carousel\u0026quot;; public List\u0026lt;ColumnMultipleAction\u0026gt; Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，\n ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day10)\n在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果\n上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的\"地址導覽\" 的 intent，這就是我們今天會帶到的 postback event\nCarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作\n public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List columns) { Columns = columns; } public string Type = \"carousel\"; public List Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，\n ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action   public class ColumnMultipleAction { ///  /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG ///  public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType.rectangle; public ImageSizeType ImageSize { get; set; } = ImageSizeType.cover; public string ImageBackgroundColor { get; set; } = \"#FFFFFF\"; public string Title { get; set; } public string Text { get; set; } public string ImageUrl { get; set; } public Defaultaction DefaultAction { get; set; } public List Actions { get; set; } } 為了開發方便，陸續可以定義一些 Type\nStringEnumConverter 主要是 JSON.NET 的功能，可以在我們從 Enum 轉JSON的時候，轉成字串，而不是該 Enum 的 Index Value\n [JsonConverter(typeof(StringEnumConverter))] public enum ImageAspectRatioType { ///  /// 1.51:1 ///  rectangle, ///  /// 1:1 ///  square } [JsonConverter(typeof(StringEnumConverter))] public enum ImageSizeType { cover, contain } Directions.cs - 來實作如何前往 Intent  public class Directions : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public Directions(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var carouselTemplate = new CarouselTemplate(); var columns = new List(); // 輪播兩種 Template, 三種 Action columns.Add(new ColumnMultipleAction() { ThumbnailImageUrl = \"https://imgur.com/2u6F3dV.jpg\", Title = \"搭乘大眾運輸\", Text = \"交通便利好方便~\", Actions = new List() { new MessageAction(\"從高鐵\"), new MessageAction(\"從捷運\"), new MessageAction(\"從機場\") } }); columns.Add(new ColumnMultipleAction() { ThumbnailImageUrl = \"https://imgur.com/FGitN5M.jpg\", Title = \"自行開車前往\", Text = \"切記酒後不開車~\", Actions = new List() { new PostbackAction(\"如何前往\", \"婚宴地點\"), new MessageAction(\"停車資訊\"), new MessageAction(\"開車提醒\") } }); carouselTemplate.Columns = columns; await lineMessageUtility.ReplyTemplateMessageAsync(replyToken, carouselTemplate); } } OnMessageAsync\nDefaultIntent 增加一個選擇性參數，當有要傳訊息的時候回傳，這樣我們就不用定義到那麼多的 Intent\n public class DefaultIntent : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; private readonly string replyText; public DefaultIntent( LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility, string _replyText = \"\") { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; replyText = _replyText; } public async Task ReplyAsync(string replyToken) { if(!string.IsNullOrEmpty(replyText)) { await lineMessageUtility.ReplyMessageAsync(replyToken, replyText); } else { await Task.CompletedTask; } } } Postback Event 要來擴充 Event 了，OnMessage Event已經不夠我們使用，在如何前往那邊我們有塞一個 Action 叫做 PostbackAction，data 可以帶一些程式要溝通的資料，如果想傳的資料太多甚至你可以傳個JSON字串，在反序列化回來成物件，我這邊帶的是 “婚宴地點” 這個字串，用來判斷我要執行這個 Intent\n public class PostbackAction : IAction { public PostbackAction(string text, string data, string label = \"\") { Text = text; Data = data; Label = string.IsNullOrEmpty(label) ? text : label; } public string Data { get; set; } public string Text { get; set; } public ActionType Type = ActionType.postback; public string Label { get; set; } } 回到 LineBotApp.cs 的 RunAsync\nWebhook 所接收的 Event 要多 postback 這個 class\n實作 OnUnPostbackAsync\nev.postback.data 即可取得上面給的 data ，本範例是 “婚宴地點”\n NOTE:看到這邊，我們開始嗅到第一個壞味道了，Intent開始定義兩邊，且開始多和複雜，沒關係，我們找篇文章來做重構的動作 JOKE:然後也會發現，透過引導的方式，感覺不用 AI 的技術，也能讓 chatbot 有流程對話，我懂你的感覺 (可以開始包裝我大AI時代了)  有啥限制嗎?  CarouselTemplate 在傳送的時候最多只能設定10個輪播 (其實太多也不好，很亂) URL 最大 1000 字元 一定要是 HTTPS 且加密規範 TLS 1.2 以上 檔案大小上限 200 MB 圖片需為 JPEG or PNG  懶人包，本次學到了什麼?  如何用 CarouselTemplate 來發送多張樣本圖片 https://developers.line.biz/en/reference/messaging-api/#carousel 如何用 Postback Event 來帶一些參數 https://developers.line.biz/en/reference/messaging-api/#postback-event 透過 StringEnumConverter 來讓JSON轉換時，將Enum轉成字串，而不是index value https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm  ","wordCount":"526","inLanguage":"en","datePublished":"2020-11-10T08:01:05Z","dateModified":"2020-11-10T08:01:05Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script>
-</head>
-<body class=dark id=top>
-<script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove('dark')</script>
-<header class=header>
-<nav class=nav>
-<div class=logo>
-<a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a>
-<div class=logo-switches>
-<button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-</button>
-</div>
-</div>
-<ul id=menu>
-<li>
-<a href=https://kyleap.github.io/kyleshen/ title=about>
-<span>about</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/archives/ title=archives>
-<span>archives</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/categories/ title=categories>
-<span>categories</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/>
-<span>search</span>
-</a>
-</li>
-<li>
-<a href=https://kyleap.github.io/tags/ title=tags>
-<span>tags</span>
-</a>
-</li>
-</ul>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<header class=post-header>
-<div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div>
-<h1 class=post-title>
-婚禮現場交通資訊一覽表 (10)
-</h1>
-<div class=post-meta><span title="2020-11-10 08:01:05 +0000 UTC">2020-11-10</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle
-</div>
-</header>
-<div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day10)</p>
-<p>在上一篇我們用 Template Message 中的 <a href=https://developers.line.biz/en/docs/messaging-api/message-types/#image-carousel-template>ImageCarousel</a> 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*UgeLIPMYetFiudTbIIyYrA.gif alt>
-</p>
-<p>上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的"地址導覽" 的 intent，這就是我們今天會帶到的 postback event</p>
-<h3 id=carouseltemplatecs--實作itemplate來完成第二種-template-message>CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message<a hidden class=anchor aria-hidden=true href=#carouseltemplatecs--實作itemplate來完成第二種-template-message>#</a></h3>
-<p>上一篇輪播圖片，這一篇我們來輪播自訂的樣板，<a href=https://developers.line.biz/en/reference/messaging-api/#template-messages>CarouselTemplate</a>，一樣繼承 ITemplate 實作</p>
-<pre tabindex=0><code>    public class CarouselTemplate : ITemplate
+public class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List<ColumnMultipleAction> columns) { Columns = columns; } public string Type => &#34;carousel&#34;; public List<ColumnMultipleAction> Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，
+ThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action public class ColumnMultipleAction { /// <summary> /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG /// </summary> public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://kyleap.github.io/posts/"},{"@type":"ListItem","position":2,"name":"婚禮現場交通資訊一覽表 (10)","item":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"婚禮現場交通資訊一覽表 (10)","name":"婚禮現場交通資訊一覽表 (10)","description":"第12 屆iT邦幫忙鐵人賽系列文章 (Day10)\n在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果\n上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的\u0026quot;地址導覽\u0026quot; 的 intent，這就是我們今天會帶到的 postback event\nCarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作\npublic class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List\u0026lt;ColumnMultipleAction\u0026gt; columns) { Columns = columns; } public string Type =\u0026gt; \u0026#34;carousel\u0026#34;; public List\u0026lt;ColumnMultipleAction\u0026gt; Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，\nThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action public class ColumnMultipleAction { /// \u0026lt;summary\u0026gt; /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG /// \u0026lt;/summary\u0026gt; public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType.","keywords":["Chatbot"],"articleBody":"第12 屆iT邦幫忙鐵人賽系列文章 (Day10)\n在上一篇我們用 Template Message 中的 ImageCarousel 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果\n上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的\"地址導覽\" 的 intent，這就是我們今天會帶到的 postback event\nCarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上一篇輪播圖片，這一篇我們來輪播自訂的樣板，CarouselTemplate，一樣繼承 ITemplate 實作\npublic class CarouselTemplate : ITemplate { public CarouselTemplate() { } public CarouselTemplate(List columns) { Columns = columns; } public string Type =\u003e \"carousel\"; public List Columns { get; set; } } ColumnMultipleAction — 每個樣本的內容 可以設定圖片/標題/副標題…等資訊，\nThumbnailImageUrl: 縮圖URL ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1) ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片) ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到) Title: 標題 Text: 副標題 ImageUrl: 圖片網址 DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面) Actions: 如我們前一篇文章所說的，7種Action public class ColumnMultipleAction { /// /// Max width: 1024px /// Max file size: 1 MB /// JPEG or PNG /// public string ThumbnailImageUrl { get; set; } public ImageAspectRatioType ImageAspectRatio { get; set; } = ImageAspectRatioType.rectangle; public ImageSizeType ImageSize { get; set; } = ImageSizeType.cover; public string ImageBackgroundColor { get; set; } = \"#FFFFFF\"; public string Title { get; set; } public string Text { get; set; } public string ImageUrl { get; set; } public Defaultaction DefaultAction { get; set; } public List Actions { get; set; } } 為了開發方便，陸續可以定義一些 Type\nStringEnumConverter 主要是 JSON.NET 的功能，可以在我們從 Enum 轉JSON的時候，轉成字串，而不是該 Enum 的 Index Value\n[JsonConverter(typeof(StringEnumConverter))] public enum ImageAspectRatioType { /// /// 1.51:1 /// rectangle, /// /// 1:1 /// square } [JsonConverter(typeof(StringEnumConverter))] public enum ImageSizeType { cover, contain } Directions.cs - 來實作如何前往 Intent public class Directions : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; public Directions(LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility) { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; } public async Task ReplyAsync(string replyToken) { var carouselTemplate = new CarouselTemplate(); var columns = new List(); // 輪播兩種 Template, 三種 Action columns.Add(new ColumnMultipleAction() { ThumbnailImageUrl = \"https://imgur.com/2u6F3dV.jpg\", Title = \"搭乘大眾運輸\", Text = \"交通便利好方便~\", Actions = new List() { new MessageAction(\"從高鐵\"), new MessageAction(\"從捷運\"), new MessageAction(\"從機場\") } }); columns.Add(new ColumnMultipleAction() { ThumbnailImageUrl = \"https://imgur.com/FGitN5M.jpg\", Title = \"自行開車前往\", Text = \"切記酒後不開車~\", Actions = new List() { new PostbackAction(\"如何前往\", \"婚宴地點\"), new MessageAction(\"停車資訊\"), new MessageAction(\"開車提醒\") } }); carouselTemplate.Columns = columns; await lineMessageUtility.ReplyTemplateMessageAsync(replyToken, carouselTemplate); } } OnMessageAsync\nDefaultIntent 增加一個選擇性參數，當有要傳訊息的時候回傳，這樣我們就不用定義到那麼多的 Intent\npublic class DefaultIntent : IReplyIntent { private readonly LineReplyMessageUtility lineMessageUtility; private readonly LineProfileUtility lineProfileUtility; private readonly string replyText; public DefaultIntent( LineReplyMessageUtility _lineMessageUtility, LineProfileUtility _lineProfileUtility, string _replyText = \"\") { lineMessageUtility = _lineMessageUtility; lineProfileUtility = _lineProfileUtility; replyText = _replyText; } public async Task ReplyAsync(string replyToken) { if(!string.IsNullOrEmpty(replyText)) { await lineMessageUtility.ReplyMessageAsync(replyToken, replyText); } else { await Task.CompletedTask; } } } Postback Event 要來擴充 Event 了，OnMessage Event已經不夠我們使用，在如何前往那邊我們有塞一個 Action 叫做 PostbackAction，data 可以帶一些程式要溝通的資料，如果想傳的資料太多甚至你可以傳個JSON字串，在反序列化回來成物件，我這邊帶的是 “婚宴地點” 這個字串，用來判斷我要執行這個 Intent\npublic class PostbackAction : IAction { public PostbackAction(string text, string data, string label = \"\") { Text = text; Data = data; Label = string.IsNullOrEmpty(label) ? text : label; } public string Data { get; set; } public string Text { get; set; } public ActionType Type =\u003e ActionType.postback; public string Label { get; set; } } 回到 LineBotApp.cs 的 RunAsync\nWebhook 所接收的 Event 要多 postback 這個 class\n實作 OnUnPostbackAsync\nev.postback.data 即可取得上面給的 data ，本範例是 “婚宴地點”\nNOTE:看到這邊，我們開始嗅到第一個壞味道了，Intent開始定義兩邊，且開始多和複雜，沒關係，我們找篇文章來做重構的動作 JOKE:然後也會發現，透過引導的方式，感覺不用 AI 的技術，也能讓 chatbot 有流程對話，我懂你的感覺 (可以開始包裝我大AI時代了) 有啥限制嗎? CarouselTemplate 在傳送的時候最多只能設定10個輪播 (其實太多也不好，很亂) URL 最大 1000 字元 一定要是 HTTPS 且加密規範 TLS 1.2 以上 檔案大小上限 200 MB 圖片需為 JPEG or PNG 懶人包，本次學到了什麼? 如何用 CarouselTemplate 來發送多張樣本圖片 https://developers.line.biz/en/reference/messaging-api/#carousel 如何用 Postback Event 來帶一些參數 https://developers.line.biz/en/reference/messaging-api/#postback-event 透過 StringEnumConverter 來讓JSON轉換時，將Enum轉成字串，而不是index value https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm ","wordCount":"526","inLanguage":"en","datePublished":"2020-11-10T08:01:05Z","dateModified":"2020-11-10T08:01:05Z","author":[{"@type":"Person","name":"Kyle"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://kyleap.github.io/it-ironman-line-chatbot-wedding-10/"},"publisher":{"@type":"Organization","name":"凱哥打扣 | Kyle Studio","logo":{"@type":"ImageObject","url":"https://kyleap.github.io/favicon.ico"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://kyleap.github.io/ accesskey=h title="凱哥打扣 (Alt + H)">凱哥打扣</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://kyleap.github.io/kyleshen/ title=about><span>about</span></a></li><li><a href=https://kyleap.github.io/archives/ title=archives><span>archives</span></a></li><li><a href=https://kyleap.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://kyleap.github.io/search/ title="search (Alt + /)" accesskey=/><span>search</span></a></li><li><a href=https://kyleap.github.io/tags/ title=tags><span>tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://kyleap.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://kyleap.github.io/posts/>Posts</a></div><h1 class="post-title entry-hint-parent">婚禮現場交通資訊一覽表 (10)</h1><div class=post-meta><span title='2020-11-10 08:01:05 +0000 UTC'>2020-11-10</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;Kyle</div></header><div class=post-content><p>第12 屆iT邦幫忙鐵人賽系列文章 (Day10)</p><p>在上一篇我們用 Template Message 中的 <a href=https://developers.line.biz/en/docs/messaging-api/message-types/#image-carousel-template>ImageCarousel</a> 實作輪播後，我們再來練習一篇 Template Message，實作到達婚禮現場的各種交通方式資訊，也是先來看看今天的成果</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*UgeLIPMYetFiudTbIIyYrA.gif alt></p><p>上一篇有介紹 Action 的 7 種類型，前面幾個操作都是用 MessageAction 來引島使用者，而當點選如何前往時，會直接跳出之前實作的"地址導覽" 的 intent，這就是我們今天會帶到的 postback event</p><h3 id=carouseltemplatecs--實作itemplate來完成第二種-template-message>CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message<a hidden class=anchor aria-hidden=true href=#carouseltemplatecs--實作itemplate來完成第二種-template-message>#</a></h3><p>上一篇輪播圖片，這一篇我們來輪播自訂的樣板，<a href=https://developers.line.biz/en/reference/messaging-api/#template-messages>CarouselTemplate</a>，一樣繼承 ITemplate 實作</p><pre tabindex=0><code>    public class CarouselTemplate : ITemplate
 
     {
 
@@ -126,25 +32,12 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
 
     }
 
-    public string Type =&gt; &quot;carousel&quot;;
+    public string Type =&gt; &#34;carousel&#34;;
 
     public List&lt;ColumnMultipleAction&gt; Columns { get; set; }
 
     }
-</code></pre><h3 id=columnmultipleaction--每個樣本的內容>ColumnMultipleAction — 每個樣本的內容<a hidden class=anchor aria-hidden=true href=#columnmultipleaction--每個樣本的內容>#</a></h3>
-<p>可以設定圖片/標題/副標題…等資訊，</p>
-<ul>
-<li>ThumbnailImageUrl: 縮圖URL</li>
-<li>ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1)</li>
-<li>ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片)</li>
-<li>ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到)</li>
-<li>Title: 標題</li>
-<li>Text: 副標題</li>
-<li>ImageUrl: 圖片網址</li>
-<li>DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面)</li>
-<li>Actions: 如我們前一篇文章所說的，7種Action</li>
-</ul>
-<pre tabindex=0><code>    public class ColumnMultipleAction
+</code></pre><h3 id=columnmultipleaction--每個樣本的內容>ColumnMultipleAction — 每個樣本的內容<a hidden class=anchor aria-hidden=true href=#columnmultipleaction--每個樣本的內容>#</a></h3><p>可以設定圖片/標題/副標題…等資訊，</p><ul><li>ThumbnailImageUrl: 縮圖URL</li><li>ImageAspectRatio: 圖片的比例 rectangle(1.51:1) square(1:1)</li><li>ImageSize: cover(不適應地方會裁切掉) contain(包含全部圖片)</li><li>ImageBackgroundColor: 圖片區塊的背景色 (loading時候會看到)</li><li>Title: 標題</li><li>Text: 副標題</li><li>ImageUrl: 圖片網址</li><li>DefaultAction: 預設的Action (這樣就不用一個一個塞進 Actions 裡面)</li><li>Actions: 如我們前一篇文章所說的，7種Action</li></ul><pre tabindex=0><code>    public class ColumnMultipleAction
 
     {
 
@@ -164,7 +57,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
 
     public ImageSizeType ImageSize { get; set; } = ImageSizeType.cover;
 
-    public string ImageBackgroundColor { get; set; } = &quot;#FFFFFF&quot;;
+    public string ImageBackgroundColor { get; set; } = &#34;#FFFFFF&#34;;
 
     public string Title { get; set; }
 
@@ -177,9 +70,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
     public List&lt;IAction&gt; Actions { get; set; }
 
     }
-</code></pre><p>為了開發方便，陸續可以定義一些 Type</p>
-<p>StringEnumConverter 主要是 JSON.NET 的功能，可以在我們從 Enum 轉JSON的時候，轉成字串，而不是該 Enum 的 Index Value</p>
-<pre tabindex=0><code>    [JsonConverter(typeof(StringEnumConverter))]
+</code></pre><p>為了開發方便，陸續可以定義一些 Type</p><p>StringEnumConverter 主要是 JSON.NET 的功能，可以在我們從 Enum 轉JSON的時候，轉成字串，而不是該 Enum 的 Index Value</p><pre tabindex=0><code>    [JsonConverter(typeof(StringEnumConverter))]
 
     public enum ImageAspectRatioType
 
@@ -214,8 +105,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
     contain
 
     }
-</code></pre><h3 id=directionscs---來實作如何前往-intent>Directions.cs - 來實作如何前往 Intent<a hidden class=anchor aria-hidden=true href=#directionscs---來實作如何前往-intent>#</a></h3>
-<pre tabindex=0><code>    public class Directions : IReplyIntent
+</code></pre><h3 id=directionscs---來實作如何前往-intent>Directions.cs - 來實作如何前往 Intent<a hidden class=anchor aria-hidden=true href=#directionscs---來實作如何前往-intent>#</a></h3><pre tabindex=0><code>    public class Directions : IReplyIntent
 
     {
 
@@ -247,21 +137,21 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
 
     {
 
-    ThumbnailImageUrl = &quot;https://imgur.com/2u6F3dV.jpg&quot;,
+    ThumbnailImageUrl = &#34;https://imgur.com/2u6F3dV.jpg&#34;,
 
-    Title = &quot;搭乘大眾運輸&quot;,
+    Title = &#34;搭乘大眾運輸&#34;,
 
-    Text = &quot;交通便利好方便~&quot;,
+    Text = &#34;交通便利好方便~&#34;,
 
     Actions = new List&lt;IAction&gt;()
 
     {
 
-    new MessageAction(&quot;從高鐵&quot;),
+    new MessageAction(&#34;從高鐵&#34;),
 
-    new MessageAction(&quot;從捷運&quot;),
+    new MessageAction(&#34;從捷運&#34;),
 
-    new MessageAction(&quot;從機場&quot;)
+    new MessageAction(&#34;從機場&#34;)
 
     }
 
@@ -271,21 +161,21 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
 
     {
 
-    ThumbnailImageUrl = &quot;https://imgur.com/FGitN5M.jpg&quot;,
+    ThumbnailImageUrl = &#34;https://imgur.com/FGitN5M.jpg&#34;,
 
-    Title = &quot;自行開車前往&quot;,
+    Title = &#34;自行開車前往&#34;,
 
-    Text = &quot;切記酒後不開車~&quot;,
+    Text = &#34;切記酒後不開車~&#34;,
 
     Actions = new List&lt;IAction&gt;()
 
     {
 
-    new PostbackAction(&quot;如何前往&quot;, &quot;婚宴地點&quot;),
+    new PostbackAction(&#34;如何前往&#34;, &#34;婚宴地點&#34;),
 
-    new MessageAction(&quot;停車資訊&quot;),
+    new MessageAction(&#34;停車資訊&#34;),
 
-    new MessageAction(&quot;開車提醒&quot;)
+    new MessageAction(&#34;開車提醒&#34;)
 
     }
 
@@ -298,11 +188,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
     }
 
     }
-</code></pre><p>OnMessageAsync</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*nRyk9mUa6rqsJaBm9T97KA.png alt>
-</p>
-<p>DefaultIntent 增加一個選擇性參數，當有要傳訊息的時候回傳，這樣我們就不用定義到那麼多的 Intent</p>
-<pre tabindex=0><code>    public class DefaultIntent : IReplyIntent
+</code></pre><p>OnMessageAsync</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*nRyk9mUa6rqsJaBm9T97KA.png alt></p><p>DefaultIntent 增加一個選擇性參數，當有要傳訊息的時候回傳，這樣我們就不用定義到那麼多的 Intent</p><pre tabindex=0><code>    public class DefaultIntent : IReplyIntent
 
     {
 
@@ -318,7 +204,7 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
 
     LineProfileUtility _lineProfileUtility,
 
-    string _replyText = &quot;&quot;)
+    string _replyText = &#34;&#34;)
 
     {
 
@@ -353,15 +239,11 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
     }
 
     }
-</code></pre><h3 id=postback-event>Postback Event<a hidden class=anchor aria-hidden=true href=#postback-event>#</a></h3>
-<p>要來擴充 Event 了，OnMessage Event已經不夠我們使用，在如何前往那邊我們有塞一個 Action 叫做 PostbackAction，data 可以帶一些程式要溝通的資料，如果想傳的資料太多甚至你可以傳個JSON字串，在反序列化回來成物件，我這邊帶的是 “婚宴地點” 這個字串，用來判斷我要執行這個 Intent</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*5KZWQyS7CVRvLCi4QSgmig.png alt>
-</p>
-<pre tabindex=0><code>    public class PostbackAction : IAction
+</code></pre><h3 id=postback-event>Postback Event<a hidden class=anchor aria-hidden=true href=#postback-event>#</a></h3><p>要來擴充 Event 了，OnMessage Event已經不夠我們使用，在如何前往那邊我們有塞一個 Action 叫做 PostbackAction，data 可以帶一些程式要溝通的資料，如果想傳的資料太多甚至你可以傳個JSON字串，在反序列化回來成物件，我這邊帶的是 “婚宴地點” 這個字串，用來判斷我要執行這個 Intent</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*5KZWQyS7CVRvLCi4QSgmig.png alt></p><pre tabindex=0><code>    public class PostbackAction : IAction
 
     {
 
-    public PostbackAction(string text, string data, string label = &quot;&quot;)
+    public PostbackAction(string text, string data, string label = &#34;&#34;)
 
     {
 
@@ -382,69 +264,12 @@ CarouselTemplate.cs — 實作ITemplate來完成第二種 Template Message 上�
     public string Label { get; set; }
 
     }
-</code></pre><p>回到 LineBotApp.cs 的 RunAsync</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*tyeV8BJ4L6tCc7vdPMm4Kg.png alt>
-</p>
-<p>Webhook 所接收的 Event 要多 postback 這個 class</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*0KZDjNJNVlEyiivtkEBa3w.png alt>
-</p>
-<p>實作 OnUnPostbackAsync</p>
-<p>ev.postback.data 即可取得上面給的 data ，本範例是 &ldquo;婚宴地點&rdquo;</p>
-<p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*dW0oQSIW9vgoCQR9JCsh9A.png alt>
-</p>
-<blockquote>
-<h1 id=note看到這邊我們開始嗅到第一個壞味道了intent開始定義兩邊且開始多和複雜沒關係我們找篇文章來做重構的動作>NOTE:看到這邊，我們開始嗅到第一個壞味道了，Intent開始定義兩邊，且開始多和複雜，沒關係，我們找篇文章來做重構的動作<a hidden class=anchor aria-hidden=true href=#note看到這邊我們開始嗅到第一個壞味道了intent開始定義兩邊且開始多和複雜沒關係我們找篇文章來做重構的動作>#</a></h1>
-<h1 id=joke然後也會發現透過引導的方式感覺不用-ai-的技術也能讓-chatbot-有流程對話我懂你的感覺-可以開始包裝我大ai時代了>JOKE:然後也會發現，透過引導的方式，感覺不用 AI 的技術，也能讓 chatbot 有流程對話，我懂你的感覺 (可以開始包裝我大AI時代了)<a hidden class=anchor aria-hidden=true href=#joke然後也會發現透過引導的方式感覺不用-ai-的技術也能讓-chatbot-有流程對話我懂你的感覺-可以開始包裝我大ai時代了>#</a></h1>
-</blockquote>
-<h3 id=有啥限制嗎>有啥限制嗎?<a hidden class=anchor aria-hidden=true href=#有啥限制嗎>#</a></h3>
-<ul>
-<li>CarouselTemplate 在傳送的時候最多只能設定10個輪播 (其實太多也不好，很亂)</li>
-<li>URL 最大 1000 字元</li>
-<li>一定要是 HTTPS 且加密規範 TLS 1.2 以上</li>
-<li>檔案大小上限 200 MB</li>
-<li>圖片需為 JPEG or PNG</li>
-</ul>
-<h3 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h3>
-<ul>
-<li>如何用 CarouselTemplate 來發送多張樣本圖片
-<a href=https://developers.line.biz/en/reference/messaging-api/#carousel>https://developers.line.biz/en/reference/messaging-api/#carousel</a></li>
-<li>如何用 Postback Event 來帶一些參數
-<a href=https://developers.line.biz/en/reference/messaging-api/#postback-event>https://developers.line.biz/en/reference/messaging-api/#postback-event</a></li>
-<li>透過 StringEnumConverter 來讓JSON轉換時，將Enum轉成字串，而不是index value
-<a href=https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm>https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm</a></li>
-</ul>
-</div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li>
-</ul>
-<nav class=paginav>
-<a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/>
-<span class=title>« Prev</span>
-<br>
-<span>設計師魂發作，改造電子喜帖 (11)</span>
-</a>
-<a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/>
-<span class=title>Next »</span>
-<br>
-<span>來做一些婚紗輪播 (9)</span>
-</a>
-</nav>
-</footer>
-</article>
-</main>
-<footer class=footer>
-<span>&copy; 2023 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
-<span>
-Powered by
+</code></pre><p>回到 LineBotApp.cs 的 RunAsync</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*tyeV8BJ4L6tCc7vdPMm4Kg.png alt></p><p>Webhook 所接收的 Event 要多 postback 這個 class</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*0KZDjNJNVlEyiivtkEBa3w.png alt></p><p>實作 OnUnPostbackAsync</p><p>ev.postback.data 即可取得上面給的 data ，本範例是 &ldquo;婚宴地點&rdquo;</p><p><img loading=lazy src=https://cdn-images-1.medium.com/max/2000/1*dW0oQSIW9vgoCQR9JCsh9A.png alt></p><blockquote><h1 id=note看到這邊我們開始嗅到第一個壞味道了intent開始定義兩邊且開始多和複雜沒關係我們找篇文章來做重構的動作>NOTE:看到這邊，我們開始嗅到第一個壞味道了，Intent開始定義兩邊，且開始多和複雜，沒關係，我們找篇文章來做重構的動作<a hidden class=anchor aria-hidden=true href=#note看到這邊我們開始嗅到第一個壞味道了intent開始定義兩邊且開始多和複雜沒關係我們找篇文章來做重構的動作>#</a></h1><h1 id=joke然後也會發現透過引導的方式感覺不用-ai-的技術也能讓-chatbot-有流程對話我懂你的感覺-可以開始包裝我大ai時代了>JOKE:然後也會發現，透過引導的方式，感覺不用 AI 的技術，也能讓 chatbot 有流程對話，我懂你的感覺 (可以開始包裝我大AI時代了)<a hidden class=anchor aria-hidden=true href=#joke然後也會發現透過引導的方式感覺不用-ai-的技術也能讓-chatbot-有流程對話我懂你的感覺-可以開始包裝我大ai時代了>#</a></h1></blockquote><h3 id=有啥限制嗎>有啥限制嗎?<a hidden class=anchor aria-hidden=true href=#有啥限制嗎>#</a></h3><ul><li>CarouselTemplate 在傳送的時候最多只能設定10個輪播 (其實太多也不好，很亂)</li><li>URL 最大 1000 字元</li><li>一定要是 HTTPS 且加密規範 TLS 1.2 以上</li><li>檔案大小上限 200 MB</li><li>圖片需為 JPEG or PNG</li></ul><h3 id=懶人包本次學到了什麼>懶人包，本次學到了什麼?<a hidden class=anchor aria-hidden=true href=#懶人包本次學到了什麼>#</a></h3><ul><li>如何用 CarouselTemplate 來發送多張樣本圖片
+<a href=https://developers.line.biz/en/reference/messaging-api/#carousel>https://developers.line.biz/en/reference/messaging-api/#carousel</a></li><li>如何用 Postback Event 來帶一些參數
+<a href=https://developers.line.biz/en/reference/messaging-api/#postback-event>https://developers.line.biz/en/reference/messaging-api/#postback-event</a></li><li>透過 StringEnumConverter 來讓JSON轉換時，將Enum轉成字串，而不是index value
+<a href=https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm>https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Converters_StringEnumConverter.htm</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://kyleap.github.io/tags/chatbot/>Chatbot</a></li></ul><nav class=paginav><a class=prev href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-11/><span class=title>« Prev</span><br><span>設計師魂發作，改造電子喜帖 (11)</span>
+</a><a class=next href=https://kyleap.github.io/it-ironman-line-chatbot-wedding-9/><span class=title>Next »</span><br><span>來做一些婚紗輪播 (9)</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2024 <a href=https://kyleap.github.io/>凱哥打扣 | Kyle Studio</a></span>
+<span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
-</span>
-</footer>
-<a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a>
-<script>let menu=document.getElementById('menu');menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script>
-<script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script>
-<script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove('dark'),localStorage.setItem("pref-theme",'light')):(document.body.classList.add('dark'),localStorage.setItem("pref-theme",'dark'))})</script>
-</body>
-</html>
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

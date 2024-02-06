@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AzureWiki on 凱哥打扣 | Kyle Studio</title>
     <link>https://kyleap.github.io/tags/azurewiki/</link>
@@ -10,35 +10,33 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 16 Apr 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/azurewiki/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Fri, 28 Jul 2023 10:52:01 +0000</lastBuildDate>
+    <atom:link href="https://kyleap.github.io/tags/azurewiki/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何在 Azure Wiki 調整圖片大小</title>
       <link>https://kyleap.github.io/azure-wiki-resize-image/</link>
-      <pubDate>Sun, 16 Apr 2023 10:52:01 +0000</pubDate>
-      
+      <pubDate>Fri, 28 Jul 2023 10:52:01 +0000</pubDate>
       <guid>https://kyleap.github.io/azure-wiki-resize-image/</guid>
       <description>在撰寫和編輯 Azure Wiki 上的內容時，圖片是一種非常有用的方式，能可以更好地傳達訊息並增強文章的可讀性。但有時候圖片的大小會導致可讀性下降，這時候就需要調整圖片的大小，以符合頁面的版面設計或減少圖片的檔案大小。
 第一種方式可以用 HTML Tag
-&amp;lt;IMG src=&amp;quot;&amp;lt;圖片網址&amp;gt;&amp;quot; alt=&amp;quot;圖片描述&amp;quot; style=&amp;quot;width: 500px;&amp;quot;/&amp;gt; 但如果你的圖片是複製貼上來的，會存在於 Azure Wiki 這個 Repo，這時可以這樣設定去等比例縮放大小
+&amp;lt;IMG src=&amp;#34;&amp;lt;圖片網址&amp;gt;&amp;#34; alt=&amp;#34;圖片描述&amp;#34; style=&amp;#34;width: 500px;&amp;#34;/&amp;gt; 但如果你的圖片是複製貼上來的，會存在於 Azure Wiki 這個 Repo，這時可以這樣設定去等比例縮放大小
 ![xxx.jpg](/.attachments/xxx.jpg =500x) 或明確的給寬跟高
 ![xxx.jpg](/.attachments/xxx.jpg =500x1000) </description>
     </item>
-    
     <item>
       <title>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖</title>
       <link>https://kyleap.github.io/azure-wiki-pie-chart/</link>
       <pubDate>Mon, 27 Mar 2023 09:41:01 +0000</pubDate>
-      
       <guid>https://kyleap.github.io/azure-wiki-pie-chart/</guid>
       <description>在一條龍的 Azure DevOps 平台，當然也存在 KM 功能， 透過 Azure Wiki 與 Workitem 結合，撰寫全貌的文件，能協助團隊更有效地進行開發與協作，其中Wiki 支援 Mermaid 語法來繪製圖表，本篇以圓餅圖作為示範
 透過 ::: mermaid 與 ::: 裡面放置 mermaid 語法，即可呈現圖表
-::: mermaid pie title 年度銷售量 &amp;quot;Q1&amp;quot; : 2000 &amp;quot;Q2&amp;quot; : 1500 &amp;quot;Q3&amp;quot; : 3500 &amp;quot;Q4&amp;quot; : 4000 ::: 會產生以下結果
+::: mermaid pie title 年度銷售量 &amp;#34;Q1&amp;#34; : 2000 &amp;#34;Q2&amp;#34; : 1500 &amp;#34;Q3&amp;#34; : 3500 &amp;#34;Q4&amp;#34; : 4000 ::: 會產生以下結果
 也可以加入 pie showData 讓 Label 呈現數值
- 也支援小數點數值
- 只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
+也支援小數點數值
+只可惜目前在 Azure wiki 無法針對樣式去做設定，但會跟著使用者的 theme 進行適當的配色
 Reference
- https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html  </description>
+https://learn.microsoft.com/zh-tw/azure/devops/project/wiki/wiki-markdown-guidance?view=azure-devops https://mermaid.js.org/syntax/pie.html </description>
     </item>
-    
   </channel>
 </rss>

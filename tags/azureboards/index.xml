@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AzureBoards on 凱哥打扣 | Kyle Studio</title>
     <link>https://kyleap.github.io/tags/azureboards/</link>
@@ -10,12 +10,13 @@
       <link>https://user-images.githubusercontent.com/8849818/227669578-aace96bd-bfb3-4cd5-9e52-52d8742ed597.jpg</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 04 May 2023 10:52:01 +0000</lastBuildDate><atom:link href="https://kyleap.github.io/tags/azureboards/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 04 Jul 2023 10:52:01 +0000</lastBuildDate>
+    <atom:link href="https://kyleap.github.io/tags/azureboards/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Boards 繼承 Process的 3 大好處</title>
       <link>https://kyleap.github.io/azure-boards-inheritance-process/</link>
-      <pubDate>Thu, 04 May 2023 10:52:01 +0000</pubDate>
-      
+      <pubDate>Tue, 04 Jul 2023 10:52:01 +0000</pubDate>
       <guid>https://kyleap.github.io/azure-boards-inheritance-process/</guid>
       <description>我會建議在使用 Azure Boards 選定 Scrum/Agile 工作流程後，一定要做“繼承”這件事，如此可以彈性的去設定整個專案的模式
 Organzation Setting =&amp;gt; Process
@@ -26,16 +27,14 @@ Organzation Setting =&amp;gt; Process
 玩法A: 只用 Product Backlogs 或者是 User Story 任何事情都應該對應到商業價值，要解決的問題也都是對應到“人”，用一種方式，依照 User Story 的撰寫方式把它寫好，會讓事情更單純
 玩法B: Product Backlogs + User Story + Bug 將 PBI 定義成從團隊內發起的單子，譬如重構類型，User Story 定義成需求面，Bug 單子內容設計用來專注還原操作步驟 用這種玩法可以進一步撈出每次 Sprint 所著重的比例</description>
     </item>
-    
     <item>
       <title>如何在 Azure Boards 透過 csv 匯入 Workitems</title>
       <link>https://kyleap.github.io/azure-boards-import-workitems-from-csv/</link>
-      <pubDate>Mon, 10 Apr 2023 10:52:01 +0000</pubDate>
-      
+      <pubDate>Fri, 23 Jun 2023 10:52:01 +0000</pubDate>
       <guid>https://kyleap.github.io/azure-boards-import-workitems-from-csv/</guid>
       <description>有時候需求來源可能來自於一份 Excel，但這樣一個一個建到平台上實在太累了，這篇就來介紹一下如何用 Azure Boards 的 Import 功能將 csv 匯入進平台
- 要注意匯入功能狀態只能是起始的 state，無法指定該單子為 Doing 的狀態
- 第一個簡單的匯入 從 Boards =&amp;gt; Workitem 進入
+要注意匯入功能狀態只能是起始的 state，無法指定該單子為 Doing 的狀態
+第一個簡單的匯入 從 Boards =&amp;gt; Workitem 進入
 我們用 Work Item Type 跟 Title 來做舉例，最後一筆我故意輸入一個錯誤的類型
 如果欄位驗證錯誤，也會明確指出哪一筆資料，哪一欄出錯
 如果成功匯入，也不會馬上儲存，可以在這介面微調內容
@@ -48,6 +47,5 @@ Organzation Setting =&amp;gt; Process
 支援匯入的欄位 在官方文件有依據字母排列出所支援的欄位
 https://learn.microsoft.com/en-us/azure/devops/boards/work-items/guidance/work-item-field?view=azure-devops</description>
     </item>
-    
   </channel>
 </rss>
