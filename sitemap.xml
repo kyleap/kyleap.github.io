@@ -2,25 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kyleap.github.io/categories/azuredevops/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/categories/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/tags/playwright/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/categories/playwright/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/posts/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/tags/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/tags/testing/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/playwright-04-data-driven-testing/</loc>
+    <lastmod>2024-10-15T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/playwright-03-api-testing/</loc>
+    <lastmod>2024-09-24T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/playwright-02-azure-devops-ci/</loc>
+    <lastmod>2024-07-22T10:52:01+00:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/playwright-01-env/</loc>
+    <lastmod>2024-07-21T10:52:01+00:00</lastmod>
+  </url><url>
     <loc>https://kyleap.github.io/tags/azuredevops/</loc>
     <lastmod>2023-07-28T10:52:01+00:00</lastmod>
   </url><url>
-    <loc>https://kyleap.github.io/categories/azuredevops/</loc>
-    <lastmod>2023-07-28T10:52:01+00:00</lastmod>
-  </url><url>
     <loc>https://kyleap.github.io/tags/azurewiki/</loc>
-    <lastmod>2023-07-28T10:52:01+00:00</lastmod>
-  </url><url>
-    <loc>https://kyleap.github.io/categories/</loc>
-    <lastmod>2023-07-28T10:52:01+00:00</lastmod>
-  </url><url>
-    <loc>https://kyleap.github.io/posts/</loc>
-    <lastmod>2023-07-28T10:52:01+00:00</lastmod>
-  </url><url>
-    <loc>https://kyleap.github.io/tags/</loc>
-    <lastmod>2023-07-28T10:52:01+00:00</lastmod>
-  </url><url>
-    <loc>https://kyleap.github.io/</loc>
     <lastmod>2023-07-28T10:52:01+00:00</lastmod>
   </url><url>
     <loc>https://kyleap.github.io/azure-wiki-resize-image/</loc>
@@ -58,6 +79,9 @@
   </url><url>
     <loc>https://kyleap.github.io/feature-flag-dotnet-core-basic-targeting/</loc>
     <lastmod>2023-04-09T22:32:41+08:00</lastmod>
+  </url><url>
+    <loc>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</loc>
+    <lastmod>2023-04-01T09:41:01+00:00</lastmod>
   </url><url>
     <loc>https://kyleap.github.io/azure-wiki-pie-chart/</loc>
     <lastmod>2023-03-27T09:41:01+00:00</lastmod>
@@ -257,7 +281,5 @@
     <loc>https://kyleap.github.io/archives/</loc>
   </url><url>
     <loc>https://kyleap.github.io/search/</loc>
-  </url><url>
-    <loc>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</loc>
   </url>
 </urlset>

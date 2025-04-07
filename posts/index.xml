@@ -11,8 +11,49 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 28 Jul 2023 10:52:01 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2024 10:52:01 +0000</lastBuildDate>
     <atom:link href="https://kyleap.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>玩玩 Playwright — 測試案例來自資料集</title>
+      <link>https://kyleap.github.io/playwright-04-data-driven-testing/</link>
+      <pubDate>Tue, 15 Oct 2024 10:52:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/playwright-04-data-driven-testing/</guid>
+      <description>「資料驅動測試（data-driven testing）」，你可以用迴圈或是參數化的方式，把多筆資料注入到同一個 test case 裡執行
+方法一：使用 test.describe 搭配迴圈 import { test, expect } from &amp;#39;@playwright/test&amp;#39;; const testData = [ { input: &amp;#39;user1&amp;#39;, expected: &amp;#39;Hello user1!&amp;#39; }, { input: &amp;#39;user2&amp;#39;, expected: &amp;#39;Hello user2!&amp;#39; }, // 其餘48筆... ]; for (const data of testData) { test(`Should greet ${data.input}`, async ({ page }) =&amp;gt; { await page.goto(&amp;#39;https://example.com&amp;#39;); await page.fill(&amp;#39;#name-input&amp;#39;, data.input); await page.click(&amp;#39;#submit-button&amp;#39;); const message = await page.textContent(&amp;#39;#greeting&amp;#39;); expect(message).toBe(data.expected); }); } 方法二：使用 test.each（Playwright v1.31 以上支援） import { test, expect } from &amp;#39;@playwright/test&amp;#39;; const testData = [ [&amp;#39;user1&amp;#39;, &amp;#39;Hello user1!</description>
+    </item>
+    <item>
+      <title>玩玩 Playwright — API Testing 初體驗</title>
+      <link>https://kyleap.github.io/playwright-03-api-testing/</link>
+      <pubDate>Tue, 24 Sep 2024 10:52:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/playwright-03-api-testing/</guid>
+      <description>為什麼用 Playwright 測 API？ 雖然我們常用 Postman、curl 或 Jest 來測 API，但若你的專案已經使用 Playwright 做 E2E 測試，那麼善用同一套框架處理 API 測試，不僅可減少工具切換，還能將 UI 流程與 API 驗證整合在一起，提升測試維運的一致性。
+Playwright 提供的 request 模組，讓我們可以像在用 fetch 一樣操作 HTTP 請求，非常方便。
+開始寫第一個 API 測試 安裝 Playwright 如果你尚未安裝 Playwright，可以透過下列指令快速安裝：
+npm init playwright@latest 選擇 TypeScript 或 JavaScript 都可以，本篇範例以 TypeScript 為例。
+撰寫 API 測試 假設我們有一個簡單的 API：https://jsonplaceholder.typicode.com/posts/1
+我們來撰寫一個測試，驗證它回傳的內容正確：
+import { test, expect, request } from &amp;#39;@playwright/test&amp;#39;; test(&amp;#39;GET /posts/1 should return a valid post&amp;#39;, async () =&amp;gt; { const apiContext = await request.</description>
+    </item>
+    <item>
+      <title>玩玩 Playwright - 整合 Azure DevOps CI</title>
+      <link>https://kyleap.github.io/playwright-02-azure-devops-ci/</link>
+      <pubDate>Mon, 22 Jul 2024 10:52:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/playwright-02-azure-devops-ci/</guid>
+      <description>在現代 Web 開發流程中，自動化測試已經成為持續整合（CI）不可或缺的一環。而 Playwright 作為一個功能強大的 E2E 測試框架，搭配 Azure DevOps Pipeline，可以有效地讓我們在每次 commit 或 PR 時，自動進行跨瀏覽器測試，確保系統品質。
+本文將介紹如何從零開始，將 Playwright 測試整合進 Azure DevOps CI 流程。
+環境準備 專案初始化 npm init -y npm install -D @playwright/test npx playwright install 新增基本測試檔案（如 tests/example.spec.ts） import { test, expect } from &amp;#39;@playwright/test&amp;#39;; test(&amp;#39;首頁標題應正確&amp;#39;, async ({ page }) =&amp;gt; { await page.goto(&amp;#39;https://study4.tw&amp;#39;); await expect(page).toHaveTitle(/study4/); }); 在 package.json 中加入測試腳本 &amp;#34;scripts&amp;#34;: { &amp;#34;test&amp;#34;: &amp;#34;npx playwright test&amp;#34; } 設定 Azure DevOps Pipeline 在專案根目錄新增 .azure-pipelines.yml trigger: - main pool: vmImage: &amp;#39;ubuntu-latest&amp;#39; steps: - task: NodeTool@0 inputs: versionSpec: &amp;#39;18.</description>
+    </item>
+    <item>
+      <title>玩玩 Playwright - 基本環境設定（TypeScript &#43; VS Code）</title>
+      <link>https://kyleap.github.io/playwright-01-env/</link>
+      <pubDate>Sun, 21 Jul 2024 10:52:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/playwright-01-env/</guid>
+      <description>在自動化測試的領域中，Playwright 是一款由 Microsoft 開發的現代化 E2E 測試框架，支援多瀏覽器（Chromium、Firefox、WebKit）、多語言（JavaScript、TypeScript、Python、Java、.NET），非常適合用來測試 Web 應用。
+今天我們就來簡單玩玩 Playwright，透過 TypeScript + VS Code 快速搭建一個測試環境，並實作一個基本案例：打開 Google，搜尋「study4」，點擊第一個搜尋結果，並驗證網址是否為 https://study4.tw。
+開始之前：準備好你的環境 請先確保你已安裝以下工具：
+Node.js（建議版本 18 以上） Visual Studio Code 步驟一：建立專案 mkdir playwright-ts-demo cd playwright-ts-demo npm init -y 步驟二：安裝 Playwright 與 TypeScript 支援 npm install -D playwright typescript ts-node @types/node Playwright 安裝後可以支援 Chromium、Firefox、WebKit 等瀏覽器的自動操作。
+步驟三：建立 TypeScript 設定檔 tsconfig.json { &amp;#34;compilerOptions&amp;#34;: { &amp;#34;target&amp;#34;: &amp;#34;ESNext&amp;#34;, &amp;#34;module&amp;#34;: &amp;#34;CommonJS&amp;#34;, &amp;#34;strict&amp;#34;: true, &amp;#34;esModuleInterop&amp;#34;: true, &amp;#34;skipLibCheck&amp;#34;: true, &amp;#34;forceConsistentCasingInFileNames&amp;#34;: true, &amp;#34;moduleResolution&amp;#34;: &amp;#34;node&amp;#34;, &amp;#34;outDir&amp;#34;: &amp;#34;dist&amp;#34; }, &amp;#34;include&amp;#34;: [&amp;#34;src&amp;#34;] } 步驟四：撰寫測試腳本 建立 src 資料夾，新增一個檔案 searchStudy4.</description>
+    </item>
     <item>
       <title>如何在 Azure Wiki 調整圖片大小</title>
       <link>https://kyleap.github.io/azure-wiki-resize-image/</link>
@@ -103,6 +144,14 @@ Nuget 安裝 dotnet add package Microsoft.FeatureManagement.AspNetCore 加入 Fe
       <description>如果要針對某用戶或群組來開啟特定功能，在 .NET Feature Management 中可以用 TargetFilter 來指定
 appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為選擇性參數，可以指定多少百分比的使用者會導向該功能
 &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureA&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.Targeting&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Audience&amp;#34;: { &amp;#34;Users&amp;#34;: [ &amp;#34;1948fcc1-dc03-44a6-824f-fb48166ffa9d&amp;#34; ], &amp;#34;Group&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Group1&amp;#34;, &amp;#34;RolloutPercentage&amp;#34;: 80 }, { &amp;#34;Name&amp;#34;: &amp;#34;Group2&amp;#34; } ] } } } ] } } 實作 ITargetingContextAccessor public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &amp;#34;TestTargetingContextAccessor.TargetingContext&amp;#34;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?</description>
+    </item>
+    <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
+      <pubDate>Sat, 01 Apr 2023 09:41:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
+      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
+appsettings.json &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureB&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.TimeWindow&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Start&amp;#34;: &amp;#34;2020-11-09 04:58:00Z&amp;#34;, &amp;#34;End&amp;#34;: &amp;#34;2099-11-09 05:00:00Z&amp;#34; } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;#34;FeatureA&amp;#34;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate(&amp;#34;FeatureA&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, &amp;#34;FeatureA&amp;#34;, &amp;#34;FeatureB&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags.</description>
     </item>
     <item>
       <title>用 Mermaid 在 Azure wiki 繪製圖表 - 圓餅圖</title>
@@ -789,14 +838,6 @@ Step 5 — 通路 無法建立接觸「足夠」顧客的途徑，是初期創�
 Step 6~7 — 收益來源 &amp;amp; 成本結構 思考定價策略：成本導向、競爭導向、需求導向、差異訂價法、特殊的訂價法(SaaS產品定價)…
 成本如何擬定：
 訪談30–50顧客將耗費多少成本 開發MVP將耗費多少成本 (e.g 員工薪資 x 1.6 ~2.0倍) 固定成本(薪資…等).變動成本(雲端費用…等) Step 8 — 關鍵指標 顧客獲取 顧客啟用 顧客續約 收益 轉介 延伸閱讀：從 AARRR 模型幫助對焦商業目標與設計策略</description>
-    </item>
-    <item>
-      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
-      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
-      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
-appsettings.json &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureB&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.TimeWindow&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Start&amp;#34;: &amp;#34;2020-11-09 04:58:00Z&amp;#34;, &amp;#34;End&amp;#34;: &amp;#34;2099-11-09 05:00:00Z&amp;#34; } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;#34;FeatureA&amp;#34;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate(&amp;#34;FeatureA&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, &amp;#34;FeatureA&amp;#34;, &amp;#34;FeatureB&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags.</description>
     </item>
   </channel>
 </rss>

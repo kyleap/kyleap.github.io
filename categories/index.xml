@@ -11,13 +11,20 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 28 Jul 2023 10:52:01 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2024 10:52:01 +0000</lastBuildDate>
     <atom:link href="https://kyleap.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AzureDevOps</title>
       <link>https://kyleap.github.io/categories/azuredevops/</link>
-      <pubDate>Fri, 28 Jul 2023 10:52:01 +0000</pubDate>
+      <pubDate>Tue, 15 Oct 2024 10:52:01 +0000</pubDate>
       <guid>https://kyleap.github.io/categories/azuredevops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Playwright</title>
+      <link>https://kyleap.github.io/categories/playwright/</link>
+      <pubDate>Tue, 15 Oct 2024 10:52:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/categories/playwright/</guid>
       <description></description>
     </item>
     <item>

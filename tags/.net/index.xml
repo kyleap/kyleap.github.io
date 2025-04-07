@@ -41,7 +41,7 @@ appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為�
     <item>
       <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
       <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 01 Apr 2023 09:41:01 +0000</pubDate>
       <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
       <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
 appsettings.json &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureB&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.TimeWindow&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Start&amp;#34;: &amp;#34;2020-11-09 04:58:00Z&amp;#34;, &amp;#34;End&amp;#34;: &amp;#34;2099-11-09 05:00:00Z&amp;#34; } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;#34;FeatureA&amp;#34;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate(&amp;#34;FeatureA&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, &amp;#34;FeatureA&amp;#34;, &amp;#34;FeatureB&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags.</description>

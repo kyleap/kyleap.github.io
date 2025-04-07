@@ -39,6 +39,14 @@ appsettings.json (指定當前使用者的Guid或群組) RolloutPercentage 為�
 &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureA&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.Targeting&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Audience&amp;#34;: { &amp;#34;Users&amp;#34;: [ &amp;#34;1948fcc1-dc03-44a6-824f-fb48166ffa9d&amp;#34; ], &amp;#34;Group&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Group1&amp;#34;, &amp;#34;RolloutPercentage&amp;#34;: 80 }, { &amp;#34;Name&amp;#34;: &amp;#34;Group2&amp;#34; } ] } } } ] } } 實作 ITargetingContextAccessor public class TestTargetingContextAccessor : ITargetingContextAccessor { private const string TargetingContextLookup = &amp;#34;TestTargetingContextAccessor.TargetingContext&amp;#34;; private readonly IHttpContextAccessor _httpContextAccessor; public TestTargetingContextAccessor(IHttpContextAccessor httpContextAccessor) { _httpContextAccessor = httpContextAccessor ?</description>
     </item>
     <item>
+      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
+      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
+      <pubDate>Sat, 01 Apr 2023 09:41:01 +0000</pubDate>
+      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
+      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
+appsettings.json &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureB&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.TimeWindow&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Start&amp;#34;: &amp;#34;2020-11-09 04:58:00Z&amp;#34;, &amp;#34;End&amp;#34;: &amp;#34;2099-11-09 05:00:00Z&amp;#34; } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;#34;FeatureA&amp;#34;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate(&amp;#34;FeatureA&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, &amp;#34;FeatureA&amp;#34;, &amp;#34;FeatureB&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags.</description>
+    </item>
+    <item>
       <title>將 Line Liff App 發佈到免費的 Azure Static Web App</title>
       <link>https://kyleap.github.io/liff-app-deploy-azure-static-web/</link>
       <pubDate>Tue, 17 Aug 2021 23:07:24 +0000</pubDate>
@@ -115,14 +123,6 @@ azcopy copy &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt; --recursive --ove
 分享官方帳號 https://line.me/R/ti/p/ (直接跳至此Bot的對話視窗) https://line.me/R/nv/recommendOA/ (傳送此Bot給好友) https://line.me/R/home/public/main?id= (Bot主頁) https://line.me/R/home/public/profile?id= (Bot個人檔案頁) https://line.me/R/home/public/post?id=svgvs&amp;amp;postId={postId} (移至貼文)
 Chatbox https://line.me/R/share?text=Hello (分享給好友訊息) https://line.me/R/oaMessage/@102svgvs/?Hello學院 (跳至Bot對話視窗，並帶入文字到Chatbox)
 個人資訊相關 https://line.me/R/nv/profile (個人檔案頁) https://line.me/R/nv/profileSetId (移置個人ID設定頁) https://line.me/R/nv/chat (移置對話列表) https://line.me/R/nv/timeline (移至動態列表) https://line.me/R/nv/wallet	(移至錢包) https://line.me/R/nv/addFriends (加入好友頁) https://line.me/R/nv/officialAccounts (探索官方帳號) https://line.me/R/nv/settings (設定頁) https://line.me/R/nv/settings/account (個人帳號設定頁) https://line.me/R/nv/connectedApps (管理已連結的ChatBot) https://line.me/R/nv/connectedDevices (管理已連結的設備) https://line.me/R/nv/settings/privacy (隱私設定) https://line.me/R/nv/things/deviceLink (管理Line Thing已連結裝置) https://line.</description>
-    </item>
-    <item>
-      <title>在 .NET Core 使用 Feature Flag (Feature Toggle) - 時間控制</title>
-      <link>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://kyleap.github.io/feature-flag-dotnet-core-basic-timewindow/</guid>
-      <description>承接上一篇，如果有一些情境是限時開放的功能，時間過了以後就要關閉，那就可以用到 TimeWindow
-appsettings.json &amp;#34;FeatureManagement&amp;#34;: { &amp;#34;FeatureB&amp;#34;: { &amp;#34;EnabledFor&amp;#34;: [ { &amp;#34;Name&amp;#34;: &amp;#34;Microsoft.TimeWindow&amp;#34;, &amp;#34;Parameters&amp;#34;: { &amp;#34;Start&amp;#34;: &amp;#34;2020-11-09 04:58:00Z&amp;#34;, &amp;#34;End&amp;#34;: &amp;#34;2099-11-09 05:00:00Z&amp;#34; } } ] } } 基本的 Feature Toggle 使用 var isFeatureAEnabled = await _featureManager.IsEnabledAsync(&amp;#34;FeatureA&amp;#34;); if(isFeatureAEnabled) { // 有打開，走新邏輯 } else { // 未打開，走舊邏輯 } API Route 多個使用方式，驗證不過會回傳404 [FeatureGate(&amp;#34;FeatureA&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可指定任一或多個 Feature 是否有打開 [FeatureGate(requirementType: RequirementType.Any, &amp;#34;FeatureA&amp;#34;, &amp;#34;FeatureB&amp;#34;)] public async Task&amp;lt;ActionResult&amp;gt; Foo() { return Ok(result); } 也可以用 Enum 避免弱型別的typo [FeatureGate(MyFeatureFlags.</description>
     </item>
   </channel>
 </rss>
